@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:security="http://www.springframework.org/schema/security"
+	   xmlns:beans="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+           
+     <!-- 未登录的切入点
+    <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:property name="loginFormUrl" value="/login.jsp"></beans:property>
+    </beans:bean>
+    <security:http pattern="/js/**" security="none"/>
+    <security:http pattern="/login.jsp" security="none" />
+     -->
+	<security:http auto-config="false" use-expressions="true">
+		<security:form-login login-page="/login/goToLogin"
+			default-target-url="/login/login"
+			username-parameter="accountName"
+			password-parameter="password"/>
+		
+		<security:logout logout-url="/login/logout" invalidate-session="true" delete-cookies="JSESSIONID"/>
+		<security:csrf disabled="true" />
+		<security:intercept-url pattern="/account/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/accountRole/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/ad/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/card/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/config/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/group/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/life/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/resources/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/resourcesRole/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/role/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/site/**" access="hasRole('ROLE_ADMIN')" />
+		<security:custom-filter ref="gioneeSecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+	</security:http>
+	
+    
+    <!-- 配置认证管理器 
+    <security:authentication-manager>
+    	<security:authentication-provider>
+    		<security:user-service>
+    			<security:user name="admin" password="admin" authorities="ROLE_USER"/>
+    		</security:user-service>
+    		
+    		<security:jdbc-user-service data-source-ref="datasource"/>
+    		
+    	</security:authentication-provider>
+    </security:authentication-manager>
+    -->
+    <security:authentication-manager alias="gioneeAuthenticationManager">
+		<security:authentication-provider user-service-ref="gioneeUserDetailServiceImpl" />
+	</security:authentication-manager>
+    
+</beans>
