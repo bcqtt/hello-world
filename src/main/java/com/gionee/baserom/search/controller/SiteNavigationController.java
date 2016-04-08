@@ -41,6 +41,7 @@ public class SiteNavigationController {
 	 */
 	@RequestMapping(value = "/querySitePaper", method = RequestMethod.GET)
 	public ModelAndView querySitePaper(Page<SiteNavigation> page,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
 		String type = request.getParameter("type");
 		if(pageNum != null){
@@ -50,9 +51,13 @@ public class SiteNavigationController {
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
+		if(acc==null){
+			request.setAttribute("error","会话失效，重新登录。");
+			model.setViewName("login");
+			return model;
+		}
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));
 		Resources res = this.resourcesService.selectById(Integer.parseInt(resId));
-		ModelAndView model = new ModelAndView();
 		model.addObject(page);
 		model.addObject("type",type);
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);

@@ -41,6 +41,7 @@ public class LifeServiceController {
 	 */
 	@RequestMapping(value = "/queryLifeServicePaper", method = RequestMethod.GET)
 	public ModelAndView queryLifeServicePaper(Page<LifeService> page,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
@@ -48,9 +49,13 @@ public class LifeServiceController {
 		page = lifeService.queryPage(page);
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
+		if(acc==null){
+			request.setAttribute("error","会话失效，重新登录。");
+			model.setViewName("login");
+			return model;
+		}
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));
 		Resources res = this.resourcesService.selectById(Integer.parseInt(resId));
-		ModelAndView model = new ModelAndView();
 		model.addObject(page);
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
