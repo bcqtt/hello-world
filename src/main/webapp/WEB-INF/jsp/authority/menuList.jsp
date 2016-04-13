@@ -13,7 +13,7 @@ var pIdList_="${pIdList}";
 	</div>
 	
 	<div style="width:83%;float:right; border-left:1px solid #b8d0d6">
-	<form id="pagerForm" method="POST" onsubmit="return divSearch(this, 'resourcesListDiv');" action="${resAction}">
+	<form id="pagerForm" name="menuPaperForm" method="POST" onsubmit="return divSearch(this, 'resourcesListDiv');" action="${resAction}">
 		<input type="hidden" name="pageNum" value="${page.currentPage}" />
 		<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
 	</form>

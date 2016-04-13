@@ -11,6 +11,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>全局搜索配置系统登陆</title>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/login.css" rel="stylesheet" type="text/css" />
+<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function(){
+		var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+		var isOpera = userAgent.indexOf("Opera") > -1;
+		if(userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+		    //判断是否为IE浏览器
+		    $(".loginForm").css("width","280px");
+		    $("input[name='password']").attr("size",21);
+		}else if(userAgent.indexOf("Chrome") > -1){
+			$(".loginForm").css("width","280px");
+			$(".loginForm").css("right","10px");
+		};
+	});
+	function changeCode() {
+		var imgNode = document.getElementById("vimg");
+		imgNode.src = "servlet/AuthImageServlet?t=" + Math.random();
+	}
+</script>
 </head>
 <body>
 <div id="login">
@@ -43,14 +63,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</p>
 					<p>
 						<label>验证码：</label>
-						<input name="randCode" class="code" type="text" size="5" value="A" />
+						<input name="randCode" class="code" type="text" size="5" value="" />
 						<span><img  id="vimg" title="点击更换" src="servlet/AuthImageServlet" onclick="changeCode();" alt="" width="75" height="24" /></span>
-						<script type="text/javascript">
-							function changeCode() {
-								var imgNode = document.getElementById("vimg");
-								imgNode.src = "servlet/AuthImageServlet?t=" + Math.random();
-							}
-						</script>
 					</p>
 					<div class="login_bar">
 						<input class="sub" type="submit" value=" " />

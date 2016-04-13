@@ -15,10 +15,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
 <!--[if IE]>
-<link href="themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
 
-<!--[if lt IE 9]><script src="js/speedup.js" type="text/javascript"></script><script src="js/jquery-1.11.3.min.js" type="text/javascript"></script><![endif]-->
+<!--[if lt IE 9]><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/speedup.js" type="text/javascript"></script><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-1.11.3.min.js" type="text/javascript"></script><![endif]-->
 <!--[if gte IE 9]><!--><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-2.1.4.min.js" type="text/javascript"></script><!--<![endif]-->
 
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery.cookie.js" type="text/javascript"></script>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 $(function(){
 	DWZ.init("framework/dwz/dwz.frag.xml", {
-		loginUrl:"framework/dwz/login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
+		loginUrl:"login/goToLogin", loginTitle:"登录",	// 弹出登录对话框
 //		loginUrl:"login.html",	// 跳到登录页面
 		statusCode:{ok:200, error:300, timeout:301}, //【可选】
 		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
@@ -143,8 +143,6 @@ $(function(){
 						<div class="pageFormContent" layoutH="80" style="margin-right:230px">
 
 						</div>
-						
-						
 					</div>
 					
 				</div>

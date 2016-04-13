@@ -41,7 +41,7 @@ function updateType(obj){
 </form>
 
 <div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="site/querySitePaper?numPerPage=${page.numPerPage}" method="get">
+	<form onsubmit="return navTabSearch(this);" action="${resAction}&numPerPage=${page.numPerPage}" method="get">
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>

@@ -37,11 +37,11 @@ function nodeClick(e, treeId, treeNode){
 }
 function reloadList(event, treeId, treeNode){
 	var pIdList = treeNode.parentIdList;
-	var temp = $("#pagerForm").attr("action");
-	var action = $("#pagerForm").attr("action")+"&pIdList="+pIdList;
-	$("#pagerForm").attr("action",action);
-	$("#pagerForm").submit();
-	$("#pagerForm").attr("action",temp);
+	var temp = $("form[name='menuPaperForm']").attr("action");
+	var action = $("form[name='menuPaperForm']").attr("action")+"&pIdList="+pIdList;
+	$("form[name='menuPaperForm']").attr("action",action);
+	$("form[name='menuPaperForm']").submit();
+	$("form[name='menuPaperForm']").attr("action",temp);
 }
 var goAsync = false;
 function expandAll() {
@@ -66,9 +66,4 @@ function expandNodes(nodes) {
 $(document).ready(function(){
 	var treeObj = $.fn.zTree.init($("#resTree"),setting);
 	treeObj.expandAll(true);
-//	if(pIdList_!=""){
-//		var node = treeObj.getNodeByParam("parentIdList", pIdList_);
-//		node.highlight = true;
-//		treeObj.updateNode(node);
-//	}
 });
