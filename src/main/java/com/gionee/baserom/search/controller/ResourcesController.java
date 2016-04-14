@@ -133,6 +133,7 @@ public class ResourcesController {
 	
 	/**
 	 * 根据id删除role(包含多行删除)
+	 * @param accountId：预留条件，为了以后系统做大菜单增多时，根据用户id查询显示其可管理的菜单
 	 */
 	@RequestMapping(value = "/menuTree", method = RequestMethod.POST)
 	public void menuTree(String accountId,HttpServletResponse response){

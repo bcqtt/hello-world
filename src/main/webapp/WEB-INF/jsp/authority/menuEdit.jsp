@@ -83,7 +83,10 @@ function hideTree(){
 				</dl>
 				<dl class="nowrap">
 					<dt>键名：</dt>
-					<dd><input name="resKey" class="required" type="text" size="30" value="${res.resKey}" /></dd>
+					<dd>
+						<input name="resKey" class="required" type="text" size="30" value="${res.resKey}" /><br/>
+						<div style="color:#AAAAAA">格式：[model/menu/button]_菜单英文名_[manage/add/edit/del]，如：<br/>"系统管理"模块：model_system,<br/>"账号管理"菜单：menu_account_manage,<br/>"添加账号"按钮：button_account_add。<br/></div>
+					</dd>
 				</dl>
 				<dl class="nowrap">
 					<dt>资源名：</dt>
@@ -97,7 +100,7 @@ function hideTree(){
 					<dt>资源类型：</dt>
 					<dd>
 						<label><input id="model" type="radio" readonly="readonly" name="type" value="0" ${res.type == 0?"checked":""}/>模块</label>
-						<label><input id="folder" type="radio" readonly="readonly" name="type" value="1" ${res.type == 1?"checked":""}/>目录</label>
+						<!-- <label><input id="folder" type="radio" readonly="readonly" name="type" value="1" ${res.type == 1?"checked":""}/>目录</label>  -->
 						<label><input id="menu" type="radio" readonly="readonly" name="type" value="2" ${res.type == 2?"checked":""}/>菜单</label>
 						<label><input id="button" type="radio" readonly="readonly" name="type" value="3" ${res.type == 3?"checked":""}/>按钮</label>
 					</dd>

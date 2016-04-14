@@ -460,9 +460,9 @@
    	    order by parent_id_list limit #{startIndex},#{numPerPage}
    </select>
    <select id="selectTotalCount" parameterType="map" resultType="java.lang.Integer">
-   		select count(*) from resources
+   		select count(*) from resources where 1=1
    		<if test="pIdList != null">
-	   		where parent_id_list like CONCAT('%','${pIdList}','%' )
+	   		and parent_id_list like CONCAT('%','${pIdList}','%' )
       	</if>
    </select>
    

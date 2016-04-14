@@ -41,8 +41,24 @@ public class ResourcesServiceImpl implements IResourcesService {
 			res.setIcon("framework/images/model.png");
 		}else if(type==2){
 			res.setIcon("framework/images/menu.png");
+			res.setTarget("navTab");
 		}else if(type==3){
 			res.setIcon("framework/images/button.png");
+			String[] str = res.getResKey().split("_");
+			if(str[2].equals("add")){
+				res.setCssClass("add");
+				res.setTarget("dialog");
+			}else if(str[2].equals("edit")){
+				res.setCssClass("edit");
+				res.setTarget("dialog");
+				res.setWinWidth(700);
+				res.setWinHeight(380);
+				res.setWarn("请选择一个记录!");
+			}else if(str[2].equals("del")){
+				res.setCssClass("delete");
+				res.setTarget("selectedTodo");
+				res.setTittle("确实要删除所选记录吗?");
+			}
 		}
 		if(editType.equals("add")){
 			n = resourcesMapper.insert(res);
@@ -121,7 +137,7 @@ public class ResourcesServiceImpl implements IResourcesService {
 
 	/**
 	 * 根据登陆账号的id查询相关可访问资源
-	 * @param accountId
+	 * @param accountId：预留条件，为了以后系统做大菜单增多时，根据用户id查询显示其可管理的菜单
 	 * @return
 	 */
 	public List<Resources> queryResourcesByAccountId(String accountId) {

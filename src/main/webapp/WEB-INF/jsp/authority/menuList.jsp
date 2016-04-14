@@ -16,6 +16,7 @@ var pIdList_="${pIdList}";
 	<form id="pagerForm" name="menuPaperForm" method="POST" onsubmit="return divSearch(this, 'resourcesListDiv');" action="${resAction}">
 		<input type="hidden" name="pageNum" value="${page.currentPage}" />
 		<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
+		<input type="hidden" name="pIdList" value="${pIdList}" />
 	</form>
 	
 	<div class="panelBar">
