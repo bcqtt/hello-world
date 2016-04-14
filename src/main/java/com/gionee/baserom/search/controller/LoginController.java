@@ -53,12 +53,12 @@ public class LoginController {
 		
 		String rand = (String) request.getSession().getAttribute("rand");
 		String randCode = request.getParameter("randCode");
-		if(rand==null){
+		if(randCode==null){
 			request.setAttribute("error","请登录。");
 			model.setViewName("login");
 			return model;
 		}
-		if(!rand.equals(randCode)){
+		if(!rand.toLowerCase().equals(randCode.toLowerCase())){
 			request.setAttribute("error","验证码不对！");
 			model.setViewName("login");
 			return model;

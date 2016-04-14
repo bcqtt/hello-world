@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='用户账号表';
 
--- 正在导出表  search.account 的数据：~24 rows (大约)
+-- 正在导出表  search.account 的数据：~26 rows (大约)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`, `email`, `type`, `description`, `group_id`, `create_time`, `last_login_time`) VALUES
 	(1, 'root', 'root', '4QrcOUm6Wau+VuBX8g+IPg==', '13763033450', 'abc@123.com', NULL, NULL, 3, '2016-04-05 15:38:02', NULL),
@@ -58,7 +58,7 @@ INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`,
 	(33, 'iluo', '我爱罗', '4QrcOUm6Wau+VuBX8g+IPg==', '13763033450', 'lzw@ginoee.com', NULL, NULL, 3, '2016-04-05 15:38:02', NULL),
 	(34, 'AAAAAAAAAA', '爱爱爱爱爱爱爱', '4QrcOUm6Wau+VuBX8g+IPg==', '12345678910', 'abc@123.com', NULL, NULL, 2, '2016-04-05 16:21:42', NULL),
 	(35, 'lzw', 'lzw', '4QrcOUm6Wau+VuBX8g+IPg==', '', '', NULL, NULL, 2, '2016-04-05 16:50:20', NULL),
-	(36, 'abc', 'abc', '4QrcOUm6Wau+VuBX8g+IPg==', '12345678910', 'lzw@ginoee.com', NULL, NULL, 2, '2016-04-07 11:07:11', NULL),
+	(36, 'abc', 'abc', 'abc', '12345678910', 'lzw@ginoee.com', NULL, NULL, 2, '2016-04-12 10:17:55', NULL),
 	(38, 'angellala', '天使啦啦', '4QrcOUm6Wau+VuBX8g+IPg==', '12345678910', 'abc@123.com', NULL, NULL, 2, '2016-03-25 14:36:25', NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `account_role` (
   CONSTRAINT `FK_Relationship_2` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  search.account_role 的数据：~3 rows (大约)
+-- 正在导出表  search.account_role 的数据：~4 rows (大约)
 /*!40000 ALTER TABLE `account_role` DISABLE KEYS */;
 INSERT INTO `account_role` (`account_id`, `role_id`) VALUES
 	(2, 1),
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `ad_control` (
   `ad_img` varchar(300) DEFAULT NULL,
   `ad_url` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
 
--- 正在导出表  search.ad_control 的数据：~2 rows (大约)
+-- 正在导出表  search.ad_control 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `ad_control` DISABLE KEYS */;
 INSERT INTO `ad_control` (`id`, `name`, `show_flag`, `position_id`, `ad_img`, `ad_url`) VALUES
 	(1, '广告1', 1, 1, 'https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/0d845e56a93b5e60021d6f607808564b_255_96.jpg', 'http://www.jd.com'),
@@ -108,16 +108,16 @@ CREATE TABLE IF NOT EXISTS `card` (
   `order_id` int(11) DEFAULT NULL COMMENT '排序号',
   `show_enable` int(11) DEFAULT NULL COMMENT '0:显示在首页，1:不显示在首页',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  search.card 的数据：~11 rows (大约)
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
 INSERT INTO `card` (`id`, `name`, `order_id`, `show_enable`) VALUES
-	(1, '卡片1', 1, NULL),
+	(1, '卡片1', 1, 0),
 	(2, '卡片2', 2, 1),
 	(3, '卡片3', 3, 1),
 	(4, '卡片4', 4, 1),
-	(5, '卡片5', 5, NULL),
+	(5, '卡片5', 5, 0),
 	(6, '卡片6', 6, 0),
 	(7, '卡片7', 7, 1),
 	(8, '卡片8', 8, 0),
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `config` (
   PRIMARY KEY (`id`),
   KEY `key` (`code`),
   KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='参数配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='参数配置表';
 
 -- 正在导出表  search.config 的数据：~6 rows (大约)
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
@@ -176,12 +176,13 @@ CREATE TABLE IF NOT EXISTS `hotkey_source` (
   `source_name` varchar(100) DEFAULT NULL,
   `enable_status` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='热门资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='热门资源表';
 
--- 正在导出表  search.hotkey_source 的数据：~1 rows (大约)
+-- 正在导出表  search.hotkey_source 的数据：~2 rows (大约)
 /*!40000 ALTER TABLE `hotkey_source` DISABLE KEYS */;
 INSERT INTO `hotkey_source` (`id`, `source_code`, `source_name`, `enable_status`) VALUES
-	(1, 'haosouDataExtract', '好搜热词接口', 1);
+	(1, 'haosouDataExtract', '好搜热词接口', 0),
+	(2, 'baiduDataExtract', '百度热词接口', 1);
 /*!40000 ALTER TABLE `hotkey_source` ENABLE KEYS */;
 
 
@@ -192,41 +193,41 @@ CREATE TABLE IF NOT EXISTS `hot_keys` (
   `hot_key` varchar(50) DEFAULT NULL,
   `sort_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=512063 DEFAULT CHARSET=utf8 COMMENT='热词表';
+) ENGINE=InnoDB AUTO_INCREMENT=513703 DEFAULT CHARSET=utf8 COMMENT='热词表';
 
--- 正在导出表  search.hot_keys 的数据：~30 rows (大约)
+-- 正在导出表  search.hot_keys 的数据：~45 rows (大约)
 /*!40000 ALTER TABLE `hot_keys` DISABLE KEYS */;
 INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `sort_id`) VALUES
-	(512033, NULL, '公安局长卖官价目表', 0),
-	(512034, NULL, '妻子在丈夫床前磨刀', 1),
-	(512035, NULL, '俄举行阅兵排练', 2),
-	(512036, NULL, '九旬婆派出所上班', 3),
-	(512037, NULL, '连体姐妹共用双腿', 4),
-	(512038, NULL, '呆萌机器僧走红', 5),
-	(512039, NULL, '35厘米长大馒头', 6),
-	(512040, NULL, '360智能摄像机', 7),
-	(512041, NULL, '20万孩童信息遭泄露', 8),
-	(512042, NULL, '跨国追捕中国男子', 9),
-	(512043, NULL, '男子连捅孕妇13刀', 10),
-	(512044, NULL, '女子约车取消遭辱骂', 11),
-	(512045, NULL, '顶行交警被刑拘', 12),
-	(512046, NULL, '周杰伦脊柱炎严重', 13),
-	(512047, NULL, '9岁男孩遭校长暴打', 14),
-	(512048, NULL, '辽宁常委苏宏章被查', 15),
-	(512049, NULL, '撞死两人后自拍', 16),
-	(512050, NULL, '学校花坛长出娃娃', 17),
-	(512051, NULL, '挖洞建豪华地宫', 18),
-	(512052, NULL, '官员火拼争祖坟', 19),
-	(512053, NULL, '为阻止停车摆钉板', 20),
-	(512054, NULL, '中晋资产被立案', 21),
-	(512055, NULL, '7年5次剖腹产', 22),
-	(512056, NULL, '殡仪馆积尸严重', 23),
-	(512057, NULL, '女子酒店遭男子劫持', 24),
-	(512058, NULL, 'emba纳入统考', 25),
-	(512059, NULL, '挤痘引发脑膜炎', 26),
-	(512060, NULL, '四川夫妻生11个孩子', 27),
-	(512061, NULL, '殡仪馆遗体无人领', 28),
-	(512062, NULL, '少年ktv饮酒后溺亡', 29);
+	(513673, NULL, '高官任山寨央企书记', 0),
+	(513674, NULL, '科比退役', 1),
+	(513675, NULL, '缅甸发生地震', 2),
+	(513676, NULL, '圣湖裸照摄影师被拘', 3),
+	(513677, NULL, '百亿诈骗款仅追回20万', 4),
+	(513678, NULL, '1元纸币正常流通', 5),
+	(513679, NULL, 'ios再现安全漏洞', 6),
+	(513680, NULL, '打印假钞8成能花', 7),
+	(513681, NULL, '罗塞夫指副总统政变', 8),
+	(513682, NULL, '强势女赶婆婆出门', 9),
+	(513683, NULL, '短信骗光财产', 10),
+	(513684, NULL, '联合国公开选秘书', 11),
+	(513685, NULL, '野猪遭核污染变异', 12),
+	(513686, NULL, '自拍不知被黑熊追', 13),
+	(513687, NULL, '网曝滴滴乱收费', 14),
+	(513688, NULL, '最大海外并购遭质疑', 15),
+	(513689, NULL, '见女友素颜被吓傻', 16),
+	(513690, NULL, '世预赛亚洲区分组', 17),
+	(513691, NULL, '男子飞机上水泼空姐', 18),
+	(513692, NULL, '融宜宝被立案', 19),
+	(513693, NULL, '现实版哥斯拉现身', 20),
+	(513694, NULL, '蔡卓妍否认绯闻', 21),
+	(513695, NULL, '刘涛为蒋欣做媒', 22),
+	(513696, NULL, '网曝昆明城管打人', 23),
+	(513697, NULL, '皇马逆转晋级', 24),
+	(513698, NULL, '杜海涛回应柳岩事件', 25),
+	(513699, NULL, '透支欠款滚成3万', 26),
+	(513700, NULL, '北京通州改名', 27),
+	(513701, NULL, '女子公交给狗投币', 28),
+	(513702, NULL, '霍金开通微博', 29);
 /*!40000 ALTER TABLE `hot_keys` ENABLE KEYS */;
 
 
@@ -240,9 +241,9 @@ CREATE TABLE IF NOT EXISTS `life_service` (
   `site_url` varchar(500) DEFAULT NULL,
   `icon_url` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='生活服务表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='生活服务表';
 
--- 正在导出表  search.life_service 的数据：~7 rows (大约)
+-- 正在导出表  search.life_service 的数据：~8 rows (大约)
 /*!40000 ALTER TABLE `life_service` DISABLE KEYS */;
 INSERT INTO `life_service` (`id`, `site_name`, `site_des`, `show_enable`, `sort_id`, `site_url`, `icon_url`) VALUES
 	(1, '查快递', '快捷查询，实时追踪', 1, 1, 'http://m.kuaidi100.com/', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/kuaidi.png'),
@@ -252,7 +253,7 @@ INSERT INTO `life_service` (`id`, `site_name`, `site_des`, `show_enable`, `sort_
 	(5, '休闲娱乐', '玩的多，省的更多', 1, 5, 'http://m.nuomi.com/sz/320/0-0/0-0-0-0-0', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/yule.png'),
 	(6, '查违章', '自动提醒，省时省心', 1, 6, 'http://light.weiche.me/', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/weizhang.png'),
 	(7, '交房租', '便捷为民，足不出户', 0, 8, 'http://m.nuomi.com/sz/927/0-0/0-0-0-0-0', 'http://127.0.0.1:16823/img/ui-header-logo.svg'),
-	(8, '充值深圳通', '方便快捷', 1, 9, 'https://www.baidu.com/', 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2877268373,68123851&fm=58&s=B0B6359ED5706D905A5D80F20300D0B3');
+	(8, '充值深圳通', '方便快捷', 0, 9, 'https://www.baidu.com/', 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2877268373,68123851&fm=58&s=B0B6359ED5706D905A5D80F20300D0B3');
 /*!40000 ALTER TABLE `life_service` ENABLE KEYS */;
 
 
@@ -275,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `resources` (
   `warn` varchar(100) DEFAULT NULL COMMENT '未选择行的操作提示',
   `tittle` varchar(100) DEFAULT NULL COMMENT '删除时的操作提示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
 
 -- 正在导出表  search.resources 的数据：~36 rows (大约)
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
@@ -315,7 +316,8 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(46, '生活服务管理', 'menu_lifeservice_manage', 'life/queryLifeServicePaper', 'framework/images/menu.png', 2, 1, '※-1※0※1※1※46※', NULL, '菜单项-生活服务管理', '', 'navTab', NULL, NULL, '', ''),
 	(47, '添加', 'button_lifeservice_add', 'life/addLifeServiceView?editType=add', 'framework/images/button.png', 3, 46, '※-1※0※1※1※46※47※', NULL, '生活服务管理-添加按钮', 'add', 'dialog', 445, 330, '', ''),
 	(48, '修改', 'button_lifeservice_edit', 'life/editLifeServiceView?editType=update&id={id_life}', 'framework/images/button.png', 3, 46, '※-1※0※1※1※46※48※', NULL, '生活服务管理-修改按钮', 'edit', 'dialog', 445, 330, '请选择一个记录!', ''),
-	(49, '删除', 'menu_manage,button_lifeservice_del', 'life/deleteLifeServices?id={id_life}', 'framework/images/button.png', 3, 46, '※-1※0※1※1※46※49※', NULL, '生活服务管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?');
+	(49, '删除', 'menu_manage,button_lifeservice_del', 'life/deleteLifeServices?id={id_life}', 'framework/images/button.png', 3, 46, '※-1※0※1※1※46※49※', NULL, '生活服务管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
+	(50, '数据采集源', 'menu_data_from', 'search/changeSource', 'framework/images/menu.png', 2, 2, '※-1※0※2※50※', NULL, '切换数据采集源', '', 'navTab', NULL, NULL, '', '');
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 
 
@@ -364,6 +366,7 @@ INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 	(1, 47),
 	(1, 48),
 	(1, 49),
+	(1, 50),
 	(2, 1),
 	(2, 7),
 	(2, 9),
@@ -391,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `role_key` varchar(100) DEFAULT NULL COMMENT '权限关键字，默认ROLE_ADMIN',
   `description` varchar(200) DEFAULT NULL COMMENT '角色描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- 正在导出表  search.role 的数据：~7 rows (大约)
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
@@ -417,12 +420,12 @@ CREATE TABLE IF NOT EXISTS `site_navigation` (
   `icon` blob,
   `type` int(11) DEFAULT NULL COMMENT '-1:全部；0:常规网址；1:桌面widget网址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='网址导航表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='网址导航表';
 
 -- 正在导出表  search.site_navigation 的数据：~13 rows (大约)
 /*!40000 ALTER TABLE `site_navigation` DISABLE KEYS */;
 INSERT INTO `site_navigation` (`id`, `site_name`, `site_url`, `sort_id`, `show_enable`, `icon_url`, `icon`, `type`) VALUES
-	(1, '淘宝', 'http://gou.gionee.com/index/redirect?url_id=2461', 1, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/taobao.png', NULL, 0),
+	(1, '淘宝热卖', 'http://gou.gionee.com/index/redirect?url_id=2461', 1, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/taobao.png', NULL, 0),
 	(2, '唯品会', 'http://gou.gionee.com/index/redirect?url_id=2462', 2, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/weipinhui.png', NULL, 0),
 	(3, '蘑菇街', 'http://gou.gionee.com/index/redirect?url_id=2463', 3, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/mogujie.png', NULL, 0),
 	(4, '瓷肌', 'http://gou.gionee.com/index/redirect?url_id=2464', 4, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/ciji.png', NULL, 0),

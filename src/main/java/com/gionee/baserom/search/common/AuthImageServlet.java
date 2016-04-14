@@ -51,14 +51,14 @@ public class AuthImageServlet extends HttpServlet{
         Random random = new Random();     
         g.setColor(getRandColor(200,250));     
         g.fillRect(1, 1, width-1, height-1);     
-        g.setColor(new Color(102,102,102));     
+        g.setColor(new Color(0,0,0));     
         g.drawRect(0, 0, width-1, height-1);     
         g.setFont(mFont);     
     
         g.setColor(getRandColor(160,200));     
     
         //画随机线     
-        for (int i=0;i<50;i++){     
+        for (int i=0;i<30;i++){     
             int x = random.nextInt(width - 1);     
             int y = random.nextInt(height - 1);     
             int xl = random.nextInt(6) + 1;     
@@ -77,18 +77,19 @@ public class AuthImageServlet extends HttpServlet{
     
         //生成随机数,并将随机数字转换为字母     
         String sRand="";     
-        for (int i=0;i<1;i++){
-            int itmp = random.nextInt(26) + 65;     
+        for (int i=0;i<4;i++){
+            int itmp = random.nextInt(26) + 65;
             char ctmp = (char)itmp;
-            ctmp = 'A';
-            sRand += String.valueOf(ctmp); 
-            g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110))); 
-            g.drawString(String.valueOf(ctmp),20*i+15,16);     
+            int code = (char)(Math.random()*10);
+            //ctmp = 'A';
+            sRand += String.valueOf(code); 
+            g.setColor(new Color(20+random.nextInt(160),20+random.nextInt(170),20+random.nextInt(180))); 
+            g.drawString(String.valueOf(code),20*i+15,16);
         }
         logger.info("验证码：" + sRand);
     
         HttpSession session = request.getSession(true);     
-        session.setAttribute("rand",sRand);     
+        session.setAttribute("rand",sRand);
         g.dispose();     
         ImageIO.write(image, "JPEG", response.getOutputStream());     
     }     
