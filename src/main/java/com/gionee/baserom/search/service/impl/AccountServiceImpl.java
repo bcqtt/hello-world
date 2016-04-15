@@ -132,4 +132,17 @@ public class AccountServiceImpl implements IAccountService {
 		return ajaxObj;
 	}
 
+	/**
+	 * 修改正好密码
+	 */
+	public DwzAjaxObject updatePassword(Account acc) {
+		int n = this.accountMapper.updateByPrimaryKey(acc);
+		if(n>0){
+			ajaxObj = new DwzAjaxObject("200", "操作成功！" ,"", "", "");
+		}else{
+			ajaxObj = new DwzAjaxObject("300", "操作失败！");
+		}
+		return ajaxObj;
+	}
+
 }

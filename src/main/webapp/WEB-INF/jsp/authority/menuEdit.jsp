@@ -85,7 +85,7 @@ function hideTree(){
 					<dt>键名：</dt>
 					<dd>
 						<input name="resKey" class="required" type="text" size="30" value="${res.resKey}" /><br/>
-						<div style="color:#AAAAAA">格式：[model/menu/button]_菜单英文名_[manage/add/edit/del]，如：<br/>"系统管理"模块：model_system,<br/>"账号管理"菜单：menu_account_manage,<br/>"添加账号"按钮：button_account_add。<br/></div>
+						<div style="color:#AAAAAA;margin-top:5px;">格式：[model/menu/button]_菜单英文名_[manage/add/edit/del]，如：<br/>"系统管理"模块：model_system,<br/>"账号管理"菜单：menu_account_manage,<br/>"添加账号"按钮：button_account_add。<br/></div>
 					</dd>
 				</dl>
 				<dl class="nowrap">

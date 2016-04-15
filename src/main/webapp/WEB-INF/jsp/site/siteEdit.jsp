@@ -22,19 +22,19 @@ function showIcon(obj){
 			</p>
 			<p>
 				<label>名称：</label>
-				<input name="siteName" class="required" type="text" size="30" value="${site.siteName}" />
+				<input name="siteName" class="required" type="text" size="30" style="width:220px;"; value="${site.siteName}" />
 			</p>
 			<p>
 				<label>排序号：</label>
-				<input name="sortId" class="digits" type="text" size="30" value="${site.sortId}" />
+				<input name="sortId" class="digits" type="text" size="30" style="width:220px;" value="${site.sortId}" />
 			</p>
 			<p>
 				<label>URL：</label>
-				<input name="siteUrl" class="required url" type="text" size="30" value="${site.siteUrl}" />
+				<input name="siteUrl" class="required url" type="text" size="30" style="width:220px;" value="${site.siteUrl}" />
 			</p>
 			<p>
 				<label>Logo图片链接：</label>
-				<input name="iconUrl" class="required url" type="text" size="30" value="${site.iconUrl}" onchange="showIcon(this);"/>
+				<input name="iconUrl" class="required url" type="text" size="30" style="width:220px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
 				<img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/icon_pic.png':site.iconUrl}" width="25" height="25">
 			</p>
 			<p>

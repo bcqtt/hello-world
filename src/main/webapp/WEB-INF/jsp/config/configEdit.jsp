@@ -7,15 +7,15 @@
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>参数代码：</label>
-				<input name="code" class="required" type="text" size="40" value="${config.code}" />
+				<input name="code" class="required" type="text" size="40" style="width:230px;" value="${config.code}" />
 			</p>
 			<p>
 				<label>参数名：</label>
-				<input name="name" class="required" type="text" size="40" value="${config.name}" />
+				<input name="name" class="required" type="text" size="40" style="width:230px;" value="${config.name}" />
 			</p>
 			<p>
 				<label>参数值：</label>
-				<input name="value" class="required" type="text" size="40" value="${config.value}" />
+				<input name="value" class="required" type="text" size="40" style="width:230px;" value="${config.value}" />
 			</p>
 			<p>
 				<label>是否启用：</label>

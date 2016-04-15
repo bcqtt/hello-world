@@ -55,15 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form name="loginform" action="login/login" method="post">
 					<p>
 						<label>用户名：</label>
-						<input type="text" name="accountName" size="20" class="login_input" />
+						<input type="text" name="accountName" size="20" style="width:150px" class="login_input" />
 					</p>
 					<p>
 						<label>密码：</label>
-						<input type="password" name="password" size="20" class="login_input" />
+						<input type="password" name="password" size="20" style="width:150px" class="login_input" />
 					</p>
 					<p>
 						<label>验证码：</label>
-						<input name="randCode" class="code" type="text" size="5" value="" />
+						<input name="randCode" class="code" type="text" size="5" style="width:70px" value="" />
 						<span><img  id="vimg" title="点击更换" src="servlet/AuthImageServlet" onclick="changeCode();" alt="" width="75" height="24" /></span>
 					</p>
 					<div class="login_bar">

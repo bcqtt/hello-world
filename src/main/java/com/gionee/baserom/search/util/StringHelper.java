@@ -2,6 +2,7 @@ package com.gionee.baserom.search.util;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -20,26 +21,19 @@ public class StringHelper {
 	 * @param str
 	 * @return
 	 */
-	@SuppressWarnings("restriction")
 	public static String md5(String str) {
-		String s = str;
-		if (s == null) {
+		if (str == null) {
 			return "";
 		} else {
-			String value = null;
 			MessageDigest md5 = null;
 			try {
 				md5 = MessageDigest.getInstance("MD5");
+				md5.update(str.getBytes());
+				str = new BigInteger(1, md5.digest()).toString(16);   
 			} catch (NoSuchAlgorithmException ex) {
 				log.error("创建MD5对象失败！----->StringHelper.java");
 			}
-			sun.misc.BASE64Encoder baseEncoder = new sun.misc.BASE64Encoder();
-			try {
-				value = baseEncoder.encode(md5.digest(s.getBytes("utf-8")));
-			} catch (Exception ex) {
-				log.error("MD5转码失败！----->StringHelper.java");
-			}
-			return value;
+			return str;
 		}
 	}
 	

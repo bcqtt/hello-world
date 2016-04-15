@@ -6,11 +6,11 @@
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>名称：</label>
-				<input name="name" class="required" type="text" size="30" value="${card.name}" />
+				<input name="name" class="required" type="text" size="30" style="width:250px" value="${card.name}" />
 			</p>
 			<p>
 				<label>排序号：</label>
-				<input name="orderId" class="digits" type="text" size="30" value="${card.orderId}"/>
+				<input name="orderId" class="digits" type="text" size="30" style="width:250px" value="${card.orderId}"/>
 			</p>
 			<p>
 				<label>是否显示在首页：</label>

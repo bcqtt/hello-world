@@ -75,6 +75,13 @@ public class AccountController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/openConfigView")
+	public ModelAndView openConfigView(){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("WEB-INF/jsp/account/setting");
+		return model;
+	}
+	
 	/**
 	 * 打开新增账号页面
 	 * @return
@@ -139,6 +146,16 @@ public class AccountController {
 		model.addObject("accountId", id);
 		model.setViewName("WEB-INF/jsp/account/accountAssigRoles");
 		return model;
+	}
+	
+	@RequestMapping(value = "/updatePassword")
+	public void updatePassword(HttpServletRequest request,HttpServletResponse response){
+		Account acc = (Account) request.getSession().getAttribute("accountSession");
+		String pw = request.getParameter("newPassword");
+		acc.setPassword(StringHelper.md5(pw));
+		ajaxObj = this.accountService.updatePassword(acc);
+		jsonResult = JSONObject.toJSONString(ajaxObj);
+		StringHelper.outputJsonString(jsonResult, response);
 	}
 
 }

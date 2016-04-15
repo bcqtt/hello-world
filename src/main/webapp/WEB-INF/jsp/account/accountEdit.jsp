@@ -6,23 +6,23 @@
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>账号名：</label>
-				<input name="accountName" class="required" type="text" size="30" value="${account.accountName}" />
+				<input name="accountName" class="required" type="text" size="30" style="width:250px" value="${account.accountName}" />
 			</p>
 			<p>
 				<label>姓名：</label>
-				<input name="name" class="required" type="text" size="30" value="${account.name}" />
+				<input name="name" class="required" type="text" size="30" style="width:250px" value="${account.name}" />
 			</p>
 			<p>
 				<label>密码：</label>
-				<input name="password" class="required" type="password" size="30" value="${account.password}" />
+				<input name="password" class="required" type="password" size="30" style="width:250px" value="${account.password}" />
 			</p>
 			<p>
 				<label>电话号码：</label>
-				<input name="phoneNumber" type="text" size="30" value="${account.phoneNumber}"/>
+				<input name="phoneNumber" type="text" size="30" style="width:250px" value="${account.phoneNumber}"/>
 			</p>
 			<p>
 				<label>电子邮件：</label>
-				<input name="email" type="text" size="30" value="${account.email}"/>
+				<input name="email" type="text" size="30" style="width:250px" value="${account.email}"/>
 			</p>
 			<p>
 				<label>${account.groupId }分组：</label>

@@ -13,7 +13,7 @@
 	<!-- 引入数据库连接信息配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:jdbc2.properties" />
+		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
 
 	<!-- 定义数据源 -->

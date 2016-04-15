@@ -38,4 +38,11 @@ public interface IAccountService {
 	 */
 	public DwzAjaxObject deleteAccounts(String resKey,String ids);
 
+	/**
+	 * 修改用户密码
+	 * @param acc
+	 * @return
+	 */
+	public DwzAjaxObject updatePassword(Account acc);
+
 }

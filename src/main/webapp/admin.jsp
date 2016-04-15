@@ -98,6 +98,7 @@ $(function(){
 				<a class="logo" href="http://www.gionee.com">标志</a>
 				<ul class="nav">
 					<li>您好，<span>${accountSession.name}</span> </li>
+					<li><a href="account/openConfigView" target="dialog" width="600">设置</a></li>
 					<li><a href="login/logout">退出</a></li>
 				</ul>
 			</div>
