@@ -15,19 +15,19 @@ function showIcon(obj){
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>名称：</label>
-				<input name="siteName" class="required" type="text" size="40" style="width:250px" value="${life.siteName}" />
+				<input name="siteName" class="required" type="text" size="40" value="${life.siteName}" />
 			</p>
 			<p>
 				<label>排序号：</label>
-				<input name="sortId" class="required" type="text" size="40" style="width:250px" value="${life.sortId}" />
+				<input name="sortId" class="required" type="text" size="40" value="${life.sortId}" />
 			</p>
 			<p>
 				<label>URL：</label>
-				<input name="siteUrl" class="required" type="text" size="40" style="width:250px" value="${life.siteUrl}" />
+				<input name="siteUrl" class="required" type="text" size="40" value="${life.siteUrl}" />
 			</p>
 			<p>
 				<label>图片链接：</label>
-				<input name="iconUrl" class="required url" type="text" size="36" style="width:220px" value="${life.iconUrl}" onchange="showIcon(this);"/>
+				<input name="iconUrl" class="required url" type="text" size="36" value="${life.iconUrl}" onchange="showIcon(this);"/>
 				<img id="urlLogo" src="${life.iconUrl eq null || life.iconUrl eq ''?'framework/images/icon_pic.png':life.iconUrl}" width="25" height="25">
 			</p>
 			<p>

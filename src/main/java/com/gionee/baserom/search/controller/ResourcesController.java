@@ -139,6 +139,7 @@ public class ResourcesController {
 	public void menuTree(String accountId,HttpServletResponse response){
 		List<Resources> resList = this.resourcesService.queryResourcesByAccountId(accountId);
 		String jsonArray = JSONArray.toJSONString(resList);
+		logger.info("menu json ----->" + jsonArray);
 		StringHelper.outputJsonString(jsonArray, response);
 	}
 

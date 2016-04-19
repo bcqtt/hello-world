@@ -15,15 +15,15 @@ function showIcon(obj){
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>广告名：</label>
-				<input name="name" class="required" type="text" size="44" style="width:250px;" value="${ad.name}" />
+				<input name="name" class="required" type="text" size="44" style="width:230px;" value="${ad.name}" />
 			</p>
 			<p>
 				<label>广告位置：</label>
-				<input name="positionId" class="required digits" type="text" size="44" style="width:250px;" value="${ad.positionId}" />
+				<input name="positionId" class="required digits" type="text" size="44" style="width:230px;" value="${ad.positionId}" />
 			</p>
 			<p>
 				<label>URL：</label>
-				<input name="adUrl" class="required" type="text" size="44" style="width:250px;" value="${ad.adUrl}" />
+				<input name="adUrl" class="required" type="text" size="44" style="width:230px;" value="${ad.adUrl}" />
 			</p>
 			<p>
 				<label>是否显示：</label>
@@ -31,11 +31,11 @@ function showIcon(obj){
 			</p>
 			<p>
 				<label>广告图URL：</label>
-				<input name="adImg" class="required" type="text" size="44" style="width:250px;" value="${ad.adImg}" onchange="showIcon(this);" />
+				<input name="adImg" class="required" type="text" size="44" style="width:230px;" value="${ad.adImg}" onchange="showIcon(this);" />
 			</p>
 			<p>
 				<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				<img id="adImg" src="${ad.adImg eq null || ad.adImg eq ''?'framework/images/ad_default.png':ad.adImg}" width="248" height="90">
+				<img id="adImg" src="${ad.adImg eq null || ad.adImg eq ''?'framework/images/ad_default.png':ad.adImg}" width="238" height="90">
 			</p>
 			<input type="hidden" name="id" value="${ad.id}" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

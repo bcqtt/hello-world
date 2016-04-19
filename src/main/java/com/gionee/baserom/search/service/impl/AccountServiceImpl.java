@@ -49,9 +49,17 @@ public class AccountServiceImpl implements IAccountService {
 			logger.info("保存账号信息-->" + account.getAccountName());
 		}else if(editType.equals("update")){
 			AccountRoleKey ark = accountRoleMapper.queryByAccountId(account.getId());
-			if(ark.getRoleId()!=account.getGroupId()){
+			if(ark == null){
+				AccountRoleKey ar = new AccountRoleKey();
+				ar.setRoleId(account.getGroupId());
+				ar.setAccountId(account.getId());
+				accountRoleMapper.insert(ar);
+			}else if(ark.getRoleId()!=account.getGroupId()){
 				ark.setRoleId(account.getGroupId());
 				accountRoleMapper.uppdateRoleId(ark);
+			}
+			if(account.getPassword().length()!=32){
+				account.setPassword(StringHelper.md5(account.getPassword()));
 			}
 			n = this.accountMapper.updateByPrimaryKey(account);
 		}else{

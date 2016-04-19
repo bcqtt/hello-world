@@ -1,5 +1,7 @@
 package com.gionee.baserom.search.controller;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -53,7 +55,7 @@ public class LoginController {
 		
 		String rand = (String) request.getSession().getAttribute("rand");
 		String randCode = request.getParameter("randCode");
-		if(randCode==null){
+		if(rand==null ||randCode==null){
 			request.setAttribute("error","请登录。");
 			model.setViewName("login");
 			return model;
@@ -92,6 +94,9 @@ public class LoginController {
 			session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 			//验证都通过后,账号信息存入session,session的key:accountSession
 			request.getSession().setAttribute("accountSession", acc);
+			
+			acc.setLastLoginTime(new Date());
+			this.accountService.updateById(acc);
 		} catch (AuthenticationException e) {
 			request.setAttribute("error", "登录异常，请联系管理员。");
 			model.setViewName("login");

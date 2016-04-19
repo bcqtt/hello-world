@@ -34,7 +34,7 @@
 		"0 15 10 ? * MON-FRI"	每个周一、周二、周三、周四、周五的10：15触发 
 	 -->
 	<task:scheduled-tasks>
-		<task:scheduled ref="myJob" method="execute" cron="0 */15 * * * ?"/>
+		<task:scheduled ref="myJob" method="execute" cron="0 */30 * * * ?"/>
 	</task:scheduled-tasks>
 
 </beans>
