@@ -62,7 +62,7 @@ public class ResourcesServiceImpl implements IResourcesService {
 		}
 		if(editType.equals("add")){
 			n = resourcesMapper.insert(res);
-			String parentIdList = res.getParentIdList()+res.getId()+"※";
+			String parentIdList = res.getParentIdList()+res.getId()+"*";
 			res.setParentIdList(parentIdList);
 			n = this.resourcesMapper.updateByPrimaryKey(res);
 			logger.info("保存资源信息-->" + res.getName());

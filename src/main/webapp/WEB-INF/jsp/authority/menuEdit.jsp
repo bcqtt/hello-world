@@ -33,7 +33,7 @@ function onClick(e, treeId, treeNode) {
 	nodes = zTree.getSelectedNodes();
 	$("#parentName").val( nodes[0].name); 
 	$("#parentId").val(nodes[0].id); 
-	$("#parentIdList").val(nodes[0].parentIdList + nodes[0].id + "※"); 
+	$("#parentIdList").val(nodes[0].parentIdList + nodes[0].id + "*"); 
 } 
 
 function showTree(){
