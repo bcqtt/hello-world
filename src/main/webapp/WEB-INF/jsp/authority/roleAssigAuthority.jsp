@@ -56,8 +56,8 @@ function saveAuthority(){
 </script>
 <div class="pageContent">
 	<div>
-		<div style="float:left; display:block; overflow-y:auto; width:280px;height:89%; border:solid 1px #CCC; line-height:21px; background:#fff">
-		    <ul id="treeMenu" class="ztree" style="margin-top:0; width:96%;height:97%;overflow-y:auto"></ul>
+		<div style="float:left; display:block; width:280px;height:89%; border:solid 1px #CCC; line-height:21px; background:#fff">
+		    <ul id="treeMenu" class="ztree" layoutH="49" style="margin-top:0; width:275px;overflow-y:auto;"></ul>
 		</div>
 	</div>
 	<div class="formBar">

@@ -9,7 +9,7 @@ var pIdList_="${pIdList}";
 <div id="resourcesListDiv" class="pageContent">
 
 	<div style="width:16%;height:100%;float:left; border-right: 1px solid #b8d0d6">
-		<ul id="resTree" class="ztree" style="margin-top:0; width:200px;height:98%;overflow-y:auto;"></ul>
+		<ul id="resTree" class="ztree" layoutH="10" style="margin-top:0; width:198px;overflow-y:auto;"></ul>
 	</div>
 	
 	<div style="width:83%;float:right; border-left:1px solid #b8d0d6">
