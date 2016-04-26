@@ -5,10 +5,6 @@
 .iconUrl{
 	width:25px;
 	height:25px;
-	line-height:25px;
-	display: table-cell;
-    vertical-align:middle;
-    margin: 0 auto;
 }
 </style>
 <script type="text/javascript">

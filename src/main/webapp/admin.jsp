@@ -72,6 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="bin/dwz.min.js" type="text/javascript"></script>
 -->
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.regional.zh.js" type="text/javascript"></script>
+<link rel="stylesheet" href="framework/zTreeV3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="framework/zTreeV3/js/jquery.ztree.all.js" ></script>
 
 <script type="text/javascript">
 $(function(){

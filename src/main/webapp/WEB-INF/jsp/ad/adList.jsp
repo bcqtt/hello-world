@@ -5,10 +5,6 @@
 .adImg{
 	width:150px;
 	height:70px;
-	line-height:30px;
-	display: table-cell;
-    vertical-align:middle;
-    margin: 0 auto;
 }
 </style>
 <script type="text/javascript">
