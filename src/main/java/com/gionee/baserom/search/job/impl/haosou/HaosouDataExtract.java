@@ -39,6 +39,7 @@ public class HaosouDataExtract implements IDataExtract {
                     HotKeys hotKeys = new HotKeys();
                     hotKeys.setHotKey(dataBean.search_word);
                     hotKeys.setSortId(i);
+                    hotKeys.setStats(dataBean.stats.equals("new")?1:0);
                     logger.info("getHotKeys -----> " + dataBean.search_word);
                     hotKeysMapper.insert(hotKeys);
                 }

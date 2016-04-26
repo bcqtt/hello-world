@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Account;
-import com.gionee.baserom.search.pojo.GroupInfo;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
 import com.gionee.baserom.search.pojo.Role;

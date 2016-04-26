@@ -11,13 +11,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- 导出 search 的数据库结构
-DROP DATABASE IF EXISTS `search`;
 CREATE DATABASE IF NOT EXISTS `search` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `search`;
 
 
 -- 导出  表 search.account 结构
-DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(50) NOT NULL COMMENT '账号名，用于登陆',
@@ -31,13 +29,13 @@ CREATE TABLE IF NOT EXISTS `account` (
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `last_login_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='用户账号表';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='用户账号表';
 
--- 正在导出表  search.account 的数据：~28 rows (大约)
+-- 正在导出表  search.account 的数据：~29 rows (大约)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`, `email`, `type`, `description`, `group_id`, `create_time`, `last_login_time`) VALUES
 	(1, 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'abc@123.com', NULL, NULL, 3, '2016-04-18 17:09:06', '2016-04-18 17:08:13'),
-	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 1, '2016-04-15 11:16:53', '2016-04-20 09:53:13'),
+	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 1, '2016-04-15 11:16:53', '2016-04-26 14:43:03'),
 	(3, 'zhubajie', '猪八戒', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 3, '2016-04-18 17:09:07', '2016-04-18 17:08:13'),
 	(4, 'shaseng', '沙僧', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'abc@123.com', NULL, NULL, 3, '2016-04-18 17:09:07', '2016-04-18 17:08:13'),
 	(5, 'tangseng', '唐三藏', 'e10adc3949ba59abbe56e057f20f883e', '18823317039', 'lzw@ginoee.com', 3, NULL, 3, '2016-04-18 17:09:08', '2016-04-18 17:08:13'),
@@ -55,7 +53,7 @@ INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`,
 	(28, '55555', '55555', 'e10adc3949ba59abbe56e057f20f883e', '', '', 3, NULL, 3, '2016-04-18 17:09:16', '2016-04-18 17:08:13'),
 	(29, '555552', '55555', 'e10adc3949ba59abbe56e057f20f883e', '', '', 3, NULL, 3, '2016-04-19 11:44:19', '2016-04-18 17:08:13'),
 	(30, 'bbb', 'bbb', 'e10adc3949ba59abbe56e057f20f883e', '', '', 3, NULL, 3, '2016-04-18 17:09:18', '2016-04-18 17:08:13'),
-	(31, 'ccc', 'ccc', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, NULL, 3, '2016-04-18 17:09:18', '2016-04-18 17:08:13'),
+	(31, 'ccc', 'ccc', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 3, NULL, NULL),
 	(32, 'Test6', 'Test6', 'e10adc3949ba59abbe56e057f20f883e', '12345678925', '123@123.com', NULL, NULL, 4, '2016-04-18 17:09:19', '2016-04-18 17:08:13'),
 	(33, 'iluo', '我爱罗', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 3, '2016-04-18 17:09:19', '2016-04-18 17:08:13'),
 	(34, 'AAAAAAAAAA', '爱爱爱爱爱爱爱', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'abc@123.com', NULL, NULL, 2, '2016-04-18 17:09:20', '2016-04-18 17:08:13'),
@@ -63,12 +61,12 @@ INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`,
 	(36, 'abc3', 'abc', '8ddcff3a80f4189ca1c9d4d902c3c909', '12345678910', 'lzw@ginoee.com', NULL, NULL, 2, '2016-04-19 17:02:37', NULL),
 	(38, 'angellala', '天使啦啦', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'abc@123.com', NULL, NULL, 2, '2016-04-18 17:09:22', '2016-04-18 17:08:13'),
 	(39, 'shenma', '什么', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'abc@123.com', NULL, NULL, 5, '2016-04-18 17:09:22', '2016-04-18 17:08:13'),
-	(40, 'luck', '啦卡', 'e10adc3949ba59abbe56e057f20f883e', '1234567890', 'abc@123.com', NULL, NULL, 5, '2016-04-18 17:09:24', '2016-04-18 17:08:13');
+	(40, 'luck', '啦卡', 'e10adc3949ba59abbe56e057f20f883e', '1234567890', 'abc@123.com', NULL, NULL, 5, '2016-04-18 17:09:24', '2016-04-18 17:08:13'),
+	(41, 'bbba', '测试', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'lzw@ginoee.com', NULL, NULL, 2, NULL, NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 
 -- 导出  表 search.account_role 结构
-DROP TABLE IF EXISTS `account_role`;
 CREATE TABLE IF NOT EXISTS `account_role` (
   `account_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -76,22 +74,23 @@ CREATE TABLE IF NOT EXISTS `account_role` (
   CONSTRAINT `FK_Relationship_2` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  search.account_role 的数据：~8 rows (大约)
+-- 正在导出表  search.account_role 的数据：~10 rows (大约)
 /*!40000 ALTER TABLE `account_role` DISABLE KEYS */;
 INSERT INTO `account_role` (`account_id`, `role_id`) VALUES
 	(2, 1),
 	(5, 8),
+	(31, 3),
 	(32, 4),
 	(35, 2),
 	(36, 2),
 	(38, 2),
 	(39, 5),
-	(40, 5);
+	(40, 5),
+	(41, 2);
 /*!40000 ALTER TABLE `account_role` ENABLE KEYS */;
 
 
 -- 导出  表 search.ad_control 结构
-DROP TABLE IF EXISTS `ad_control`;
 CREATE TABLE IF NOT EXISTS `ad_control` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
@@ -112,7 +111,6 @@ INSERT INTO `ad_control` (`id`, `name`, `show_flag`, `position_id`, `ad_img`, `a
 
 
 -- 导出  表 search.card 结构
-DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -139,7 +137,6 @@ INSERT INTO `card` (`id`, `name`, `order_id`, `show_enable`) VALUES
 
 
 -- 导出  表 search.config 结构
-DROP TABLE IF EXISTS `config`;
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(100) DEFAULT NULL,
@@ -165,7 +162,6 @@ INSERT INTO `config` (`id`, `code`, `name`, `value`, `status`, `description`) VA
 
 
 -- 导出  表 search.group_info 结构
-DROP TABLE IF EXISTS `group_info`;
 CREATE TABLE IF NOT EXISTS `group_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(100) NOT NULL,
@@ -183,7 +179,6 @@ INSERT INTO `group_info` (`id`, `group_name`) VALUES
 
 
 -- 导出  表 search.hotkey_source 结构
-DROP TABLE IF EXISTS `hotkey_source`;
 CREATE TABLE IF NOT EXISTS `hotkey_source` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source_code` varchar(100) DEFAULT NULL,
@@ -201,108 +196,65 @@ INSERT INTO `hotkey_source` (`id`, `source_code`, `source_name`, `enable_status`
 
 
 -- 导出  表 search.hot_keys 结构
-DROP TABLE IF EXISTS `hot_keys`;
 CREATE TABLE IF NOT EXISTS `hot_keys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) DEFAULT NULL,
   `hot_key` varchar(50) DEFAULT NULL,
+  `stats` int(11) DEFAULT '0' COMMENT '1:表示new;0:表示过时，默认0',
   `sort_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=521917 DEFAULT CHARSET=utf8 COMMENT='热词表';
+) ENGINE=InnoDB AUTO_INCREMENT=524078 DEFAULT CHARSET=utf8 COMMENT='热词表';
 
--- 正在导出表  search.hot_keys 的数据：~50 rows (大约)
+-- 正在导出表  search.hot_keys 的数据：~42 rows (大约)
 /*!40000 ALTER TABLE `hot_keys` DISABLE KEYS */;
-INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `sort_id`) VALUES
-	(521832, NULL, '犯人被患艾滋病', 17),
-	(521833, NULL, '房山区2.7级地震', 44),
-	(521834, NULL, '甜馨不再上节目', 18),
-	(521835, NULL, '阿富汗爆炸', 45),
-	(521836, NULL, '宋仲基抱娃照疯传', 19),
-	(521837, NULL, '行唐铲车大战', 46),
-	(521838, NULL, '长春楼房坍塌', 1),
-	(521839, NULL, '中学搬新址受污染', 47),
-	(521840, NULL, '居民挖掘工地瓷片', 2),
-	(521841, NULL, '厄瓜多尔强震', 48),
-	(521842, NULL, '加油过满汽车起火', 3),
-	(521843, NULL, '屈臣氏变屈巨氏', 49),
-	(521844, NULL, '北京3号线终开工', 4),
-	(521845, NULL, 'papi酱疑遭封杀', 10),
-	(521846, NULL, '老外痛骂台湾女生', 5),
-	(521847, NULL, '越南翻拍花千骨', 11),
-	(521848, NULL, '千年木乃伊穿阿迪', 6),
-	(521849, NULL, '友谊小船作者崩溃', 12),
-	(521850, NULL, '现金被当垃圾扔掉', 7),
-	(521851, NULL, '终身监禁不得减刑', 13),
-	(521852, NULL, '30元方便面下架', 8),
-	(521853, NULL, '杭州美女竹林', 14),
-	(521854, NULL, '关晓彤晒长腿街拍', 9),
-	(521855, NULL, '神志不清网购牦牛', 15),
-	(521856, NULL, '王力宏半夜讲段子', 20),
-	(521857, NULL, '张雨绮晒自拍撒娇', 16),
-	(521858, NULL, '欧洲最偏远村庄', 21),
-	(521859, NULL, '犯人被患艾滋病', 17),
-	(521860, NULL, '玻璃渣改玛莎拉蒂', 22),
-	(521861, NULL, '甜馨不再上节目', 18),
-	(521862, NULL, '反隐身米波雷达', 23),
-	(521863, NULL, '宋仲基抱娃照疯传', 19),
-	(521864, NULL, '蔡依林戴2亿珠宝', 24),
-	(521865, NULL, '长春楼房坍塌', 1),
-	(521866, NULL, '美女酒托行骗', 25),
-	(521867, NULL, '居民挖掘工地瓷片', 2),
-	(521868, NULL, '女教师婚变吸毒', 26),
-	(521869, NULL, '加油过满汽车起火', 3),
-	(521870, NULL, '空气质量排名出炉', 27),
-	(521871, NULL, '北京3号线终开工', 4),
-	(521872, NULL, '出售机密被判死刑', 28),
-	(521873, NULL, '老外痛骂台湾女生', 5),
-	(521874, NULL, '熊本再次地震', 29),
-	(521875, NULL, '千年木乃伊穿阿迪', 6),
-	(521876, NULL, '马布里拿中国绿卡', 30),
-	(521877, NULL, '现金被当垃圾扔掉', 7),
-	(521878, NULL, '中军机降落永暑礁', 31),
-	(521879, NULL, '30元方便面下架', 8),
-	(521880, NULL, '济州打黑工遇害', 32),
-	(521881, NULL, '关晓彤晒长腿街拍', 9),
-	(521882, NULL, '深圳爷孙疑遭劫杀', 33),
-	(521883, NULL, '王力宏半夜讲段子', 20),
-	(521884, NULL, '周润发甜蜜接发嫂', 34),
-	(521885, NULL, '欧洲最偏远村庄', 21),
-	(521886, NULL, '箭毒蛙活体被截获', 35),
-	(521887, NULL, '玻璃渣改玛莎拉蒂', 22),
-	(521888, NULL, '轿车与120相撞', 36),
-	(521889, NULL, '反隐身米波雷达', 23),
-	(521890, NULL, '土地使用权到期', 37),
-	(521891, NULL, '蔡依林戴2亿珠宝', 24),
-	(521892, NULL, '白领夫妇卖房回乡', 38),
-	(521893, NULL, '美女酒托行骗', 25),
-	(521894, NULL, '顺丰小哥被打', 39),
-	(521895, NULL, '女教师婚变吸毒', 26),
-	(521896, NULL, '小s被疑怀4胎', 40),
-	(521897, NULL, '空气质量排名出炉', 27),
-	(521898, NULL, '李念生二胎后复出', 41),
-	(521899, NULL, '出售机密被判死刑', 28),
-	(521900, NULL, '德云社20年纪念', 42),
-	(521901, NULL, '熊本再次地震', 29),
-	(521902, NULL, '湖南暴雨受灾严重', 43),
-	(521903, NULL, '马布里拿中国绿卡', 30),
-	(521904, NULL, '中军机降落永暑礁', 31),
-	(521905, NULL, '济州打黑工遇害', 32),
-	(521906, NULL, '深圳爷孙疑遭劫杀', 33),
-	(521907, NULL, '周润发甜蜜接发嫂', 34),
-	(521908, NULL, '箭毒蛙活体被截获', 35),
-	(521909, NULL, '轿车与120相撞', 36),
-	(521910, NULL, '土地使用权到期', 37),
-	(521911, NULL, '白领夫妇卖房回乡', 38),
-	(521912, NULL, '顺丰小哥被打', 39),
-	(521913, NULL, '小s被疑怀4胎', 40),
-	(521914, NULL, '李念生二胎后复出', 41),
-	(521915, NULL, '德云社20年纪念', 42),
-	(521916, NULL, '湖南暴雨受灾严重', 43);
+INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `stats`, `sort_id`) VALUES
+	(524035, NULL, '权志龙助理推粉丝', 0, 22),
+	(524036, NULL, '库里受伤', 0, 23),
+	(524037, NULL, '巨星Prince去世', 0, 24),
+	(524038, NULL, '盛一伦与粉丝互动', 0, 25),
+	(524039, NULL, '冈比亚支持中国', 0, 26),
+	(524040, NULL, '看涉暴恐视频被拘', 0, 27),
+	(524041, NULL, '北京车展开幕', 0, 28),
+	(524042, NULL, '美军机飞越黄岩岛', 0, 29),
+	(524043, NULL, '摄影师潜水遇蓝鲸', 0, 30),
+	(524044, NULL, '梅葆玖逝世', 0, 31),
+	(524045, NULL, '网曝00后晒孕照', 0, 10),
+	(524046, NULL, '杭州现奇葩建筑', 0, 32),
+	(524047, NULL, '探秘四川死亡峡谷', 0, 11),
+	(524048, NULL, '张梓琳晒女儿正面', 0, 33),
+	(524049, NULL, '飞机撞鸟有新突破', 0, 12),
+	(524050, NULL, '保安撞狗护学生', 0, 34),
+	(524051, NULL, '曝戛纳走红毯价码', 0, 13),
+	(524052, NULL, '袁弘喜帖曝光', 0, 35),
+	(524053, NULL, '神舟飞船恢宏瞬间', 0, 14),
+	(524054, NULL, '见网友陷传销黑窝', 0, 36),
+	(524055, NULL, '校园毒地事件通报', 0, 15),
+	(524056, NULL, '幼儿园买转基因油', 0, 37),
+	(524057, NULL, '韩国加湿器杀人', 0, 16),
+	(524058, NULL, '海关查获侵权服装', 0, 38),
+	(524059, NULL, '周冬雨探班余文乐', 0, 17),
+	(524060, NULL, '公务员联考疑泄题', 0, 39),
+	(524061, NULL, '给流浪狗喂食被咬', 0, 18),
+	(524062, NULL, '湖南小学女生遭殴', 0, 19),
+	(524063, NULL, '老人卖菜画壁画', 1, 1),
+	(524064, NULL, '用最强大脑盗窃', 1, 2),
+	(524065, NULL, '的哥被追尾遭暴打', 1, 3),
+	(524066, NULL, '谢霆锋不愿谈柏芝', 1, 4),
+	(524067, NULL, '机场女地勤遭羞辱', 0, 5),
+	(524068, NULL, '小贝长子承认恋情', 0, 6),
+	(524069, NULL, '奔跑吧兄弟破5亿', 0, 7),
+	(524070, NULL, '2670亿MLF操作', 0, 8),
+	(524071, NULL, '男子组惊天魔盗团', 0, 9),
+	(524072, NULL, '公民科学素质基准', 0, 40),
+	(524073, NULL, '中航工业董事停职', 0, 41),
+	(524074, NULL, '切尔诺贝利核纪念', 0, 20),
+	(524075, NULL, '姚晨自曝已怀二胎', 0, 42),
+	(524076, NULL, '李克强考察成都', 0, 21),
+	(524077, NULL, '福厚长老塑成金身', 0, 43);
 /*!40000 ALTER TABLE `hot_keys` ENABLE KEYS */;
 
 
 -- 导出  表 search.life_service 结构
-DROP TABLE IF EXISTS `life_service`;
 CREATE TABLE IF NOT EXISTS `life_service` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_name` varchar(50) DEFAULT NULL,
@@ -329,7 +281,6 @@ INSERT INTO `life_service` (`id`, `site_name`, `site_des`, `show_enable`, `sort_
 
 
 -- 导出  表 search.resources 结构
-DROP TABLE IF EXISTS `resources`;
 CREATE TABLE IF NOT EXISTS `resources` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -354,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `resources` (
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
 INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `parent_id`, `parent_id_list`, `level`, `description`, `css_class`, `target`, `win_width`, `win_height`, `warn`, `tittle`) VALUES
 	(0, '根目录', 'root', '无', 'framework/zTreeV3/css/zTreeStyle/img/diy/1_close.png', NULL, -1, '*-1*', NULL, '树根', NULL, NULL, NULL, NULL, NULL, '0'),
-	(1, '全局搜索管理', 'menu_manage,menu_manage,menu_manage,model_search', '无', 'framework/images/model.png', 0, 0, '*-1*0*1*', NULL, '模块-全局搜索管理', '', '', NULL, NULL, '', '0'),
+	(1, '全局搜索管理', 'model_search', '无', 'framework/images/model.png', 0, 0, '*-1*0*1*', NULL, '模块-全局搜索管理', '', '', NULL, NULL, '', '0'),
 	(2, '系统管理', 'model_system', '无', 'framework/images/model.png', 0, 0, '*-1*0*2*', NULL, '模块-系统管理', NULL, 'navTab', NULL, NULL, NULL, '0'),
 	(3, '账号管理', 'menu_account_manage', 'account/queryAccountPaper', 'framework/images/menu.png', 2, 2, '*-1*0*2*3*', NULL, '菜单项-账号管理', NULL, 'navTab', NULL, NULL, NULL, '0'),
 	(4, '分组管理', 'menu_role_manage', 'role/queryRolePaper', 'framework/images/menu.png', 2, 2, '*-1*0*2*4*', NULL, '菜单项-分组管理（是按照角色权限的逻辑开发实现）', NULL, 'navTab', NULL, NULL, NULL, '0'),
@@ -367,7 +318,7 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(23, '修改', 'button_account_update', 'account/editAccountView?editType=update&id={id_account}', 'framework/images/button.png', 3, 3, '*-1*0*2*3*23*', NULL, '账号管理-修改按钮', 'edit', 'dialog', NULL, NULL, '请选择一个记录!', ''),
 	(25, '添加', 'button_site_add', 'site/addSiteView?editType=add', 'framework/images/button.png', 3, 20, '*-1*0*1*20*25*', NULL, '网址导航-添加按钮', 'add', 'dialog', 510, 280, NULL, '0'),
 	(26, '修改', 'button_site_edit', 'site/editSiteView?editType=update&id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*26*', NULL, '网址导航-修改按钮', 'edit', 'dialog', 510, 280, '请选择一个记录!', ''),
-	(27, '删除', 'menu_manage,button_site_del', 'site/deleteSites?id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*27*', NULL, '网址导航-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
+	(27, '删除', 'button_site_del', 'site/deleteSites?id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*27*', NULL, '网址导航-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(28, '添加', 'button_config_add', 'config/addConfigView?editType=add', 'framework/images/button.png', 3, 21, '*-1*0*1*21*28*', NULL, '参数管理-添加按钮', 'add', 'dialog', 520, 330, NULL, '0'),
 	(29, '修改', 'button_config_edit', 'config/editConfigView?editType=update&id={id_config}', 'framework/images/button.png', 3, 21, '*-1*0*1*21*29*', NULL, '参数管理-修改按钮', 'edit', 'dialog', 520, 330, '请选择一个记录!', ''),
 	(30, '删除', 'button_config_del', 'config/deleteConfigs?id={id_config}', 'framework/images/button.png', 3, 21, '*-1*0*1*21*30*', NULL, '参数管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, NULL, '确实要删除所选记录吗?'),
@@ -384,17 +335,16 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(42, '分配权限', 'button_group_authority', 'role/assignAuthority?id={id_role}', 'framework/images/button.png', 3, 4, '*-1*0*2*4*42*', NULL, '分组管理-分配权限按钮', 'edit', 'dialog', 300, 500, '请选择一个记录!', ''),
 	(43, '添加', 'button_menu_add', 'resources/addResourcesView?editType=add', 'framework/images/button.png', 3, 5, '*-1*0*2*5*43*', NULL, '菜单管理-添加按钮', 'add', 'dialog', 750, 490, NULL, '0'),
 	(44, '修改', 'button_menu_edit', 'resources/editResourcesView?editType=update&id={id_res}', 'framework/images/button.png', 3, 5, '*-1*0*2*5*44*', NULL, '菜单管理-修改按钮', 'edit', 'dialog', 750, 490, '请选择一个记录!', ''),
-	(45, '删除', 'menu_manage,menu_manage,button_menu_del', 'resources/deleteResources?id={id_res}', 'framework/images/button.png', 3, 5, '*-1*0*2*5*45*', NULL, '菜单管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
+	(45, '删除', 'button_menu_del', 'resources/deleteResources?id={id_res}', 'framework/images/button.png', 3, 5, '*-1*0*2*5*45*', NULL, '菜单管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(46, '生活服务管理', 'menu_lifeservice_manage', 'life/queryLifeServicePaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*1*46*', NULL, '菜单项-生活服务管理', '', 'navTab', NULL, NULL, '', ''),
 	(47, '添加', 'button_lifeservice_add', 'life/addLifeServiceView?editType=add', 'framework/images/button.png', 3, 46, '*-1*0*1*1*46*47*', NULL, '生活服务管理-添加按钮', 'add', 'dialog', 520, 350, '', ''),
 	(48, '修改', 'button_lifeservice_edit', 'life/editLifeServiceView?editType=update&id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*1*46*48*', NULL, '生活服务管理-修改按钮', 'edit', 'dialog', 520, 350, '请选择一个记录!', ''),
-	(49, '删除', 'menu_manage,button_lifeservice_del', 'life/deleteLifeServices?id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*1*46*49*', NULL, '生活服务管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
+	(49, '删除', 'button_lifeservice_del', 'life/deleteLifeServices?id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*1*46*49*', NULL, '生活服务管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(50, '数据采集源', 'menu_data_from', 'search/changeSource', 'framework/images/menu.png', 2, 2, '*-1*0*2*50*', NULL, '切换数据采集源', '', 'navTab', NULL, NULL, '', '');
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 
 
 -- 导出  表 search.resources_role 结构
-DROP TABLE IF EXISTS `resources_role`;
 CREATE TABLE IF NOT EXISTS `resources_role` (
   `role_id` int(11) NOT NULL,
   `res_id` int(11) NOT NULL,
@@ -460,7 +410,6 @@ INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 
 
 -- 导出  表 search.role 结构
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `enable` int(11) DEFAULT '0' COMMENT '0:禁用，1:启用',
@@ -484,7 +433,6 @@ INSERT INTO `role` (`id`, `enable`, `role_name`, `role_key`, `description`) VALU
 
 
 -- 导出  表 search.site_navigation 结构
-DROP TABLE IF EXISTS `site_navigation`;
 CREATE TABLE IF NOT EXISTS `site_navigation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_name` varchar(50) DEFAULT NULL,

@@ -39,6 +39,7 @@ public class BaiduDataExtract implements IDataExtract {
                     HotKeys hotKeys = new HotKeys();
                     hotKeys.setHotKey(dataBean.word);
                     hotKeys.setSortId(Integer.parseInt(entry.getKey()));
+                    hotKeys.setStats(dataBean.isnew==1?1:0);
                     logger.info("(百度)getHotKeys -----> " + dataBean.word);
                     hotKeysMapper.insert(hotKeys);
             	} 
