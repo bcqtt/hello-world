@@ -36,6 +36,17 @@ public class AccountServiceImpl implements IAccountService {
 	 * 保存账号信息
 	 */
 	public DwzAjaxObject saveAccount(String resKey,String editType,Account account) {
+		AccountExample example = new AccountExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andAccountNameEqualTo(account.getAccountName());
+		List<Account> list = accountMapper.selectByExample(example);
+		if(list.size()>0){
+			Account a = list.get(0);
+			if(account.getId()==null || !account.getId().equals(a.getId())){
+				ajaxObj = new DwzAjaxObject("300", "账号名："+account.getAccountName()+"，已经存在！");
+				return ajaxObj;
+			}
+		}
 		int n=0;
 		if(editType.equals("add")){
 			account.setPassword(StringHelper.md5(account.getPassword()));
