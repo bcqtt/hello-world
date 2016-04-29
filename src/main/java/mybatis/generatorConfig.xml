@@ -11,9 +11,9 @@
 	</commentGenerator>
   
     <jdbcConnection  driverClass="com.mysql.jdbc.Driver" 
-    				 connectionURL="jdbc:mysql://192.168.87.1:3306/search?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;mysqlEncoding=utf8" 
-    				 userId="root" 
-    				 password="root" />
+    				 connectionURL="jdbc:mysql://18.8.10.53:3306/search?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;mysqlEncoding=utf8" 
+    				 userId="search" 
+    				 password="search" />
     				
     <javaModelGenerator targetPackage="com.gionee.baserom.search.pojo" 
     					targetProject="search/src/main/java" >
@@ -31,7 +31,7 @@
     	<property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
     
-    
+    <!-- 
     <table schema="search" tableName="account" domainObjectName="Account"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="account_role" domainObjectName="AccountRole"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="ad_control" domainObjectName="AdControl"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
@@ -44,5 +44,7 @@
     <table schema="search" tableName="resources_role" domainObjectName="ResourcesRole"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="role" domainObjectName="Role"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="site_navigation" domainObjectName="SiteNavigation"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+     -->
+     <table schema="search" tableName="hotkey_source" domainObjectName="HotkeySource"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
   </context>
 </generatorConfiguration>

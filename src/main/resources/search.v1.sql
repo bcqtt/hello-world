@@ -11,11 +11,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- 导出 search 的数据库结构
+DROP DATABASE IF EXISTS `search`;
 CREATE DATABASE IF NOT EXISTS `search` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `search`;
 
 
 -- 导出  表 search.account 结构
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(50) NOT NULL COMMENT '账号名，用于登陆',
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`, `email`, `type`, `description`, `group_id`, `create_time`, `last_login_time`) VALUES
 	(1, 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'abc@123.com', NULL, NULL, 3, '2016-04-18 17:09:06', '2016-04-18 17:08:13'),
-	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 1, '2016-04-15 11:16:53', '2016-04-26 14:43:03'),
+	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 1, '2016-04-15 11:16:53', '2016-04-28 15:36:53'),
 	(3, 'zhubajie', '猪八戒', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'lzw@ginoee.com', NULL, NULL, 3, '2016-04-18 17:09:07', '2016-04-18 17:08:13'),
 	(4, 'shaseng', '沙僧', 'e10adc3949ba59abbe56e057f20f883e', '12345678910', 'abc@123.com', NULL, NULL, 3, '2016-04-18 17:09:07', '2016-04-18 17:08:13'),
 	(5, 'tangseng', '唐三藏', 'e10adc3949ba59abbe56e057f20f883e', '18823317039', 'lzw@ginoee.com', 3, NULL, 3, '2016-04-18 17:09:08', '2016-04-18 17:08:13'),
@@ -67,6 +69,7 @@ INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`,
 
 
 -- 导出  表 search.account_role 结构
+DROP TABLE IF EXISTS `account_role`;
 CREATE TABLE IF NOT EXISTS `account_role` (
   `account_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -91,6 +94,7 @@ INSERT INTO `account_role` (`account_id`, `role_id`) VALUES
 
 
 -- 导出  表 search.ad_control 结构
+DROP TABLE IF EXISTS `ad_control`;
 CREATE TABLE IF NOT EXISTS `ad_control` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
@@ -111,6 +115,7 @@ INSERT INTO `ad_control` (`id`, `name`, `show_flag`, `position_id`, `ad_img`, `a
 
 
 -- 导出  表 search.card 结构
+DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -137,6 +142,7 @@ INSERT INTO `card` (`id`, `name`, `order_id`, `show_enable`) VALUES
 
 
 -- 导出  表 search.config 结构
+DROP TABLE IF EXISTS `config`;
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(100) DEFAULT NULL,
@@ -162,6 +168,7 @@ INSERT INTO `config` (`id`, `code`, `name`, `value`, `status`, `description`) VA
 
 
 -- 导出  表 search.group_info 结构
+DROP TABLE IF EXISTS `group_info`;
 CREATE TABLE IF NOT EXISTS `group_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(100) NOT NULL,
@@ -179,82 +186,94 @@ INSERT INTO `group_info` (`id`, `group_name`) VALUES
 
 
 -- 导出  表 search.hotkey_source 结构
+DROP TABLE IF EXISTS `hotkey_source`;
 CREATE TABLE IF NOT EXISTS `hotkey_source` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source_code` varchar(100) DEFAULT NULL,
   `source_name` varchar(100) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
   `enable_status` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='热门资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='热门资源表';
 
--- 正在导出表  search.hotkey_source 的数据：~2 rows (大约)
+-- 正在导出表  search.hotkey_source 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `hotkey_source` DISABLE KEYS */;
-INSERT INTO `hotkey_source` (`id`, `source_code`, `source_name`, `enable_status`) VALUES
-	(1, 'haosouDataExtract', '好搜热词接口', 0),
-	(2, 'baiduDataExtract', '百度热词接口', 1);
+INSERT INTO `hotkey_source` (`id`, `source_code`, `source_name`, `url`, `enable_status`) VALUES
+	(1, 'haosouDataExtract', '好搜热词接口', 'http://m.haosou.com/mhtml/app_index/app_news.json', 0),
+	(2, 'baiduDataExtract', '百度热词接口', 'http://top.baidu.com/gen_json?b=1', 0),
+	(3, 'sougouDataExtract', '搜狗热词接口', 'http://ts.mobile.sogou.com/query?pid=sogou-mobp-eeea8c180c5dff16&num=50&length=15&select=1,2,5,6,10,11,13,20', 1);
 /*!40000 ALTER TABLE `hotkey_source` ENABLE KEYS */;
 
 
 -- 导出  表 search.hot_keys 结构
+DROP TABLE IF EXISTS `hot_keys`;
 CREATE TABLE IF NOT EXISTS `hot_keys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) DEFAULT NULL,
   `hot_key` varchar(50) DEFAULT NULL,
-  `stats` int(11) DEFAULT '0' COMMENT '1:表示new;0:表示过时，默认0',
+  `stats` int(11) DEFAULT '0' COMMENT '1:表示new;0:不表示new，默认0',
   `sort_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=524078 DEFAULT CHARSET=utf8 COMMENT='热词表';
+) ENGINE=InnoDB AUTO_INCREMENT=528398 DEFAULT CHARSET=utf8 COMMENT='热词表';
 
--- 正在导出表  search.hot_keys 的数据：~42 rows (大约)
+-- 正在导出表  search.hot_keys 的数据：~50 rows (大约)
 /*!40000 ALTER TABLE `hot_keys` DISABLE KEYS */;
 INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `stats`, `sort_id`) VALUES
-	(524035, NULL, '权志龙助理推粉丝', 0, 22),
-	(524036, NULL, '库里受伤', 0, 23),
-	(524037, NULL, '巨星Prince去世', 0, 24),
-	(524038, NULL, '盛一伦与粉丝互动', 0, 25),
-	(524039, NULL, '冈比亚支持中国', 0, 26),
-	(524040, NULL, '看涉暴恐视频被拘', 0, 27),
-	(524041, NULL, '北京车展开幕', 0, 28),
-	(524042, NULL, '美军机飞越黄岩岛', 0, 29),
-	(524043, NULL, '摄影师潜水遇蓝鲸', 0, 30),
-	(524044, NULL, '梅葆玖逝世', 0, 31),
-	(524045, NULL, '网曝00后晒孕照', 0, 10),
-	(524046, NULL, '杭州现奇葩建筑', 0, 32),
-	(524047, NULL, '探秘四川死亡峡谷', 0, 11),
-	(524048, NULL, '张梓琳晒女儿正面', 0, 33),
-	(524049, NULL, '飞机撞鸟有新突破', 0, 12),
-	(524050, NULL, '保安撞狗护学生', 0, 34),
-	(524051, NULL, '曝戛纳走红毯价码', 0, 13),
-	(524052, NULL, '袁弘喜帖曝光', 0, 35),
-	(524053, NULL, '神舟飞船恢宏瞬间', 0, 14),
-	(524054, NULL, '见网友陷传销黑窝', 0, 36),
-	(524055, NULL, '校园毒地事件通报', 0, 15),
-	(524056, NULL, '幼儿园买转基因油', 0, 37),
-	(524057, NULL, '韩国加湿器杀人', 0, 16),
-	(524058, NULL, '海关查获侵权服装', 0, 38),
-	(524059, NULL, '周冬雨探班余文乐', 0, 17),
-	(524060, NULL, '公务员联考疑泄题', 0, 39),
-	(524061, NULL, '给流浪狗喂食被咬', 0, 18),
-	(524062, NULL, '湖南小学女生遭殴', 0, 19),
-	(524063, NULL, '老人卖菜画壁画', 1, 1),
-	(524064, NULL, '用最强大脑盗窃', 1, 2),
-	(524065, NULL, '的哥被追尾遭暴打', 1, 3),
-	(524066, NULL, '谢霆锋不愿谈柏芝', 1, 4),
-	(524067, NULL, '机场女地勤遭羞辱', 0, 5),
-	(524068, NULL, '小贝长子承认恋情', 0, 6),
-	(524069, NULL, '奔跑吧兄弟破5亿', 0, 7),
-	(524070, NULL, '2670亿MLF操作', 0, 8),
-	(524071, NULL, '男子组惊天魔盗团', 0, 9),
-	(524072, NULL, '公民科学素质基准', 0, 40),
-	(524073, NULL, '中航工业董事停职', 0, 41),
-	(524074, NULL, '切尔诺贝利核纪念', 0, 20),
-	(524075, NULL, '姚晨自曝已怀二胎', 0, 42),
-	(524076, NULL, '李克强考察成都', 0, 21),
-	(524077, NULL, '福厚长老塑成金身', 0, 43);
+	(528348, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BA%BA%E6%A3%BA%E6%9D%90%E4%BD%93%E9%AA%8C%E6%AD%BB%E4%BA%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '躺棺材体验死亡', NULL, NULL),
+	(528349, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BF%98%E7%8F%A0%E4%BA%BA%E9%A9%AC%E5%86%8D%E8%81%9A%E9%A6%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '还珠人马再聚首', NULL, NULL),
+	(528350, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E7%AB%A55%E7%A7%92%E5%81%B7%E8%B5%B0%E6%89%8B%E6%9C%BA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女童5秒偷走手机', NULL, NULL),
+	(528351, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%9D%92%E5%B9%B4%E5%AD%A6%E8%80%85%E5%BD%B1%E5%93%8D%E5%8A%9B&pid=sogou-mobp-eeea8c180c5dff16&v=5', '青年学者影响力', NULL, NULL),
+	(528352, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%BD%91%E6%9B%9D00%E5%90%8E%E6%99%92%E5%AD%95%E7%85%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '网曝00后晒孕照', NULL, NULL),
+	(528353, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%8B%B1%E7%94%B7%E5%AD%90%E5%AF%B9%E7%94%B5%E8%BF%87%E6%95%8F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '英男子对电过敏', NULL, NULL),
+	(528354, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%9C%9F%E5%81%87%E6%9E%97%E5%BF%97%E7%8E%B2%E5%90%88%E5%BD%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '真假林志玲合影', NULL, NULL),
+	(528355, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%86%89%E9%85%92%E7%94%B7%E9%AA%9A%E6%89%B0110&pid=sogou-mobp-eeea8c180c5dff16&v=5', '醉酒男骚扰110', NULL, NULL),
+	(528356, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%88%90%E5%93%81%E6%B2%B9%E4%BB%B7%E4%B8%8A%E6%B6%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '成品油价上涨', NULL, NULL),
+	(528357, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E8%80%83%E5%AF%9F%E5%AE%89%E5%BE%BD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '习近平考察安徽', NULL, NULL),
+	(528358, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%94%E8%B7%91%E5%90%A7%E5%85%84%E5%BC%9F%E7%A0%B45%E4%BA%BF&pid=sogou-mobp-eeea8c180c5dff16&v=5', '奔跑吧兄弟破5亿', NULL, NULL),
+	(528359, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%AD%E5%9B%BD%E6%89%81%E5%B8%A6%E7%AC%AC%E4%B8%80%E4%BA%BA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '中国扁带第一人', NULL, NULL),
+	(528360, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%92%B3%E5%97%BD%E5%92%B3%E5%87%BA6%E6%9D%A1%E6%B4%BB%E8%99%AB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '咳嗽咳出6条活虫', NULL, NULL),
+	(528361, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E5%AD%905%E5%B9%B4%E7%9B%B8%E4%BA%B2%E7%99%BE%E6%AC%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女子5年相亲百次', NULL, NULL),
+	(528362, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%8E%E5%85%8B%E5%BC%BA%E8%80%83%E5%AF%9F%E6%88%90%E9%83%BD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '李克强考察成都', NULL, NULL),
+	(528363, 'https://wap.sogou.com/web/searchList.jsp?keyword=3%E5%B2%81%E7%94%B7%E5%AD%A9%E5%AE%9D%E9%A9%AC%E6%BC%82%E7%A7%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '3岁男孩宝马漂移', NULL, NULL),
+	(528364, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%BA%A6%E7%A7%98%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%8E%B0kfc&pid=sogou-mobp-eeea8c180c5dff16&v=5', '度秘机器人现kfc', NULL, NULL),
+	(528365, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E6%8E%923-0%E8%83%9C%E6%97%A5%E6%9C%AC&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女排3-0胜日本', NULL, NULL),
+	(528366, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%AB%98%E6%99%93%E6%9D%BE%E6%98%BE%E8%B5%AB%E8%83%8C%E6%99%AF&pid=sogou-mobp-eeea8c180c5dff16&v=5', '高晓松显赫背景', NULL, NULL),
+	(528367, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%A7%E8%B1%A1%E8%BD%BD%E5%AE%A2%E8%A2%AB%E7%83%AD%E6%AD%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '大象载客被热死', NULL, NULL),
+	(528368, 'https://wap.sogou.com/web/searchList.jsp?keyword=20%E4%B8%87%E4%B9%B080%E4%B8%87%E5%81%87%E5%B8%81&pid=sogou-mobp-eeea8c180c5dff16&v=5', '20万买80万假币', NULL, NULL),
+	(528369, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%94%B5%E7%AB%9E%E6%B3%A1%E6%B2%AB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '电竞泡沫', NULL, NULL),
+	(528370, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%AF%95%E5%AE%A2%E8%81%94%E7%9B%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '试客联盟', NULL, NULL),
+	(528371, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%9C%E6%96%B9%E6%98%8E%E7%8F%A0%E9%97%A8%E7%A5%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '东方明珠门票', NULL, NULL),
+	(528372, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8A%A0%E6%8B%BF%E5%A4%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '加拿大', NULL, NULL),
+	(528373, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%88%98%E6%B6%9B%E4%B8%BA%E8%92%8B%E6%AC%A3%E5%8F%91%E6%84%81&pid=sogou-mobp-eeea8c180c5dff16&v=5', '刘涛为蒋欣发愁', NULL, NULL),
+	(528374, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%89%A7%E7%BE%8A%E7%8A%AC12%E5%A4%A9%E8%BF%94%E5%AE%B6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '牧羊犬12天返家', NULL, NULL),
+	(528375, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%A9%E4%BB%B7%E9%B1%BC%E8%A2%AB%E7%BD%9A50%E4%B8%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '天价鱼被罚50万', NULL, NULL),
+	(528376, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%8E%A8%E5%8A%A8%E4%B8%9C%E5%8C%97%E6%8C%AF%E5%85%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '推动东北振兴', NULL, NULL),
+	(528377, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%8C%83%E5%86%B0%E5%86%B0%E8%87%AA%E7%A7%B0%E7%8C%AB%E5%A5%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '范冰冰自称猫奴', NULL, NULL),
+	(528378, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%94%A8%E6%9C%80%E5%BC%BA%E5%A4%A7%E8%84%91%E7%9B%97%E7%AA%83&pid=sogou-mobp-eeea8c180c5dff16&v=5', '用最强大脑盗窃', NULL, NULL),
+	(528379, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%A2%85%E8%91%86%E7%8E%96%E9%80%9D%E4%B8%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '梅葆玖逝世', NULL, NULL),
+	(528380, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%BF%84%E5%8A%A0%E5%BC%BA%E4%B8%9C%E7%9B%9F%E5%90%88%E4%BD%9C&pid=sogou-mobp-eeea8c180c5dff16&v=5', '俄加强东盟合作', NULL, NULL),
+	(528381, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%91%9B%E4%BC%98%E5%9B%9E%E5%BD%92%E8%B4%BA%E5%B2%81%E6%A1%A3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '葛优回归贺岁档', NULL, NULL),
+	(528382, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%9B%A0%E9%95%BF%E5%BE%97%E5%B8%85%E9%81%AD%E6%9A%B4%E6%89%93&pid=sogou-mobp-eeea8c180c5dff16&v=5', '因长得帅遭暴打', NULL, NULL),
+	(528383, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%96%B0%E5%A8%98%E9%87%8D%E9%87%8F%E7%BA%A7%E5%A9%9A%E7%BA%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '新娘重量级婚纱', NULL, NULL),
+	(528384, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%80%92%E9%9C%89%E8%9F%BE%E8%9C%8D%E8%A2%AB%E7%8C%B4%E8%80%8D&pid=sogou-mobp-eeea8c180c5dff16&v=5', '倒霉蟾蜍被猴耍', NULL, NULL),
+	(528385, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8C%97%E4%BA%AC%E8%BD%A6%E5%B1%95%E5%BC%80%E5%B9%95&pid=sogou-mobp-eeea8c180c5dff16&v=5', '北京车展开幕', NULL, NULL),
+	(528386, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8D%8F%E8%AD%A6%E6%88%90%E5%85%A8%E7%90%83%E7%BD%91%E7%BA%A2&pid=sogou-mobp-eeea8c180c5dff16&v=5', '协警成全球网红', NULL, NULL),
+	(528387, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%91%E6%B0%91%E8%87%AA%E5%BB%BA%E5%8F%91%E7%94%B5%E7%AB%99&pid=sogou-mobp-eeea8c180c5dff16&v=5', '村民自建发电站', NULL, NULL),
+	(528388, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%97%A5%E6%9C%AC%E5%A4%96%E7%9B%B8%E5%B0%86%E8%AE%BF%E5%8D%8E&pid=sogou-mobp-eeea8c180c5dff16&v=5', '日本外相将访华', NULL, NULL),
+	(528389, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%BA%93%E9%87%8C%E5%8F%97%E4%BC%A4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '库里受伤', NULL, NULL),
+	(528390, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%88%B9%E7%8E%8B%E5%90%8E%E4%BA%BA%E8%8E%B7%E8%B5%942%E4%BA%BF&pid=sogou-mobp-eeea8c180c5dff16&v=5', '船王后人获赔2亿', NULL, NULL),
+	(528391, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E5%AD%A9%E4%BC%97%E7%AD%B9%E5%8F%8D%E9%80%BC%E5%A9%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女孩众筹反逼婚', NULL, NULL),
+	(528392, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BD%A6%E6%89%8B%E4%BD%9C%E5%BC%8A%E8%A2%AB%E7%A6%816%E5%B9%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '车手作弊被禁6年', NULL, NULL),
+	(528393, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%A4%E7%BE%8E%E5%A5%B3%E5%85%AC%E4%BA%A4%E8%A1%8C%E7%AA%83&pid=sogou-mobp-eeea8c180c5dff16&v=5', '两美女公交行窃', NULL, NULL),
+	(528394, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%81%9A%E5%88%92%E7%AE%97%E5%AE%98%E7%BD%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '聚划算官网', NULL, NULL),
+	(528395, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B7%B1%E5%9C%B3%E4%B8%96%E7%95%8C%E4%B9%8B%E7%AA%97&pid=sogou-mobp-eeea8c180c5dff16&v=5', '深圳世界之窗', NULL, NULL),
+	(528396, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%80%8E%E4%B9%88%E5%8F%98%E7%99%BD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '怎么变白', NULL, NULL),
+	(528397, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%94%A8%E6%89%8B%E6%9C%BA%E6%80%8E%E4%B9%88%E8%B5%9A%E9%92%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '用手机怎么赚钱', NULL, NULL);
 /*!40000 ALTER TABLE `hot_keys` ENABLE KEYS */;
 
 
 -- 导出  表 search.life_service 结构
+DROP TABLE IF EXISTS `life_service`;
 CREATE TABLE IF NOT EXISTS `life_service` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_name` varchar(50) DEFAULT NULL,
@@ -281,6 +300,7 @@ INSERT INTO `life_service` (`id`, `site_name`, `site_des`, `show_enable`, `sort_
 
 
 -- 导出  表 search.resources 结构
+DROP TABLE IF EXISTS `resources`;
 CREATE TABLE IF NOT EXISTS `resources` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -345,6 +365,7 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 
 
 -- 导出  表 search.resources_role 结构
+DROP TABLE IF EXISTS `resources_role`;
 CREATE TABLE IF NOT EXISTS `resources_role` (
   `role_id` int(11) NOT NULL,
   `res_id` int(11) NOT NULL,
@@ -410,6 +431,7 @@ INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 
 
 -- 导出  表 search.role 结构
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `enable` int(11) DEFAULT '0' COMMENT '0:禁用，1:启用',
@@ -433,6 +455,7 @@ INSERT INTO `role` (`id`, `enable`, `role_name`, `role_key`, `description`) VALU
 
 
 -- 导出  表 search.site_navigation 结构
+DROP TABLE IF EXISTS `site_navigation`;
 CREATE TABLE IF NOT EXISTS `site_navigation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_name` varchar(50) DEFAULT NULL,
