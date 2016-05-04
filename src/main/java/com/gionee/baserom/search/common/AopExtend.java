@@ -25,6 +25,7 @@ public class AopExtend {
 	
 	@Before("execution(public void com.gionee.baserom.search.job.impl.*.*DataExtract.execute(..))")  
 	public void beforeMethod() {
+		// TODO 预留的AOP扩展
 		logger.info("定时任务执行前切入要做的事情！");
 	}
 	
@@ -32,7 +33,7 @@ public class AopExtend {
 	 * 切换采集源源之后更新缓存
 	 */
 	@AfterReturning("execution(public void com.gionee.baserom.search.service.impl.SearchServiceImpl.updateUseSource(..))")
-	public void afterReturnning() {
+	public void afterchangeSource() {
 		ISearchService searchService = (ISearchService) ApplicationHelper.getApplicationContext().getBean("searchService");
 		String hotkey_source_url = searchService.getHotkeySourceUrl();
 		Cache cache = EHCacheManager.initCacheManager().getCache("sourceUrlCache");
