@@ -80,7 +80,7 @@ public class LoginController {
 		//查询出账号信息,验证账号名和密码是否正确
 		Account acc = this.accountService.selectByExample(account);
 		if (acc == null || !acc.getPassword().equals(password)) {
-			request.setAttribute("error", "账号或密码不正确！");
+			request.setAttribute("error", "密码不正确！");
 			model.setViewName("login");
 			return model;
 		}

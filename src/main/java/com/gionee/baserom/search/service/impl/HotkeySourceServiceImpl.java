@@ -38,7 +38,7 @@ public class HotkeySourceServiceImpl implements IHotkeySourceService {
 			n = this.hotkeySourceMapper.updateByPrimaryKey(source);
 		}else{
 			ajaxObj = new DwzAjaxObject("300", "操作失败！");
-		}
+		}		
 		if(n>0){
 			ajaxObj = new DwzAjaxObject("200", "操作成功！" ,resKey, "", "");
 		}else{
