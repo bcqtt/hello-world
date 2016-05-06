@@ -31,6 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var imgNode = document.getElementById("vimg");
 		imgNode.src = "servlet/AuthImageServlet?t=" + Math.random();
 	}
+	$(document).ready(function(){
+		changeCode();
+	});
 </script>
 </head>
 <body>
