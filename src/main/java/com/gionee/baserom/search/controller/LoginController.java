@@ -60,6 +60,11 @@ public class LoginController {
 			model.setViewName("login");
 			return model;
 		}
+		if (StringHelper.isEmpty(account.getAccountName()) || StringHelper.isEmpty(account.getPassword())) {
+			request.setAttribute("error","账号或密码不能为空！");
+			model.setViewName("login");
+			return model;
+		}
 		if(!rand.toLowerCase().equals(randCode.toLowerCase())){
 			request.setAttribute("error","验证码不对！");
 			model.setViewName("login");
@@ -72,11 +77,6 @@ public class LoginController {
 			request.setAttribute("error","支持POST方法提交！");
 		}
 		
-		if (StringHelper.isEmpty(account.getAccountName()) || StringHelper.isEmpty(account.getPassword())) {
-			request.setAttribute("error","账号或密码不能为空！");
-			model.setViewName("login");
-			return model;
-		}
 		//查询出账号信息,验证账号名和密码是否正确
 		Account acc = this.accountService.selectByExample(account);
 		if (acc == null || !acc.getPassword().equals(password)) {

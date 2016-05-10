@@ -1,6 +1,7 @@
 package com.gionee.baserom.search.job.impl.sougou;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -49,14 +50,20 @@ public class SougouDataExtract implements IDataExtract {
 		List<SougouDataResult> result = (List<SougouDataResult>) JSONArray.parseArray(httpRateString, SougouDataResult.class);
         if (result != null) {
             hotKeysMapper.deleteAll();
-            for (int i = 0; i < result.size(); i++) {
+            int size = result.size();
+            Random r = new Random();
+            int rnum = r.nextInt(6)+1;
+            int b = 6 ; //每隔多少个热词就产生一个hot
+            for (int i = 0; i <size; i++) {
             	SougouDataResult dataBean = result.get(i);
             	HotKeys hotKeys = new HotKeys();
             	hotKeys.setHotKey(dataBean.getKwd());
             	hotKeys.setUrl(dataBean.getUrl());
-            	logger.info("getHotKeys -----> " + dataBean.kwd);
+            	hotKeys.setStats((i-rnum)%b == 0?1:0);
+            	logger.info("getHotKeys -----> " + dataBean.kwd + "(" + "status=" + hotKeys.getStats() + ")");
             	hotKeysMapper.insert(hotKeys);
             }
         }
     }
+    
 }
