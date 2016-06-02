@@ -3,7 +3,6 @@
 <generatorConfiguration >
 
   <classPathEntry location="D:/TestSpace/ssmtest/WebContent/WEB-INF/lib/mysql-connector-java-5.1.23.jar" />
-
   <context id="context1" targetRuntime="MyBatis3">
   	
   	<commentGenerator>
@@ -40,11 +39,16 @@
     <table schema="search" tableName="hotkey_source" domainObjectName="HotkeySource"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="hot_keys" domainObjectName="HotKeys"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="life_service" domainObjectName="LifeService"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
-    <table schema="search" tableName="resources" domainObjectName="Resources"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="resources_role" domainObjectName="ResourcesRole"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="role" domainObjectName="Role"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="site_navigation" domainObjectName="SiteNavigation"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="resources" domainObjectName="Resources"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="account" domainObjectName="Account">
+    	<property name="ignoreQualifiersAtRuntime" value="true"/>
+    	<generatedKey column="id" sqlStatement="MySql" identity="true" />
+    </table>
      -->
-     <table schema="search" tableName="hotkey_source" domainObjectName="HotkeySource"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="hot_keys" domainObjectName="HotKeys"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+     
   </context>
 </generatorConfiguration>

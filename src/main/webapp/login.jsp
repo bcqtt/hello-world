@@ -10,8 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>全局搜索配置系统登陆</title>
-<link rel="shortcut icon" href="framework/images/g_logo.png" type="image/x-icon" />
-<link href="framework/dwz/themes/css/login.css" rel="stylesheet" type="text/css" />
+<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/login.css" rel="stylesheet" type="text/css" />
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -31,16 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var imgNode = document.getElementById("vimg");
 		imgNode.src = "servlet/AuthImageServlet?t=" + Math.random();
 	}
-	$(document).ready(function(){
-		changeCode();
-	});
 </script>
 </head>
 <body>
 <div id="login">
 		<div id="login_header">
 			<h1 class="login_logo">
-				<a href="http://www.gionee.com/"><img src="framework/dwz/themes/default/images/login_logo.png" /></a>
+				<a href="http://www.gionee.com/"></a>
 			</h1>
 			<div class="login_headerContent">
 				<div class="navList">
@@ -78,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 -->
 				</form>
 			</div>
-			<div class="login_banner"><img src="framework/dwz/themes/default/images/login_banner.jpg" /></div>
+			<div class="login_banner"><img src="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/default/images/login_banner.jpg" /></div>
 		</div>
 		<div id="login_footer">
 			Copyright &copy; 2016 www.gionee.com Inc. All Rights Reserved.

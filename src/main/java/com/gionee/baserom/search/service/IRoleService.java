@@ -36,9 +36,8 @@ public interface IRoleService {
 
 	/**
 	 * 查询全部角色
-	 * @param groupId 
 	 * @return
 	 */
-	public List<Role> findAll(Integer groupId);
+	public List<Role> findAll();
 
 }

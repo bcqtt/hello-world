@@ -33,7 +33,7 @@ function onClick(e, treeId, treeNode) {
 	nodes = zTree.getSelectedNodes();
 	$("#parentName").val( nodes[0].name); 
 	$("#parentId").val(nodes[0].id); 
-	$("#parentIdList").val(nodes[0].parentIdList + "${res.id}" + "*"); 
+	$("#parentIdList").val(nodes[0].parentIdList + nodes[0].id + "*"); 
 } 
 
 function showTree(){
@@ -56,7 +56,7 @@ function hideTree(){
 					<dd>
 						<input id="parentName" type="text" name="parentName" class="required"  size="30" value="${pRes.name eq null ? resName : pRes.name}" lookupGroup="orgLookup" />
 						<input id="parentId" type="hidden" name="parentId" value="${res.parentId eq null ? resId : res.parentId}"/>
-						<input id="parentIdList"  name="parentIdList" value="${res.parentIdList eq null?pIdList : res.parentIdList}"/>
+						<input id="parentIdList" type="hidden" name="parentIdList" value="${res.parentIdList eq null?pIdList : res.parentIdList}"/>
 						<div id="menuBtn" class="button" onclick="showTree();" style="margin-left:5px;">
 							<div class="buttonContent"><button type="button">选择资源</button></div>
 						</div>

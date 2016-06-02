@@ -84,8 +84,7 @@ public interface RoleMapper {
 
 	/**
 	 * 查询全部
-	 * @param groupId 
 	 * @return
 	 */
-	List<Role> findAll(@Param(value = "groupId") Integer groupId);
+	List<Role> findAll();
 }

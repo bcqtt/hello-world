@@ -49,9 +49,13 @@ public class AuthImageServlet extends HttpServlet{
              
         Graphics g = image.getGraphics();     
         Random random = new Random();     
-        g.fillRect(0, 0, width, height);     
-        g.setColor(new Color(255,204,153));     
+        g.setColor(getRandColor(200,250));     
+        g.fillRect(1, 1, width-1, height-1);     
+        g.setColor(new Color(0,0,0));     
+        g.drawRect(0, 0, width-1, height-1);     
         g.setFont(mFont);     
+    
+        g.setColor(getRandColor(160,200));     
     
         //画随机线     
         for (int i=0;i<30;i++){     
@@ -61,8 +65,7 @@ public class AuthImageServlet extends HttpServlet{
             int yl = random.nextInt(12) + 1;     
             g.drawLine(x,y,x + xl,y + yl);     
         }     
-        
-        g.setColor(new Color(153,255,51));     
+    
         //从另一方向画随机线     
         for (int i = 0;i < 30;i++){     
             int x = random.nextInt(width - 1);     

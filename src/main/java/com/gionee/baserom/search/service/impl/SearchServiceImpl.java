@@ -46,10 +46,5 @@ public class SearchServiceImpl implements ISearchService {
         // TODO Auto-generated method stub
         return null;
     }
-
-	@Override
-	public String getHotkeySourceUrl() {
-		return hotkeySourceMapper.getHotkeySourceUrl();
-	}
  
 }

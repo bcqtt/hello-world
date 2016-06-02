@@ -269,7 +269,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <!-- start manual programing -->
+  <!-- 以下为手动加入的方法 -->
   <select id="getAllHotKeys" resultMap="BaseResultMap">
   	select 
   	<include refid="Base_Column_List" />

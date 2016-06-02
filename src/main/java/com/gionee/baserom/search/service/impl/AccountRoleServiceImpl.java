@@ -32,7 +32,6 @@ public class AccountRoleServiceImpl implements IAccountRoleService {
 		accountRoleMapper.deleteByExample(example);
 		//保存新配置的角色
 		int n = accountRoleMapper.insert(ar);
-		logger.info("保存账号角色关联信息");
 		if(n>0){
 			ajaxObj = new DwzAjaxObject("200", "操作成功！");
 		}else{

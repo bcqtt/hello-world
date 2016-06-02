@@ -116,7 +116,7 @@ public class RoleServiceImpl implements IRoleService {
 	/**
 	 * 查询全部角色
 	 */
-	public List<Role> findAll(Integer groupId) {
-		return this.roleMapper.findAll(groupId);
+	public List<Role> findAll() {
+		return this.roleMapper.findAll();
 	}
 }

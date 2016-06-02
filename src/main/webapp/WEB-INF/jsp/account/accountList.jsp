@@ -48,10 +48,10 @@
 			   <tr target="id_account" rel="${account.id}">
 				<td><input name="ids" value="${account.id}" type="checkbox"></td>
 				<td>${account.accountName}</td>
-				<td <c:if test="${account.groupId == 1}">style="color:#ef4222;"</c:if>> ${account.name} </td>
+				<td>${account.name}</td>
 				<td>${account.phoneNumber}</td>
 				<td>${account.email}</td>
-				<td <c:if test="${account.groupId == 1}">style="color:#ef4222;"</c:if>>${account.role.roleName}</td>
+				<td>${account.role.roleName}</td>
 				<td><fmt:formatDate value="${account.lastLoginTime}" type="both" /></td>
 			  </tr>
 			</c:forEach>

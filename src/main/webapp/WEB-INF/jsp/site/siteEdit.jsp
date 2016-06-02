@@ -34,7 +34,7 @@ function showIcon(obj){
 			</p>
 			<p>
 				<label>Logo图片链接：</label>
-				<input name="iconUrl" class="required url" type="text" size="30" style="width:200px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
+				<input name="iconUrl" class="required url" type="text" size="30" style="width:220px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
 				<img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/icon_pic.png':site.iconUrl}" width="25" height="25">
 			</p>
 			<p>

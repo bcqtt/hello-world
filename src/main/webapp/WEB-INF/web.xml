@@ -83,12 +83,5 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
-	<!-- 初始化缓存 -->
-	<servlet>
-		<servlet-name>init</servlet-name>
-		<servlet-class>com.gionee.baserom.search.common.InitSysCacheServlet</servlet-class>
-		<load-on-startup>3</load-on-startup>
-	</servlet> 
 	
 </web-app>

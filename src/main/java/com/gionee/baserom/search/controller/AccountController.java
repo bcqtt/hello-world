@@ -86,10 +86,9 @@ public class AccountController {
 	 * @return
 	 */
 	@RequestMapping(value = "/addAccountView", method = RequestMethod.GET)
-	public ModelAndView addAccountView(String resKey,String editType,HttpServletRequest request) {
+	public ModelAndView addAccountView(String resKey,String editType) {
 		//List<GroupInfo> groupList = groupService.findAll();
-		Account acc = (Account) request.getSession().getAttribute("accountSession");
-		List<Role> roleList = roleService.findAll(acc.getGroupId());
+		List<Role> roleList = roleService.findAll();
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("roleList",roleList);
@@ -103,11 +102,10 @@ public class AccountController {
 	 * @return
 	 */
 	@RequestMapping(value = "/editAccountView", method = RequestMethod.GET)
-	public ModelAndView editAccountView(String resKey,String editType,Account account,HttpServletRequest request) {
+	public ModelAndView editAccountView(String resKey,String editType,Account account) {
 		Account acc = accountService.selectByExample(account);
 		//List<GroupInfo> groupList = groupService.findAll();
-		Account login_acc = (Account) request.getSession().getAttribute("accountSession");
-		List<Role> roleList = roleService.findAll(login_acc.getGroupId());
+		List<Role> roleList = roleService.findAll();
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("roleList",roleList);
@@ -140,9 +138,8 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/assignRole")
-	public ModelAndView assignRole(String id,HttpServletRequest request){
-		Account acc = (Account) request.getSession().getAttribute("accountSession");
-		List<Role> roleList = this.roleService.findAll(acc.getGroupId());
+	public ModelAndView assignRole(String id){
+		List<Role> roleList = this.roleService.findAll();
 		ModelAndView model = new ModelAndView();
 		model.addObject("roleList", roleList);
 		model.addObject("accountId", id);

@@ -15,6 +15,4 @@ public interface ISearchService {
 	public List<HotkeySource> getAllDataSource();
 	
 	public void updateUseSource(String sourceCode);
-
-	public String getHotkeySourceUrl();
 }
