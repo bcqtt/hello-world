@@ -26,8 +26,8 @@ public class SearchServiceImpl implements ISearchService {
     } 
 
     @Override
-    public List<HotkeySource> getAllDataSource() {
-        return hotkeySourceMapper.getAllDataSource();
+    public List<HotkeySource> getAllDataSource(int type) {
+        return hotkeySourceMapper.getAllDataSource(type);
     }
 
     @Override
@@ -36,9 +36,9 @@ public class SearchServiceImpl implements ISearchService {
     }
 
     @Override
-    public void updateUseSource(String sourceCode) {
-    	hotkeySourceMapper.cleanUseredFlag();
-    	hotkeySourceMapper.setUseredFlag(sourceCode);
+    public void updateUseSource(String sourceCode,int type) {
+    	hotkeySourceMapper.cleanUseredFlag(type);
+    	hotkeySourceMapper.setUseredFlag(sourceCode,type);
     }
  
     @Override
@@ -46,5 +46,15 @@ public class SearchServiceImpl implements ISearchService {
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public String getHotkeySourceUrl() {
+		return hotkeySourceMapper.getHotkeySourceUrl();
+	}
+
+	@Override
+	public List<HotkeySource> getAllAssoSource() {
+		return hotkeySourceMapper.getAllAssoSource();
+	}
  
 }

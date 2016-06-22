@@ -4,9 +4,9 @@
 <script src="js/authority.js" type="text/javascript"></script>
 
 <script type="text/javascript">
- function doChange(){
-	var sourceCode = $("#sourceCode").val();
-	ajaxTodo("search/doChange?type=1&sourceCode=" + sourceCode
+ function doChangeAss(){
+	var sourceCode = $("#sourceCodeAss").val();
+	ajaxTodo("search/doChange?type=2&sourceCode=" + sourceCode
 			,PublicUtils.ajaxTodoCallback());
 }
  </script>
@@ -15,16 +15,16 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					 请选择数据采集源：
+					 请选联想词数据源：
 				</td>
 				<td>
-					<select id="sourceCode" name="sourceCode"  >
+					<select id="sourceCodeAss" name="sourceCode"  >
 						<c:forEach var="source" items="${dataSourceList}">
 							<option value="${source.sourceCode}" <c:if test="${source.enableStatus == 1}">selected="selected"</c:if>>${source.sourceName}</option>
 						</c:forEach>
 					</select>
 				</td>
-				<td><div class="buttonActive"><div class="buttonContent"><button type="submit" onclick="doChange();">提交</button></div></div></td>
+				<td><div class="buttonActive"><div class="buttonContent"><button type="submit" onclick="doChangeAss();">提交</button></div></div></td>
 			</tr>
 		</table>
 	</div>
@@ -34,8 +34,8 @@
 	<div class="panelBar">
 		<ul class="toolBar">
 			
-			<li><a class="add" href="search/addHotkeySourceView?type=1&editType=add&resKey=${resKey}" target="dialog" width="600" height="280"><span>添加</span></a></li>
-			<li><a class="edit" href="search/editHotkeySourceView?type=1&editType=update&id={id_source}&resKey=${resKey}" target="dialog" warn="请选择一个记录!" width="600" height="280"><span>修改</span></a></li>
+			<li><a class="add" href="search/addHotkeySourceView?type=2&editType=add&resKey=${resKey}" target="dialog" width="600" height="280"><span>添加</span></a></li>
+			<li><a class="edit" href="search/editHotkeySourceView?type=2&editType=update&id={id_source}&resKey=${resKey}" target="dialog" warn="请选择一个记录!" width="600" height="280"><span>修改</span></a></li>
 			<li><a class="delete" href="search/deleteHotkeySources?id={id_source}&resKey=${resKey}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
 			 <%-- 
 			<c:forEach var="opt" items="${optList}">

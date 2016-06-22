@@ -48,7 +48,7 @@
 			   <tr target="id_account" rel="${account.id}">
 				<td><input name="ids" value="${account.id}" type="checkbox"></td>
 				<td>${account.accountName}</td>
-				<td>${account.name}</td>
+				<td> ${account.name} </td>
 				<td>${account.phoneNumber}</td>
 				<td>${account.email}</td>
 				<td>${account.role.roleName}</td>

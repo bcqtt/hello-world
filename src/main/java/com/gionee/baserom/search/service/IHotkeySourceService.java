@@ -16,9 +16,10 @@ public interface IHotkeySourceService {
 	/**
 	 * 分页查询采集源信息
 	 * @param page
+	 * @param i 
 	 * @return
 	 */
-	public Page<HotkeySource> queryPage(Page<HotkeySource> page);
+	public Page<HotkeySource> queryPage(Page<HotkeySource> page, int i);
 	
 	/**
 	 * 根据Example查询

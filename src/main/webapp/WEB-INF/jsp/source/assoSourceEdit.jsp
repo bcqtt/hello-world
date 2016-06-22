@@ -19,7 +19,7 @@
 			
 			<input type="hidden" name="id" value="${source.id}" />
 			<input type="hidden" name="enableStatus" value="${source.enableStatus}" />
-			<input type="hidden" name="type" value="1" />
+			<input type="hidden" name="type" value="2" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>
 		<div class="formBar">

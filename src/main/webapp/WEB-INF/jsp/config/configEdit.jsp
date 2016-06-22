@@ -5,28 +5,29 @@
 <div class="pageContent">
 	<form method="post" action="config/saveConfig?editType=${editType}&resKey=${resKey}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<div class="pageFormContent" layoutH="56">
-			<p>
-				<label>参数代码：</label>
-				<input name="code" class="required" type="text" size="40" style="width:230px;" value="${config.code}" />
-			</p>
-			<p>
-				<label>参数名：</label>
-				<input name="name" class="required" type="text" size="40" style="width:230px;" value="${config.name}" />
-			</p>
-			<p>
-				<label>参数值：</label>
-				<input name="value" class="required" type="text" size="40" style="width:230px;" value="${config.value}" />
-			</p>
-			<p>
-				<label>是否启用：</label>
-				<label><input name="status" type="checkbox" value="${config.status}" onchange="RoleUtils.onClickOfEnable(this);" <c:if test="${config.status == 1}">checked="checked"</c:if> />启用</label>
-			</p>
-			<p>
-				<table><tr>
-					<td align="left" valign="top"><label>参数说明：</label></td>
-					<td><textarea name="description" cols="33" rows="2">${config.description}</textarea></td>
-				</tr></table>
-			</p>
+			<fieldset>
+				<legend>参数信息</legend>
+				<dl class="nowrap">
+					<dt>参数代码：</dt>
+					<dd><input name="code" class="required" type="text" size="40" style="width:230px;" value="${config.code}" /></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>参数名：</dt>
+					<dd><input name="name" class="required" type="text" size="40" style="width:230px;" value="${config.name}" /></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>参数值：</dt>
+					<dd><input name="value" class="required" type="text" size="40" style="width:230px;" value="${config.value}" /></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>是否启用：</dt>
+					<dd><input name="status" type="checkbox" value="${config.status}" onchange="RoleUtils.onClickOfEnable(this);" <c:if test="${config.status == 1}">checked="checked"</c:if> />启用</dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>参数说明：</dt>
+					<dd><textarea name="description" cols="33" rows="2" style="width:230px;">${config.description}</textarea></dd>
+				</dl>
+			</fieldset>
 			<input type="hidden" name="id" value="${config.id}" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>

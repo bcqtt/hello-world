@@ -12,7 +12,16 @@ public interface ISearchService {
 	
 	public String getUseredSourceCode();
 	public HotkeySource getUseredSource();
-	public List<HotkeySource> getAllDataSource();
 	
-	public void updateUseSource(String sourceCode);
+	/**
+	 * @param i 1：热词采集源。2：联想词采集源
+	 * @return
+	 */
+	public List<HotkeySource> getAllDataSource(int i);
+	
+	public void updateUseSource(String sourceCode, int type);
+
+	public String getHotkeySourceUrl();
+
+	public List<HotkeySource> getAllAssoSource();
 }

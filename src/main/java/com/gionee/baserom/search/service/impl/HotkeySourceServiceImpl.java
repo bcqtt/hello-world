@@ -52,11 +52,12 @@ public class HotkeySourceServiceImpl implements IHotkeySourceService {
 	 * @param page
 	 * @return
 	 */
-	public Page<HotkeySource> queryPage(Page<HotkeySource> page) {
+	public Page<HotkeySource> queryPage(Page<HotkeySource> page,int type) {
 		int totalCount = hotkeySourceMapper.countByExample(null);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("startIndex", page.getStartIndex());
 		map.put("numPerPage", page.getNumPerPage());
+		map.put("type", type);
 		List<HotkeySource> list = hotkeySourceMapper.queryByPage(map);
 		page.setTotalCount(totalCount);
 		page.setList(list);

@@ -13,6 +13,11 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+/**
+ * 系统启动时初始化采集源缓存，避免每次运行定时任务都访问数据库
+ * @author gionee
+ *
+ */
 public class InitSysCacheServlet extends HttpServlet {
 	private static final long serialVersionUID = -4998426402351115124L;
 	private final Logger logger = LoggerFactory.getLogger(InitSysCacheServlet.class);
