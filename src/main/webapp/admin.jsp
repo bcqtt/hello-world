@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>全局搜索配置系统</title>
-<link rel="shortcut icon" href="framework/images/g_logo.png" type="image/x-icon" />
+<link rel="shortcut icon" href="framework/images/favicon.ico" type="image/x-icon" />
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
