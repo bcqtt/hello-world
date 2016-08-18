@@ -5,8 +5,10 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,6 +46,20 @@ public class StringHelper {
 	public static String getCurrentDatetime(){
 		SimpleDateFormat myFormatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
 		return myFormatter.format(new Date());
+	}
+	
+	/**
+	 * 字符串转日期
+	 */
+	public static Date strToDate(String str){
+		SimpleDateFormat sdf1 = new SimpleDateFormat ("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK);
+		Date date = null;
+		try {
+			date = sdf1.parse(str);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 	
 	/**
@@ -100,5 +116,9 @@ public class StringHelper {
 		String str = StringHelper.md5("123456");
 		System.out.println("MD5密码："+str);
 		System.out.println("当前日期："+StringHelper.getCurrentDatetime());
+		
+		str = "Tue May 10 13:44:41 CST 2016";
+		Date date = StringHelper.strToDate(str);
+		System.out.println(date);
 	}
 }

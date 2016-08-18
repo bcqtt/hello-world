@@ -1,5 +1,6 @@
 package com.gionee.baserom.search.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -123,7 +124,12 @@ public class AccountController {
 	 * @param account
 	 */
 	@RequestMapping(value = "/saveAccount", method = RequestMethod.POST)
-	public void saveAccount(String resKey,String editType,Account account,HttpServletResponse response){
+	public void saveAccount(String resKey,String editType,Account account,HttpServletRequest request,HttpServletResponse response){
+		String llt = (String) request.getParameter("llt");
+		if(llt != null && !llt.equals("")){
+			Date lastLoginTime = StringHelper.strToDate(llt);
+			account.setLastLoginTime(lastLoginTime);
+		}
 		ajaxObj = accountService.saveAccount(resKey,editType,account);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
