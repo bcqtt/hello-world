@@ -5,6 +5,8 @@ import com.gionee.baserom.search.pojo.HotKeysExample;
 import com.gionee.baserom.search.pojo.HotkeySource;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface HotKeysMapper {
@@ -83,4 +85,6 @@ public interface HotKeysMapper {
     List<HotKeys> getAllHotKeys();
     
     void deleteAll();
+
+	List<HotKeys> queryByPage(Map<String, Object> map);
 }

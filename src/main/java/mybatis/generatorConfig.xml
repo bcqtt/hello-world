@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
 
-  <classPathEntry location="D:/TestSpace/ssmtest/WebContent/WEB-INF/lib/mysql-connector-java-5.1.23.jar" />
+  <classPathEntry location="D:/MavenRepository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
 
   <context id="context1" targetRuntime="MyBatis3">
   	
@@ -11,7 +11,7 @@
 	</commentGenerator>
   
     <jdbcConnection  driverClass="com.mysql.jdbc.Driver" 
-    				 connectionURL="jdbc:mysql://18.8.10.53:3306/search?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;mysqlEncoding=utf8" 
+    				 connectionURL="jdbc:mysql://18.8.0.29:3306/search?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;mysqlEncoding=utf8" 
     				 userId="search" 
     				 password="search" />
     				
@@ -45,6 +45,6 @@
     <table schema="search" tableName="role" domainObjectName="Role"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="site_navigation" domainObjectName="SiteNavigation"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
      -->
-     <table schema="search" tableName="hotkey_source" domainObjectName="HotkeySource"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+     <table schema="search" tableName="hot_keys" domainObjectName="HotKeys"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
   </context>
 </generatorConfiguration>

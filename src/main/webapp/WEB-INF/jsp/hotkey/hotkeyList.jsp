@@ -16,7 +16,7 @@ function checkShowEnabled(obj){
 	}
 	var showFlag = $(obj).val();
 	var adId = $(obj).attr("adId");
-	ajaxTodo("ad/updateAd?id="+adId+"&resKey=${resKey}&showFlag=" + showFlag
+	ajaxTodo("hk/updateHotkey?id="+adId+"&resKey=${resKey}&showFlag=" + showFlag
 			,PublicUtils.ajaxTodoCallback());
 }
 </script>
@@ -29,9 +29,9 @@ function checkShowEnabled(obj){
 	<div class="panelBar">
 		<ul class="toolBar">
 			<%-- 
-			<li><a class="add" href="ad/addAdView?editType=add" target="dialog" width="460" height="370"><span>添加广告</span></a></li>
-			<li><a class="edit" href="ad/editAdView?editType=update&id={id_ad}" target="dialog" warn="请选择一个分组!" width="460" height="370"><span>修改</span></a></li>
-			<li><a class="delete" href="ad/deleteAds?id={id_ad}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
+			<li><a class="add" href="hk/addHotkeyView?editType=add" target="dialog" width="720" height="340"><span>添加</span></a></li>
+			<li><a class="edit" href="hk/editHotkeyView?editType=update&id={id_hk}" target="dialog" warn="请选择一个热词记录!" width="720" height="340"><span>修改</span></a></li>
+			<li><a class="delete" href="hk/deleteHotKeys?id={id_hk}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
 			 --%>
 			 <c:forEach var="opt" items="${optList}">
 				<c:if test="${opt.type==3}">
@@ -52,25 +52,22 @@ function checkShowEnabled(obj){
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
-				<th align="center">ID</th>
-				<th align="center">名称</th>
-				<th align="center">广告位</th>
-				<th align="center">广告图</th>
-				<th>URL</th>
-				<th align="center">显示</th>
+				<th align="center" width="200">热词</th>
+				<th align="center" width="50">排序</th>
+				<th align="center" width="800">链接</th>
+				<th align="center">状态</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="ad" items="${page.list}">
-			   <tr target="id_ad" rel="${ad.id}">
-				<td><input name="ids" value="${ad.id}" type="checkbox"></td>
-				<td>${ad.id}</td>
-				<td>${ad.name}</td>
-				<td>${ad.positionId}</td>
-				<td><img class="adImg" src="${ad.adImg}"/></td>
-				<td>${ad.adUrl}</td>
+			<c:forEach var="hk" items="${page.list}">
+			   <tr target="id_hk" rel="${hk.id}">
+				<td><input name="ids" value="${hk.id}" type="checkbox"></td>
+				<td>${hk.hotKey}</td>
+				<td>${hk.sortId}</td>
+				<td>${hk.url}</td>
 				<td>
-					<input type="checkbox" value="${ad.showFlag}" adId="${ad.id}" <c:if test="${ad.showFlag == 1}">checked="checked"</c:if> onchange="checkShowEnabled(this);"/>
+					<c:if test="${hk.stats == 1}"><span style="color:red;">NEW</span></c:if>
+					<c:if test="${hk.stats == 0}"><span style="color:#777777;">NOT NEW</span></c:if>
 				</td>
 			  </tr>
 			</c:forEach>

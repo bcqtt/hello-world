@@ -60,6 +60,7 @@ public class SougouDataExtract implements IDataExtract {
             	hotKeys.setHotKey(dataBean.getKwd());
             	hotKeys.setUrl(dataBean.getUrl());
             	hotKeys.setStats((i-rnum)%b == 0?1:0);
+            	hotKeys.setType(0);
             	logger.info("getHotKeys -----> " + dataBean.kwd + "(" + "status=" + hotKeys.getStats() + ")");
             	hotKeysMapper.insert(hotKeys);
             }
