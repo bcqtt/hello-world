@@ -15,37 +15,37 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Account;
-import com.gionee.baserom.search.pojo.HotKeys;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
-import com.gionee.baserom.search.service.IHotkeyService;
+import com.gionee.baserom.search.pojo.Rosters;
 import com.gionee.baserom.search.service.IResourcesService;
+import com.gionee.baserom.search.service.IRostersService;
 import com.gionee.baserom.search.util.StringHelper;
 
 @Controller  
-@RequestMapping("hk")
-public class HotkeyController {
-	protected static Logger logger = Logger.getLogger(HotkeyController.class);
+@RequestMapping("rosters")
+public class RostersController {
+	protected static Logger logger = Logger.getLogger(RostersController.class);
 	private String jsonResult = "";
 	private DwzAjaxObject ajaxObj = null;
 	
 	@Resource
-	private IHotkeyService hotkeyService;
+	private IRostersService rostersService;
 	@Resource
 	private IResourcesService resourcesService;
 	
 	/**
-	 * 查询并展示账号信息列表界面
+	 * 查询并展示软件包信息列表界面
 	 * @return
 	 */
-	@RequestMapping(value = "/queryHotkeyPaper", method = RequestMethod.GET)
-	public ModelAndView queryHotkeyPaper(Page<HotKeys> page,HttpServletRequest request) {
+	@RequestMapping(value = "/queryRostersPaper", method = RequestMethod.GET)
+	public ModelAndView queryRostersPaper(Page<Rosters> page,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
-		page = hotkeyService.queryPage(page);
+		page = rostersService.queryPage(page);
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
@@ -60,8 +60,8 @@ public class HotkeyController {
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("WEB-INF/jsp/hotkey/hotkeyList");
-		logger.info("--------->查看自定义热词列表。");
+		model.setViewName("WEB-INF/jsp/rosters/rostersList");
+		logger.info("--------->查看软件包列表。");
 		return model;
 	}
 	
@@ -69,12 +69,12 @@ public class HotkeyController {
 	 * 打开新增页面
 	 * @return
 	 */
-	@RequestMapping(value = "/addHotkeyView", method = RequestMethod.GET)
-	public ModelAndView addHotkeyView(String resKey,String editType) {
+	@RequestMapping(value = "/addRostersView", method = RequestMethod.GET)
+	public ModelAndView addRostersView(String resKey,String editType) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/hotkey/hotkeyEdit");
+		model.setViewName("WEB-INF/jsp/rosters/rostersEdit");
 		return model;
 	}
 	
@@ -82,42 +82,42 @@ public class HotkeyController {
 	 * 打开编辑界面
 	 * @return
 	 */
-	@RequestMapping(value = "/editHotkeyView", method = RequestMethod.GET)
-	public ModelAndView editHotkeyView(String resKey,String editType,HotKeys hk) {
-		HotKeys a = hotkeyService.selectByExample(hk);
+	@RequestMapping(value = "/editRostersView", method = RequestMethod.GET)
+	public ModelAndView editRostersView(String resKey,String editType,Rosters rosters) {
+		Rosters r = rostersService.selectByExample(rosters);
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
-		model.addObject("hk",a);
+		model.addObject("rosters",r);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/hotkey/hotkeyEdit");
+		model.setViewName("WEB-INF/jsp/rosters/rostersEdit");
 		return model;
 	}
 	
 	/**
-	 * 保存分组信息
+	 * 保存信息
 	 * @param editType add:新增；edit:修改
 	 * @param account
 	 */
-	@RequestMapping(value = "/saveHotKey", method = RequestMethod.POST)
-	public void saveHotKey(String resKey,String editType,HotKeys hk,HttpServletResponse response){
-		ajaxObj = hotkeyService.saveHotkey(resKey,editType,hk);
+	@RequestMapping(value = "/saveRosters", method = RequestMethod.POST)
+	public void saveRosters(String resKey,String editType,Rosters rosters,HttpServletResponse response){
+		ajaxObj = rostersService.saveRosters(resKey,editType,rosters);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
 	
-	@RequestMapping(value = "/updateHotKey", method = RequestMethod.POST)
-	public void updateHotKey(String resKey,HotKeys hk,HttpServletResponse response){
-		ajaxObj = hotkeyService.updateHotkey(resKey,hk);
+	@RequestMapping(value = "/updateRosters", method = RequestMethod.POST)
+	public void updateRosters(String resKey,Rosters rosters,HttpServletResponse response){
+		ajaxObj = rostersService.updateRosters(resKey,rosters);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
 	
 	/**
-	 * 根据id删除group(包含多行删除)
+	 * 根据id删除(包含多行删除)
 	 */
-	@RequestMapping(value = "/deleteHotKeys", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteRosters", method = RequestMethod.POST)
 	public void deleteHotKeys(String resKey,String ids,HttpServletResponse response){
-		ajaxObj = this.hotkeyService.deleteHotKeys(resKey,ids);
+		ajaxObj = this.rostersService.deleteRosters(resKey,ids);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
