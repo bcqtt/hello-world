@@ -1,8 +1,11 @@
 package com.gionee.baserom.search.service.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -12,10 +15,13 @@ import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.dao.RostersMapper;
+import com.gionee.baserom.search.dao.VersionMapper;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Rosters;
 import com.gionee.baserom.search.pojo.RostersExample;
 import com.gionee.baserom.search.pojo.RostersExample.Criteria;
+import com.gionee.baserom.search.pojo.Version;
+import com.gionee.baserom.search.pojo.VersionExample;
 import com.gionee.baserom.search.service.IRostersService;
 
 @Service("rostersService")
@@ -25,6 +31,21 @@ public class RostersServiceImpl implements IRostersService {
 	
 	@Resource
 	private RostersMapper rostersMapper;
+	
+	@Resource
+	private VersionMapper versionMapper;
+	
+	/**
+	 * 根据usertype获取VersionExample
+	 * @return
+	 */
+	private VersionExample getVersionExample(String usertype){
+		VersionExample ve = new VersionExample();
+		com.gionee.baserom.search.pojo.VersionExample.Criteria vc = ve.createCriteria();
+		vc.andUsertypeEqualTo(usertype);
+		
+		return ve;
+	}
 
 	/**
 	 * 保存账信息
@@ -32,10 +53,20 @@ public class RostersServiceImpl implements IRostersService {
 	public DwzAjaxObject saveRosters(String resKey,String editType,Rosters rosters) {
 		int n=0;
 		if(editType.equals("add")){
+			int number = versionMapper.countByExample(getVersionExample(rosters.getUsertype()));
+			if(number==0){
+				Version v = new Version();
+				v.setUsertype(rosters.getUsertype());
+				v.setVersion(1);
+				versionMapper.insert(v);
+			}else{
+				versionMapper.versionIncrease(rosters.getUsertype());
+			}
 			n = rostersMapper.insert(rosters);
-			logger.info("保存自定义热词信息-->" + rosters.getPackagename());
+			logger.info("保存软件包信息-->" + rosters.getPackagename());
 		}else if(editType.equals("update")){
 			n = this.rostersMapper.updateByPrimaryKey(rosters);
+			versionMapper.versionIncrease(rosters.getUsertype());
 		}else{
 			ajaxObj = new DwzAjaxObject("300", "操作失败！");
 		}
@@ -93,8 +124,15 @@ public class RostersServiceImpl implements IRostersService {
 	public DwzAjaxObject deleteRosters(String resKey,String ids) {
 		String[] idArray = ids.split(",");
 		int n = 0;
+		Set<String> set = new HashSet<String>();
 		for(int i=0; i<idArray.length; i++ ){
-			n += this.rostersMapper.deleteByPrimaryKey(Integer.parseInt(idArray[i]));
+			int id = Integer.parseInt(idArray[i]);
+			Rosters r = this.rostersMapper.selectByPrimaryKey(id);
+			set.add(r.getUsertype());
+			n += this.rostersMapper.deleteByPrimaryKey(id);
+		}
+		for(Iterator it=set.iterator();it.hasNext();){
+			versionMapper.deleteByExample(getVersionExample(it.next().toString()));
 		}
 		if(n>0){
 			ajaxObj = new DwzAjaxObject("200", "操作成功！" ,resKey, "", "");
@@ -114,6 +152,12 @@ public class RostersServiceImpl implements IRostersService {
 			ajaxObj = new DwzAjaxObject("300", "操作失败！");
 		}
 		return ajaxObj;
+	}
+
+	@Override
+	public List<Rosters> getRosters(String u, int v) {
+		List<Rosters> list = this.rostersMapper.getRosters(u,v);
+		return list;
 	}
 
 }

@@ -101,4 +101,12 @@ public interface RostersMapper {
      *********************/
     
     List<Rosters> queryByPage(Map<String, Object> map);
+
+    /**
+	 * 根据用户类型和版本号查询Rosters
+	 * @param u
+	 * @param v
+	 * @return
+	 */
+    List<Rosters> getRosters(@Param(value = "u") String u, @Param(value = "v") int v);
 }

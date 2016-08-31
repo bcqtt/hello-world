@@ -11,6 +11,7 @@
     <result column="packagename" property="packagename" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
+  
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
@@ -260,4 +261,15 @@
   <select id="queryByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
       select * from rosters limit #{startIndex},#{numPerPage}
   </select>
+  
+  <select id="getRosters" parameterType="string" resultMap="BaseResultMap">
+      select r.id, r.usertype,r.packagename,r.status from rosters r 
+	left join version v on v.usertype = r.usertype
+	where v.usertype=#{u}
+	<if test="v != 0" >
+      and v.version = #{v}
+    </if>
+  </select>
+  
+  
 </mapper>

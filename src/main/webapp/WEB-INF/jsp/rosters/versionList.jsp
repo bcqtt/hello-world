@@ -16,7 +16,7 @@ function checkShowEnabled(obj){
 	}
 	var showFlag = $(obj).val();
 	var adId = $(obj).attr("adId");
-	ajaxTodo("rosters/updateRosters?id="+adId+"&resKey=${resKey}&showFlag=" + showFlag
+	ajaxTodo("version/updateVersion?id="+adId+"&resKey=${resKey}&showFlag=" + showFlag
 			,PublicUtils.ajaxTodoCallback());
 }
 </script>
@@ -29,9 +29,9 @@ function checkShowEnabled(obj){
 	<div class="panelBar">
 		<ul class="toolBar">
 			<%-- 
-			<li><a class="add" href="rosters/addRostersView?editType=add" target="dialog" width="720" height="340"><span>添加</span></a></li>
-			<li><a class="edit" href="rosters/editRostersView?editType=update&id={id_r}" target="dialog" warn="请选择一个热词记录!" width="720" height="340"><span>修改</span></a></li>
-			<li><a class="delete" href="rosters/deleteRosters?id={id_r}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
+			<li><a class="add" href="version/addVersionView?editType=add" target="dialog" width="720" height="340"><span>添加</span></a></li>
+			<li><a class="edit" href="version/editVersionView?editType=update&id={id_v}" target="dialog" warn="请选择一个热词记录!" width="720" height="340"><span>修改</span></a></li>
+			<li><a class="delete" href="version/deleteVersion?id={id_v}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
 			 --%>
 			 <c:forEach var="opt" items="${optList}">
 				<c:if test="${opt.type==3}">
@@ -53,17 +53,15 @@ function checkShowEnabled(obj){
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center" >用户类型</th>
-				<th align="center" >包名</th>
-				<th align="center">状态</th>
+				<th align="center" >版本号</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="r" items="${page.list}">
-			   <tr target="id_r" rel="${r.id}">
-				<td><input name="ids" value="${r.id}" type="checkbox"></td>
-				<td>${r.usertype}</td>
-				<td>${r.packagename}</td>
-				<td>${r.status}</td>
+			<c:forEach var="v" items="${page.list}">
+			   <tr target="id_v" rel="${v.id}">
+				<td><input name="ids" value="${v.id}" type="checkbox"></td>
+				<td>${v.usertype}</td>
+				<td>${v.version}</td>
 			  </tr>
 			</c:forEach>
 			

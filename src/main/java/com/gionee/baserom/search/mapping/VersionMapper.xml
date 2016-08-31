@@ -238,4 +238,15 @@
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <!-- start manual programing -->
+  
+  <select id="queryByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select * from version limit #{startIndex},#{numPerPage}
+  </select>
+  
+  <update id="versionIncrease" parameterType="string">
+      update version set version=version+1 where usertype=#{usertype}
+  </update>
+  
 </mapper>

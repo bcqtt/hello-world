@@ -3,6 +3,8 @@ package com.gionee.baserom.search.dao;
 import com.gionee.baserom.search.pojo.Version;
 import com.gionee.baserom.search.pojo.VersionExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface VersionMapper {
@@ -93,4 +95,16 @@ public interface VersionMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Version record);
+    
+    /*********************
+     * 以下为手动加入的方法
+     *********************/
+    
+    List<Version> queryByPage(Map<String, Object> map);
+
+    /**
+     * 版本号自加1
+     * @param usertype 
+     */
+	void versionIncrease(String usertype);
 }

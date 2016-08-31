@@ -1,5 +1,7 @@
 package com.gionee.baserom.search.service;
 
+import java.util.List;
+
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Rosters;
@@ -40,5 +42,13 @@ public interface IRostersService {
 	public DwzAjaxObject deleteRosters(String resKey,String ids);
 
 	public DwzAjaxObject updateRosters(String resKey,Rosters r);
+
+	/**
+	 * 根据用户类型和版本号查询Rosters
+	 * @param u
+	 * @param v
+	 * @return
+	 */
+	public List<Rosters> getRosters(String u, int v);
 
 }

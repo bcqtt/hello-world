@@ -17,20 +17,20 @@ import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Account;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
-import com.gionee.baserom.search.pojo.Rosters;
+import com.gionee.baserom.search.pojo.Version;
 import com.gionee.baserom.search.service.IResourcesService;
-import com.gionee.baserom.search.service.IRostersService;
+import com.gionee.baserom.search.service.IVersionService;
 import com.gionee.baserom.search.util.StringHelper;
 
 @Controller  
-@RequestMapping("rosters")
-public class RostersController {
-	protected static Logger logger = Logger.getLogger(RostersController.class);
+@RequestMapping("version")
+public class VersionController {
+	protected static Logger logger = Logger.getLogger(VersionController.class);
 	private String jsonResult = "";
 	private DwzAjaxObject ajaxObj = null;
 	
 	@Resource
-	private IRostersService rostersService;
+	private IVersionService versionService;
 	@Resource
 	private IResourcesService resourcesService;
 	
@@ -38,14 +38,14 @@ public class RostersController {
 	 * 查询并展示软件包信息列表界面
 	 * @return
 	 */
-	@RequestMapping(value = "/queryRostersPaper", method = RequestMethod.GET)
-	public ModelAndView queryRostersPaper(Page<Rosters> page,HttpServletRequest request) {
+	@RequestMapping(value = "/queryVersionPaper", method = RequestMethod.GET)
+	public ModelAndView queryVersionPaper(Page<Version> page,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
-		page = rostersService.queryPage(page);
+		page = versionService.queryPage(page);
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
@@ -60,8 +60,8 @@ public class RostersController {
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("WEB-INF/jsp/rosters/rostersList");
-		logger.info("--------->查看软件包列表。");
+		model.setViewName("WEB-INF/jsp/rosters/versionList");
+		logger.info("--------->查看版本信息列表。");
 		return model;
 	}
 	
@@ -69,12 +69,12 @@ public class RostersController {
 	 * 打开新增页面
 	 * @return
 	 */
-	@RequestMapping(value = "/addRostersView", method = RequestMethod.GET)
-	public ModelAndView addRostersView(String resKey,String editType) {
+	@RequestMapping(value = "/addVersionView", method = RequestMethod.GET)
+	public ModelAndView addVersionView(String resKey,String editType) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/rosters/rostersEdit");
+		model.setViewName("WEB-INF/jsp/rosters/versionEdit");
 		return model;
 	}
 	
@@ -82,14 +82,14 @@ public class RostersController {
 	 * 打开编辑界面
 	 * @return
 	 */
-	@RequestMapping(value = "/editRostersView", method = RequestMethod.GET)
-	public ModelAndView editRostersView(String resKey,String editType,Rosters rosters) {
-		Rosters r = rostersService.selectByExample(rosters);
+	@RequestMapping(value = "/editVersionView", method = RequestMethod.GET)
+	public ModelAndView editVersionView(String resKey,String editType,Version version) {
+		Version v = versionService.selectByExample(version);
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
-		model.addObject("rosters",r);
+		model.addObject("version",v);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/rosters/rostersEdit");
+		model.setViewName("WEB-INF/jsp/rosters/versionEdit");
 		return model;
 	}
 	
@@ -98,16 +98,16 @@ public class RostersController {
 	 * @param editType add:新增；edit:修改
 	 * @param account
 	 */
-	@RequestMapping(value = "/saveRosters", method = RequestMethod.POST)
-	public void saveRosters(String resKey,String editType,Rosters rosters,HttpServletResponse response){
-		ajaxObj = rostersService.saveRosters(resKey,editType,rosters);
+	@RequestMapping(value = "/saveVersion", method = RequestMethod.POST)
+	public void saveVersion(String resKey,String editType,Version version,HttpServletResponse response){
+		ajaxObj = versionService.saveVersion(resKey,editType,version);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
 	
-	@RequestMapping(value = "/updateRosters", method = RequestMethod.POST)
-	public void updateRosters(String resKey,Rosters rosters,HttpServletResponse response){
-		ajaxObj = rostersService.updateRosters(resKey,rosters);
+	@RequestMapping(value = "/updateVersion", method = RequestMethod.POST)
+	public void updateVersion(String resKey,Version version,HttpServletResponse response){
+		ajaxObj = versionService.updateVersion(resKey,version);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
@@ -115,9 +115,9 @@ public class RostersController {
 	/**
 	 * 根据id删除(包含多行删除)
 	 */
-	@RequestMapping(value = "/deleteRosters", method = RequestMethod.POST)
-	public void deleteRosters(String resKey,String ids,HttpServletResponse response){
-		ajaxObj = this.rostersService.deleteRosters(resKey,ids);
+	@RequestMapping(value = "/deleteVersion", method = RequestMethod.POST)
+	public void deleteVersion(String resKey,String ids,HttpServletResponse response){
+		ajaxObj = this.versionService.deleteVersion(resKey,ids);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
