@@ -18,8 +18,10 @@ import com.gionee.baserom.search.pojo.Account;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
 import com.gionee.baserom.search.pojo.Rosters;
+import com.gionee.baserom.search.pojo.Version;
 import com.gionee.baserom.search.service.IResourcesService;
 import com.gionee.baserom.search.service.IRostersService;
+import com.gionee.baserom.search.service.IVersionService;
 import com.gionee.baserom.search.util.StringHelper;
 
 @Controller  
@@ -32,6 +34,8 @@ public class RostersController {
 	@Resource
 	private IRostersService rostersService;
 	@Resource
+	private IVersionService versionService;
+	@Resource
 	private IResourcesService resourcesService;
 	
 	/**
@@ -42,10 +46,12 @@ public class RostersController {
 	public ModelAndView queryRostersPaper(Page<Rosters> page,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
+		String usertype = request.getParameter("usertype");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
-		page = rostersService.queryPage(page);
+		page = rostersService.queryPage(page,usertype);
+		List<Version> vlist = versionService.queryUsertypeList();
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
@@ -57,6 +63,8 @@ public class RostersController {
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));
 		Resources res = this.resourcesService.selectById(Integer.parseInt(resId));
 		model.addObject(page);
+		model.addObject("vlist",vlist);
+		model.addObject("selected_usertype",usertype);
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());

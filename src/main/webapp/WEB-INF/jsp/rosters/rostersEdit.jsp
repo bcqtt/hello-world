@@ -5,15 +5,15 @@
 	<form method="post" action="rosters/saveRosters?editType=${editType}&resKey=${resKey}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<div class="pageFormContent" layoutH="56">
 			<p>
-				<label>用户类型：</label>
-				<input name="usertype" class="required" type="text" size="44" style="width:230px;" value="${rosters.usertype}" />
+				<label>名单类型：</label>
+				<input name="usertype" class="required" type="text" size="44" style="width:230px;" value="${rosters.usertype}" <c:if test="${editType == 'update'}">disabled="disabled"</c:if> />
 			</p>
 			<p>
-				<label>包名：</label>
+				<label>名单：</label>
 				<input name="packagename" class="required" type="text" size="44" style="width:230px;" value="${rosters.packagename}" />
 			</p>
 			<p>
-				<label>状态：</label>
+				<label>状态值：</label>
 				<input name="status" type="text" size="44" style="width:230px;" value="${rosters.status}" />
 			</p>
 			<input type="hidden" name="id" value="${rosters.id}" />

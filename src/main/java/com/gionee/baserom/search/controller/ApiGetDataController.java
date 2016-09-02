@@ -27,7 +27,7 @@ public class ApiGetDataController {
 	@Resource
 	IRostersService rostersService;
 	
-	@RequestMapping(value="/usertype/{u}",method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/{u}",method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public void getRosters(@PathVariable String u, HttpServletResponse response){
 		List<Rosters> list = rostersService.getRosters(u,0);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -36,7 +36,7 @@ public class ApiGetDataController {
 		StringHelper.outputJsonString(jsonResult, response);
 	}
 	
-	@RequestMapping(value="/usertype/{u}/{v}",method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/{u}/{v}",method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public void getRosters(@PathVariable String u, @PathVariable int v,HttpServletResponse response){
 		List<Rosters> list = rostersService.getRosters(u,v);
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -116,4 +116,10 @@ public class VersionServiceImpl implements IVersionService {
 		return ajaxObj;
 	}
 
+	@Override
+	public List<Version> queryUsertypeList() {
+		List<Version> vlist = this.versionMapper.queryUsertypeList();
+		return vlist;
+	}
+
 }

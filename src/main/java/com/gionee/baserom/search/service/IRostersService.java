@@ -18,9 +18,10 @@ public interface IRostersService {
 	/**
 	 * 分页查询信息
 	 * @param page
+	 * @param usertype 
 	 * @return
 	 */
-	public Page<Rosters> queryPage(Page<Rosters> page);
+	public Page<Rosters> queryPage(Page<Rosters> page, String usertype);
 	
 	/**
 	 * 根据Example查询

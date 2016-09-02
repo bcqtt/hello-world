@@ -81,7 +81,7 @@ function updateType(obj){
 			</c:forEach>
 		</ul>
 	</div>
-	<table class="table" width="1200" layoutH="138">
+	<table class="table" width="1200" layoutH="110">
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>

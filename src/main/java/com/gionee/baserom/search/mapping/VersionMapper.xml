@@ -249,4 +249,8 @@
       update version set version=version+1 where usertype=#{usertype}
   </update>
   
+  <select id="queryUsertypeList" resultType="java.lang.String">
+      select distinct usertype from version
+  </select>
+  
 </mapper>

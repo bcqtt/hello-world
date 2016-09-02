@@ -107,4 +107,6 @@ public interface VersionMapper {
      * @param usertype 
      */
 	void versionIncrease(String usertype);
+
+	List<Version> queryUsertypeList();
 }

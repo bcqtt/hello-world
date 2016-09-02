@@ -1,5 +1,7 @@
 package com.gionee.baserom.search.service;
 
+import java.util.List;
+
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Version;
@@ -40,5 +42,11 @@ public interface IVersionService {
 	public DwzAjaxObject deleteVersion(String resKey,String ids);
 
 	public DwzAjaxObject updateVersion(String resKey,Version v);
+
+	/**
+	 * 查询全部名单类型
+	 * @return
+	 */
+	public List<Version> queryUsertypeList();
 
 }

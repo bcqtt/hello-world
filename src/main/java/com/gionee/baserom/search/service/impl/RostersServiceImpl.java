@@ -83,11 +83,18 @@ public class RostersServiceImpl implements IRostersService {
 	 * @param page
 	 * @return
 	 */
-	public Page<Rosters> queryPage(Page<Rosters> page) {
-		int totalCount = rostersMapper.countByExample(null);
+	public Page<Rosters> queryPage(Page<Rosters> page, String usertype) {
+		if(usertype==null || usertype.equals("")){
+			usertype = "-1";
+		}
+		RostersExample example = new RostersExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsertypeEqualTo(usertype);
+		int totalCount = rostersMapper.countByExample(usertype.equals("-1")?null:example);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("startIndex", page.getStartIndex());
 		map.put("numPerPage", page.getNumPerPage());
+		map.put("usertype", usertype);
 		List<Rosters> list = rostersMapper.queryByPage(map);
 		page.setTotalCount(totalCount);
 		page.setList(list);

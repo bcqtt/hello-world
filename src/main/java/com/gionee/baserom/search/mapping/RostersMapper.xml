@@ -259,7 +259,11 @@
   <!-- start manual programing -->
   
   <select id="queryByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
-      select * from rosters limit #{startIndex},#{numPerPage}
+      select * from rosters 
+      <if test="usertype != '-1' ">
+        where usertype = #{usertype} 
+      </if>
+      limit #{startIndex},#{numPerPage}
   </select>
   
   <select id="getRosters" parameterType="string" resultMap="BaseResultMap">

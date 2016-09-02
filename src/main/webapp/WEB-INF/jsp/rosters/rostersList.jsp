@@ -25,6 +25,29 @@ function checkShowEnabled(obj){
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
 </form>
 
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="${resAction}&numPerPage=${page.numPerPage}" method="get">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					选择名单类型：
+				</td>
+				<td>
+					<select id="selectUserType" name="usertype" class="combox" onchange="selectByType(this);" >
+						<option value="-1" selected="selected" >全部</option>
+						<c:forEach var="v" items="${vlist}">
+							<option value="${v}" <c:if test="${selected_usertype == v}">selected="selected"</c:if> >${v}</option>
+						</c:forEach>
+					</select>
+				</td>
+				<td><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
@@ -48,13 +71,13 @@ function checkShowEnabled(obj){
 			</c:forEach>
 		</ul>
 	</div>
-	<table class="table" width="1200" layoutH="75">
+	<table class="table" width="1200" layoutH="110">
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
-				<th align="center" >用户类型</th>
-				<th align="center" >包名</th>
-				<th align="center">状态</th>
+				<th align="center" >名单类型</th>
+				<th align="center" >名单</th>
+				<th align="center">状态值</th>
 			</tr>
 		</thead>
 		<tbody>
