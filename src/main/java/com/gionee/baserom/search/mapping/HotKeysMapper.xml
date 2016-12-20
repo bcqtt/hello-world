@@ -289,7 +289,7 @@
   <!-- start manual programing -->
   
   <select id="queryByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
-      select * from hot_keys where type=1 limit #{startIndex},#{numPerPage}
+      select * from hot_keys where type in (1,2) limit #{startIndex},#{numPerPage}
   </select>
   
   <select id="getAllHotKeys" resultMap="BaseResultMap">
@@ -299,6 +299,6 @@
   </select>
   
   <delete id="deleteAll">
-	delete from hot_keys where type!=1
+	delete from hot_keys where type=0
   </delete>
 </mapper>

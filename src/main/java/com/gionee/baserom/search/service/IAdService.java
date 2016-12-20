@@ -1,5 +1,7 @@
 package com.gionee.baserom.search.service;
 
+import java.util.List;
+
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.AdControl;
 import com.gionee.baserom.search.pojo.Page;
@@ -40,6 +42,12 @@ public interface IAdService {
 	public DwzAjaxObject deleteAds(String resKey,String ids);
 
 	public DwzAjaxObject updateAd(String resKey,AdControl ad);
+
+	/**
+	 * 查找正显示的广告位
+	 * @return
+	 */
+	public List<AdControl> queryAdControlOfShow();
 
 
 }

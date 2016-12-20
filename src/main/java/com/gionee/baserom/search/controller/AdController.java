@@ -51,7 +51,7 @@ public class AdController {
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
 		if(acc==null){
 			request.setAttribute("error","会话失效，重新登录。");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));
@@ -60,7 +60,7 @@ public class AdController {
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("WEB-INF/jsp/ad/adList");
+		model.setViewName("WEB-INF/jsp/ad/adControlList");
 		logger.info("--------->查看分组列表。");
 		return model;
 	}
@@ -74,7 +74,7 @@ public class AdController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/ad/adEdit");
+		model.setViewName("WEB-INF/jsp/ad/adControlEdit");
 		return model;
 	}
 	
@@ -89,7 +89,7 @@ public class AdController {
 		model.addObject("editType",editType);
 		model.addObject("ad",a);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/ad/adEdit");
+		model.setViewName("WEB-INF/jsp/ad/adControlEdit");
 		return model;
 	}
 	
@@ -121,4 +121,5 @@ public class AdController {
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
+	
 }

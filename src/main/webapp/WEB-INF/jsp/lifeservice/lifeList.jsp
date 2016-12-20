@@ -57,7 +57,7 @@ function checkShowEnabled(obj){
 				<th align="center">图片</th>
 				<th align="center">排序号</th>
 				<th align="center">显示</th>
-				<th>URL</th>
+				<th style="word-break: break-all;">URL</th>
 				<th>广告语</th>
 			</tr>
 		</thead>

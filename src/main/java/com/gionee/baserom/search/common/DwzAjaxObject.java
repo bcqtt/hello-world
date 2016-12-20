@@ -22,6 +22,11 @@ public class DwzAjaxObject {
 	private String navTabId;
 	
 	/**
+	 * 需要刷新的DIV的ID
+	 */
+	private String rel;
+	
+	/**
 	 * 不需要时，值使用空字符串
 	 * closeCurrent：关闭当前tab
 	 * forward：使用forward时需要配置forwardUrl
@@ -34,6 +39,7 @@ public class DwzAjaxObject {
 	 */
 	private String forwardUrl;
 	
+	public DwzAjaxObject(){}
 	
 	/**
 	 * 操作成功,需要返回200时使用
@@ -46,6 +52,17 @@ public class DwzAjaxObject {
 		this.navTabId = navTabId;
 		this.callbackType = callbackType;
 		this.forwardUrl = forwardUrl;
+	}
+	
+	public static DwzAjaxObject getAjaxResult(String statusCode,String message,String rel,
+			String callbackType,String forwardUrl){
+		DwzAjaxObject dao = new DwzAjaxObject();
+		dao.setStatusCode(statusCode);
+		dao.setMessage(message);
+		dao.setRel(rel);
+		dao.setCallbackType(callbackType);
+		dao.setForwardUrl(forwardUrl);
+		return dao;
 	}
 	
 	/**
@@ -86,6 +103,14 @@ public class DwzAjaxObject {
 	}
 	public void setForwardUrl(String forwardUrl) {
 		this.forwardUrl = forwardUrl;
+	}
+
+	public String getRel() {
+		return rel;
+	}
+
+	public void setRel(String rel) {
+		this.rel = rel;
 	}
 	
 }

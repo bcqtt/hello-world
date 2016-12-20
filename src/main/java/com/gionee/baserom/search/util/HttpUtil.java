@@ -9,7 +9,11 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class HttpUtil {
+	private final static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
     /**
      * 使用Get方式获取数据
@@ -37,6 +41,8 @@ public class HttpUtil {
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            connection.setReadTimeout(10000);
+            connection.setConnectTimeout(10000);
             // 建立实际的连接
             connection.connect();
             // 定义 BufferedReader输入流来读取URL的响应
@@ -46,8 +52,14 @@ public class HttpUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
-            e.printStackTrace();
+        	//日志中记录异常信息
+        	StringBuffer sb = new StringBuffer();  
+            StackTraceElement[] stackArray = e.getStackTrace();  
+            for (int i = 0; i < stackArray.length; i++) {  
+                StackTraceElement element = stackArray[i];  
+                sb.append(element.toString() + "\n");  
+            }  
+        	logger.error("发送GET请求出现异常！" + e.getMessage() + "\n" + sb.toString());
             result = "";
         }
         // 使用finally块来关闭输入流

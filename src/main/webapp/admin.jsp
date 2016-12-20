@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>全局搜索配置系统</title>
 <link rel="shortcut icon" href="framework/images/favicon.ico" type="image/x-icon" />
-<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/azure/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="framework/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
 <!--[if IE]>
@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.regional.zh.js" type="text/javascript"></script>
 <link rel="stylesheet" href="framework/zTreeV3/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <script type="text/javascript" src="framework/zTreeV3/js/jquery.ztree.all.js" ></script>
+<script src="framework/layer/layer.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(function(){

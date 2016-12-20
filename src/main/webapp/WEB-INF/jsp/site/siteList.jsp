@@ -81,16 +81,16 @@ function updateType(obj){
 			</c:forEach>
 		</ul>
 	</div>
-	<table class="table" width="1200" layoutH="110">
+	<table class="table" style="width:100%;" layoutH="110">
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
-				<th align="center">名称</th>
-				<th align="center">Logo</th>
-				<th align="center">排序号</th>
-				<th align="center">显示</th>
-				<th align="center">类型</th>
-				<th>URL</th>
+				<th align="center" width="80" >名称</th>
+				<th align="center" width="80" >Logo</th>
+				<th align="center" width="50">排序号</th>
+				<th align="center" width="50">显示</th>
+				<th align="center" width="80">类型</th>
+				<th width="280">URL</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -113,7 +113,7 @@ function updateType(obj){
 					 <c:if test="${site.type == 0}">常规网址</c:if>
 					 <c:if test="${site.type == 1}">桌面widget网址</c:if>
    				</td>
-				<td>${site.siteUrl}</td>
+				<td style="word-break: break-all;">${site.siteUrl}</td>
 			  </tr>
 			</c:forEach>
 			

@@ -31,7 +31,7 @@ public class GioneeAuthenticationFilter extends
 	/**
 	 * 登录失败后跳转的地址
 	 */
-	private String errorUrl = "/login.jsp";
+	private String errorUrl = "/login2.jsp";
 	@Autowired
 	private AccountMapper accountMapper;
 	

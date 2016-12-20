@@ -23,7 +23,7 @@
     					
     <sqlMapGenerator targetPackage="com.gionee.baserom.search.mapping" 
     				 targetProject="search/src/main/java"  >
-    	<property name="enableSubPackages" value="true"/>				 
+    	<property name="enableSubPackages" value="true"/> 
 	</sqlMapGenerator>
     				 
     <javaClientGenerator targetPackage="com.gionee.baserom.search.dao" 
@@ -44,7 +44,11 @@
     <table schema="search" tableName="resources_role" domainObjectName="ResourcesRole"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="role" domainObjectName="Role"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="site_navigation" domainObjectName="SiteNavigation"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="sys_dictionary_classify" domainObjectName="SysDictionaryClassify"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="sys_dictionary" domainObjectName="SysDictionary"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="ad_classify" domainObjectName="AdClassify"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="ad_display_rule" domainObjectName="AdDisplayRule"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
      -->
-    <table schema="search" tableName="rosters" domainObjectName="Rosters"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="ad_info" domainObjectName="AdInfo"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
   </context>
 </generatorConfiguration>

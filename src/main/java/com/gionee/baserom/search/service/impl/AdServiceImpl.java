@@ -116,4 +116,12 @@ public class AdServiceImpl implements IAdService {
 		return ajaxObj;
 	}
 
+	@Override
+	public List<AdControl> queryAdControlOfShow() {
+		AdControlExample example = new AdControlExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andShowFlagEqualTo(1);
+		return this.adMapper.selectByExample(example);
+	}
+
 }

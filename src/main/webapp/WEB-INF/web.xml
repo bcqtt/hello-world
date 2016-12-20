@@ -11,6 +11,15 @@
 		<param-value>classpath:spring-config.xml,classpath:quartzJob.xml</param-value>
 	</context-param>
 	
+	<!-- 项目根路径 ,类中这样获取：System.getProperty("searchWeb.root")-->
+	<context-param>  
+        <param-name>webAppRootKey</param-name>   
+        <param-value>searchWeb.root</param-value>
+    </context-param>  
+    <listener>   
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>   
+    </listener>
+	
 	<!-- 使用Spring中的过滤器解决在请求和应答中的中文乱码问题 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -49,17 +58,30 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
+		<multipart-config>  
+            <max-file-size>5242880</max-file-size><!--5MB-->
+	        <max-request-size>20971520</max-request-size><!--20MB-->
+	        <file-size-threshold>0</file-size-threshold>
+        </multipart-config>  
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<filter>
+	    <filter-name>MultipartFilter</filter-name>
+	    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+	</filter>
 	<!-- 配置 spring security -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+    <filter-mapping>
+	    <filter-name>MultipartFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
     <!-- 拦截所有请求 -->
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -78,7 +100,7 @@
     
 	<!-- 设置欢迎页 -->
 	<welcome-file-list>
-		<welcome-file>/login.jsp</welcome-file>
+		<welcome-file>/login2.jsp</welcome-file>
 	</welcome-file-list>
 	<session-config>
 		<session-timeout>30</session-timeout>

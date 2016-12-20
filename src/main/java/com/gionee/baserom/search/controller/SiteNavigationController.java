@@ -47,13 +47,14 @@ public class SiteNavigationController {
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
+		page.setNumPerPage(20);
 		page = siteNavigationService.queryPage(page,type);
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
 		if(acc==null){
 			request.setAttribute("error","会话失效，重新登录。");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));

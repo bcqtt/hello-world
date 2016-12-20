@@ -56,6 +56,7 @@ function checkShowEnabled(obj){
 				<th align="center" width="50">排序</th>
 				<th align="center" width="800">链接</th>
 				<th align="center">状态</th>
+				<th align="center">用处</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -64,10 +65,14 @@ function checkShowEnabled(obj){
 				<td><input name="ids" value="${hk.id}" type="checkbox"></td>
 				<td>${hk.hotKey}</td>
 				<td>${hk.sortId}</td>
-				<td>${hk.url}</td>
+				<td style="word-break: break-all;">${hk.url}</td>
 				<td>
 					<c:if test="${hk.stats == 1}"><span style="color:red;">NEW</span></c:if>
 					<c:if test="${hk.stats == 0}"><span style="color:#777777;">NOT NEW</span></c:if>
+				</td>
+				<td>
+					<c:if test="${hk.type == 1}"><span style="color:#0000FF;">搜索框下</span></c:if>
+					<c:if test="${hk.type == 2}"><span style="color:#990066;">大家都在搜</span></c:if>
 				</td>
 			  </tr>
 			</c:forEach>

@@ -41,7 +41,7 @@ public class LoginController {
 	@RequestMapping(value = "/goToLogin", method = RequestMethod.GET)
 	 public ModelAndView goToLogin() {
 	 	 ModelAndView model = new ModelAndView();
-	     model.setViewName("login");
+	     model.setViewName("login2");
 	     logger.info("Go to Login!");
 	     return model;
 	 }
@@ -57,17 +57,17 @@ public class LoginController {
 		String randCode = request.getParameter("randCode");
 		if(rand==null ||randCode==null){
 			request.setAttribute("error","请登录。");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		if (StringHelper.isEmpty(account.getAccountName()) || StringHelper.isEmpty(account.getPassword())) {
 			request.setAttribute("error","账号或密码不能为空！");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		if(!rand.toLowerCase().equals(randCode.toLowerCase())){
 			request.setAttribute("error","验证码不对！");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		
@@ -81,7 +81,7 @@ public class LoginController {
 		Account acc = this.accountService.selectByExample(account);
 		if (acc == null || !acc.getPassword().equals(password)) {
 			request.setAttribute("error", "密码不正确！");
-			model.setViewName("login");
+			model.setViewName("login2");
 			return model;
 		}
 		
@@ -99,7 +99,7 @@ public class LoginController {
 			this.accountService.updateById(acc);
 		} catch (AuthenticationException e) {
 			request.setAttribute("error", "登录异常，请联系管理员。");
-			model.setViewName("login");
+			model.setViewName("login2");
 			e.printStackTrace();
 			return model;
 		}

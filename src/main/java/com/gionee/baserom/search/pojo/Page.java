@@ -21,7 +21,7 @@ public class Page<T> {
 	private int totalCount;
 	
 	/** 每页记录条数 **/
-	private int numPerPage=10;
+	private int numPerPage=20;
 	
 	/** 页标数字多少个 **/
 	private int pageNumShown;

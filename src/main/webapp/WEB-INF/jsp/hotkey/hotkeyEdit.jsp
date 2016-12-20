@@ -19,8 +19,15 @@
 			<dl class="nowrap">
 				<dt>状态：</dt>
 				<dd>
-					<label><input id="model" type="radio" readonly="readonly" name="stats" value="1" ${hk.type == 1?"checked":""}/>NEW</label>
-					<label><input id="menu" type="radio" readonly="readonly" name="stats" value="0" ${hk.type == 0?"checked":""}/>NOT NEW</label>
+					<label><input type="radio" readonly="readonly" name="stats" value="1" ${hk.stats == 1?"checked":""}/>NEW</label>
+					<label><input type="radio" readonly="readonly" name="stats" value="0" ${hk.stats == 0?"checked":""}/>NOT NEW</label>
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>用处：</dt>
+				<dd>
+					<label><input type="radio" readonly="readonly" name="type" value="1" ${hk.type == 1?"checked":""}/>搜索框下</label>
+					<label><input type="radio" readonly="readonly" name="type" value="2" ${hk.type == 2?"checked":""}/>大家都在搜</label>
 				</dd>
 			</dl>
 			<input type="hidden" name="id" value="${hk.id}" />

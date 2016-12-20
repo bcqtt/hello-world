@@ -26,7 +26,7 @@ function checkShowEnabled(obj){
 		<ul class="toolBar">
 			<%--
 			<li><a class="add" href="card/addCardView?editType=add" target="dialog"><span>添加</span></a></li>
-			<li><a class="edit" href="card/editCardView?editType=update&id={id_card}" target="dialog" warn="请选择一个用户!"><span>修改</span></a></li>
+			<li><a class="edit" href="card/editCardView?editType=update&id={id_card}" target="dialog" warn="请选择一个记录!"><span>修改</span></a></li>
 			<li><a class="delete" href="card/deleteCards?id={id_card}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
 			 --%>
 			<c:forEach var="opt" items="${optList}">

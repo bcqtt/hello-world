@@ -42,7 +42,7 @@ public class UserController {
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
-		model.setViewName("login");
+		model.setViewName("login2");
 		return model;
    }  
 

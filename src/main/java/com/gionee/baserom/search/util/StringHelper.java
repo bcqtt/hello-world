@@ -8,6 +8,9 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
@@ -49,6 +52,16 @@ public class StringHelper {
 	}
 	
 	/**
+	 * 日期类型转格式化字符串：yyyy-MM-dd HH:mm:ss
+	 * @param date
+	 * @return
+	 */
+	public static String dateToString(Date date){
+		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+		return sdf.format(date);  
+	}
+	
+	/**
 	 * 字符串转日期
 	 */
 	public static Date strToDate(String str){
@@ -61,6 +74,31 @@ public class StringHelper {
 		}
 		return date;
 	}
+	/**
+	 * 字符串转日期
+	 * 字符串格式为yyyy-MM-dd HH:mm:ss
+	 */
+	public static Date strToDate2(String str){
+		SimpleDateFormat sdf1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		Date date = null;
+		try {
+			date = sdf1.parse(str);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	
+	/**
+	 * 获取 年-月-日 格式的字符串
+	 */
+	public static String getYMD(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String formatDate = sdf.format(date);
+		return formatDate;
+	}
 	
 	/**
 	 * 输出JSON结果到页面，提供给Ajax毁掉函数调用于提示信息
@@ -71,7 +109,7 @@ public class StringHelper {
 		response.setCharacterEncoding("UTF-8");  
 	    response.setContentType("application/json; charset=utf-8");  
 	    PrintWriter out = null;  
-	   try {
+	    try {
 		   out = response.getWriter();  
 	       out.append(str);
 	       log.debug("输出JSON-->" + str);  
@@ -112,13 +150,35 @@ public class StringHelper {
 		return t;
 	}
 	
+	/**
+	 * 字符串列表去重复
+	 * @param strlist
+	 * @return
+	 */
+	public static List<String> filtrationDuplicate(List<String> list){
+//		for (int i = 0; i < list.size() - 1; i++) {
+//			for (int j = list.size() - 1; j > i; j--) {
+//				if (list.get(j).equals(list.get(i))) {
+//					list.remove(j);
+//				}
+//			}
+//		}
+		HashSet h = new HashSet(list);   
+		list.clear();   
+		list.addAll(h);   
+		return list;   
+	}
+
+	
 	public static void main(String[] args){
-		String str = StringHelper.md5("123456");
-		System.out.println("MD5密码："+str);
-		System.out.println("当前日期："+StringHelper.getCurrentDatetime());
+//		String str = StringHelper.md5("123456");
+//		System.out.println("MD5密码："+str);
+//		System.out.println("当前日期："+StringHelper.getCurrentDatetime());
+//		
+//		str = "Tue May 10 13:44:41 CST 2016";
+//		Date date = StringHelper.strToDate(str);
+//		System.out.println(date);
 		
-		str = "Tue May 10 13:44:41 CST 2016";
-		Date date = StringHelper.strToDate(str);
-		System.out.println(date);
+		System.out.println(getYMD());
 	}
 }

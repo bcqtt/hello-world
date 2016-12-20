@@ -1,5 +1,6 @@
 package com.gionee.baserom.search.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,6 @@ public class HotkeyServiceImpl implements IHotkeyService {
 	 */
 	public DwzAjaxObject saveHotkey(String resKey,String editType,HotKeys hk) {
 		int n=0;
-		hk.setType(1);
 		if(editType.equals("add")){
 			n = hotkeyMapper.insert(hk);
 			logger.info("保存自定义热词信息-->" + hk.getHotKey());
@@ -56,7 +56,10 @@ public class HotkeyServiceImpl implements IHotkeyService {
 	public Page<HotKeys> queryPage(Page<HotKeys> page) {
 		HotKeysExample example = new HotKeysExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andTypeEqualTo(1);
+		List<Integer> typeList = new ArrayList<Integer>();
+		typeList.add(1);
+		typeList.add(2);
+		criteria.andTypeIn(typeList);
 		int totalCount = hotkeyMapper.countByExample(example);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("startIndex", page.getStartIndex());
