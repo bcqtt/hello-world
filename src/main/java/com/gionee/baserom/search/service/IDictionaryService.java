@@ -92,15 +92,17 @@ public interface IDictionaryService {
 	 * 获取版本字典
 	 * @return
 	 */
-	public Map<String, List<SysDictionary>> getDic();
+	public Map<String, Object> getVersionAndDic();
 
 	/**
 	 * 根据字典id查询字典列表
 	 * @param version
 	 * @return
 	 */
-	public Map<String, List<SysDictionary>> getDictionaryByIds(String version, String mechineType);
+	public Map<String, Object> getDataByIds(String version, String mechineType);
 
 	public List<SysDictionary> getDictionaryOfAdType();
+
+	public List<SysDictionary> getDictionaryByClsRef(String target);
 
 }

@@ -1,13 +1,8 @@
 package com.gionee.baserom.search.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +29,6 @@ import com.gionee.baserom.search.pojo.AdInfo;
 import com.gionee.baserom.search.pojo.AdKeyword;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
-import com.gionee.baserom.search.pojo.SysDictionary;
 import com.gionee.baserom.search.service.IAdBehaviorService;
 import com.gionee.baserom.search.service.IAdBehaviorTodoService;
 import com.gionee.baserom.search.service.IAdClassifyService;
@@ -46,7 +40,6 @@ import com.gionee.baserom.search.service.IResourcesService;
 import com.gionee.baserom.search.util.StringHelper;
 
 import jxl.read.biff.BiffException;
-import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
 @Controller  
@@ -167,38 +160,15 @@ public class AdInfoController {
 		String path = request.getContextPath();
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";;
 		String filepath = adInfoService.exportAdInfo(ai,resKey,basePath);
-		download(filepath, response);
-
+		
+        File file = new File(filepath);  
+        String filename = file.getName();
+        String fileHttpPath = "templet/" + filename;
+        Map<String,Object> map =new HashMap<String, Object>();
+        map.put("filePath", fileHttpPath);
+        jsonResult = JSONObject.toJSONString(map);
+		StringHelper.outputJsonString(jsonResult, response);
 	}
-	
-	private void download(String path, HttpServletResponse response) {  
-        try {  
-            // path是指下载的文件的路径。  
-            File file = new File(path);  
-            // 取得文件名。  
-            String filename = file.getName();  
-            // 以流的形式下载文件。  
-            InputStream fis = new BufferedInputStream(new FileInputStream(path));  
-            byte[] buffer = new byte[fis.available()];  
-            fis.read(buffer);  
-            fis.close();  
-            
-            // 清空response  
-            //response.reset();  
-            // 设置response的Header  
-            response.setHeader("Content-Disposition", "attachment;filename="+ new String(filename.getBytes()));  
-            response.setHeader("Content-Length", "" + file.length());  
-            response.setContentType("application/x-msdownload;charset=utf-8");  
-            
-            OutputStream bos = new BufferedOutputStream(response.getOutputStream());  
-            bos.write(buffer);
-            
-            bos.flush();  
-            bos.close();  
-        } catch (IOException ex) {  
-            ex.printStackTrace();  
-        }  
-    }  
 	
 	/**
 	 * 打开新增页面
@@ -232,7 +202,7 @@ public class AdInfoController {
 		
 		AdInfo c = adInfoService.selectByExample(ai);
 		List<AdKeyword> keywordList = adKeywordService.getSelectedKeyword(c.getKeyword()!=null?c.getKeyword().split(","):new String[0]);
-		Map<String ,List<SysDictionary>> dicmap = dictionaryService.getDictionaryByIds(c.getVersion(),c.getMechineType());
+		Map<String ,Object> dicmap = dictionaryService.getDataByIds(c.getVersion(),c.getMechineType());
 		AdBehaviorTodo abt = adBehaviorTodoService.selectByExample(ai);
 		ModelAndView model = new ModelAndView();
 		model.addObject("abt",abt);
@@ -328,7 +298,7 @@ public class AdInfoController {
 	
 	@RequestMapping(value = "/selectWindow", method = RequestMethod.GET)
 	public ModelAndView selectWindow(HttpServletRequest request,String dickey,String optid) {
-		Map<String,List<SysDictionary>> dicmap = dictionaryService.getDic();
+		Map<String,Object> dicmap = dictionaryService.getVersionAndDic();
 		ModelAndView model = new ModelAndView();
 		if(dickey.equals("version")){
 			model.addObject("dics", dicmap.get("version"));

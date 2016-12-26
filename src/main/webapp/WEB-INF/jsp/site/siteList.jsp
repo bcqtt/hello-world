@@ -113,7 +113,7 @@ function updateType(obj){
 					 <c:if test="${site.type == 0}">常规网址</c:if>
 					 <c:if test="${site.type == 1}">桌面widget网址</c:if>
    				</td>
-				<td style="word-break: break-all;">${site.siteUrl}</td>
+				<td style="word-break: break-all;"><a href="${site.siteUrl}" target="_blank">${site.siteUrl}</td>
 			  </tr>
 			</c:forEach>
 			

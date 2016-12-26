@@ -18,6 +18,7 @@ import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.dao.AdBehaviorTodoMapper;
 import com.gionee.baserom.search.dao.AdInfoMapper;
 import com.gionee.baserom.search.dao.AdKeywordMapper;
+import com.gionee.baserom.search.dao.AppVersionMapper;
 import com.gionee.baserom.search.dao.SysDictionaryMapper;
 import com.gionee.baserom.search.pojo.AdBehaviorTodo;
 import com.gionee.baserom.search.pojo.AdBehaviorTodoExample;
@@ -25,6 +26,7 @@ import com.gionee.baserom.search.pojo.AdInfo;
 import com.gionee.baserom.search.pojo.AdInfoExample;
 import com.gionee.baserom.search.pojo.AdInfoExample.Criteria;
 import com.gionee.baserom.search.pojo.AdKeyword;
+import com.gionee.baserom.search.pojo.AppVersion;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.SysDictionary;
 import com.gionee.baserom.search.service.IAdInfoService;
@@ -58,6 +60,9 @@ public class AdInfoServiceImpl implements IAdInfoService {
 	private AdKeywordMapper adKeywordMapper;
 	@Resource
 	private SysDictionaryMapper sysDictionaryMapper;
+	
+	@Resource
+	private AppVersionMapper appVersionMapper;
 	
 	@Resource
 	private AdBehaviorTodoMapper adBehaviorTodoMapper;
@@ -259,15 +264,17 @@ public class AdInfoServiceImpl implements IAdInfoService {
         			dicStr += dicList.get(n).getDicValue() + ",";
         		}
         	}
-        	List<SysDictionary> dicList2 = sysDictionaryMapper.queryByDicKeyVersion();
-        	Label label10 = new Label( 10 , 2+i , dicStr,wcf2);
         	
+        	Map<String, Object> argsmap = new HashMap<String, Object>();
+        	argsmap.put("ids", ad.getVersion().split(","));
+        	List<AppVersion> dicList2 = appVersionMapper.selectByIds(argsmap);
+        	Label label10 = new Label( 10 , 2+i , dicStr,wcf2);
         	dicStr = "";
         	for(int m=0; m < dicList2.size(); m++){
         		if(m == dicList2.size()-1){
-        			dicStr += dicList2.get(m).getDicValue();
+        			dicStr += dicList2.get(m).getVersion();
         		}else{
-        			dicStr += dicList2.get(m).getDicValue() + ",";
+        			dicStr += dicList2.get(m).getVersion() + "/";
         		}
         	}
         	Label label11 = new Label( 11 , 2+i , dicStr,wcf2);

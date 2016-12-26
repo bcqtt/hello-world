@@ -92,9 +92,14 @@ $(document).ready(function(){
 <div class="pageContent">
 	<div layoutH="40" style="width:100%;height:100%">
 		<select name="searchable[]" id='searchable' multiple='multiple' >
-			<c:forEach var="dic" items="${dics}">
-				<option value="${dic.id}-${dic.dicValue}" <c:if test="${fn:contains(optids,dic.dicValue)}">SELECTED</c:if> >${dic.dicValue}</option>
-			</c:forEach>
+				<c:forEach var="dic" items="${dics}">
+					<c:if test="${dickey == 'version'}">
+						<option value="${dic.id}-${dic.version}" <c:if test="${fn:contains(optids,dic.version)}">SELECTED</c:if> >${dic.version}</option>
+					</c:if>
+					<c:if test="${dickey == 'mechineType'}">
+						<option value="${dic.id}-${dic.dicValue}" <c:if test="${fn:contains(optids,dic.dicValue)}">SELECTED</c:if> >${dic.dicValue}</option>
+					</c:if>
+				</c:forEach>
 		</select>
 	</div>
 	

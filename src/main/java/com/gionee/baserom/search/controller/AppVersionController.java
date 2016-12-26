@@ -15,22 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.gionee.baserom.search.common.DwzAjaxObject;
 import com.gionee.baserom.search.pojo.Account;
-import com.gionee.baserom.search.pojo.AppUri;
+import com.gionee.baserom.search.pojo.AppVersion;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
-import com.gionee.baserom.search.service.IAppUriService;
+import com.gionee.baserom.search.service.IAppVersionService;
 import com.gionee.baserom.search.service.IResourcesService;
 import com.gionee.baserom.search.util.StringHelper;
 
 @Controller  
-@RequestMapping("uri")
-public class AppUriController {
-	protected static Logger logger = Logger.getLogger(AppUriController.class);
+@RequestMapping("appVersion")
+public class AppVersionController {
+	protected static Logger logger = Logger.getLogger(AppVersionController.class);
 	private String jsonResult = "";
 	private DwzAjaxObject ajaxObj = null;
 	
 	@Resource
-	private IAppUriService uriService;
+	private IAppVersionService appVersionService;
 	@Resource
 	private IResourcesService resourcesService;
 	
@@ -38,14 +38,14 @@ public class AppUriController {
 	 * 查询并展示账号信息列表界面
 	 * @return
 	 */
-	@RequestMapping(value = "/queryUriPaper", method = RequestMethod.GET)
-	public ModelAndView queryUriPaper(Page<AppUri> page,HttpServletRequest request) {
+	@RequestMapping(value = "/queryAppVersionPaper", method = RequestMethod.GET)
+	public ModelAndView queryCardPaper(Page<AppVersion> page,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
-		page = uriService.queryPage(page);
+		page = appVersionService.queryPage(page);
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
 		if(acc==null){
@@ -59,7 +59,7 @@ public class AppUriController {
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("WEB-INF/jsp/app/uriList");
+		model.setViewName("WEB-INF/jsp/app/appVersionList");
 		logger.info("--------->查看分组列表。");
 		return model;
 	}
@@ -68,12 +68,12 @@ public class AppUriController {
 	 * 打开新增页面
 	 * @return
 	 */
-	@RequestMapping(value = "/addUriView", method = RequestMethod.GET)
-	public ModelAndView addUriView(String resKey,String editType) {
+	@RequestMapping(value = "/addAppVersionView", method = RequestMethod.GET)
+	public ModelAndView addAppVersionView(String resKey,String editType) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/app/uriEdit");
+		model.setViewName("WEB-INF/jsp/app/appVersionEdit");
 		return model;
 	}
 	
@@ -81,35 +81,36 @@ public class AppUriController {
 	 * 打开编辑界面
 	 * @return
 	 */
-	@RequestMapping(value = "/editUriView", method = RequestMethod.GET)
-	public ModelAndView editUriView(String resKey,String editType,AppUri appuri) {
-		AppUri uri = uriService.selectByExample(appuri);
+	@RequestMapping(value = "/editAppVersionView", method = RequestMethod.GET)
+	public ModelAndView editAppVersionView(String resKey,String editType,AppVersion version) {
+		AppVersion v = appVersionService.selectByExample(version);
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
-		model.addObject("uri",uri);
+		model.addObject("version",v);
 		model.addObject("resKey",resKey);
-		model.setViewName("WEB-INF/jsp/app/uriEdit");
+		model.setViewName("WEB-INF/jsp/app/appVersionEdit");
 		return model;
 	}
 	
 	/**
-	 * 保存信息
+	 * 保存分组信息
 	 * @param editType add:新增；edit:修改
 	 * @param account
 	 */
-	@RequestMapping(value = "/saveUri", method = RequestMethod.POST)
-	public void saveUri(String resKey,String editType,AppUri card,HttpServletResponse response){
-		ajaxObj = uriService.saveUri(resKey,editType,card);
+	@RequestMapping(value = "/saveAppVersion", method = RequestMethod.POST)
+	public void saveAppVersion(String resKey,String editType,AppVersion version,HttpServletResponse response){
+		ajaxObj = appVersionService.saveAppVersion(resKey,editType,version);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}
+
 	
 	/**
-	 * 根据id删除(包含多行删除)
+	 * 根据id删除
 	 */
-	@RequestMapping(value = "/deleteUris")
-	public void deleteUris(String resKey,String ids,HttpServletResponse response){
-		ajaxObj = this.uriService.deleteUris(resKey,ids);
+	@RequestMapping(value = "/deleteAppVersion")
+	public void deleteAppVersion(String resKey,String ids,HttpServletResponse response){
+		ajaxObj = this.appVersionService.deleteAppVersion(resKey,ids);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);
 	}

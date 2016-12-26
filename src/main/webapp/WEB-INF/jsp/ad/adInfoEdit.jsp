@@ -150,7 +150,7 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 						<label class="attr-label">版本：</label>
 						<div id="selectedVersionDiv">
 							<c:forEach var="v" items="${dicmap.version}">
-								<div class="tagLabel" optid="${v.dicValue}">${v.dicValue}</div>
+								<div class="tagLabel" optid="${v.version}">${v.version}</div>
 							</c:forEach>
 						</div>
 						<input name="version" type="hidden" value="${ai.version}"/>
@@ -184,7 +184,7 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 					<td width="120" height="30">广告标题：</td width="30%"><td><div id="preview_adtittle"></div></td>
 					<td colspan="2" rowspan="9" width="30%">
 						<c:if test="${ai.adImagePath != null}">
-							<a href="<%=path %>/${ai.adImagePath}"><img src="<%=path %>/${ai.adImagePath}" style="width:300px;float:right;margin-right:80px;"/></a>
+							<a href="<%=path %>/${ai.adImagePath}" target="_blank"><img src="<%=path %>/${ai.adImagePath}" style="width:300px;float:right;margin-right:80px;"/></a>
 						</c:if>
 					</td>
 				</tr>

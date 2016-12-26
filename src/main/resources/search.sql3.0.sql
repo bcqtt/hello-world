@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`, `email`, `type`, `description`, `group_id`, `create_time`, `last_login_time`) VALUES
 	(1, 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'abc@123.com', NULL, NULL, 1, '2016-05-09 18:14:25', '2016-04-18 17:08:13'),
-	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '18218089328', 'laizhiwen@ginoee.com', NULL, NULL, 1, NULL, '2016-12-20 16:34:50'),
+	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '18218089328', 'laizhiwen@ginoee.com', NULL, NULL, 1, NULL, '2016-12-26 09:39:39'),
 	(35, 'lzw', '赖志文', '4607e782c4d86fd5364d7e4508bb10d9', '12345678910', 'lzw@ginoee.com', NULL, NULL, 1, '2016-05-09 18:14:30', '2016-05-10 13:44:41'),
 	(41, 'liuyb', '刘艳波', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, NULL, 1, '2016-04-18 17:09:22', '2016-05-10 11:52:20');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `ad_behavior` (
   `behavior` varchar(50) DEFAULT NULL,
   `is_download_app` int(10) unsigned DEFAULT NULL COMMENT '0:不下载应用，1:下载应用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告行为';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='广告行为';
 
 -- 正在导出表  search.ad_behavior 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `ad_behavior` DISABLE KEYS */;
@@ -99,9 +99,9 @@ CREATE TABLE IF NOT EXISTS `ad_behavior_todo` (
   KEY `FK_ad_behavior_todo_ad_behavior` (`ad_behavior_id`),
   KEY `FK_ad_behavior_todo_ad_info` (`ad_id`),
   CONSTRAINT `FK_ad_behavior_todo_ad_behavior` FOREIGN KEY (`ad_behavior_id`) REFERENCES `ad_behavior` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='广告行为的动作';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='广告行为的动作';
 
--- 正在导出表  search.ad_behavior_todo 的数据：~18 rows (大约)
+-- 正在导出表  search.ad_behavior_todo 的数据：~19 rows (大约)
 /*!40000 ALTER TABLE `ad_behavior_todo` DISABLE KEYS */;
 INSERT INTO `ad_behavior_todo` (`id`, `ad_behavior_id`, `ad_id`, `url`, `app_name`) VALUES
 	(1, 1, 1, NULL, NULL),
@@ -121,7 +121,8 @@ INSERT INTO `ad_behavior_todo` (`id`, `ad_behavior_id`, `ad_id`, `url`, `app_nam
 	(15, 3, 9, NULL, NULL),
 	(16, 1, 14, NULL, NULL),
 	(17, 1, 15, NULL, NULL),
-	(18, 2, 18, NULL, NULL);
+	(18, 2, 18, NULL, NULL),
+	(19, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL);
 /*!40000 ALTER TABLE `ad_behavior_todo` ENABLE KEYS */;
 
 
@@ -163,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `ad_control` (
   `ad_img` varchar(300) DEFAULT NULL,
   `ad_url` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
 
 -- 正在导出表  search.ad_control 的数据：~11 rows (大约)
 /*!40000 ALTER TABLE `ad_control` DISABLE KEYS */;
@@ -235,26 +236,27 @@ CREATE TABLE IF NOT EXISTS `ad_info` (
   KEY `FK_ad_info_ad_classify` (`ad_classify_id`),
   KEY `FK_ad_info_ad_display_rule` (`ad_rule_id`),
   CONSTRAINT `FK_ad_info_ad_display_rule` FOREIGN KEY (`ad_rule_id`) REFERENCES `ad_display_rule` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='广告信息表';
 
--- 正在导出表  search.ad_info 的数据：~15 rows (大约)
+-- 正在导出表  search.ad_info 的数据：~16 rows (大约)
 /*!40000 ALTER TABLE `ad_info` DISABLE KEYS */;
 INSERT INTO `ad_info` (`id`, `ad_rule_id`, `ad_tittle`, `show_tittle_flag`, `cp_name`, `specification`, `ad_image_path`, `ad_behavior_id`, `ad_classify_id`, `start_time`, `end_time`, `keyword_setting`, `keyword`, `billing_type`, `unit_price`, `weight`, `version`, `mechine_type`) VALUES
-	(1, 1, '广告标题已修改5656', 1, '修改修改111', 5, '/upload/2016/12/20/round_corner_image_by_atool.png', 1, 1, '2016-12-16 13:46:20', '2017-01-06 13:46:22', 1, '32,157,137,186', 1, 1.2, 12, '14,15,17', '19,20,21,22,18'),
-	(2, 1, '12打发地方214额我的', NULL, '烦烦烦', 4, '/upload/2016/12/20/KV-640x300.jpg', 3, 2, '2016-12-09 09:21:00', '2016-12-20 09:21:03', NULL, '', 1, 12.2, 454, '16', '19,20,21,22,18'),
-	(3, 1, '今天天气很好呀', NULL, '改一下12', 5, '/upload/2016/12/20/banner_shengbei.png', 2, 3, '2016-12-16 13:46:09', '2016-12-24 13:46:11', NULL, '', 1, 0.3, 45, '15,16', '19,20,21,22,18'),
-	(4, 1, '京东快递，多快好省！', 1, '快递', 5, '/upload/2016/12/20/360video.png', 1, 13, '2016-12-09 11:00:23', '2016-12-13 11:00:25', NULL, '', 1, 1.3, 45, '15,16', '19,20,21,22,18'),
-	(5, 1, 'layer官方演示与讲解(jQuery弹出层插件)', NULL, '产品名称', 5, '/upload/2016/12/20/1218-1.jpg', 3, 15, '2016-12-16 13:45:59', '2016-12-31 13:46:01', NULL, '', 1, 0.1, 78, '15,16', '19,20,21,22,18'),
-	(8, 1, '5折天天抢，0元抽奖赢手机', NULL, '产品名称', 5, '/upload/2016/12/20/1218-3.jpg', 1, 1, '2016-12-30 11:19:27', '2017-01-04 11:19:29', NULL, '', 1, 1.3, 23, '15,16', '19,20,21,22,18'),
-	(9, 1, '【打开应用】5折天天抢，0元抽奖赢手机', 1, '产品名称', 5, '/upload/2016/12/20/1218-2.jpg', 3, 1, '2016-12-09 10:50:18', '2016-12-15 10:50:20', NULL, '', 1, 1.3, 23, '15,16', '19,20,21,22,18'),
-	(10, 1, '标题标题标题标题标题标题标题标题', NULL, '天假广告', 5, '/upload/2016/12/20/1218-5.jpg', 1, 1, '2016-12-09 11:34:37', '2016-12-10 11:34:39', NULL, '', 1, 12.2, 50, '15,16', '19,22,18'),
-	(11, 1, '选中版本的测试', NULL, '产品名称', 5, '/upload/2016/12/20/1218-3.jpg', 1, 1, '2016-12-12 11:08:10', '2016-12-25 11:08:11', NULL, '', 12, 0.2, 78, '13,17', '19,20,18'),
-	(13, 1, '测试测试', NULL, '测试', 5, '/upload/2016/12/20/1218-4.jpg', 1, 1, '2016-12-13 11:12:35', '2016-12-30 11:12:38', NULL, '', 1, 1.3, 45, '15,16', '19,20'),
-	(14, 1, '成为往事', NULL, '产品名称', 4, '/upload/2016/12/20/QQ截图20161220113312.png', 1, 1, '2016-12-12 11:33:39', '2016-12-28 11:33:41', NULL, '', 1, 2.2, 45, '14,15', '19,20,21'),
-	(15, 2, '12打发地方214额我的', NULL, '产品名称', 4, '/upload/2016/12/20/CQ_Bug_Info.png', 1, 1, '2016-12-12 11:43:27', '2016-12-15 11:43:29', NULL, '', 1, 0.3, 45, '13,15,17', '19,20,21'),
-	(18, 1, '有关键字的广告  非常昂棒', NULL, '测试', 5, '/upload/2016/12/20/微信截图_20161212160547.png', 2, 1, '2016-12-15 14:12:02', '2016-12-17 14:12:03', 1, '123,126,117,110,113', 1, 0.2, 3, '14,16', '19,20'),
-	(19, 1, '测试都不知道啥都不知道啥都不知道啥', 1, '都不知道啥', 5, '/upload/2016/12/20/dog.jpg', 2, 1, '2016-12-16 13:44:19', '2016-12-19 13:44:21', 1, '699', 1, 0.1, 45, '14,16', '20,22'),
-	(20, 3, '车道22', NULL, '测试1', 5, '/upload/2016/12/20/拓扑图.png', 1, 1, '2016-12-15 16:47:19', '2016-12-18 16:47:20', 1, '111,122,126,112', 1, 0.1, 3, '15', '20');
+	(1, 1, '广告标题已修改5656', 1, '修改修改111', 5, '/upload/2016/12/20/round_corner_image_by_atool.png', 1, 1, '2016-12-16 13:46:20', '2017-01-06 13:46:22', 1, '32,157,137,186', 1, 1.2, 12, '2,3,5', '19,20,21,22,18'),
+	(2, 1, '12打发地方214额我的', NULL, '烦烦烦', 4, '/upload/2016/12/20/KV-640x300.jpg', 3, 2, '2016-12-09 09:21:00', '2016-12-20 09:21:03', NULL, '', 1, 12.2, 454, '2,5,6', '19,20,21,22,18'),
+	(3, 1, '今天天气很好呀', NULL, '改一下12', 5, '/upload/2016/12/20/banner_shengbei.png', 2, 3, '2016-12-16 13:46:09', '2016-12-24 13:46:11', NULL, '', 1, 0.3, 45, '3,5,6', '19,20,21,22,18'),
+	(4, 1, '京东快递，多快好省！', 1, '快递', 5, '/upload/2016/12/20/360video.png', 1, 13, '2016-12-09 11:00:23', '2016-12-13 11:00:25', NULL, '', 1, 1.3, 45, '3,5', '19,20,21,22,18'),
+	(5, 1, 'layer官方演示与讲解(jQuery弹出层插件)', NULL, '产品名称', 5, '/upload/2016/12/20/1218-1.jpg', 3, 15, '2016-12-16 13:45:59', '2016-12-31 13:46:01', NULL, '', 1, 0.1, 78, '1,2,3,5,6', '19,20,21,22,18'),
+	(8, 1, '5折天天抢，0元抽奖赢手机', NULL, '产品名称', 5, '/upload/2016/12/20/1218-3.jpg', 1, 1, '2016-12-30 11:19:27', '2017-01-04 11:19:29', NULL, '', 1, 1.3, 23, '1,2,3,5,6', '19,20,21,22'),
+	(9, 1, '【打开应用】5折天天抢，0元抽奖赢手机', 1, '产品名称', 5, '/upload/2016/12/20/1218-2.jpg', 3, 1, '2016-12-09 10:50:18', '2016-12-15 10:50:20', NULL, '', 1, 1.3, 23, '1,2,3,5,6', '19,20,21,22,18'),
+	(10, 1, '标题标题标题标题标题标题标题标题', NULL, '天假广告', 5, '/upload/2016/12/20/1218-5.jpg', 1, 1, '2016-12-09 11:34:37', '2016-12-10 11:34:39', NULL, '', 1, 12.2, 50, '1,2,3,5,6', '19,22,18'),
+	(11, 1, '选中版本的测试', NULL, '产品名称', 5, '/upload/2016/12/20/1218-3.jpg', 1, 1, '2016-12-12 11:08:10', '2016-12-25 11:08:11', NULL, '', 12, 0.2, 78, '1,2,3,5,6', '19,20,18'),
+	(13, 1, '测试测试', NULL, '测试', 5, '/upload/2016/12/20/1218-4.jpg', 1, 1, '2016-12-13 11:12:35', '2016-12-30 11:12:38', NULL, '', 1, 1.3, 45, '1,2,3,5,6', '19,20'),
+	(14, 1, '成为往事', NULL, '产品名称', 4, '/upload/2016/12/20/QQ截图20161220113312.png', 1, 1, '2016-12-12 11:33:39', '2016-12-28 11:33:41', NULL, '', 1, 2.2, 45, '1,2,3,5,6', '19,20,21'),
+	(15, 2, '12打发地方214额我的', NULL, '产品名称', 4, '/upload/2016/12/20/CQ_Bug_Info.png', 1, 1, '2016-12-12 11:43:27', '2016-12-15 11:43:29', NULL, '', 1, 0.3, 45, '1,2,3,5,6', '19,20,21'),
+	(18, 1, '有关键字的广告  非常昂棒', NULL, '测试', 5, '/upload/2016/12/20/微信截图_20161212160547.png', 2, 1, '2016-12-15 14:12:02', '2016-12-17 14:12:03', 1, '123,126,117,110,113', 1, 0.2, 3, '1,2,3,5,6', '19,20'),
+	(19, 1, '测试都不知道啥都不知道啥都不知道啥', 1, '都不知道啥', 5, '/upload/2016/12/20/dog.jpg', 2, 1, '2016-12-16 13:44:19', '2016-12-19 13:44:21', 1, '699', 1, 0.1, 45, '1,2,3,5,6', '20,22'),
+	(20, 3, '车道22', NULL, '测试1', 5, '/upload/2016/12/20/拓扑图.png', 1, 1, '2016-12-15 16:47:19', '2016-12-18 16:47:20', 1, '111,122,126,112', 1, 0.1, 3, '3,5', '20'),
+	(21, NULL, '测试添加', NULL, '测试添加', NULL, '/upload/2016/12/21/1222-3.jpg', 1, 1, '2016-12-21 15:05:42', '2016-12-23 15:05:43', 1, '29,699,503,32', 1, 0.3, 55, '2,5', '20,21');
 /*!40000 ALTER TABLE `ad_info` ENABLE KEYS */;
 
 
@@ -267,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `ad_keyword` (
   UNIQUE KEY `keyword` (`keyword`)
 ) ENGINE=InnoDB AUTO_INCREMENT=708 DEFAULT CHARSET=utf8;
 
--- 正在导出表  search.ad_keyword 的数据：~1,261 rows (大约)
+-- 正在导出表  search.ad_keyword 的数据：~588 rows (大约)
 /*!40000 ALTER TABLE `ad_keyword` DISABLE KEYS */;
 INSERT INTO `ad_keyword` (`id`, `keyword`) VALUES
 	(516, '131458信誉查询'),
@@ -990,7 +992,7 @@ CREATE TABLE IF NOT EXISTS `ad_news` (
   `pos` int(11) DEFAULT '0',
   `enable` int(11) DEFAULT NULL COMMENT '1:启用；0:不启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='广告新闻';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='广告新闻';
 
 -- 正在导出表  search.ad_news 的数据：~5 rows (大约)
 /*!40000 ALTER TABLE `ad_news` DISABLE KEYS */;
@@ -1003,6 +1005,26 @@ INSERT INTO `ad_news` (`id`, `name`, `img`, `link`, `pos`, `enable`) VALUES
 /*!40000 ALTER TABLE `ad_news` ENABLE KEYS */;
 
 
+-- 导出  表 search.app_entrance 结构
+DROP TABLE IF EXISTS `app_entrance`;
+CREATE TABLE IF NOT EXISTS `app_entrance` (
+  `eid` int(11) NOT NULL AUTO_INCREMENT,
+  `entrance` varchar(50) DEFAULT NULL COMMENT '入口名称',
+  `description` varchar(50) DEFAULT NULL COMMENT '入口描述',
+  PRIMARY KEY (`eid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  search.app_entrance 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `app_entrance` DISABLE KEYS */;
+INSERT INTO `app_entrance` (`eid`, `entrance`, `description`) VALUES
+	(1, '通知中心', '通知中心基本信息'),
+	(2, '桌面widget', '桌面widget基本信息'),
+	(4, '桌面下滑', '桌面下滑基本信息'),
+	(5, '长按home', '基本信息'),
+	(6, '桌面看看', '桌面看看基本信息');
+/*!40000 ALTER TABLE `app_entrance` ENABLE KEYS */;
+
+
 -- 导出  表 search.app_uri 结构
 DROP TABLE IF EXISTS `app_uri`;
 CREATE TABLE IF NOT EXISTS `app_uri` (
@@ -1010,7 +1032,7 @@ CREATE TABLE IF NOT EXISTS `app_uri` (
   `type` varchar(50) NOT NULL COMMENT '1:youku;2:gioneeTing;3:http;4:https',
   `uri` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='打开第三方应用的uri';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='打开第三方应用的uri';
 
 -- 正在导出表  search.app_uri 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `app_uri` DISABLE KEYS */;
@@ -1019,6 +1041,50 @@ INSERT INTO `app_uri` (`id`, `type`, `uri`) VALUES
 	(2, 'youku', 'youku://play?vid=XMTc3MTg1ODg4MA&source=bdhz-jinli&pkg=com.youku.phone.jinli&minVersion=5.2.21'),
 	(3, 'gioneeTing', 'gioneeTing://openFind?pkg=com.ximalaya.ting.android.gionee&title=你好&content=最熟悉的“暖”旋律&minVersion=1.4.5');
 /*!40000 ALTER TABLE `app_uri` ENABLE KEYS */;
+
+
+-- 导出  表 search.app_version 结构
+DROP TABLE IF EXISTS `app_version`;
+CREATE TABLE IF NOT EXISTS `app_version` (
+  `vid` int(11) NOT NULL AUTO_INCREMENT,
+  `version` varchar(20) DEFAULT NULL COMMENT '版本',
+  `description` varchar(200) NOT NULL COMMENT '版本描述',
+  PRIMARY KEY (`vid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  search.app_version 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `app_version` DISABLE KEYS */;
+INSERT INTO `app_version` (`vid`, `version`, `description`) VALUES
+	(1, '2.0.1', '2.0.1的基本信息'),
+	(2, '2.0.5', '2.0.5的基本信息'),
+	(3, '2.1.0', '2.1.0的基本信息'),
+	(5, '2.1.1', '2.1.1的基本信息'),
+	(6, '3.0.0', '3.0.0的基本信息');
+/*!40000 ALTER TABLE `app_version` ENABLE KEYS */;
+
+
+-- 导出  表 search.app_version_entrance 结构
+DROP TABLE IF EXISTS `app_version_entrance`;
+CREATE TABLE IF NOT EXISTS `app_version_entrance` (
+  `app_version_id` int(11) NOT NULL,
+  `app_entrance_id` int(11) NOT NULL,
+  `dic_id` int(11) NOT NULL,
+  PRIMARY KEY (`app_version_id`,`app_entrance_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 正在导出表  search.app_version_entrance 的数据：~8 rows (大约)
+/*!40000 ALTER TABLE `app_version_entrance` DISABLE KEYS */;
+INSERT INTO `app_version_entrance` (`app_version_id`, `app_entrance_id`, `dic_id`) VALUES
+	(1, 1, 29),
+	(1, 2, 30),
+	(1, 4, 30),
+	(2, 1, 29),
+	(2, 2, 30),
+	(3, 1, 29),
+	(3, 2, 30),
+	(3, 4, 30),
+	(3, 5, 29);
+/*!40000 ALTER TABLE `app_version_entrance` ENABLE KEYS */;
 
 
 -- 导出  表 search.card 结构
@@ -1062,6 +1128,32 @@ INSERT INTO `config` (`id`, `code`, `name`, `value`, `status`, `description`) VA
 	(3, 'hotkey_open_url', '热词链接', 'http://m.baidu.com/s?from=1008021x&word=', 1, ''),
 	(4, 'keyword_open_url', '关键字链接', 'http://m.baidu.com/s?from=1008021y&word=', 1, '');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
+
+
+-- 导出  表 search.entrance 结构
+DROP TABLE IF EXISTS `entrance`;
+CREATE TABLE IF NOT EXISTS `entrance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '0' COMMENT '入口名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入口表';
+
+-- 正在导出表  search.entrance 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `entrance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `entrance` ENABLE KEYS */;
+
+
+-- 导出  表 search.entrance_config 结构
+DROP TABLE IF EXISTS `entrance_config`;
+CREATE TABLE IF NOT EXISTS `entrance_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entrance` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入口配置表';
+
+-- 正在导出表  search.entrance_config 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `entrance_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `entrance_config` ENABLE KEYS */;
 
 
 -- 导出  表 search.group_info 结构
@@ -1115,7 +1207,7 @@ CREATE TABLE IF NOT EXISTS `hot_keys` (
   `sort_id` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL COMMENT '0:表示自动采集;1:表示自主添加的保存在自定义热词模块；2:表示自定义热词，跟采集源热词功能一样',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=626782 DEFAULT CHARSET=utf8 COMMENT='热词表';
+) ENGINE=InnoDB AUTO_INCREMENT=629349 DEFAULT CHARSET=utf8 COMMENT='热词表';
 
 -- 正在导出表  search.hot_keys 的数据：~55 rows (大约)
 /*!40000 ALTER TABLE `hot_keys` DISABLE KEYS */;
@@ -1125,56 +1217,56 @@ INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `stats`, `sort_id`, `type`) VALU
 	(613462, 'http://www.163.com/special/0077450P/login_frame.html', '#宋喆出轨#', 1, 3, 1),
 	(615461, 'http://localhost:8080/search_local/login/login#menu_hotkey_manage', '双11狂欢抢先购', 1, 1, 2),
 	(615462, 'http://localhost:8080/search_local/login/login#menu_hotkey_manage', '#双11来啦#', 1, 4, 1),
-	(626732, 'https://wap.sogou.com/web/searchList.jsp?keyword=4.73%E7%A7%92%E8%BF%98%E5%8E%9F%E9%AD%94%E6%96%B9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '4.73秒还原魔方', 0, NULL, 0),
-	(626733, 'https://wap.sogou.com/web/searchList.jsp?keyword=9%E5%B2%81%E7%94%B7%E7%AB%A5%E8%BD%A6%E5%86%85%E8%BA%AB%E4%BA%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '9岁男童车内身亡', 1, NULL, 0),
-	(626734, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%AA%E5%8E%9F%E5%8F%91%E7%94%9F%E5%9C%B0%E9%9C%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '太原发生地震', 0, NULL, 0),
-	(626735, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%A5%96%E5%AD%993%E4%BA%BA%E5%AE%B6%E4%B8%AD%E8%BA%AB%E4%BA%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '祖孙3人家中身亡', 0, NULL, 0),
-	(626736, 'https://wap.sogou.com/web/searchList.jsp?keyword=23%E5%B9%B4%E5%90%8E%E8%B5%B7%E8%AF%89%E5%85%BB%E7%88%B6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '23年后起诉养父', 0, NULL, 0),
-	(626737, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%9B%BE%E9%9C%BE%E5%B0%86%E6%89%A911%E7%9C%81%E5%B8%82&pid=sogou-mobp-eeea8c180c5dff16&v=5', '雾霾将扩11省市', 0, NULL, 0),
-	(626738, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%94%A1%E5%9B%BD%E5%BA%86%E8%80%81%E5%A9%86%E6%9B%9D%E5%85%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '蔡国庆老婆曝光', 0, NULL, 0),
-	(626739, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%BD%97%E5%B0%94%E7%A7%B0%E5%A5%B3%E5%84%BF%E7%97%85%E5%8D%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '罗尔称女儿病危', 1, NULL, 0),
-	(626740, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%96%E7%95%8C%E5%B0%8F%E5%A7%90%E5%87%BA%E7%82%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '世界小姐出炉', 0, NULL, 0),
-	(626741, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%81%B6%E6%84%8F%E9%80%8F%E6%94%AF3%E4%B8%87%E4%BD%99%E5%85%83&pid=sogou-mobp-eeea8c180c5dff16&v=5', '恶意透支3万余元', 0, NULL, 0),
-	(626742, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BE%BD%E5%AE%81%E8%88%B0%E5%AE%9E%E5%BC%B9%E6%BC%94%E7%BB%83&pid=sogou-mobp-eeea8c180c5dff16&v=5', '辽宁舰实弹演练', 0, NULL, 0),
-	(626743, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%87%91%E6%98%9F%E5%81%9A%E7%9B%B8%E4%BA%B2%E8%8A%82%E7%9B%AE&pid=sogou-mobp-eeea8c180c5dff16&v=5', '金星做相亲节目', 0, NULL, 0),
-	(626744, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%86%9C%E5%8E%86%E9%B8%A1%E5%B9%B4%E6%9C%89384%E5%A4%A9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '农历鸡年有384天', 0, NULL, 0),
-	(626745, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%81%AD%E9%97%A8%E6%82%AC%E6%A1%88%E7%8E%B0%E8%BD%AC%E6%9C%BA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '灭门悬案现转机', 1, NULL, 0),
-	(626746, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%BC%8A%E5%B0%94-18%E5%A4%B1%E4%BA%8B&pid=sogou-mobp-eeea8c180c5dff16&v=5', '伊尔-18失事', 0, NULL, 0),
-	(626747, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%BB%84%E6%B2%B3%E6%B2%B3%E6%9B%B2%E6%AE%B5%E7%BB%93%E5%86%B0&pid=sogou-mobp-eeea8c180c5dff16&v=5', '黄河河曲段结冰', 0, NULL, 0),
-	(626748, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%8C%83%E5%86%B0%E5%86%B0P%E5%9B%BE%E8%A2%AB%E6%8A%93%E5%8C%85&pid=sogou-mobp-eeea8c180c5dff16&v=5', '范冰冰P图被抓包', 0, NULL, 0),
-	(626749, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AD%A6%E7%94%9F%E7%A5%A8%E9%A2%84%E5%94%AE%E6%8F%90%E5%89%8D&pid=sogou-mobp-eeea8c180c5dff16&v=5', '学生票预售提前', 0, NULL, 0),
-	(626750, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%B5%AB%E5%AD%90%E9%93%AD%E5%90%A6%E8%AE%A4%E7%A6%BB%E5%A9%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '赫子铭否认离婚', 0, NULL, 0),
-	(626751, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%8A%8A%E5%84%BF%E5%AD%90%E9%94%81%E8%BF%9B%E7%8B%97%E7%AC%BC&pid=sogou-mobp-eeea8c180c5dff16&v=5', '把儿子锁进狗笼', 1, NULL, 0),
-	(626752, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8A%AB%E5%8C%AA%E6%BD%9C%E9%80%8314%E5%B9%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '劫匪潜逃14年', 0, NULL, 0),
-	(626753, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%96%B0%E6%99%AE%E4%BA%AC&pid=sogou-mobp-eeea8c180c5dff16&v=5', '新普京', 0, NULL, 0),
-	(626754, 'https://wap.sogou.com/web/searchList.jsp?keyword=400%E7%94%B5%E8%AF%9D%E6%94%B6%E8%B4%B9%E6%A0%87%E5%87%86&pid=sogou-mobp-eeea8c180c5dff16&v=5', '400电话收费标准', 0, NULL, 0),
-	(626755, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%BC%BE%E6%BC%BE%E5%A5%BD%E8%B4%A1%E8%8C%B6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '漾漾好贡茶', 0, NULL, 0),
-	(626756, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%80%8E%E6%A0%B7%E7%94%B3%E8%AF%B7%E4%BF%A1%E7%94%A8%E5%8D%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '怎样申请信用卡', 0, NULL, 0),
-	(626757, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%AD%BB%E5%90%8E4%E5%B9%B4%E8%A2%AB%E5%88%A4%E6%97%A0%E7%BD%AA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '死后4年被判无罪', 1, NULL, 0),
-	(626758, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%8A%E7%99%BE%E7%A5%96%E5%9D%9F%E8%A2%AB%E9%93%B2%E5%B9%B3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '上百祖坟被铲平', 0, NULL, 0),
-	(626759, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9E%97%E5%BF%97%E7%8E%B2%E7%B4%A0%E9%A2%9C%E7%8E%B0%E8%BA%AB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '林志玲素颜现身', 0, NULL, 0),
-	(626760, 'https://wap.sogou.com/web/searchList.jsp?keyword=tvb%E4%BA%94%E8%99%8E%E6%88%96%E9%87%8D%E8%81%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', 'tvb五虎或重聚', 0, NULL, 0),
-	(626761, 'https://wap.sogou.com/web/searchList.jsp?keyword=103%E5%B2%81%E8%80%81%E4%BA%BA%E8%BF%87%E7%94%9F%E6%97%A5&pid=sogou-mobp-eeea8c180c5dff16&v=5', '103岁老人过生日', 0, NULL, 0),
-	(626762, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%8E%8E%E8%8E%8E%C2%B7%E5%98%89%E5%AE%9D%E5%8E%BB%E4%B8%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '莎莎·嘉宝去世', 0, NULL, 0),
-	(626763, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%88%9D%E4%B8%89%E5%A5%B3%E7%94%9F%E9%81%AD%E5%9B%B4%E6%AE%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '初三女生遭围殴', 1, NULL, 0),
-	(626764, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8E%8B%E5%8A%9B%E5%AE%8F%E6%BC%94%E5%87%BA%E9%81%AD%E8%A2%AD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '王力宏演出遭袭', 0, NULL, 0),
-	(626765, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%A2%81%E6%9C%9D%E4%BC%9F%E8%B0%83%E7%9A%AE%E7%8C%AE%E8%8A%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '梁朝伟调皮献花', 0, NULL, 0),
-	(626766, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%82%93%E8%82%AF%E7%90%83%E8%A1%A3%E9%80%80%E5%BD%B9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '邓肯球衣退役', 0, NULL, 0),
-	(626767, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%89%B9%E6%9C%97%E6%99%AE%E6%8C%87%E8%B4%A3%E4%B8%AD%E5%9B%BD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '特朗普指责中国', 0, NULL, 0),
-	(626768, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%99%BE%E5%B2%81%E8%80%81%E4%BA%BA%E6%89%93%E5%AE%98%E5%8F%B8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '百岁老人打官司', 0, NULL, 0),
-	(626769, 'https://wap.sogou.com/web/searchList.jsp?keyword=2016TVB%E5%8F%B0%E5%BA%86&pid=sogou-mobp-eeea8c180c5dff16&v=5', '2016TVB台庆', 1, NULL, 0),
-	(626770, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%86%85%E8%A3%A4%E6%B6%82%E5%89%A7%E6%AF%92%E8%87%B4%E6%AD%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '内裤涂剧毒致死', 0, NULL, 0),
-	(626771, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%B5%B5%E9%9C%81%E5%90%A6%E8%AE%A4%E7%BB%93%E5%A9%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '赵霁否认结婚', 0, NULL, 0),
-	(626772, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8D%97%E6%98%8C%E6%8C%96%E5%87%BA%E5%8F%A4%E5%A2%93&pid=sogou-mobp-eeea8c180c5dff16&v=5', '南昌挖出古墓', 0, NULL, 0),
-	(626773, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8A%AF%E4%BA%BA%E9%80%81%E7%8B%B1%E8%AD%A6400%E4%B8%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '犯人送狱警400万', 0, NULL, 0),
-	(626774, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%AD%A6%E6%B1%89%E4%B8%8A%E6%BC%94%E6%8E%A5%E5%90%BB%E8%B5%9B&pid=sogou-mobp-eeea8c180c5dff16&v=5', '武汉上演接吻赛', 0, NULL, 0),
-	(626775, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%A2%E7%81%AB%E8%BD%A6%E7%A5%A8%E5%8F%AF%E8%A1%A5%E5%8A%9E&pid=sogou-mobp-eeea8c180c5dff16&v=5', '丢火车票可补办', 1, NULL, 0),
-	(626776, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%92%8B%E6%AC%A3%E6%99%92%E5%87%BA%E5%BA%8A%E7%85%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '蒋欣晒出床照', 0, NULL, 0),
-	(626777, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B8%A9%E5%B7%9E%E9%9C%B8%E5%87%8C%E6%A1%88%E5%AE%A3%E5%88%A4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '温州霸凌案宣判', 0, NULL, 0),
-	(626778, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%89%E4%BA%9A%E5%A9%9A%E7%BA%B1%E7%85%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '三亚婚纱照', 0, NULL, 0),
-	(626779, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B8%9D%E4%B8%80%E5%A8%B1%E4%B9%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '帝一娱乐', 0, NULL, 0),
-	(626780, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%BD%91%E4%B8%8A%E7%94%B3%E8%AF%B7%E4%BF%A1%E7%94%A8%E5%8D%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '网上申请信用卡', 0, NULL, 0),
-	(626781, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AD%A6%E7%94%9F%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%94%B3%E8%AF%B7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '学生信用卡申请', 1, NULL, 0);
+	(629299, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E5%AD%90%E4%B9%B0%E8%A1%A3%E6%AC%A0%E6%AC%BE6%E4%B8%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女子买衣欠款6万', 1, NULL, 0),
+	(629300, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B9%BF%E5%A4%96%E5%A5%B3%E7%94%9F%E8%A2%AB%E5%89%B2%E5%96%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '广外女生被割喉', 0, NULL, 0),
+	(629301, 'https://wap.sogou.com/web/searchList.jsp?keyword=23%E5%B2%81%E5%A5%B3%E5%AD%A9%E8%A2%AB%E6%8A%A2%E8%B5%B0&pid=sogou-mobp-eeea8c180c5dff16&v=5', '23岁女孩被抢走', 0, NULL, 0),
+	(629302, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%99%BD%E5%AE%AB%E5%8F%91%E8%A8%80%E4%BA%BA%E6%8F%90%E5%90%8D&pid=sogou-mobp-eeea8c180c5dff16&v=5', '白宫发言人提名', 0, NULL, 0),
+	(629303, 'https://wap.sogou.com/web/searchList.jsp?keyword=2016%E5%9B%BD%E5%89%A7%E7%9B%9B%E5%85%B8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '2016国剧盛典', 0, NULL, 0),
+	(629304, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%BA%BE%E6%BE%84%E5%BA%86%E7%96%91%E5%86%8D%E5%BD%93%E7%88%B8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '庾澄庆疑再当爸', 0, NULL, 0),
+	(629305, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%88%E5%A6%8D%E5%B8%8C%E7%94%9F%E5%AD%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陈妍希生子', 1, NULL, 0),
+	(629306, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%AF%BA%E5%9F%BA%E4%BA%9A%E6%8C%87%E6%8E%A7%E8%8B%B9%E6%9E%9C&pid=sogou-mobp-eeea8c180c5dff16&v=5', '诺基亚指控苹果', 0, NULL, 0),
+	(629307, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%BE%8E%E7%82%92%E4%BD%9C%E4%B8%AD%E5%9B%BD%E9%BB%91%E5%AE%A2&pid=sogou-mobp-eeea8c180c5dff16&v=5', '美炒作中国黑客', 0, NULL, 0),
+	(629308, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%92%92%E5%93%88%E6%8B%89%E6%B2%99%E6%BC%A0%E4%B8%8B%E9%9B%AA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '撒哈拉沙漠下雪', 0, NULL, 0),
+	(629309, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AE%98%E5%BE%AE%E5%8F%91%E8%89%B2%E6%83%85%E5%B9%BF%E5%91%8A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '官微发色情广告', 0, NULL, 0),
+	(629310, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%98%86%E5%87%8C%E8%A7%84%E5%88%92%E4%BA%BA%E7%94%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '昆凌规划人生', 0, NULL, 0),
+	(629311, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B7%A5%E8%B5%84%E8%A2%AB%E5%8F%91%E7%A1%AC%E5%B8%81&pid=sogou-mobp-eeea8c180c5dff16&v=5', '工资被发硬币', 1, NULL, 0),
+	(629312, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%B7%AF%E7%81%AF%E4%B8%8B%E8%A3%B9%E8%A2%AB%E5%AD%A6%E4%B9%A0&pid=sogou-mobp-eeea8c180c5dff16&v=5', '路灯下裹被学习', 0, NULL, 0),
+	(629313, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%83%91%E5%B7%9E%E9%99%90%E8%B4%AD%E5%8D%87%E7%BA%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '郑州限购升级', 0, NULL, 0),
+	(629314, 'https://wap.sogou.com/web/searchList.jsp?keyword=AC352%E9%A6%96%E9%A3%9E%E6%88%90%E5%8A%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', 'AC352首飞成功', 0, NULL, 0),
+	(629315, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%BB%84%E5%AD%90%E9%9F%AC%E6%9C%BA%E5%9C%BA%E6%98%8F%E5%80%92&pid=sogou-mobp-eeea8c180c5dff16&v=5', '黄子韬机场昏倒', 0, NULL, 0),
+	(629316, 'https://wap.sogou.com/web/searchList.jsp?keyword=1%E5%A4%A92%E6%AC%A1%E9%81%AD%E4%BA%BA%E6%89%93&pid=sogou-mobp-eeea8c180c5dff16&v=5', '1天2次遭人打', 0, NULL, 0),
+	(629317, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%9B%B4%E6%92%AD%E8%87%AA%E6%85%B0%E8%A2%AB%E5%88%A4%E5%88%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '直播自慰被判刑', 1, NULL, 0),
+	(629318, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BD%BD118%E4%BA%BA%E5%AE%A2%E6%9C%BA%E9%81%AD%E5%8A%AB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '载118人客机遭劫', 0, NULL, 0),
+	(629319, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%BD%9C%E8%A7%84%E5%88%99%E8%80%83%E7%94%9F%E9%81%AD%E6%8B%92&pid=sogou-mobp-eeea8c180c5dff16&v=5', '潜规则考生遭拒', 0, NULL, 0),
+	(629320, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%9B%B6%E8%B7%9D%E7%A6%BB%E7%9B%B4%E6%92%AD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '零距离直播', 0, NULL, 0),
+	(629321, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%86%9C%E7%BB%93%E6%9E%84%E8%BD%A6%E6%A3%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '膜结构车棚', 0, NULL, 0),
+	(629322, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8C%96%E5%A6%86%E5%93%81%E5%8A%A0%E7%9B%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '化妆品加盟', 0, NULL, 0),
+	(629323, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%94%B3%E8%AF%B7%E5%8A%9E%E7%90%86&pid=sogou-mobp-eeea8c180c5dff16&v=5', '信用卡申请办理', 1, NULL, 0),
+	(629324, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%A6%96%E9%A2%97%E7%A2%B3%E5%8D%AB%E6%98%9F%E5%8F%91%E5%B0%84&pid=sogou-mobp-eeea8c180c5dff16&v=5', '首颗碳卫星发射', 0, NULL, 0),
+	(629325, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%BE%8E%E5%AF%8C%E8%B1%AA%E5%87%BA%E5%94%AE%E8%B1%AA%E5%AE%85&pid=sogou-mobp-eeea8c180c5dff16&v=5', '美富豪出售豪宅', 0, NULL, 0),
+	(629326, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BD%BF%E8%BD%A6%E9%81%BF%E5%B9%BC%E7%AB%A5%E8%87%B42%E6%AD%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '轿车避幼童致2死', 0, NULL, 0),
+	(629327, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%8A%E5%9D%9F%E7%9C%9F%E8%BD%A6%E8%A2%AB%E7%83%A7%E8%B5%B0&pid=sogou-mobp-eeea8c180c5dff16&v=5', '上坟真车被烧走', 0, NULL, 0),
+	(629328, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%9C%E7%89%B9%E5%B0%94%E7%89%B9%E9%81%93%E6%AD%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '杜特尔特道歉', 0, NULL, 0),
+	(629329, 'https://wap.sogou.com/web/searchList.jsp?keyword=ppap%E5%8F%94%E8%BF%91%E5%86%B5%E6%9B%9D%E5%85%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', 'ppap叔近况曝光', 1, NULL, 0),
+	(629330, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BD%BB%E5%9E%8B%E8%BD%A6%E6%A0%87%E5%87%86%E5%8F%91%E5%B8%83&pid=sogou-mobp-eeea8c180c5dff16&v=5', '轻型车标准发布', 0, NULL, 0),
+	(629331, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%AD%BC-31%E6%94%B9%E5%90%8E%E9%A6%96%E9%A3%9E&pid=sogou-mobp-eeea8c180c5dff16&v=5', '歼-31改后首飞', 0, NULL, 0),
+	(629332, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%83%AD%E5%BE%B7%E7%BA%B2%E8%B0%83%E4%BE%83%E5%AE%89%E5%90%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '郭德纲调侃安吉', 0, NULL, 0),
+	(629333, 'https://wap.sogou.com/web/searchList.jsp?keyword=e%E7%A7%9F%E5%AE%9D%E6%A1%88%E5%B7%B2%E5%8F%97%E7%90%86&pid=sogou-mobp-eeea8c180c5dff16&v=5', 'e租宝案已受理', 0, NULL, 0),
+	(629334, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8E%8B%E4%BF%8A%E5%87%AF%E7%99%BB%E5%AF%8C%E8%B1%AA%E6%A6%9C&pid=sogou-mobp-eeea8c180c5dff16&v=5', '王俊凯登富豪榜', 0, NULL, 0),
+	(629335, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B0%8F%E5%AD%A6%E7%94%9F%E7%BE%A4%E5%8D%96%E9%BB%84%E7%89%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '小学生群卖黄片', 1, NULL, 0),
+	(629336, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%BC%BA%E6%8A%A244%E4%B8%87%E5%85%83%E9%A6%99%E7%83%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '强抢44万元香烟', 0, NULL, 0),
+	(629337, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%BF%84%E5%B9%BC%E7%AB%A5%E9%9B%AA%E5%9C%B0%E8%A3%B8%E5%A5%94&pid=sogou-mobp-eeea8c180c5dff16&v=5', '俄幼童雪地裸奔', 0, NULL, 0),
+	(629338, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%A5%E5%B0%BC%E5%B0%94%E7%90%83%E8%A1%A3%E9%80%80%E5%BD%B9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '奥尼尔球衣退役', 0, NULL, 0),
+	(629339, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%88%E6%95%8F%E4%B9%8B%E4%BA%A7%E5%AD%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陈敏之产子', 0, NULL, 0),
+	(629340, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%81%9A%E5%AE%B6%E6%94%BF%E5%81%B7%E8%A1%A8%E8%A2%AB%E6%8B%98&pid=sogou-mobp-eeea8c180c5dff16&v=5', '做家政偷表被拘', 0, NULL, 0),
+	(629341, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%9A%84%E5%93%A5%E6%94%B9%E5%BC%80%E7%BD%91%E7%BA%A6%E8%BD%A6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '的哥改开网约车', 1, NULL, 0),
+	(629342, 'https://wap.sogou.com/web/searchList.jsp?keyword=120%E5%AB%8C%E7%97%85%E4%BA%BA%E5%A4%AA%E9%87%8D&pid=sogou-mobp-eeea8c180c5dff16&v=5', '120嫌病人太重', 0, NULL, 0),
+	(629343, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%99%AF%E7%94%9C%E5%9B%9E%E5%BA%94%E8%83%8C%E6%99%AF%E8%AF%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '景甜回应背景说', 0, NULL, 0),
+	(629344, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%91%E4%B8%8A%E6%98%A5%E6%A0%91%E5%87%BA%E4%B9%A6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '村上春树出书', 0, NULL, 0),
+	(629345, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%A9%E9%80%9A%E9%87%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '天通金', 0, NULL, 0),
+	(629346, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AD%A6%E5%A4%A7%E6%95%99%E8%82%B2%E6%80%8E%E4%B9%88%E6%A0%B7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '学大教育怎么样', 0, NULL, 0),
+	(629347, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8E%A6%E9%97%A8%E5%A9%9A%E7%BA%B1%E6%91%84%E5%BD%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '厦门婚纱摄影', 1, NULL, 0),
+	(629348, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8E%9F%E6%B2%B9%E7%9B%B4%E6%92%AD%E9%97%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '原油直播间', 0, NULL, 0);
 /*!40000 ALTER TABLE `hot_keys` ENABLE KEYS */;
 
 
@@ -1223,9 +1315,9 @@ CREATE TABLE IF NOT EXISTS `resources` (
   `warn` varchar(100) DEFAULT NULL COMMENT '未选择行的操作提示',
   `tittle` varchar(100) DEFAULT NULL COMMENT '删除时的操作提示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
 
--- 正在导出表  search.resources 的数据：~49 rows (大约)
+-- 正在导出表  search.resources 的数据：~51 rows (大约)
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
 INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `parent_id`, `parent_id_list`, `level`, `description`, `css_class`, `target`, `win_width`, `win_height`, `warn`, `tittle`) VALUES
 	(0, '根目录', 'root', '无', 'framework/zTreeV3/css/zTreeStyle/img/diy/1_close.png', NULL, -1, '*-1*', NULL, '树根', NULL, NULL, NULL, NULL, NULL, '0'),
@@ -1276,7 +1368,9 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(59, '删除', 'button_rosters_del', 'rosters/deleteRosters?id={id_r}', 'framework/images/button.png', 3, 56, '*-1*0*1*56*59*', NULL, '软件包管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(60, '广告管理', 'menu_ad_manage', 'adinfo/adManageView', 'framework/images/menu.png', 2, 1, '*-1*0*1*60*', NULL, '广告编辑和投放的相关管理和运营', '', 'navTab', NULL, NULL, '', ''),
 	(63, '字典管理', 'menu_dic_manage', 'dic/queryDicPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*63', NULL, '字典管理', '', 'navTab', NULL, NULL, '', ''),
-	(64, '新闻广告管理', 'menu_news_manage', 'adNews/queryAdNewsPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*64*', NULL, '新闻广告管理', '', 'navTab', NULL, NULL, '', '');
+	(64, '新闻广告管理', 'menu_news_manage', 'adNews/queryAdNewsPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*64*', NULL, '新闻广告管理', '', 'navTab', NULL, NULL, '', ''),
+	(66, '应用版本管理', 'menu_appversion_manage', 'appVersion/queryAppVersionPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*66*', NULL, '应用版本管理', '', 'navTab', NULL, NULL, '', ''),
+	(67, '应用入口管理', 'menu_adentrance_manage', 'appEntrance/queryAppEntrancePaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*67*', NULL, '应用入口管理', '', 'navTab', NULL, NULL, '', '');
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 
 
@@ -1288,7 +1382,7 @@ CREATE TABLE IF NOT EXISTS `resources_role` (
   PRIMARY KEY (`role_id`,`res_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  search.resources_role 的数据：~103 rows (大约)
+-- 正在导出表  search.resources_role 的数据：~108 rows (大约)
 /*!40000 ALTER TABLE `resources_role` DISABLE KEYS */;
 INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 	(1, 1),
@@ -1335,6 +1429,8 @@ INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 	(1, 60),
 	(1, 63),
 	(1, 64),
+	(1, 66),
+	(1, 67),
 	(2, 1),
 	(2, 7),
 	(2, 9),
@@ -1393,7 +1489,10 @@ INSERT INTO `resources_role` (`role_id`, `res_id`) VALUES
 	(4, 54),
 	(4, 55),
 	(4, 60),
-	(4, 61);
+	(4, 63),
+	(4, 64),
+	(4, 66),
+	(4, 67);
 /*!40000 ALTER TABLE `resources_role` ENABLE KEYS */;
 
 
@@ -1483,9 +1582,9 @@ CREATE TABLE IF NOT EXISTS `sys_dictionary` (
   PRIMARY KEY (`id`),
   KEY `FK_sys_dictionary_sys_dictionary_classify` (`cls_id`),
   CONSTRAINT `FK_sys_dictionary_sys_dictionary_classify` FOREIGN KEY (`cls_id`) REFERENCES `sys_dictionary_classify` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='字典值';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='字典值';
 
--- 正在导出表  search.sys_dictionary 的数据：~25 rows (大约)
+-- 正在导出表  search.sys_dictionary 的数据：~22 rows (大约)
 /*!40000 ALTER TABLE `sys_dictionary` DISABLE KEYS */;
 INSERT INTO `sys_dictionary` (`id`, `cls_id`, `dic_value`) VALUES
 	(1, 3, 'CPC'),
@@ -1497,11 +1596,6 @@ INSERT INTO `sys_dictionary` (`id`, `cls_id`, `dic_value`) VALUES
 	(10, 3, 'CPS'),
 	(11, 3, 'CPP'),
 	(12, 3, 'CPC+CPM'),
-	(13, 5, '2.0.1'),
-	(14, 5, '2.0.5'),
-	(15, 5, '2.0.6'),
-	(16, 5, '2.0.7'),
-	(17, 5, '2.1.0'),
 	(18, 10, '金刚'),
 	(19, 10, 'GN9011'),
 	(20, 10, 'GN9012'),
@@ -1512,7 +1606,9 @@ INSERT INTO `sys_dictionary` (`id`, `cls_id`, `dic_value`) VALUES
 	(25, 11, 'tittle广告'),
 	(26, 11, '原生广告'),
 	(27, 11, 'banner广告'),
-	(28, 11, '短信广告');
+	(28, 11, '短信广告'),
+	(29, 12, '首页'),
+	(30, 12, '综合搜索页');
 /*!40000 ALTER TABLE `sys_dictionary` ENABLE KEYS */;
 
 
@@ -1523,16 +1619,16 @@ CREATE TABLE IF NOT EXISTS `sys_dictionary_classify` (
   `name` varchar(50) DEFAULT NULL,
   `dic_key` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='系统配置表，字典类型，用于定义一些有可能动态增减的选择项';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='系统配置表，字典类型，用于定义一些有可能动态增减的选择项';
 
 -- 正在导出表  search.sys_dictionary_classify 的数据：~5 rows (大约)
 /*!40000 ALTER TABLE `sys_dictionary_classify` DISABLE KEYS */;
 INSERT INTO `sys_dictionary_classify` (`id`, `name`, `dic_key`) VALUES
 	(1, '广告规格', 'ad_specification'),
 	(3, '付费方式', 'billing_type'),
-	(5, '版本', 'version'),
 	(10, '机型', 'mechine_type'),
-	(11, '广告形式', 'ad_modality');
+	(11, '广告形式', 'ad_modality'),
+	(12, '跳转页面', 'redirect_page');
 /*!40000 ALTER TABLE `sys_dictionary_classify` ENABLE KEYS */;
 
 

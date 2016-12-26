@@ -66,6 +66,7 @@ function selectByType(obj){
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>字典类型</th>
+				<th>字典值</th>
 				<th>字典引用键</th>
 			</tr>
 		</thead>
@@ -75,6 +76,7 @@ function selectByType(obj){
 				<td><input name="ids" value="${dic.id}" type="checkbox"></td>
 				<td>${dic.classify.name}</td>
 				<td>${dic.dicValue}</td>
+				<td>${dic.classify.dicKey}</td>
 			  </tr>
 			</c:forEach>
 			

@@ -1,19 +1,31 @@
 <%@ page language="java" contentType="application/x-msdownload" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script type="text/javascript">
-$(document).ready(function(){
-	/*
-	$("#searchBtn").on('click',function(){
-		divSearch($("#searchPagerForm"), "${resKey}"); //刷新指定DIV
-	});
-	*/
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>">
 
-});
+<script src="js/jquery.form.js" type="text/javascript" />
+<script type="text/javascript">
+function exportData(obj){
+	var url = $(obj).attr("url");
+	$('#pagerForm').ajaxSubmit({
+			type: "POST",
+			dataType: "json",
+			url: url,
+			success: function (data) {
+				location.href = data.filePath;
+			},
+			error: DWZ.ajaxError
+		});
+		
+}
 </script>
 
 <div class="pageHeader" style="border:1px #B8D0D6 solid">
-	<form id="pagerForm" onsubmit="return divSearch(this, '${resKey}');" action="adinfo/queryAdInfoPaper?searchType=putting_ad&resKey=${resKey}" method="post" style="width:85%;">
+	<form id="pagerForm" onsubmit="return divSearch(this, '${resKey}');" action="adinfo/queryAdInfoPaper?searchType=putting_ad&resKey=${resKey}" method="post" style="width:90%;">
 		<input type="hidden" name="pageNum" value="${page.currentPage}" />
 		<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
 		<div class="searchBar">
@@ -28,7 +40,7 @@ $(document).ready(function(){
 					<td>
 						CP名称： <input type="text" name="cpName" value="${ai.cpName}" />
 					</td>
-					<td>
+					<td style="width:auto;">
 						<label style="width:60px;">广告位：</label> 
 						<select id="adRuleId" name="adRuleId" class="combox" onchange="">
 							<option value="-1">选择..</option>
@@ -50,7 +62,7 @@ $(document).ready(function(){
 						<div class="buttonActive"><div class="buttonContent"><button id="searchBtn">查询</button></div></div>
 					</td>
 					<td>
-						<a class="button" target="dwzExport" targetType="dialog" href="adinfo/exportAdInfo?resKey=${resKey}" mask="true" ><span>导出</span></a>
+						<a class="button" url="adinfo/exportAdInfo?resKey=${resKey}" onclick="exportData(this)"><span>导出Excel</span></a>
 					</td>
 				</tr>
 			</table>

@@ -1,25 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="js/authority.js" type="text/javascript"></script>
-<style type="text/css">
-.adImg{
-	width:150px;
-	height:70px;
-}
-</style>
-<script type="text/javascript">
-function checkShowEnabled(obj){
-	if($(obj).is(':checked')){
-		$(obj).val(1);
-	}else{
-		$(obj).val(0);
-	}
-	var showFlag = $(obj).val();
-	var adId = $(obj).attr("adNewsId");
-	ajaxTodo("adNews/updateAdNews?id="+adId+"&resKey=${resKey}&enable=" + showFlag
-			,PublicUtils.ajaxTodoCallback());
-}
-</script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <form id="pagerForm" method="GET" action="${resAction}">
 	<input type="hidden" name="pageNum" value="${page.currentPage}" />
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
@@ -28,11 +9,12 @@ function checkShowEnabled(obj){
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="adNews/addAdNewsView?editType=add" target="dialog" width="460" height="370"><span>添加广告</span></a></li>
-			<li><a class="edit" href="adNews/editAdNewsView?editType=update&id={id_an}" target="dialog" warn="请选择一个分组!" width="460" height="370"><span>修改</span></a></li>
-			<li><a class="delete" href="adNews/deleteAdNews?id={id_an}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
-			<%-- 
-			 <c:forEach var="opt" items="${optList}">
+			<li><a class="add" href="appEntrance/addAppEntranceView?editType=add" target="dialog" rel="app_entrance_add"><span>添加</span></a></li>
+			<li><a class="edit" href="appEntrance/editAppEntranceView?editType=update&id={id_entrance}" target="dialog" rel="app_entrance_edit" warn="请选择一个记录!"><span>修改</span></a></li>
+			<li><a class="delete" href="appEntrance/deleteAppEntrance?id={id_entrance}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
+			<li><a class="edit" href="appEntrance/appEntranceConfigManage" target="dialog" width="1000" height="600" rel="app_version_entrance_manage" mask="true" ><span>版本-入口配置</span></a></li>
+			<%--
+			<c:forEach var="opt" items="${optList}">
 				<c:if test="${opt.type==3}">
 					<c:if test="${opt.cssClass == 'add'}">
 						<li><a class="${opt.cssClass}" href="${opt.resUrl}&resKey=${resKey}" target="${opt.target}" width="${opt.winWidth}" height="${opt.winHeight}" ><span>${opt.name}</span></a></li>
@@ -52,22 +34,16 @@ function checkShowEnabled(obj){
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
-				<th align="center">标题</th>
-				<th align="center">广告图</th>
-				<th width="750">URL</th>
-				<th width="50" align="center">显示</th>
+				<th>版本号</th>
+				<th>版本描述</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="an" items="${page.list}">
-			   <tr target="id_an" rel="${an.id}">
-				<td><input name="ids" value="${an.id}" type="checkbox"></td>
-				<td>${an.name}</td>
-				<td><a target="_blank" href="${an.link}"><img class="adImg" src="<c:if test="${empty an.img}">framework/images/ad_default.png</c:if><c:if test="${!empty an.img}">${an.img}</c:if>"/></a></td>
-				<td style="word-break: break-all;"><a href="${an.link}" target="_blank">${an.link}</a></td>
-				<td>
-					<input type="checkbox" value="${an.enable}" adNewsId="${an.id}" <c:if test="${an.enable == 1}">checked="checked"</c:if> onchange="checkShowEnabled(this);"/>
-				</td>
+			<c:forEach var="entrance" items="${page.list}">
+			   <tr target="id_entrance" rel="${entrance.eid}">
+				<td><input name="ids" value="${entrance.eid}" type="checkbox"></td>
+				<td>${entrance.entrance}</td>
+				<td>${entrance.description}</td>
 			  </tr>
 			</c:forEach>
 			

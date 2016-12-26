@@ -65,7 +65,7 @@ function checkShowEnabled(obj){
 				<td><input name="ids" value="${hk.id}" type="checkbox"></td>
 				<td>${hk.hotKey}</td>
 				<td>${hk.sortId}</td>
-				<td style="word-break: break-all;">${hk.url}</td>
+				<td style="word-break: break-all;"><a href="${hk.url}" target="_blank">${hk.url}</a></td>
 				<td>
 					<c:if test="${hk.stats == 1}"><span style="color:red;">NEW</span></c:if>
 					<c:if test="${hk.stats == 0}"><span style="color:#777777;">NOT NEW</span></c:if>

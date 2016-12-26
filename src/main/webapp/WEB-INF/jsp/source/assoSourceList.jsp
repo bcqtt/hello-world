@@ -69,7 +69,7 @@
 				<td><input name="ids" value="${source.id}" type="checkbox"></td>
 				<td>${source.sourceCode}</td>
 				<td>${source.sourceName}</td>
-				<td>${source.url}</td>
+				<td><a href="${source.url}" target="_blank">${source.url}</a></td>
 			  </tr>
 			</c:forEach>
 		</tbody>

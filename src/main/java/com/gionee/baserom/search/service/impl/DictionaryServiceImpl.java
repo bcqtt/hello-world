@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
+import com.gionee.baserom.search.dao.AppVersionMapper;
 import com.gionee.baserom.search.dao.SysDictionaryClassifyMapper;
 import com.gionee.baserom.search.dao.SysDictionaryMapper;
 import com.gionee.baserom.search.pojo.Page;
@@ -32,6 +33,8 @@ public class DictionaryServiceImpl implements IDictionaryService {
 	private SysDictionaryClassifyMapper dicClassifyMapper;
 	@Resource
 	private SysDictionaryMapper dicMapper;
+	@Resource
+	private AppVersionMapper appVersionMapper;
 	
 	/**
 	 * 保存信息
@@ -219,19 +222,19 @@ public class DictionaryServiceImpl implements IDictionaryService {
 	}
 
 	@Override
-	public Map<String, List<SysDictionary>> getDic() {
-		Map<String, List<SysDictionary>> dicmap = new HashMap<String, List<SysDictionary>>();
-		dicmap.put("version", dicMapper.queryByDicKeyVersion());
+	public Map<String, Object> getVersionAndDic() {
+		Map<String, Object> dicmap = new HashMap<String, Object>();
+		dicmap.put("version", appVersionMapper.selectAllVersion());
 		dicmap.put("mechineType", dicMapper.queryByDicKeyMechineType());
 		return dicmap;
 	}
 
 	@Override
-	public Map<String, List<SysDictionary>> getDictionaryByIds(String version, String mechineType) {
-		Map<String,List<SysDictionary>> dicmap = new HashMap<String, List<SysDictionary>>();
+	public Map<String, Object> getDataByIds(String version, String mechineType) {
+		Map<String,Object> dicmap = new HashMap<String, Object>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ids", version.split(","));
-		dicmap.put("version", dicMapper.selectByIds(map));
+		dicmap.put("version", appVersionMapper.selectByIds(map));
 		map.put("ids", mechineType.split(","));
 		dicmap.put("mechineType", dicMapper.selectByIds(map));
 		return dicmap;
@@ -240,6 +243,11 @@ public class DictionaryServiceImpl implements IDictionaryService {
 	@Override
 	public List<SysDictionary> getDictionaryOfAdType() {
 		return dicMapper.selectByClassifyRef("ad_modality");
+	}
+
+	@Override
+	public List<SysDictionary> getDictionaryByClsRef(String target) {
+		return dicMapper.selectByClassifyRef(target);
 	}
 
 
