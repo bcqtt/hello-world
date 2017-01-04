@@ -11,10 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>全局搜索配置系统</title>
 <link rel="shortcut icon" href="framework/images/favicon.ico" type="image/x-icon" />
-<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/azure/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="framework/dwz/themes/azure/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="framework/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
-<link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="framework/cssext/dwz-btn-ext.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="framework/dwz/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+<link href="framework/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
 <!--[if IE]>
 <link href="http://baseromcdn.gionee.com/libs/dwz1.5.2/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
@@ -22,57 +23,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--[if lt IE 9]><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/speedup.js" type="text/javascript"></script><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-1.11.3.min.js" type="text/javascript"></script><![endif]-->
 <!--[if gte IE 9]><!--><script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery-2.1.4.min.js" type="text/javascript"></script><!--<![endif]-->
 
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery.validate.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="framework/dwz/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="framework/dwz/js/jquery.validate.js" type="text/javascript"></script>
+<script src="framework/dwz/js/jquery.bgiframe.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/xheditor/xheditor-1.2.2.min.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/xheditor/xheditor_lang/zh-cn.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/uploadify/scripts/jquery.uploadify.js" type="text/javascript"></script>
 
-<!-- svg图表  supports Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 9.5+ and Internet Explorer 6.0+ -->
+<!-- svg图表  supports Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 9.5+ and Internet Explorer 6.0+
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/raphael.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/g.raphael.js" type="text/javascript" ></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/g.bar.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/g.line.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/g.pie.js" type="text/javascript"></script>
 <script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/chart/g.dot.js" type="text/javascript"></script>
-
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.core.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.util.date.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.validate.method.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.barDrag.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.drag.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.tree.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.accordion.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.ui.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.theme.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.switchEnv.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.alertMsg.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.contextmenu.js" type="text/javascript"></script>
+ -->
+ 
+<script src="framework/dwz/js/dwz.core.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.util.date.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.validate.method.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.barDrag.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.drag.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.tree.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.accordion.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.ui.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.theme.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.switchEnv.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.alertMsg.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.contextmenu.js" type="text/javascript"></script>
 <script src="framework/dwz/js/dwz.navTab.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.tab.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.resize.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.dialog.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.dialogDrag.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.sortDrag.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.cssTable.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.tab.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.resize.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.dialog.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.dialogDrag.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.sortDrag.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.cssTable.js" type="text/javascript"></script>
 <script src="framework/dwz/js/dwz.stable.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.taskBar.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.taskBar.js" type="text/javascript"></script>
 <script src="framework/dwz/js/dwz.ajax.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.pagination.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.pagination.js" type="text/javascript"></script>
 <script src="framework/dwz/js/dwz.database.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.datepicker.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.effects.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.panel.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.checkbox.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.history.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.datepicker.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.effects.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.panel.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.checkbox.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.history.js" type="text/javascript"></script>
 <script src="framework/dwz/js/dwz.combox.js" type="text/javascript"></script>
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.print.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.file.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.print.js" type="text/javascript"></script>
 
 <!-- 可以用dwz.min.js替换前面全部dwz.*.js (注意：替换时下面dwz.regional.zh.js还需要引入)
 <script src="bin/dwz.min.js" type="text/javascript"></script>
 -->
-<script src="http://baseromcdn.gionee.com/libs/dwz1.5.2/js/dwz.regional.zh.js" type="text/javascript"></script>
+<script src="framework/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 <link rel="stylesheet" href="framework/zTreeV3/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <script type="text/javascript" src="framework/zTreeV3/js/jquery.ztree.all.js" ></script>
 <script src="framework/layer/layer.js" type="text/javascript"></script>

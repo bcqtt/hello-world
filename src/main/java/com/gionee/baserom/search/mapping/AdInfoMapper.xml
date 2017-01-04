@@ -528,7 +528,7 @@
         <if test="ai.endTime != null ">
    		    and i.end_time &lt;= #{ai.endTime} 
    		</if>
-   		 limit #{startIndex},#{numPerPage}
+   		  order by i.id desc limit #{startIndex},#{numPerPage}
    </select>
    
    <select id="queryTotalCount" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -595,7 +595,7 @@
    			</if>
    		</if>
    		<if test="export == null">
-	   		 limit #{startIndex},#{numPerPage}
+	   		 order by i.id desc limit #{startIndex},#{numPerPage}
    		</if>
    </select>
   

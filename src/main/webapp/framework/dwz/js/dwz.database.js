@@ -402,10 +402,6 @@
 				$this.click(function(){
 					var targetType = $this.attr("targetType");
 					var ids = _getIds(selectedIds, targetType);
-					
-					//var zTree = $.fn.zTree.getZTreeObj("resTree");
-					//var nodes = zTree.getSelectedNodes();
-					
 					if (!ids) {
 						alertMsg.error($this.attr("warn") || DWZ.msg("alertSelectMsg"));
 						return false;

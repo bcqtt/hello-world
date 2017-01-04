@@ -222,6 +222,66 @@ public class SiteNavigationExample {
 			return (Criteria) this;
 		}
 
+		public Criteria andDicIdIsNull() {
+			addCriterion("dic_id is null");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdIsNotNull() {
+			addCriterion("dic_id is not null");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdEqualTo(Integer value) {
+			addCriterion("dic_id =", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdNotEqualTo(Integer value) {
+			addCriterion("dic_id <>", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdGreaterThan(Integer value) {
+			addCriterion("dic_id >", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdGreaterThanOrEqualTo(Integer value) {
+			addCriterion("dic_id >=", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdLessThan(Integer value) {
+			addCriterion("dic_id <", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdLessThanOrEqualTo(Integer value) {
+			addCriterion("dic_id <=", value, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdIn(List<Integer> values) {
+			addCriterion("dic_id in", values, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdNotIn(List<Integer> values) {
+			addCriterion("dic_id not in", values, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdBetween(Integer value1, Integer value2) {
+			addCriterion("dic_id between", value1, value2, "dicId");
+			return (Criteria) this;
+		}
+
+		public Criteria andDicIdNotBetween(Integer value1, Integer value2) {
+			addCriterion("dic_id not between", value1, value2, "dicId");
+			return (Criteria) this;
+		}
+
 		public Criteria andSiteNameIsNull() {
 			addCriterion("site_name is null");
 			return (Criteria) this;

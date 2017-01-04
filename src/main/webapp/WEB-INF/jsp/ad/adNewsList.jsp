@@ -3,8 +3,9 @@
 <script src="js/authority.js" type="text/javascript"></script>
 <style type="text/css">
 .adImg{
-	width:150px;
-	height:70px;
+	width:180px;
+	height:85px;
+	margin:5px;
 }
 </style>
 <script type="text/javascript">
@@ -53,7 +54,7 @@ function checkShowEnabled(obj){
 			<tr>
 				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center">标题</th>
-				<th align="center">广告图</th>
+				<th align="center" width="200">广告图</th>
 				<th width="750">URL</th>
 				<th width="50" align="center">显示</th>
 			</tr>

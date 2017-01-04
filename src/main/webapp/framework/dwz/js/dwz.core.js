@@ -1,10 +1,10 @@
 /**
- * @author ZhangHuihua@msn.com
+ * @author 张慧华 z@j-ui.com
  * 
  */
 
 var DWZ = {
-	version: '1.5.2',
+	version: '1.5.3',
 	regPlugins: [], // [function($parent){} ...] 
 	// sbar: show sidebar
 	keyCode: {
@@ -15,7 +15,8 @@ var DWZ = {
 	},
 	eventType: {
 		pageClear:"pageClear",	// 用于重新ajaxLoad、关闭nabTab, 关闭dialog时，去除xheditor等需要特殊处理的资源
-		resizeGrid:"resizeGrid"	// 用于窗口或dialog大小调整
+		resizeGrid:"resizeGrid",	// 用于窗口或dialog大小调整
+		initEnvAfter: "initEnvAfter" // initEnv完成出发
 	},
 	isOverAxis: function(x, reference, size) {
 		//Determines when x coordinate is over "b" element axis
@@ -237,7 +238,7 @@ var DWZ = {
 		layoutH: function($refBox){
 			return this.each(function(){
 				var $this = $(this);
-				if (! $refBox) $refBox = $this.parents("div.layoutBox:first");
+				if (! $refBox) $refBox = $this.getLayoutBox();
 				var iRefH = $refBox.height();
 				var iLayoutH = parseInt($this.attr("layoutH"));
 				var iH = iRefH - iLayoutH > 50 ? iRefH - iLayoutH : 50;
@@ -248,6 +249,9 @@ var DWZ = {
 					$this.height(iH).css("overflow","auto");
 				}
 			});
+		},
+		getLayoutBox: function(){
+			return $(this).parents("div.layoutBox:first");
 		},
 		hoverClass: function(className, speed){
 			var _className = className || "hover";

@@ -9,13 +9,28 @@ function showIcon(obj){
 		$("#urlLogo").attr("src",$(obj).val());
 	}
 }
+$("#dicId").change(function(){
+	if($(this).val()!=-1){
+		$("#site_type").val(0);
+	}
+});
 </script>
 <div class="pageContent">
 	<form method="post" action="site/saveSite?editType=${editType}&resKey=${resKey}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<div class="pageFormContent" layoutH="56">
 			<p>
+				<label>机型：</label>
+				<select id="dicId" name="dicId" >
+					<option value="-1" >选择机型..</option>
+					<c:forEach var="ml" items="${mechineList}">
+					   <option value="${ml.id}" ${site.dicId == ml.id?"selected":"" }>${ml.dicValue}</option>
+					</c:forEach>
+				</select>
+				<span class="info">不选择即针对旧版本机型</span>
+			</p>
+			<p>
 				<label>网址类型：</label>
-				<select name="type" class="combox">
+				<select id="site_type" name="type" >
 					<option value="0" ${site.type == 0?"selected":"" }>常规网址</option>
 					<option value="1" ${site.type == 1?"selected":"" }>桌面widget网址</option>
 				</select>
@@ -35,7 +50,7 @@ function showIcon(obj){
 			<p>
 				<label>Logo图片链接：</label>
 				<input name="iconUrl" class="required url" type="text" size="30" style="width:200px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
-				<img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/icon_pic.png':site.iconUrl}" width="25" height="25">
+				<span class="info"><img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/icon_pic.png':site.iconUrl}" width="25" height="25"></span>
 			</p>
 			<p>
 				<label>是否显示：</label>

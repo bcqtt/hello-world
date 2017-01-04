@@ -6,6 +6,14 @@
 	width:150px;
 	height:70px;
 }
+
+.grid .gridTbody td div{
+	display: block;
+    overflow: hidden;
+    height: auto;
+    white-space: nowrap;
+    line-height: 21px;
+}
 </style>
 <script type="text/javascript">
 function checkShowEnabled(obj){

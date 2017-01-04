@@ -49,6 +49,6 @@
     <table schema="search" tableName="ad_classify" domainObjectName="AdClassify"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
     <table schema="search" tableName="ad_display_rule" domainObjectName="AdDisplayRule"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
      -->
-    <table schema="search" tableName="app_version_entrance" domainObjectName="AppVersionEntrance"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
+    <table schema="search" tableName="images" domainObjectName="Images"><property name="ignoreQualifiersAtRuntime" value="true"/></table>
   </context>
 </generatorConfiguration>

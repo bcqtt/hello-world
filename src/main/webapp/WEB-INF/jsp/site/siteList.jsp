@@ -3,8 +3,9 @@
 <script src="js/authority.js" type="text/javascript"></script>
 <style type="text/css">
 .iconUrl{
-	width:25px;
-	height:25px;
+	width:50px;
+	height:50px;
+	margin: 5px;
 }
 </style>
 <script type="text/javascript">
@@ -28,30 +29,40 @@ function updateType(obj){
 	ajaxTodo("site/updateSite?id="+siteId+"&type=" + type
 			,PublicUtils.ajaxTodoCallback());
 }
+$("#dataStatusBtn").click(function(){
+	var url = $(this).attr("url");
+	$("select[name='dicId']").val(-1);
+	$("#pagerForm").attr("action",url);
+	$("#pagerForm").submit();
+});
 </script>
 
-<form id="pagerForm" method="GET" action="${resAction}">
+<div class="pageHeader">
+	<form id="pagerForm"  onsubmit="return navTabSearch(this);" action="${resAction}" method="get">
 	<input type="hidden" name="pageNum" value="${page.currentPage}" />
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
-	<input type="hidden" name="type" value="${type}" id="siteType"/>
-</form>
-
-<div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="${resAction}&numPerPage=${page.numPerPage}" method="get">
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
 				<td>
-					选择网址类型：
+					<label>选择机型：</label>
+					<select name="dicId" class="combox" >
+						<option value="-1" >选择机型..</option>
+						<c:forEach var="ml" items="${mechineList}">
+						   <option value="${ml.id}" <c:if test="${ml.id==siteParam.dicId}">selected</c:if> >${ml.dicValue}</option>
+						</c:forEach>
+					</select>
 				</td>
 				<td>
+					<label>选择网址类型：</label>
 					<select id="selectType" name="type" class="combox" onchange="selectByType(this);" >
-						<option value="-1" <c:if test="${type == -1}">selected="selected"</c:if>>全部</option>
-						<option value="0" <c:if test="${type == 0}">selected="selected"</c:if>>常规网址</option>
-						<option value="1" <c:if test="${type == 1}">selected="selected"</c:if>>桌面widget网址</option>
+						<option value="-1" <c:if test="${siteParam.type == -1}">selected="selected"</c:if>>全部</option>
+						<option value="0" <c:if test="${siteParam.type == 0}">selected="selected"</c:if>>常规网址</option>
+						<option value="1" <c:if test="${siteParam.type == 1}">selected="selected"</c:if>>桌面widget网址</option>
 					</select>
 				</td>
 				<td><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></td>
+				<td><a id="dataStatusBtn" class="button" url="${resAction}&numPerPage=${page.numPerPage}&dataStatus=old"><span>只看旧版网址</span></a></td>
 			</tr>
 		</table>
 	</div>
@@ -90,6 +101,7 @@ function updateType(obj){
 				<th align="center" width="50">排序号</th>
 				<th align="center" width="50">显示</th>
 				<th align="center" width="80">类型</th>
+				<th align="center" width="80">机型</th>
 				<th width="280">URL</th>
 			</tr>
 		</thead>
@@ -112,6 +124,10 @@ function updateType(obj){
 					 --%>
 					 <c:if test="${site.type == 0}">常规网址</c:if>
 					 <c:if test="${site.type == 1}">桌面widget网址</c:if>
+   				</td>
+   				<td>
+   					${site.mechineType.dicValue}
+   					<c:if test="${site.dicId == -1}">-</c:if>
    				</td>
 				<td style="word-break: break-all;"><a href="${site.siteUrl}" target="_blank">${site.siteUrl}</td>
 			  </tr>

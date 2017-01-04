@@ -110,7 +110,7 @@ public class SearchController {
 		if(type == 1){
 			model.setViewName("/WEB-INF/jsp/authority/sourceEdit");
 		}else if(type == 2){
-			model.setViewName("/WEB-INF/jsp/source/assoSourceEdit");
+			model.setViewName("/WEB-INF/jsp/resource/assoSourceEdit");
 		}
 		return model;
 	}
@@ -129,7 +129,7 @@ public class SearchController {
 		if(type == 1){
 			model.setViewName("/WEB-INF/jsp/authority/sourceEdit");
 		}else if(type == 2){
-			model.setViewName("/WEB-INF/jsp/source/assoSourceEdit");
+			model.setViewName("/WEB-INF/jsp/resource/assoSourceEdit");
 		}
 		return model;
 	}
@@ -198,7 +198,7 @@ public class SearchController {
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("/WEB-INF/jsp/source/assoSourceList");
+		model.setViewName("/WEB-INF/jsp/resource/assoSourceList");
 		logger.info("--------->查看联想词源列表。");
 		return model;
 	}

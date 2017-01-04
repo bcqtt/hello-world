@@ -94,7 +94,7 @@ $(document).ready(function(){
 		<select name="searchable[]" id='searchable' multiple='multiple' >
 				<c:forEach var="dic" items="${dics}">
 					<c:if test="${dickey == 'version'}">
-						<option value="${dic.id}-${dic.version}" <c:if test="${fn:contains(optids,dic.version)}">SELECTED</c:if> >${dic.version}</option>
+						<option value="${dic.vid}-${dic.version}" <c:if test="${fn:contains(optids,dic.version)}">SELECTED</c:if> >${dic.version}</option>
 					</c:if>
 					<c:if test="${dickey == 'mechineType'}">
 						<option value="${dic.id}-${dic.dicValue}" <c:if test="${fn:contains(optids,dic.dicValue)}">SELECTED</c:if> >${dic.dicValue}</option>

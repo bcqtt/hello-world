@@ -1,0 +1,20 @@
+.panelBar .toolBar a.checkall span { 
+	background-image: url(checkall.png);
+	background-size: 18px 18px;
+}
+.panelBar .toolBar a.uncheck span { 
+	background-image: url(uncheck.png);
+	background-size: 18px 18px;
+}
+.panelBar .toolBar a.manage span { 
+	background-image: url(gear.png);
+	background-size: 18px 18px;
+}
+.panelBar .toolBar a.upload span { 
+	background-image: url(cloud-upload.png);
+	background-size: 18px 18px;
+}
+.panelBar .toolBar a.cloud-delete span { 
+	background-image: url(cloud-delete.png);
+	background-size: 18px 18px;
+}

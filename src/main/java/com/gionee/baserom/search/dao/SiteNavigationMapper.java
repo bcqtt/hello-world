@@ -101,4 +101,6 @@ public interface SiteNavigationMapper {
      * @return
      */
 	List<SiteNavigation> queryByPage(Map<String, Object> map);
+
+	int queryCount(Map<String, Object> map);
 }

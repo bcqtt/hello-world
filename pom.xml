@@ -310,6 +310,20 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.5.4</version>
 		</dependency>
-		 
+		
+		<!-- Java连接FTP服务器
+		<dependency>
+		    <groupId>commons-net</groupId>
+		    <artifactId>commons-net</artifactId>
+		    <version>3.5</version>
+		</dependency> -->
+		
+		<!-- Java连接sshd服务器-->
+		<dependency>
+		    <groupId>com.jcraft</groupId>
+		    <artifactId>jsch</artifactId>
+		    <version>0.1.54</version>
+		</dependency>
+		
 	</dependencies>
 </project>

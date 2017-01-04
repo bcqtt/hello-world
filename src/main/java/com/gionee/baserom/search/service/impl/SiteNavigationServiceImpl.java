@@ -51,20 +51,20 @@ public class SiteNavigationServiceImpl implements ISiteNavigationService {
 	/**
 	 * 分页查询信息
 	 * @param page
+	 * @param dataStatus : new:表示新版本数据列表，old:表示旧版本数据列表
 	 * @return
 	 */
-	public Page<SiteNavigation> queryPage(Page<SiteNavigation> page,String type) {
-		if(type==null || type.equals("")){
-			type = "-1";
+	public Page<SiteNavigation> queryPage(Page<SiteNavigation> page,SiteNavigation site,String dataStatus) {
+		if(site.getType()==null || site.getType().equals("")){
+			site.setType(-1);
 		}
-		SiteNavigationExample example = new SiteNavigationExample();
-		Criteria criteria = example.createCriteria();
-		criteria.andTypeEqualTo(Integer.parseInt(type));
-		int totalCount = siteNavigationMapper.countByExample(Integer.parseInt(type)==-1?null:example);
+		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("startIndex", page.getStartIndex());
 		map.put("numPerPage", page.getNumPerPage());
-		map.put("type", Integer.parseInt(type));
+		map.put("dataStatus", dataStatus);
+		map.put("site", site);
+		int totalCount = siteNavigationMapper.queryCount(map);
 		List<SiteNavigation> list = siteNavigationMapper.queryByPage(map);
 		page.setTotalCount(totalCount);
 		page.setList(list);

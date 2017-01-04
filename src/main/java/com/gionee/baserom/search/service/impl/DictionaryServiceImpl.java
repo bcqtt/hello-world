@@ -15,7 +15,6 @@ import com.gionee.baserom.search.dao.AppVersionMapper;
 import com.gionee.baserom.search.dao.SysDictionaryClassifyMapper;
 import com.gionee.baserom.search.dao.SysDictionaryMapper;
 import com.gionee.baserom.search.pojo.Page;
-import com.gionee.baserom.search.pojo.SiteNavigationExample;
 import com.gionee.baserom.search.pojo.SysDictionary;
 import com.gionee.baserom.search.pojo.SysDictionaryClassify;
 import com.gionee.baserom.search.pojo.SysDictionaryClassifyExample;

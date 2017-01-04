@@ -15,11 +15,12 @@ public interface ISiteNavigationService {
 
 	/**
 	 * 分页查询账号信息
-	 * @param type 
+	 * @param site 
+	 * @param dataStatus 
 	 * @param page
 	 * @return
 	 */
-	public Page<SiteNavigation> queryPage(Page<SiteNavigation> site, String type);
+	public Page<SiteNavigation> queryPage(Page<SiteNavigation> page, SiteNavigation site, String dataStatus);
 	
 	/**
 	 * 根据Example查询

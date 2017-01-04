@@ -18,6 +18,8 @@ import com.gionee.baserom.search.pojo.Account;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.Resources;
 import com.gionee.baserom.search.pojo.SiteNavigation;
+import com.gionee.baserom.search.pojo.SysDictionary;
+import com.gionee.baserom.search.service.IDictionaryService;
 import com.gionee.baserom.search.service.IResourcesService;
 import com.gionee.baserom.search.service.ISiteNavigationService;
 import com.gionee.baserom.search.util.StringHelper;
@@ -34,21 +36,23 @@ public class SiteNavigationController {
 	
 	@Resource
 	private IResourcesService resourcesService;
+	@Resource
+	private IDictionaryService dicService;
 	
 	/**
 	 * 查询并展示网址信息列表界面
 	 * @return
 	 */
-	@RequestMapping(value = "/querySitePaper", method = RequestMethod.GET)
-	public ModelAndView querySitePaper(Page<SiteNavigation> page,HttpServletRequest request) {
+	@RequestMapping(value = "/querySitePaper" )
+	public ModelAndView querySitePaper(Page<SiteNavigation> page,HttpServletRequest request,SiteNavigation site) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
-		String type = request.getParameter("type");
+		String dataStatus = request.getParameter("dataStatus");
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
-		page.setNumPerPage(20);
-		page = siteNavigationService.queryPage(page,type);
+		//page.setNumPerPage(20);
+		page = siteNavigationService.queryPage(page,site,dataStatus);
 		
 		String resId = request.getParameter("resId");
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
@@ -59,11 +63,13 @@ public class SiteNavigationController {
 		}
 		List<Resources> optList = this.resourcesService.queryAccountOpt(acc.getId(),Integer.parseInt(resId));
 		Resources res = this.resourcesService.selectById(Integer.parseInt(resId));
+		List<SysDictionary> mechineList = dicService.getDictionaryByClsRef("mechine_type");
 		model.addObject(page);
-		model.addObject("type",type);
+		model.addObject("siteParam",site);
 		model.addObject("resAction",res.getResUrl()+"?resId=" + resId);
 		model.addObject("optList",optList);
 		model.addObject("resKey",res.getResKey());
+		model.addObject("mechineList",mechineList);
 		model.setViewName("WEB-INF/jsp/site/siteList");
 		logger.info("--------->查看分组列表。");
 		return model;
@@ -75,9 +81,11 @@ public class SiteNavigationController {
 	 */
 	@RequestMapping(value = "/addSiteView", method = RequestMethod.GET)
 	public ModelAndView addSiteView(String resKey,String editType) {
+		List<SysDictionary> mechineList = dicService.getDictionaryByClsRef("mechine_type");
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("resKey",resKey);
+		model.addObject("mechineList",mechineList);
 		model.setViewName("WEB-INF/jsp/site/siteEdit");
 		return model;
 	}
@@ -89,10 +97,12 @@ public class SiteNavigationController {
 	@RequestMapping(value = "/editSiteView", method = RequestMethod.GET)
 	public ModelAndView editSiteView(String resKey,String editType,SiteNavigation site) {
 		SiteNavigation s = siteNavigationService.selectByExample(site);
+		List<SysDictionary> mechineList = dicService.getDictionaryByClsRef("mechine_type");
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("site",s);
 		model.addObject("resKey",resKey);
+		model.addObject("mechineList",mechineList);
 		model.setViewName("WEB-INF/jsp/site/siteEdit");
 		return model;
 	}

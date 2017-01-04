@@ -17,12 +17,12 @@ function initEnv() {
 	if ($.fn.jBar) $("#leftside").jBar({minW:150, maxW:700});
 	
 	if ($.taskBar) $.taskBar.init();
-	if (window.navTab) navTab.init();
 	if ($.fn.switchEnv) $("#switchEnvBox").switchEnv();
 	if ($.fn.navMenu) $("#navMenu").navMenu();
 		
 	setTimeout(function(){
 		initLayout();
+		if (window.navTab) navTab.init();
 
 		// 注册DWZ插件。
 		DWZ.regPlugins.push(initUI); //第三方jQuery插件注册方法：DWZ.regPlugins.push(function($p){});
@@ -35,7 +35,8 @@ function initEnv() {
 		jTabsPH.find(".tabsLeft").hoverClass("tabsLeftHover");
 		jTabsPH.find(".tabsRight").hoverClass("tabsRightHover");
 		jTabsPH.find(".tabsMore").hoverClass("tabsMoreHover");
-	
+
+		$(document).trigger(DWZ.eventType.initEnvAfter);
 	}, 10);
 
 }
@@ -54,7 +55,7 @@ function initUI($p){
 	if ($.fn.jTable) $("table.table", $p).jTable();
 
 	// css tables
-	if ($.fn.cssTable) $('table.list', $p).cssTable();
+	if ($.fn.cssTable) $('table.list', $p).not('.nowrap').cssTable();
 
 	if ($.fn.jPanel) $("div.panel", $p).jPanel();
 
@@ -243,7 +244,14 @@ function initUI($p){
 			var rel = $this.attr("rel");
 			if (rel) {
 				var $rel = $("#"+rel);
-				$rel.loadUrl($this.attr("href"), {}, function(){
+				var url = unescape($this.attr("href")).replaceTmById($(event.target).parents(".unitBox:first"));
+				DWZ.debug(url);
+				if (!url.isFinishedTm()) {
+					alertMsg.error($this.attr("warn") || DWZ.msg("alertSelectMsg"));
+					return false;
+				}
+
+				$rel.loadUrl(url, {}, function(){
 					$rel.find("[layoutH]").layoutH();
 				});
 			}
@@ -259,7 +267,7 @@ function initUI($p){
 			rel:$this.attr("rel"),
 			totalCount:$this.attr("totalCount"),
 			numPerPage:$this.attr("numPerPage"),
-			pageNumShown:$this.attr("pageNumShown"),
+			pageNumShown:$this.attr("pageNumShown") || 10,
 			currentPage:$this.attr("currentPage")
 		});
 	});
