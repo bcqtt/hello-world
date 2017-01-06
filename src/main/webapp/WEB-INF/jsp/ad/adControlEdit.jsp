@@ -31,7 +31,8 @@ function showIcon(obj){
 			</p>
 			<p>
 				<label>广告图URL：</label>
-				<input name="adImg" type="text" size="44" style="width:230px;" value="${ad.adImg}" onchange="showIcon(this);" />
+				<a class="button" href="images/queryImagesPaper?resId=68&type=31&resource=old" target="dialog" rel="toImagesView4Old" resizable="false" maxable="false" mask="true" width="1220" height="660" ><span>选择..</span></a>
+				<input name="adImg" type="hidden" size="44" style="width:230px;" value="${ad.adImg}" onchange="showIcon(this);" />
 			</p>
 			<p>
 				<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>

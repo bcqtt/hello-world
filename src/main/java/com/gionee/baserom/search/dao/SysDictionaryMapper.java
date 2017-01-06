@@ -90,5 +90,7 @@ public interface SysDictionaryMapper {
 	List<SysDictionary> queryByDicKeyVersion();
 	List<SysDictionary> queryByDicKeyMechineType();
 
-	List<SysDictionary> selectByIds(Map<String, Object> map);
+	List<SysDictionary> selectByIds(List<String> list);
+
+	List<SysDictionary> querySelectedMechineType(List<String> ids);
 }

@@ -328,4 +328,8 @@
       	</if>
    		order by id desc limit #{startIndex},#{numPerPage} 
    </select>
+   
+   <update id="updateRef" parameterType="java.util.Map">
+       update images set is_ref = #{isRef} where file_name = #{fileName}
+   </update>
 </mapper>

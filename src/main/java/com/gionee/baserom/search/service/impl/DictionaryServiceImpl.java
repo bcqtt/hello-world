@@ -1,5 +1,6 @@
 package com.gionee.baserom.search.service.impl;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -231,11 +232,8 @@ public class DictionaryServiceImpl implements IDictionaryService {
 	@Override
 	public Map<String, Object> getDataByIds(String version, String mechineType) {
 		Map<String,Object> dicmap = new HashMap<String, Object>();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("ids", version.split(","));
-		dicmap.put("version", appVersionMapper.selectByIds(map));
-		map.put("ids", mechineType.split(","));
-		dicmap.put("mechineType", dicMapper.selectByIds(map));
+		dicmap.put("version", appVersionMapper.selectByIds(Arrays.asList(version.split(","))));
+		dicmap.put("mechineType", dicMapper.selectByIds(Arrays.asList(mechineType.split(","))));
 		return dicmap;
 	}
 

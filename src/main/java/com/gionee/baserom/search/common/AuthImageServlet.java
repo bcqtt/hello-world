@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
 @SuppressWarnings("serial")
 public class AuthImageServlet extends HttpServlet{
 	protected static Logger logger = Logger.getLogger(AuthImageServlet.class);
-	private static final String CONTENT_TYPE = "text/html; charset=utf8";
+	//private static final String CONTENT_TYPE = "text/html; charset=utf8";
 	//设置字母的大小,大小     
     private Font mFont = new Font("Times New Roman", Font.PLAIN, 17);
     

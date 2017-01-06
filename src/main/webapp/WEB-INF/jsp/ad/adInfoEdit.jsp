@@ -30,10 +30,16 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 	border: 1px solid #ffffff;
 	border-radius: 8px;
 }
+#adSpecification li{
+	list-style:none;
+	margin-left: 130px;
+}
+#adSpecification li label{
+	width: 100%;
+}
 </style>
 
-<h2 class="contentTitle">编辑广告信息</h2>
-<div class="pageFormContent" layoutH="60" style="border-color: #BFDEE6;">
+<div class="pageFormContent" layoutH="60" style="border: none;">
 	<form id="adInfoForm" enctype="multipart/form-data" method="post" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<fieldset>
 			<legend>广告属性</legend>
@@ -42,16 +48,30 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 					<td width="650" height="50"><label class="attr-label">CP名称：</label>
 						<input name="cpName" type="text" style="width:330px;" value="${ai.cpName}" />
 					</td>
+					
+				</tr>
+				<tr>
 					<td>
 						<label class="attr-label">广告标题：</label><input name="adTittle" type="text"  style="width:330px;" value="${ai.adTittle}" />
 						<label style="width:60px;"><input name="showTittleFlag" type="checkbox" value="${ai.showTittleFlag}" onchange="checkShowFlag(this);" <c:if test="${ai.showTittleFlag == 1}">checked="checked"</c:if> />显示</label>
 					</td>
 				</tr>
 				<tr>
+					<td width="650" height="50"><label class="attr-label">广告分类：</label>
+						<select id="selectClassify" name="adClassifyId" class="combox" onchange="" >
+							<c:forEach var="c" items="${classifyList}">
+								<option value="${c.cid}" <c:if test="${c.cid == ai.adClassifyId}">selected="selected"</c:if> >${c.cname}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td width="650" height="50" colspan="2"><label class="attr-label">广告规格：</label>
+						<ul id="adSpecification">
 						<c:forEach var="spec" items="${dicMap.ad_specification}">
-							<label style="width: auto;"><input type="radio" name="specification" value="${spec.id}" <c:if test="${ai.specification == spec.id}">checked="checked"</c:if>/>${spec.dicValue}</label>
+							<li><label><input type="radio" name="specification" value="${spec.id}" <c:if test="${ai.specification == spec.id}">checked="checked"</c:if>/>${spec.dicValue}</label></li>
 						</c:forEach>
+						</ul>
 					</td>
 				</tr>
 				<tr>
@@ -62,16 +82,9 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 						<img id="ad_img" style="width:80px;height:80px;margin-left:130px;margin-top:10px;" src="framework/images/camera.png"/>
 						 -->
 					</td>
-					<td width="650" height="50" colspan="2"><label class="attr-label">广告分类：</label>
-						<select id="selectClassify" name="adClassifyId" class="combox" onchange="" >
-							<c:forEach var="c" items="${classifyList}">
-								<option value="${c.cid}" <c:if test="${c.cid == ai.adClassifyId}">selected="selected"</c:if> >${c.cname}</option>
-							</c:forEach>
-						</select>
-					</td>
 				</tr>
 				<tr>
-					<td width="650" height="50" colspan="2"><label class="attr-label">广告行为：</label>
+					<td width="650" height="50"><label class="attr-label">广告行为：</label>
 						<c:forEach var="b" items="${behaviorList}">
 							<label class="new-label">
 							<input type="radio" name="adBehaviorId" value="${b.id}" 
@@ -102,6 +115,8 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 						<input type="text" style="width:120px;background-color: #ffffff;" value="" readonly="readonly" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" name="endTime" value="">
 						<span class="info">开始时间&nbsp;&lt;&nbsp;结束时间</span>
 					</td>
+				</tr>
+				<tr>
 					<td>
 						<label class="attr-label">权重值：</label>
 						<input name="weight" type="text"   value="${ai.weight}"/>
@@ -133,6 +148,8 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 							</c:forEach>
 						</select>
 					</td>
+				</tr>
+				<tr>
 					<td>
 						<label class="attr-label">计费单价：</label>
 						<input name="unitPrice" type="text" class="number" value="${ai.unitPrice}"/>
@@ -156,6 +173,8 @@ var endTime = '<fmt:formatDate value="${ai.endTime}" pattern="yyyy-MM-dd HH:mm:s
 						<input name="version" type="hidden" value="${ai.version}"/>
 						<a id="versionWinBtn" class="button" href="adinfo/selectWindow?dickey=version" target="dialog" rel="toVersionView" resizable="false" maxable="false" mask="true" width="700" height="450" ><span>选择..</span></a>
 					</td>
+				</tr>
+				<tr>
 					<td width="650" height="50">
 						<label class="attr-label">机型：</label>
 						<div id="selectedMechineDiv">

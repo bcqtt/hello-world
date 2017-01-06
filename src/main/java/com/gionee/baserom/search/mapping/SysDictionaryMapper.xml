@@ -277,9 +277,17 @@
 		left join sys_dictionary_classify c on c.id = d.cls_id
 		where c.dic_key='mechine_type'
    </select>
+   
+   <select id="querySelectedMechineType" parameterType="java.util.List" resultMap="BaseResultMap" >
+	  select * from sys_dictionary where id in 
+	  <foreach collection="list" item="id" open="(" close=")" separator=",">
+    	#{id}
+      </foreach>
+  </select>
+   
    <select id="selectByIds" parameterType="java.util.Map" resultMap="BaseResultMap">
    		select d.* from sys_dictionary d where d.id in 
-   		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+   		<foreach collection="list" item="id" open="(" close=")" separator=",">
 	    	#{id}
 	    </foreach>
    </select>

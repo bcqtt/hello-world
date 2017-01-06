@@ -90,7 +90,7 @@ public interface AppVersionMapper {
      */
 	List<AppVersion> queryByPage(Map<String, Object> map);
 
-	List<AppVersion> selectByIds(Map<String, Object> map);
+	List<AppVersion> selectByIds(List<String> list);
 
 	List<AppVersion> selectAllVersion();
 

@@ -18,3 +18,7 @@
 	background-image: url(cloud-delete.png);
 	background-size: 18px 18px;
 }
+
+.float-right{
+	float: right;
+}

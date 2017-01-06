@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +21,18 @@ import org.apache.log4j.Logger;
 
 public class StringHelper {
 	private static Logger log = Logger.getLogger(StringHelper.class);
+	
+	
+	/**
+	 * 随机生成UUID
+	 * @return
+	 */
+	public static synchronized String getUUID() {
+		UUID uuid = UUID.randomUUID();
+		String str = uuid.toString();
+		String uuidStr = str.replace("-", "");
+		return uuidStr;
+	}
 
 	/**
 	 * md5转码
@@ -179,6 +192,7 @@ public class StringHelper {
 //		Date date = StringHelper.strToDate(str);
 //		System.out.println(date);
 		
-		System.out.println(getYMD());
+//		System.out.println(getYMD());
+		System.out.println(getUUID());
 	}
 }

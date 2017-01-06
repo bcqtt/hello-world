@@ -48,13 +48,17 @@ $("#dicId").change(function(){
 				<input name="siteUrl" class="required url" type="text" size="30" style="width:220px;" value="${site.siteUrl}" />
 			</p>
 			<p>
-				<label>Logo图片链接：</label>
-				<input name="iconUrl" class="required url" type="text" size="30" style="width:200px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
-				<span class="info"><img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/icon_pic.png':site.iconUrl}" width="25" height="25"></span>
-			</p>
-			<p>
 				<label>是否显示：</label>
 				<label><input name="showEnable" type="checkbox" value="${site.showEnable}" onclick="RoleUtils.onClickOfEnable(this);" <c:if test="${site.showEnable == 1}">checked="checked"</c:if> />显示在首页</label>
+			</p>
+			<p>
+				<label>Logo图片链接：</label>
+				<a id="imagesWinBtn" class="button" href="images/queryImagesPaper?resId=68&type=32&resource=nav" target="dialog" rel="toImagesView4Site" resizable="false" maxable="false" mask="true" width="1220" height="660" ><span>选择..</span></a>
+				<input name="iconUrl" class="required url" type="hidden" size="30" style="width:200px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
+			</p>
+			<p>
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<img id="urlLogo" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/logo_default.jpg':site.iconUrl}" width="68" height="68">
 			</p>
 			<input type="hidden" name="id" value="${site.id}" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

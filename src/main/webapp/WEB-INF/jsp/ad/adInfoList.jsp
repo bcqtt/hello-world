@@ -5,14 +5,8 @@
 var adRuleId = '${ai.adRuleId}';
 </script>
 
-<!-- 
-<form id="pagerForm" method="GET" action="${resAction}">
-	<input type="hidden" name="pageNum" value="${page.currentPage}" />
-	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
-</form> -->
-
 <div class="pageHeader" style="border:1px #B8D0D6 solid">
-	<form id="pagerForm" onsubmit="return divSearch(this, 'adInformation');" action="adinfo/queryAdInfoPaper?resKey=adInformation&adRuleId=${ai.adRuleId}" method="post">
+	<form id="pagerForm" class="adPagerForm" onsubmit="return divSearch(this, 'adInformation');" action="adinfo/queryAdInfoPaper?resKey=adInformation&adRuleId=${ai.adRuleId}" method="post">
 	<input type="hidden" name="pageNum" value="${page.currentPage}" />
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
 	<div class="searchBar">
@@ -55,8 +49,8 @@ var adRuleId = '${ai.adRuleId}';
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="adinfo/addAdInfoView?editType=add&resKey=adInformation&adRuleId=${ai.adRuleId}" target="dialog" max="true" width="1110" height="615"><span>添加广告</span></a></li>
-			<li><a class="edit" href="adinfo/editAdInfoView?editType=update&id={id_adinfo}&resKey=adInformation&adRuleId=${ai.adRuleId}" target="dialog" max="true" warn="请选择一个记录!" width="1110" height="615"><span>修改</span></a></li>
+			<li><a class="add" href="adinfo/addAdInfoView?editType=add&resKey=adInformation&adRuleId=${ai.adRuleId}" target="dialog" max="false" width="750" height="615"><span>添加广告</span></a></li>
+			<li><a class="edit" href="adinfo/editAdInfoView?editType=update&id={id_adinfo}&resKey=adInformation&adRuleId=${ai.adRuleId}" target="dialog" warn="请选择一个记录!" width="750" height="615"><span>修改</span></a></li>
 			<li><a class="delete" href="adinfo/deleteAdInfo?id={id_adinfo}&resKey=adInformation" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"><span>删除</span></a></li>
 		</ul>
 	</div>

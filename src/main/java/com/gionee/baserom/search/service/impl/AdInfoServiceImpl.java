@@ -255,7 +255,7 @@ public class AdInfoServiceImpl implements IAdInfoService {
         	}
         	Label label9 = new Label( 9 , 2+i , keyWord,wcf2);
         	
-        	List<SysDictionary> dicList = sysDictionaryMapper.queryByDicKeyMechineType();
+        	List<SysDictionary> dicList = sysDictionaryMapper.querySelectedMechineType(Arrays.asList(ad.getMechineType().split(",")));
         	String dicStr = "";
         	for(int n=0; n < dicList.size(); n++){
         		if(n==dicList.size()-1){
@@ -265,9 +265,7 @@ public class AdInfoServiceImpl implements IAdInfoService {
         		}
         	}
         	
-        	Map<String, Object> argsmap = new HashMap<String, Object>();
-        	argsmap.put("ids", ad.getVersion().split(","));
-        	List<AppVersion> dicList2 = appVersionMapper.selectByIds(argsmap);
+        	List<AppVersion> dicList2 = appVersionMapper.selectByIds(Arrays.asList(ad.getVersion().split(",")));
         	Label label10 = new Label( 10 , 2+i , dicStr,wcf2);
         	dicStr = "";
         	for(int m=0; m < dicList2.size(); m++){

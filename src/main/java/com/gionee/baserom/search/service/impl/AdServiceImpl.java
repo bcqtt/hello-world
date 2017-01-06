@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
+import com.gionee.baserom.search.common.UpdateImagesRef;
 import com.gionee.baserom.search.dao.AdControlMapper;
+import com.gionee.baserom.search.dao.ImagesMapper;
 import com.gionee.baserom.search.pojo.AdControl;
 import com.gionee.baserom.search.pojo.AdControlExample;
 import com.gionee.baserom.search.pojo.AdControlExample.Criteria;
@@ -25,12 +27,16 @@ public class AdServiceImpl implements IAdService {
 	
 	@Resource
 	private AdControlMapper adMapper;
+	
+	@Resource
+	private ImagesMapper imagesMapper;
 
 	/**
 	 * 保存账信息
 	 */
 	public DwzAjaxObject saveAd(String resKey,String editType,AdControl ad) {
 		int n=0;
+		UpdateImagesRef.updateImgRef(editType,ad,adMapper,imagesMapper);
 		if(editType.equals("add")){
 			n = adMapper.insert(ad);
 			logger.info("保存广告图信息-->" + ad.getAdImg());
@@ -94,6 +100,7 @@ public class AdServiceImpl implements IAdService {
 		String[] idArray = ids.split(",");
 		int n = 0;
 		for(int i=0; i<idArray.length; i++ ){
+			UpdateImagesRef.updateImgRefWhenDel(Integer.parseInt(idArray[i]), adMapper, imagesMapper);
 			n += this.adMapper.deleteByPrimaryKey(Integer.parseInt(idArray[i]));
 		}
 		if(n>0){

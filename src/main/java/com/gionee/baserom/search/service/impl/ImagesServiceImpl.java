@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 
@@ -23,6 +24,7 @@ import com.gionee.baserom.search.service.IImagesService;
 import com.gionee.baserom.search.util.FTPUtil;
 import com.gionee.baserom.search.util.HttpUtil;
 import com.gionee.baserom.search.util.PropertiesUtils;
+import com.gionee.baserom.search.util.StringHelper;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.SftpException;
 
@@ -57,16 +59,16 @@ public class ImagesServiceImpl implements IImagesService {
 	                	String newDirectory = "";
 	                	if(!sftp.isClosed()){
 	                		if(type==32){  //id为32的字典数据(导航)
-	                			filename = images[i].getOriginalFilename();
+	                			filename = StringHelper.getUUID() + "@" + images[i].getOriginalFilename();
 	                			imgPath = domain+"icon/" +filename;
 	                			newDirectory = directory + "icon/";
 	                		}else{
-	                			filename = images[i].getOriginalFilename()+"_640x300.jpg";
+	                			filename = StringHelper.getUUID() + "@" + images[i].getOriginalFilename()+"_640x300.jpg";
 	                			imgPath = domain+"ad/" +filename;
 	                			newDirectory = directory + "ad/";
 	                		}
 	                		FTPUtil.uploadStream(newDirectory, stream, filename, sftp);
-	                		logger.info("上传文件---------->" + images[i].getOriginalFilename());
+	                		logger.info("上传文件---------->" + filename);
 	                	}
 	                	
 	                	Images img = new Images();
@@ -78,8 +80,14 @@ public class ImagesServiceImpl implements IImagesService {
 	                	n += imagesMapper.insert(img);
 	                	logger.info("保存图片信息-->" + imgPath);
 	                } catch (Exception e) {  
-	                    e.printStackTrace();  
-	                    logger.error("上传文件出错");  
+	                	//日志中记录异常信息
+	                	StringBuffer sb = new StringBuffer();  
+	                    StackTraceElement[] stackArray = e.getStackTrace();  
+	                    for (int m = 0; m < stackArray.length; n++) {  
+	                        StackTraceElement element = stackArray[m];  
+	                        sb.append(element.toString() + "\n");  
+	                    }  
+	                	logger.error("上传文件出错" + e.getMessage() + "\n" + sb.toString());
 	                }  
 	            }  
 	        }
@@ -110,6 +118,8 @@ public class ImagesServiceImpl implements IImagesService {
 		String refresh_url = dnion_api+"?username=" + dnion_username + "&password=" + dnion_password 
 				+ "&url=" + dnion_refresh_url + "&type=" + dnion_url_type;
 		String result = HttpUtil.sendGet(refresh_url, "utf-8");
+		
+		logger.info("执行刷新-->" + refresh_url);
 		logger.info("DNION缓存刷新情况-->" + result);
 	}
 	
@@ -188,6 +198,9 @@ public class ImagesServiceImpl implements IImagesService {
 		for(int i=0; i<idArray.length; i++ ){
 			Images img = imagesMapper.selectByPrimaryKey(Integer.parseInt(idArray[i]));
 			String imgName = img.getImgPath().substring(img.getImgPath().lastIndexOf("/")+1);
+			if(img.getIsRef()!=null && img.getIsRef()==1){
+				continue;
+			}
 			
 			String newDirectory = "";
 			if(img.getType()==32){  //id为32的字典数据
@@ -210,7 +223,7 @@ public class ImagesServiceImpl implements IImagesService {
 		refreshDnionCache();
 		
 		if(n>0){
-			ajaxObj = new DwzAjaxObject("200", "操作成功！" ,resKey, "", "");
+			ajaxObj = new DwzAjaxObject("200", "操作成功！注意：被引用的图片不能删除。" ,resKey, "", "");
 		}else{
 			ajaxObj = new DwzAjaxObject("300", "操作失败！");
 		}

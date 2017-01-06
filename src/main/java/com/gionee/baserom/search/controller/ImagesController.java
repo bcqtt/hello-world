@@ -48,6 +48,10 @@ public class ImagesController {
 	public ModelAndView queryImagesPaper(Page<Images> page,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String pageNum = request.getParameter("pageNum");
+		
+		//值为'old'表示旧版广告，'news'表示新闻，'nav'表示导航，默认为null，表示图片管理列表
+		String resource = request.getParameter("resource");
+		
 		if(pageNum != null){
 			page.setCurrentPage(Integer.parseInt(pageNum));
 		}
@@ -73,8 +77,11 @@ public class ImagesController {
 		model.addObject("optList",optList);
 		model.addObject("type",type);
 		model.addObject("resKey",res.getResKey());
-		model.setViewName("WEB-INF/jsp/resource/imagesList");
-		logger.info("--------->查看分组列表。");
+		model.addObject("resource",resource);
+		
+		String viewName = resource==null?"WEB-INF/jsp/resource/imagesList":"WEB-INF/jsp/resource/imagesSelectWindow";
+		model.setViewName(viewName);
+		logger.info("--------->查看图片素材列表。");
 		return model;
 	}
 	
@@ -134,7 +141,7 @@ public class ImagesController {
 	 * 根据id删除(包含多行删除)
 	 */
 	@RequestMapping(value = "/deleteImages")
-	public void deleteCards(String resKey,String ids,HttpServletResponse response){
+	public void deleteImages(String resKey,String ids,HttpServletResponse response){
 		ajaxObj = this.imagesService.deleteImages(resKey,ids);
 		jsonResult = JSONObject.toJSONString(ajaxObj);
 		StringHelper.outputJsonString(jsonResult, response);

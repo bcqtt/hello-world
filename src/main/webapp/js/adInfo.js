@@ -80,7 +80,7 @@ $(document).ready(function(){
 			url: url,
 			success: function (data) {
 				DWZ.ajaxDone(data);
-				divSearch($("#pagerForm"), "adInformation"); //刷新指定DIV
+				divSearch($(".adPagerForm"), "adInformation"); //刷新指定DIV
 			},
 			error: DWZ.ajaxError
 		});

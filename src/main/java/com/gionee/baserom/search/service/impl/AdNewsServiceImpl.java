@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
+import com.gionee.baserom.search.common.UpdateImagesRef;
 import com.gionee.baserom.search.dao.AdNewsMapper;
+import com.gionee.baserom.search.dao.ImagesMapper;
 import com.gionee.baserom.search.pojo.AdNews;
 import com.gionee.baserom.search.pojo.AdNewsExample;
 import com.gionee.baserom.search.pojo.AdNewsExample.Criteria;
@@ -25,6 +27,8 @@ public class AdNewsServiceImpl implements IAdNewsService {
 	
 	@Resource
 	private AdNewsMapper adNewsMapper;
+	@Resource
+	private ImagesMapper imagesMapper;
 
 	/**
 	 * 保存账信息
@@ -32,6 +36,7 @@ public class AdNewsServiceImpl implements IAdNewsService {
 	public DwzAjaxObject saveAdNews(String resKey,String editType,AdNews an) {
 		int n=0;
 		if(an.getPos()==null) an.setPos(0);
+		UpdateImagesRef.updateImgRef(editType,an,adNewsMapper,imagesMapper);
 		if(editType.equals("add")){
 			n = adNewsMapper.insert(an);
 			logger.info("保存广告新闻-->" + an.getName());
@@ -47,7 +52,7 @@ public class AdNewsServiceImpl implements IAdNewsService {
 		}
 		return ajaxObj;
 	}
-
+	
 	/**
 	 * 分页查询信息
 	 * @param page
@@ -95,6 +100,7 @@ public class AdNewsServiceImpl implements IAdNewsService {
 		String[] idArray = ids.split(",");
 		int n = 0;
 		for(int i=0; i<idArray.length; i++ ){
+			UpdateImagesRef.updateImgRefWhenDel(Integer.parseInt(idArray[i]), adNewsMapper, imagesMapper);
 			n += this.adNewsMapper.deleteByPrimaryKey(Integer.parseInt(idArray[i]));
 		}
 		if(n>0){

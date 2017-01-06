@@ -285,6 +285,6 @@
   </update>
   
   <select id="queryByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
-   		select * from ad_news limit #{startIndex},#{numPerPage} 
+   		select * from ad_news order by id desc limit #{startIndex},#{numPerPage} 
    </select>
 </mapper>

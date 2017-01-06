@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
+import com.gionee.baserom.search.common.UpdateImagesRef;
+import com.gionee.baserom.search.dao.ImagesMapper;
 import com.gionee.baserom.search.dao.SiteNavigationMapper;
 import com.gionee.baserom.search.pojo.Page;
 import com.gionee.baserom.search.pojo.SiteNavigation;
@@ -26,12 +28,15 @@ public class SiteNavigationServiceImpl implements ISiteNavigationService {
 	
 	@Resource
 	private SiteNavigationMapper siteNavigationMapper;
+	@Resource
+	private ImagesMapper imagesMapper;
 
 	/**
 	 * 保存账信息
 	 */
 	public DwzAjaxObject saveSite(String resKey,String editType,SiteNavigation site) {
 		int n=0;
+		UpdateImagesRef.updateImgRef(editType,site,siteNavigationMapper,imagesMapper);
 		if(editType.equals("add")){
 			n = siteNavigationMapper.insert(site);
 			logger.info("保存网址信息-->" + site.getSiteName());
@@ -104,6 +109,7 @@ public class SiteNavigationServiceImpl implements ISiteNavigationService {
 		String[] idArray = ids.split(",");
 		int n = 0;
 		for(int i=0; i<idArray.length; i++ ){
+			UpdateImagesRef.updateImgRefWhenDel(Integer.parseInt(idArray[i]),siteNavigationMapper,imagesMapper);
 			n += this.siteNavigationMapper.deleteByPrimaryKey(Integer.parseInt(idArray[i]));
 		}
 		if(n>0){

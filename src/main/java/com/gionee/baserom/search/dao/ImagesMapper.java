@@ -86,4 +86,6 @@ public interface ImagesMapper {
      * @return
      */
 	List<Images> queryByPage(Map<String, Object> map);
+
+	void updateRef(@Param("isRef")int isRef, @Param("fileName")String fileName);
 }

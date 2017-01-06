@@ -56,12 +56,13 @@ function hideCheckbox(obj){
 		this.checked = false;
 	});
 	$("input[type=checkbox]").hide();
-	$(obj).hide();
+	$("#hideCheckboxBtn").hide();
 	$("#checkAllBtn").hide();
 	$("#deleteBtn").hide();
 }
 
 function checkChange(obj){
+	$("input[name=type]").val($("#selectType").val());
 	var data = {
 			pageNum: '${page.currentPage}',
 			numPerPage: '${page.numPerPage}',
@@ -73,9 +74,10 @@ function checkChange(obj){
 }
 </script>
 
-<form id="pagerForm" method="GET" action="${resAction}">
+<form id="pagerForm" class="imagesForm" method="GET" action="${resAction}" onsubmit="return divSearch(this,'${resKey}');">
 	<input type="hidden" name="pageNum" value="${page.currentPage}" />
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
+	<input type="hidden" name="type" value="${type}" />
 </form>
 
 <div id="${resKey}" class="pageContent" style="background-color:#DDE4F4;">
@@ -83,9 +85,9 @@ function checkChange(obj){
 		<ul class="toolBar">
 			<li><a class="upload" href="images/addImagesView?editType=add&resKey=${resKey}" target="dialog" width="900" height="400"><span>上传素材</span></a></li>
 			<li><a class="manage" id="showCheckboxBtn" onclick="showCheckbox(this);"><span>批量管理</span></a></li>
-			<li><a class="checkall" id="checkAllBtn" onclick="checkAll(this);" style="display:none;"><span>全选</span></a></li>
-			<li><a class="uncheck" id="hideCheckboxBtn" onclick="hideCheckbox(this);" style="display:none;"><span>取消</span></a></li>
-			<li><a class="cloud-delete" id="deleteBtn" href="images/deleteImages?id={id_image}&resKey=${resKey}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?" style="display:none;" ><span>删除</span></a></li>
+			<li id="checkAllBtn" style="display:none;"><a class="checkall" onclick="checkAll(this);" ><span>全选</span></a></li>
+			<li id="hideCheckboxBtn" style="display:none;"><a class="uncheck" onclick="hideCheckbox(this);" ><span>取消</span></a></li>
+			<li id="deleteBtn" style="display:none;" ><a class="cloud-delete" href="images/deleteImages?id={id_image}&resKey=${resKey}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?" ><span>删除</span></a></li>
 			<li id="checkList">
 				<select id="selectType" name="type" onchange="checkChange(this);">
 					<option value="-1" >全部</option>
@@ -131,7 +133,8 @@ function checkChange(obj){
 				          <div class="listtitle">
         	          	    <a href="images/editImagesView?editType=update&id=${img.id}&resKey=${resKey}"  class="editBtn" target="dialog" width="900" height="400" resizable="false" maxable="false" mask="true">编辑</a>
 				          	[${img.typeObj.dicValue}]
-				          	<c:if test="${img.title == null}">${img.fileName}</c:if>
+				          	<c:set var="end" value="${fn:length(img.fileName)}" ></c:set>
+				          	<c:if test="${img.title == null}">${fn:substring(img.fileName,33,end)}</c:if>
 				          	<c:if test="${img.title != null}">${img.title} </c:if>
 				          </div>
 				          <c:if test="${img.isRef == 1}"><div class="isRef"></div></c:if>

@@ -261,7 +261,7 @@
    
    <select id="selectByIds" parameterType="java.util.Map" resultMap="BaseResultMap">
    		select v.* from app_version v where v.vid in 
-   		<foreach close=")" collection="ids" item="id" open="(" separator=",">
+   		<foreach collection="list" item="id" open="(" close=")" separator=",">
 	    	#{id}
 	    </foreach>
    </select>

@@ -11,7 +11,8 @@ $("#uploadBtn").click(function(){
 		url: "images/saveImages?editType=${editType}&resKey=${resKey}",
 		success: function (data) {
 			DWZ.ajaxDone(data);
-			divSearch($("#pagerForm"), "${resKey}");
+			divSearch($(".imagesForm"), "${resKey}");
+			$.pdialog.closeCurrent();
 		},
 		error: DWZ.ajaxError
 	});
