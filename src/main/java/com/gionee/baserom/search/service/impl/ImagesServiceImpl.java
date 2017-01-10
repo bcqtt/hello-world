@@ -80,14 +80,8 @@ public class ImagesServiceImpl implements IImagesService {
 	                	n += imagesMapper.insert(img);
 	                	logger.info("保存图片信息-->" + imgPath);
 	                } catch (Exception e) {  
-	                	//日志中记录异常信息
-	                	StringBuffer sb = new StringBuffer();  
-	                    StackTraceElement[] stackArray = e.getStackTrace();  
-	                    for (int m = 0; m < stackArray.length; n++) {  
-	                        StackTraceElement element = stackArray[m];  
-	                        sb.append(element.toString() + "\n");  
-	                    }  
-	                	logger.error("上传文件出错" + e.getMessage() + "\n" + sb.toString());
+	                	e.printStackTrace();
+	                    logger.error("上传文件出错......." );
 	                }  
 	            }  
 	        }

@@ -49,6 +49,9 @@ function checkImage(obj){
 	}else if(resource == 'nav'){
 		$("input[name='iconUrl']").val(imgPath);
 		$("#urlLogo").attr("src",imgPath);
+	}else if(resource == 'life'){
+		$("input[name='iconUrl']").val(imgPath);
+		$("#lifeIcon").attr("src",imgPath);
 	}
 }
 
@@ -80,7 +83,8 @@ function checkImage(obj){
 				          <div class="listtitle">
         	          	    <a href="images/editImagesView?editType=update&id=${img.id}&resKey=${resKey}"  class="editBtn" target="dialog" width="900" height="400" resizable="false" maxable="false" mask="true">编辑</a>
 				          	[${img.typeObj.dicValue}]
-				          	<c:if test="${img.title == null}">${img.fileName}</c:if>
+				          	<c:set var="end" value="${fn:length(img.fileName)}" ></c:set>
+				          	<c:if test="${img.title == null}">${fn:substring(img.fileName,33,end)}</c:if>
 				          	<c:if test="${img.title != null}">${img.title} </c:if>
 				          </div>
 				          <c:if test="${img.isRef == 1}"><div class="isRef"></div></c:if>

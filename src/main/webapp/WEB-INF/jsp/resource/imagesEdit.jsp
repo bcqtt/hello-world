@@ -30,6 +30,14 @@
 					<input name="title" type="text" value="${img.title}" />
 				</p>
 				<p>
+					<label>类型：</label>
+					<select name="type">
+						<c:forEach var="t" items="${typeList}">
+						   <option value="${t.id}" <c:if test="${t.id==img.type}">selected</c:if> >${t.dicValue}</option>
+						</c:forEach>
+					</select>
+				</p>
+				<p>
 					<label>描述：</label>
 					<textarea name="description" rows="5" >${img.description}</textarea>
 				</p>

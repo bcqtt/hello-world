@@ -8,14 +8,10 @@ function selectByType(obj){
 }
 </script>
 
-<form id="pagerForm" method="GET" action="${resAction}">
+<div class="pageHeader">
+	<form id="pagerForm" onsubmit="return navTabSearch(this);" action="${resAction}&numPerPage=${page.numPerPage}" method="get">
 	<input type="hidden" name="pageNum" value="${page.currentPage}" />
 	<input type="hidden" name="numPerPage" value="${page.numPerPage}" />
-	<input type="hidden" name="clsId" value="${type}" id="dicType"/>
-</form>
-
-<div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="${resAction}&numPerPage=${page.numPerPage}" method="get">
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>

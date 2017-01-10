@@ -22,3 +22,10 @@
 .float-right{
 	float: right;
 }
+
+.pageFormContent .p-height{
+	height: auto;
+}
+.pageFormContent .p-width{
+	width: auto;
+}

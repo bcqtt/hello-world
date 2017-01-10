@@ -3,9 +3,11 @@ package com.gionee.baserom.search.common;
 import com.gionee.baserom.search.dao.AdControlMapper;
 import com.gionee.baserom.search.dao.AdNewsMapper;
 import com.gionee.baserom.search.dao.ImagesMapper;
+import com.gionee.baserom.search.dao.LifeServiceMapper;
 import com.gionee.baserom.search.dao.SiteNavigationMapper;
 import com.gionee.baserom.search.pojo.AdControl;
 import com.gionee.baserom.search.pojo.AdNews;
+import com.gionee.baserom.search.pojo.LifeService;
 import com.gionee.baserom.search.pojo.SiteNavigation;
 /**
  * 更新图片引用状态
@@ -21,30 +23,60 @@ public class UpdateImagesRef {
 		String imgPath = an.getIconUrl();
 		String fileName = imgPath.substring(imgPath.lastIndexOf("/")+1);
 		if(editType.equals("update")){
-			SiteNavigation news = siteNavigationMapper.selectByPrimaryKey(an.getId());
-			String oldFileName = news.getIconUrl().substring(news.getIconUrl().lastIndexOf("/")+1);
+			SiteNavigation obj = siteNavigationMapper.selectByPrimaryKey(an.getId());
+			String oldFileName = obj.getIconUrl().substring(obj.getIconUrl().lastIndexOf("/")+1);
 			imagesMapper.updateRef(0,oldFileName);
 		}
 		imagesMapper.updateRef(1,fileName);
 	}
 	
 	/**
-	 * 【网址导航】新增修改时更新图片引用状态
+	 * 【网址导航】删除时更新图片引用状态
 	 * @param an 需要被删除的网址导航id
 	 * @param siteNavigationMapper
 	 * @param imagesMapper
 	 */
 	public static void updateImgRefWhenDel(int anId,
 			SiteNavigationMapper siteNavigationMapper,ImagesMapper imagesMapper){
-		SiteNavigation an = siteNavigationMapper.selectByPrimaryKey(anId);
-		String fileName = an.getIconUrl().substring(an.getIconUrl().lastIndexOf("/")+1);
+		SiteNavigation obj = siteNavigationMapper.selectByPrimaryKey(anId);
+		String fileName = obj.getIconUrl().substring(obj.getIconUrl().lastIndexOf("/")+1);
+		imagesMapper.updateRef(0,fileName);
+	}
+	/**
+	 * 【生活服务】新增修改时更新图片引用状态
+	 * @param lifeServiceMapper
+	 * @param imagesMapper
+	 * 
+	 */
+	public static void updateImgRef(String editType,LifeService life,
+			LifeServiceMapper lifeServiceMapper,ImagesMapper imagesMapper){
+		String imgPath = life.getIconUrl();
+		String fileName = imgPath.substring(imgPath.lastIndexOf("/")+1);
+		if(editType.equals("update")){
+			LifeService obj = lifeServiceMapper.selectByPrimaryKey(life.getId());
+			String oldFileName = obj.getIconUrl().substring(obj.getIconUrl().lastIndexOf("/")+1);
+			imagesMapper.updateRef(0,oldFileName);
+		}
+		imagesMapper.updateRef(1,fileName);
+	}
+	
+	/**
+	 * 【生活服务】删除时更新图片引用状态
+	 * @param an 需要被删除的对象id
+	 * @param lifeServiceMapper
+	 * @param imagesMapper
+	 */
+	public static void updateImgRefWhenDel(int id,
+			LifeServiceMapper lifeServiceMapper,ImagesMapper imagesMapper){
+		LifeService obj = lifeServiceMapper.selectByPrimaryKey(id);
+		String fileName = obj.getIconUrl().substring(obj.getIconUrl().lastIndexOf("/")+1);
 		imagesMapper.updateRef(0,fileName);
 	}
 	
 	/**
 	 * 【旧版新闻】新增修改时更新图片引用状态
 	 * @param editType
-	 * @param an
+	 * @param ad
 	 */
 	public static void updateImgRef(String editType,AdControl ad,
 			AdControlMapper adMapper,ImagesMapper imagesMapper){
@@ -59,7 +91,7 @@ public class UpdateImagesRef {
 	}
 	
 	/**
-	 * 【旧版新闻】新增修改时更新图片引用状态
+	 * 【旧版新闻】删除时更新图片引用状态
 	 * @param id 需要被删除的旧版广告id
 	 * @param adMapper
 	 * @param imagesMapper
@@ -89,7 +121,7 @@ public class UpdateImagesRef {
 	}
 	
 	/**
-	 * 【新闻广告】新增修改时更新图片引用状态
+	 * 【新闻广告】删除时更新图片引用状态
 	 * @param id 需要被删除的新闻广告id
 	 * @param adNewsMapper
 	 * @param imagesMapper

@@ -107,9 +107,11 @@ public class ImagesController {
 	@RequestMapping(value = "/editImagesView", method = RequestMethod.GET)
 	public ModelAndView editImagesView(String resKey,String editType,Images images) {
 		Images i = imagesService.selectByExample(images);
+		List<SysDictionary> typeList = dicService.getDictionaryByClsRef("images_type");
 		ModelAndView model = new ModelAndView();
 		model.addObject("editType",editType);
 		model.addObject("img",i);
+		model.addObject("typeList",typeList);
 		model.addObject("resKey",resKey);
 		model.setViewName("WEB-INF/jsp/resource/imagesEdit");
 		return model;
@@ -119,7 +121,7 @@ public class ImagesController {
 	 * 保存上传的图片信息
 	 * @param editType add:新增；edit:修改
 	 */
-	@RequestMapping(value = "/saveImages", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveImages")
 	public void saveImages(String resKey,String editType,int type,
 			@RequestParam("images")MultipartFile[] images,
 			HttpServletResponse response){

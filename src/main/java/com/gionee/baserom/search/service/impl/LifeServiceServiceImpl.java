@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.gionee.baserom.search.common.DwzAjaxObject;
+import com.gionee.baserom.search.common.UpdateImagesRef;
+import com.gionee.baserom.search.dao.ImagesMapper;
 import com.gionee.baserom.search.dao.LifeServiceMapper;
 import com.gionee.baserom.search.pojo.LifeService;
 import com.gionee.baserom.search.pojo.LifeServiceExample;
@@ -26,12 +28,15 @@ public class LifeServiceServiceImpl implements ILifeServiceService {
 	
 	@Resource
 	private LifeServiceMapper lifeServiceMapper;
+	@Resource
+	private ImagesMapper imagesMapper;
 
 	/**
 	 * 保存账信息
 	 */
 	public DwzAjaxObject saveLife(String resKey,String editType,LifeService life) {
 		int n=0;
+		UpdateImagesRef.updateImgRef(editType, life, lifeServiceMapper, imagesMapper);
 		if(editType.equals("add")){
 			n = lifeServiceMapper.insert(life);
 			logger.info("保存生活服务信息-->" + life.getSiteName());
@@ -97,6 +102,7 @@ public class LifeServiceServiceImpl implements ILifeServiceService {
 		String[] idArray = ids.split(",");
 		int n = 0;
 		for(int i=0; i<idArray.length; i++ ){
+			UpdateImagesRef.updateImgRefWhenDel(Integer.parseInt(idArray[i]),lifeServiceMapper,imagesMapper);
 			n += this.lifeServiceMapper.deleteByPrimaryKey(Integer.parseInt(idArray[i]));
 		}
 		if(n>0){

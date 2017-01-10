@@ -13,36 +13,35 @@ function showIcon(obj){
 <div class="pageContent">
 	<form method="post" action="life/saveLifeService?editType=${editType}&resKey=${resKey}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<div class="pageFormContent" layoutH="56">
-			<fieldset>
-				<legend>生活服务信息</legend>
-				<dl class="nowrap">
-					<dt>名称：</dt>
-					<dd><input name="siteName" class="required" type="text" size="40"style="width:220px;" value="${life.siteName}" /></dd>
-				</dl>
-				<dl class="nowrap">
-					<dt>排序号：</dt>
-					<dd><input name="sortId" class="required" type="text" size="40" style="width:220px;" value="${life.sortId}" /></dd>
-				</dl>
-				<dl class="nowrap">
-					<dt>URL：</dt>
-					<dd><input name="siteUrl" class="required" type="text" size="40" style="width:220px;" value="${life.siteUrl}" /></dd>
-				</dl>
-				<dl class="nowrap">
-					<dt>图片链接：</dt>
-					<dd>
-						<input name="iconUrl" class="required url" type="text" size="36" style="width:200px;" value="${life.iconUrl}" onchange="showIcon(this);"/>
-						<img id="urlLogo" src="${life.iconUrl eq null || life.iconUrl eq ''?'framework/images/icon_pic.png':life.iconUrl}" width="25" height="25">
-					</dd>
-				</dl>
-				<dl class="nowrap">
-					<dt>是否显示：</dt>
-					<dd><input name="showEnable" type="checkbox" value="${life.showEnable}" onchange="RoleUtils.onClickOfEnable(this);" <c:if test="${life.showEnable == 1}">checked="checked"</c:if> />显示</dd>
-				</dl>
-				<dl class="nowrap">
-					<dt>广告语：</dt>
-					<dd><textarea name="siteDes" cols="33" rows="3" style="width:220px;">${life.siteDes}</textarea></dd>
-				</dl>
-			</fieldset>
+			<p>
+				<label>名称：</label>
+				<input name="siteName" class="required" type="text" size="40"style="width:220px;" value="${life.siteName}" />
+			</p>
+			<p>
+				<label>排序号：</label>
+				<input name="sortId" class="required" type="text" size="40" style="width:220px;" value="${life.sortId}" />
+			</p>
+			<p>
+				<label>URL：</label>
+				<input name="siteUrl" class="required" type="text" size="40" style="width:220px;" value="${life.siteUrl}" />
+			</p>
+			<p>
+				<label>是否显示：</label>
+				<label><input name="showEnable" type="checkbox" value="${life.showEnable}" onchange="RoleUtils.onClickOfEnable(this);" <c:if test="${life.showEnable == 1}">checked="checked"</c:if> />显示<label>
+			</p>
+			<p>
+				<label>图标：</label>
+				<a id="imagesWinBtn" class="button" href="images/queryImagesPaper?resId=68&type=32&resource=life" target="dialog" rel="toImagesView4Site" resizable="false" maxable="false" mask="true" width="1220" height="660" ><span>选择..</span></a>
+				<input name="iconUrl" class="required url" type="hidden" size="30" style="width:200px;" value="${life.iconUrl}" onchange="showIcon(this);"/>
+			</p>
+			<p class="p-height">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<img id="lifeIcon" src="${site.iconUrl eq null || site.iconUrl eq ''?'framework/images/logo_default.jpg':site.iconUrl}" width="68" height="68">
+			</p>
+			<p>
+				<label>广告语：</label>
+				<textarea name="siteDes" cols="33" rows="3" style="width:220px;">${life.siteDes}</textarea>
+			</p>
 			<input type="hidden" name="id" value="${life.id}" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>

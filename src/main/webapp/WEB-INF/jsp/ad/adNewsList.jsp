@@ -29,8 +29,8 @@ function checkShowEnabled(obj){
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="adNews/addAdNewsView?editType=add" target="dialog" width="460" height="370"><span>添加广告</span></a></li>
-			<li><a class="edit" href="adNews/editAdNewsView?editType=update&id={id_an}" target="dialog" warn="请选择一个分组!" width="460" height="370"><span>修改</span></a></li>
+			<li><a class="add" href="adNews/addAdNewsView?editType=add" target="dialog" width="530" height="370"><span>添加广告</span></a></li>
+			<li><a class="edit" href="adNews/editAdNewsView?editType=update&id={id_an}" target="dialog" warn="请选择一个分组!" width="530" height="370"><span>修改</span></a></li>
 			<li><a class="delete" href="adNews/deleteAdNews?id={id_an}" target="selectedTodo" rel="ids" title="确实要删除所选记录吗?"  ><span>删除</span></a></li>
 			<%-- 
 			 <c:forEach var="opt" items="${optList}">

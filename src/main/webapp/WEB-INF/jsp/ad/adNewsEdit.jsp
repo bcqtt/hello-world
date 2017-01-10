@@ -13,29 +13,29 @@ function showIcon(obj){
 <div class="pageContent">
 	<form method="post" action="adNews/saveAdNews?editType=${editType}&resKey=${resKey}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<div class="pageFormContent" layoutH="56">
-			<p>
+			<p class="p-width">
 				<label>广告标题：</label>
-				<input name="name" class="required" type="text" size="44" style="width:230px;" value="${an.name}" />
+				<input name="name" class="required" type="text" size="44" style="width:360px;" value="${an.name}" />
 			</p>
 			
-			<p>
+			<p class="p-width">
 				<label>广告链接：</label>
-				<input name="link" class="required" type="text" size="44" style="width:230px;" value="${an.link}" />
+				<input name="link" class="required" type="text" size="44" style="width:360px;" value="${an.link}" />
 			</p>
-			<p>
+			<p class="p-width">
 				<label>是否显示：</label>
 				<label><input name="enable" type="checkbox" value="${an.enable}" onclick="RoleUtils.onClickOfEnable(this);" <c:if test="${an.enable == 1}">checked="checked"</c:if> />显示</label>
 			</p>
-			<p>
+			<p class="p-width">
 				<label>广告位置(选填)：</label>
-				<input name="pos" class="digits" type="text" size="44" style="width:230px;" value="${an.pos}" />
+				<input name="pos" class="digits" type="text" size="44" style="width:360px;" value="${an.pos}" />
 			</p>
-			<p>
+			<p class="p-width">
 				<label>广告图：</label>
 				<a id="imagesWinBtn" class="button" href="images/queryImagesPaper?resId=68&type=31&resource=news" target="dialog" rel="toImagesView4News" resizable="false" maxable="false" mask="true" width="1220" height="660" ><span>选择..</span></a>
 				<input name="img" type="hidden" size="44" style="width:230px;" value="${an.img}" onchange="showIcon(this);" />
 			</p>
-			<p>
+			<p class="p-width">
 				<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				<img id="adImg" src="${an.img eq null || an.img eq ''?'framework/images/ad_default.png':an.img}" width="238" height="90">
 			</p>

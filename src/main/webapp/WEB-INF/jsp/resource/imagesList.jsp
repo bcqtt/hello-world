@@ -131,7 +131,7 @@ function checkChange(obj){
 				      </div>
 				      <div class="listinfo">
 				          <div class="listtitle">
-        	          	    <a href="images/editImagesView?editType=update&id=${img.id}&resKey=${resKey}"  class="editBtn" target="dialog" width="900" height="400" resizable="false" maxable="false" mask="true">编辑</a>
+        	          	    <a href="images/editImagesView?editType=update&id=${img.id}&resKey=${resKey}"  class="editBtn" target="dialog" width="900" height="430" resizable="false" maxable="false" mask="true">编辑</a>
 				          	[${img.typeObj.dicValue}]
 				          	<c:set var="end" value="${fn:length(img.fileName)}" ></c:set>
 				          	<c:if test="${img.title == null}">${fn:substring(img.fileName,33,end)}</c:if>
@@ -158,7 +158,7 @@ function checkChange(obj){
 			<script>
 		        $("select[name='numPerPage']").val('${page.numPerPage}');
 		    </script>
-			<span>条，共${page.totalCount}条</span>
+			<span>张，共${page.totalCount}张图片</span>
 		</div>
 		
 		<div class="pagination" targetType="navTab" totalCount="${page.totalCount}" numPerPage="${page.numPerPage}" pageNumShown="10" currentPage="${page.currentPage}"></div>

@@ -52,7 +52,7 @@ $("#dicId").change(function(){
 				<label><input name="showEnable" type="checkbox" value="${site.showEnable}" onclick="RoleUtils.onClickOfEnable(this);" <c:if test="${site.showEnable == 1}">checked="checked"</c:if> />显示在首页</label>
 			</p>
 			<p>
-				<label>Logo图片链接：</label>
+				<label>Logo图片：</label>
 				<a id="imagesWinBtn" class="button" href="images/queryImagesPaper?resId=68&type=32&resource=nav" target="dialog" rel="toImagesView4Site" resizable="false" maxable="false" mask="true" width="1220" height="660" ><span>选择..</span></a>
 				<input name="iconUrl" class="required url" type="hidden" size="30" style="width:200px;" value="${site.iconUrl}" onchange="showIcon(this);"/>
 			</p>
