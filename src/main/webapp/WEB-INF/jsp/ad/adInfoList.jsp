@@ -57,7 +57,7 @@ var adRuleId = '${ai.adRuleId}';
 	<table class="table" width="1200" layoutH="165">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th >广告标题</th>
 				<th >CP名称</th>
 				<th >广告行为</th>

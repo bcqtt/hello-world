@@ -59,13 +59,13 @@ function checkShowEnabled(obj){
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<!-- <th align="center">ID</th> -->
 				<th align="center">名称</th>
 				<th align="center">广告位</th>
 				<th align="center">广告图</th>
-				<th width="800">URL</th>
-				<th align="center">显示</th>
+				<th width="750">URL</th>
+				<th width="50" align="center">显示</th>
 			</tr>
 		</thead>
 		<tbody>

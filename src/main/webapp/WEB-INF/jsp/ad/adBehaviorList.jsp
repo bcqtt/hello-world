@@ -33,7 +33,7 @@
 	<table class="table" width="470" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th width="80">广告行为</th>
 				<th width="100" align="center">是否下载应用</th>
 			</tr>

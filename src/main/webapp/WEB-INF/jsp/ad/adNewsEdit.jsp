@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="js/authority.js" type="text/javascript"></script>
 <script type="text/javascript">
 function showIcon(obj){
@@ -40,6 +41,8 @@ function showIcon(obj){
 				<img id="adImg" src="${an.img eq null || an.img eq ''?'framework/images/ad_default.png':an.img}" width="238" height="90">
 			</p>
 			<input type="hidden" name="id" value="${an.id}" />
+			<input type="hidden" name="type" value="${an.type}" />
+			<input type="hidden" name="createTime" value="<fmt:formatDate value="${an.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />" />
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>
 		<div class="formBar">

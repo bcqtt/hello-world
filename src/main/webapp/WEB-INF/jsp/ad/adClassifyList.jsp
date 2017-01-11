@@ -33,7 +33,7 @@
 	<table class="table" width="465" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center">广告分类</th>
 			</tr>
 		</thead>

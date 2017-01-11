@@ -33,7 +33,7 @@
 	<table class="table" width="465" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>广告位</th>
 				<th>广告形式</th>
 				<th align="center">有效权重范围</th>

@@ -49,5 +49,17 @@ public interface IAdNewsService {
 	 */
 	public List<AdNews> queryAdNewsOfShow();
 
+	/**
+	 * 从好看接口中读取的数据保存入库
+	 * @param ad
+	 */
+	public int addAdNews(AdNews ad);
+
+	/**
+	 * 删除旧数据，让新数据更替
+	 * @param type
+	 */
+	public void deleteByType(int type);
+
 
 }

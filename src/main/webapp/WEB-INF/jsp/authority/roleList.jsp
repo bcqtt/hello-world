@@ -32,7 +32,7 @@
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>分组名</th>
 				<th align="center">是否启用</th>
 				<th>分组描述</th>

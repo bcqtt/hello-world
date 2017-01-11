@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id`, `account_name`, `name`, `password`, `phone_number`, `email`, `type`, `description`, `group_id`, `create_time`, `last_login_time`) VALUES
 	(1, 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', '13763033450', 'abc@123.com', NULL, NULL, 1, '2016-05-09 18:14:25', '2016-04-18 17:08:13'),
-	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '18218089328', 'laizhiwen@ginoee.com', NULL, NULL, 1, NULL, '2017-01-04 10:24:54'),
+	(2, 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', '18218089328', 'laizhiwen@ginoee.com', NULL, NULL, 1, NULL, '2017-01-11 15:44:54'),
 	(35, 'lzw', '赖志文', '4607e782c4d86fd5364d7e4508bb10d9', '12345678910', 'lzw@ginoee.com', NULL, NULL, 1, '2016-05-09 18:14:30', '2016-05-10 13:44:41'),
 	(41, 'liuyb', '刘艳波', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, NULL, 1, '2016-04-18 17:09:22', '2016-05-10 11:52:20');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
@@ -97,9 +97,9 @@ CREATE TABLE IF NOT EXISTS `ad_behavior_todo` (
   PRIMARY KEY (`id`),
   KEY `FK_ad_behavior_todo_ad_behavior` (`ad_behavior_id`),
   KEY `FK_ad_behavior_todo_ad_info` (`ad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='广告行为的动作';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='广告行为的动作';
 
--- 正在导出表  search.ad_behavior_todo 的数据：~19 rows (大约)
+-- 正在导出表  search.ad_behavior_todo 的数据：~26 rows (大约)
 /*!40000 ALTER TABLE `ad_behavior_todo` DISABLE KEYS */;
 INSERT INTO `ad_behavior_todo` (`id`, `ad_behavior_id`, `ad_id`, `url`, `app_name`) VALUES
 	(1, 1, 1, NULL, NULL),
@@ -120,7 +120,14 @@ INSERT INTO `ad_behavior_todo` (`id`, `ad_behavior_id`, `ad_id`, `url`, `app_nam
 	(16, 1, 14, NULL, NULL),
 	(17, 1, 15, NULL, NULL),
 	(18, 2, 18, NULL, NULL),
-	(19, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL);
+	(19, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL),
+	(20, 1, 21, NULL, NULL),
+	(21, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL),
+	(22, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL),
+	(23, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL),
+	(24, 1, NULL, 'http://localhost:8080/search_local/login/login#menu_ad_manage', NULL),
+	(25, 1, NULL, 'http://weibo.com/ajaxlogin.php?framelogin=1&callback=parent.sinaSSOController.feedBackUrlCallBack', NULL),
+	(26, 1, NULL, '', NULL);
 /*!40000 ALTER TABLE `ad_behavior_todo` ENABLE KEYS */;
 
 
@@ -169,16 +176,16 @@ CREATE TABLE IF NOT EXISTS `ad_control` (
 /*!40000 ALTER TABLE `ad_control` DISABLE KEYS */;
 INSERT INTO `ad_control` (`id`, `name`, `show_flag`, `position_id`, `ad_img`, `ad_url`) VALUES
 	(1, '首页广告', 1, 4, 'http://t-baserom.gionee.com/images/banner1.png', 'youku://play?vid=XMTc3MTg1ODg4MA&source=bdhz-jinli&pkg=com.youku.phone.jinli&minVersion=5.2.21'),
-	(2, '游戏频道广告', 1, 1, 'http://t-baserom.gionee.com/images/banner2.png', 'http://m.appgionee.com/mobile/soft/detail?fr=gn_search_h5&id=12052'),
+	(2, '游戏频道广告', 1, 1, 'http://baseromcdn.gionee.com/image/search/ad/4df588b0ea0840d6aea437c721cda385@liebao.png_640x300.jpg', 'http://m.appgionee.com/mobile/soft/detail?fr=gn_search_h5&id=12052'),
 	(3, '应用频道广告', 1, 3, 'http://t-baserom.gionee.com/images/banner3.png', 'http://m.appgionee.com/mobile/soft/detail?fr=gn_search_h5&id=140354'),
 	(4, '综合搜索页广告', 1, 4, 'http://t-baserom.gionee.com/images/banner4.png', 'http://www.3g.gionee.com'),
-	(5, '综合搜索结果页广告', 1, 5, 'http://t-baserom.gionee.com/images/banner5.png', 'youku://play?vid=12345&source=bdhz-jinli&pkg=com.youku.phone.jinli&minVersion=5.2.21&action=android.intent.action.VIEW'),
+	(5, '综合搜索结果页广告', 1, 5, 'http://baseromcdn.gionee.com/image/search/ad/76ccb8a503af402297623620cb2cf816@fecond.jpg_640x300.jpg', 'youku://play?vid=12345&source=bdhz-jinli&pkg=com.youku.phone.jinli&minVersion=5.2.21&action=android.intent.action.VIEW'),
 	(6, '结果页短信广告', 0, 2, 'http://photocdn.sohu.com/20161020/Img470743132.jpg', 'http://digi.it.sohu.com/20161020/n470743129.shtml'),
 	(7, '结果页软件商店广告', 1, 2, 'http://d.ifengimg.com/mw978_mh598/p2.ifengimg.com/cmpp/2016/10/23/00/16ef4399-231f-414d-8f89-2783d3dbfa4e_size95_w950_h633.jpg', 'gioneeTing://openFind?pkg=com.ximalaya.ting.android.gionee&title=你好&content=最熟悉的“暖”旋律&minVersion=1.4.5'),
 	(8, '结果页游戏大厅广告', 1, 3, 'http://d.ifengimg.com/mw978_mh598/p2.ifengimg.com/cmpp/2016/10/23/00/16ef4399-231f-414d-8f89-2783d3dbfa4e_size95_w950_h633.jpg', 'http://www.3g.gionee.com'),
-	(9, '结果页多媒体广告', 1, 7, 'http://d.ifengimg.com/mw978_mh598/p2.ifengimg.com/cmpp/2016/10/23/00/16ef4399-231f-414d-8f89-2783d3dbfa4e_size95_w950_h633.jpg', 'http://www.3g.gionee.com'),
-	(10, '结果页联想词广告', 1, 8, 'http://d.ifengimg.com/mw978_mh598/p2.ifengimg.com/cmpp/2016/10/23/00/16ef4399-231f-414d-8f89-2783d3dbfa4e_size95_w950_h633.jpg', 'http://www.3g.gionee.com'),
-	(11, '结果页淘宝商搜广告', 1, 9, 'http://d.ifengimg.com/mw978_mh598/p2.ifengimg.com/cmpp/2016/10/23/00/16ef4399-231f-414d-8f89-2783d3dbfa4e_size95_w950_h633.jpg', 'http://www.3g.gionee.com');
+	(9, '结果页多媒体广告', 1, 7, 'http://baseromcdn.gionee.com/image/search/ad/3b2ef921a843415ea3b4639e74f2f020@banner_quare.png_640x300.jpg', 'http://www.3g.gionee.com'),
+	(10, '结果页联想词广告', 1, 8, 'http://baseromcdn.gionee.com/image/search/ad/0eb4a08a41154804884f763b752e0dbe@banner_ireading.png_640x300.jpg', 'http://www.3g.gionee.com'),
+	(11, '结果页淘宝商搜广告', 1, 9, 'http://baseromcdn.gionee.com/image/search/ad/a572c5d05f774068ab78dc35005511a1@1230-3.jpg_640x300.jpg', 'http://www.3g.gionee.com');
 /*!40000 ALTER TABLE `ad_control` ENABLE KEYS */;
 
 
@@ -254,7 +261,7 @@ INSERT INTO `ad_info` (`id`, `ad_rule_id`, `ad_tittle`, `show_tittle_flag`, `cp_
 	(18, 1, '有关键字的广告  非常昂棒', NULL, '测试', 5, '/upload/2016/12/20/微信截图_20161212160547.png', 2, 1, '2016-12-15 14:12:02', '2016-12-17 14:12:03', 1, '123,126,117,110,113', 1, 0.2, 3, '1,2,3,5,6', '19,20'),
 	(19, 1, '测试都不知道啥都不知道啥都不知道啥', 1, '都不知道啥', 5, '/upload/2016/12/20/dog.jpg', 2, 1, '2016-12-16 13:44:19', '2016-12-19 13:44:21', 1, '699', 1, 0.1, 45, '1,2,3,5,6', '20,22'),
 	(20, 3, '车道22', NULL, '测试1', 5, '/upload/2016/12/20/拓扑图.png', 1, 1, '2016-12-15 16:47:19', '2016-12-18 16:47:20', 1, '111,122,126,112', 1, 0.1, 3, '3,5', '20'),
-	(21, NULL, '测试添加', NULL, '测试添加', NULL, '/upload/2016/12/21/1222-3.jpg', 1, 1, '2016-12-21 15:05:42', '2016-12-23 15:05:43', 1, '29,699,503,32', 1, 0.3, 55, '2,5', '20,21');
+	(21, NULL, '测试测试测试', NULL, '【】测试测试测试【】', NULL, '/upload/2017/01/06/0107-5.jpg', 1, 1, '2016-12-21 15:05:42', '2016-12-23 15:05:43', 1, '29,699,503,32', 1, 0.4, 55, '2,5', '20,21');
 /*!40000 ALTER TABLE `ad_info` ENABLE KEYS */;
 
 
@@ -267,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `ad_keyword` (
   UNIQUE KEY `keyword` (`keyword`)
 ) ENGINE=InnoDB AUTO_INCREMENT=708 DEFAULT CHARSET=utf8;
 
--- 正在导出表  search.ad_keyword 的数据：~846 rows (大约)
+-- 正在导出表  search.ad_keyword 的数据：~487 rows (大约)
 /*!40000 ALTER TABLE `ad_keyword` DISABLE KEYS */;
 INSERT INTO `ad_keyword` (`id`, `keyword`) VALUES
 	(516, '131458信誉查询'),
@@ -989,27 +996,30 @@ CREATE TABLE IF NOT EXISTS `ad_news` (
   `link` varchar(500) NOT NULL DEFAULT '0',
   `pos` int(11) DEFAULT '0',
   `enable` int(11) DEFAULT NULL COMMENT '1:启用；0:不启用',
+  `create_time` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `type` int(2) DEFAULT '0' COMMENT '数据来源。0:手动添加的，1:从第三方接口获取的',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COMMENT='广告新闻';
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COMMENT='广告新闻';
 
--- 正在导出表  search.ad_news 的数据：~15 rows (大约)
+-- 正在导出表  search.ad_news 的数据：~24 rows (大约)
 /*!40000 ALTER TABLE `ad_news` DISABLE KEYS */;
-INSERT INTO `ad_news` (`id`, `name`, `img`, `link`, `pos`, `enable`) VALUES
-	(32, '高额取现，免费白金，办卡就来融360！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161222/rong360.png_640x300.jpg', 'http://j.tdbear.cn/Jc-xykck', 0, 0),
-	(33, '优信二手车，最实惠放心的二手车交易平台！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161222/youxin.png_640x300.jpg', 'http://j.tdbear.cn/Jc-esc', 0, 0),
-	(49, '劳斯莱斯Black Badge致力于满足精英的需求', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-1.jpg_640x300.jpg', 'http://levect.com/zh/detail/cat/14/img/38436/simg/38436?appid=0&eid=102020 0103-2', 0, 1),
-	(50, '宋慧乔妆容精致，黑色抹胸装女王范儿十足', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-2.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/19983/img/163270?appid=0&eid=102020', 0, 1),
-	(51, 'NBA精彩预告：詹皇大战浓眉哥，谁能更胜一筹？', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-3.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/14/img/260541?appid=0&eid=102020 0103-4', 0, 1),
-	(52, '点缀大片的花卉插画，让梅谢纳更添迷人魅力', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-4.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/19985/img/163281?appid=0&eid=102020', 0, 1),
-	(53, '沃格古铜色的肌肤，在阳光的映衬下，性感魅惑', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-5.jpg_640x300.jpg', 'http://levect.com/zh/detail/cat/16/img/254244/simg/254244?appid=0&eid=102020', 0, 1),
-	(54, '劲爆！揭开手机卡顿的秘密', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/liebao.png_640x300.jpg', 'http://m.appgionee.com/mobile/soft/detail?fr=gn_search_h5&id=27426', 0, 1),
-	(56, '去哪儿新年感恩季，省更多，玩儿更多！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161227/banner_quare.png_640x300.jpg', 'http://j.tdbear.cn/Jc-ly', 0, 1),
-	(57, '新年特惠，你想要的好货都在这里！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161227/shopping.png_640x300.jpg', 'http://gou.gionee.com/index/redirect?url_id=2461', 0, 1),
-	(58, '贷款,找平安,无需抵押,快至1天!', 'http://baseromcdn.gionee.com/image/search/ad/news/20161229/pingan.jpg_640x300.jpg', 'http://gou.gionee.com/index/redirect?url_id=3142', 0, 1),
-	(59, '《3D坦克争霸2》预约开启！更有手机等万元福利等你拿！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161229/tanke.jpg_640x300.jpg', 'http://bbs.amigo.cn/thread-158752-1-1.html', 0, 0),
-	(60, '【自定义】这款迷你隐形蓝牙耳机卖疯了，99限时抢购！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/first.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994266764&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 0),
-	(61, '这款浓香铁观音卖疯了，今日99限时秒杀！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/second.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994351817&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 0),
-	(62, '这款男士冲锋衣卖疯了，今日198限时秒杀！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/third.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994433409&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 1);
+INSERT INTO `ad_news` (`id`, `name`, `img`, `link`, `pos`, `enable`, `create_time`, `type`) VALUES
+	(49, '劳斯莱斯Black Badge致力于满足精英的需求', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-1.jpg_640x300.jpg', 'http://levect.com/zh/detail/cat/14/img/38436/simg/38436?appid=0&eid=102020 0103-2', 0, 1, NULL, 0),
+	(50, '宋慧乔妆容精致，黑色抹胸装女王范儿十足', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-2.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/19983/img/163270?appid=0&eid=102020', 0, 1, NULL, 0),
+	(51, 'NBA精彩预告：詹皇大战浓眉哥，谁能更胜一筹？', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-3.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/14/img/260541?appid=0&eid=102020 0103-4', 0, 1, NULL, 0),
+	(52, '点缀大片的花卉插画，让梅谢纳更添迷人魅力', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-4.jpg_640x300.jpg', 'http://levect.com/zh/detail/tag/19985/img/163281?appid=0&eid=102020', 0, 1, NULL, 0),
+	(53, '沃格古铜色的肌肤，在阳光的映衬下，性感魅惑', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/0103-5.jpg_640x300.jpg', 'http://levect.com/zh/detail/cat/16/img/254244/simg/254244?appid=0&eid=102020', 0, 1, NULL, 0),
+	(54, '劲爆！揭开手机卡顿的秘密', 'http://baseromcdn.gionee.com/image/search/ad/news/20161226/liebao.png_640x300.jpg', 'http://m.appgionee.com/mobile/soft/detail?fr=gn_search_h5&id=27426', 0, 1, NULL, 0),
+	(56, '去哪儿新年感恩季，省更多，玩儿更多！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161227/banner_quare.png_640x300.jpg', 'http://j.tdbear.cn/Jc-ly', 0, 1, NULL, 0),
+	(57, '新年特惠，你想要的好货都在这里！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161227/shopping.png_640x300.jpg', 'http://gou.gionee.com/index/redirect?url_id=2461', 0, 1, NULL, 0),
+	(58, '贷款,找平安,无需抵押,快至1天!', 'http://baseromcdn.gionee.com/image/search/ad/news/20161229/pingan.jpg_640x300.jpg', 'http://gou.gionee.com/index/redirect?url_id=3142', 0, 1, NULL, 0),
+	(59, '《3D坦克争霸2》预约开启！更有手机等万元福利等你拿！', 'http://baseromcdn.gionee.com/image/search/ad/6cfbe980fada48c8be7c084c5fe7d695@rong360.png_640x300.jpg', 'http://bbs.amigo.cn/thread-158752-1-1.html', 0, NULL, NULL, 0),
+	(60, '【自定义】这款迷你隐形蓝牙耳机卖疯了，99限时抢购！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/first.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994266764&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 0, NULL, 0),
+	(61, '这款浓香铁观音卖疯了，今日99限时秒杀！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/second.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994351817&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 0, NULL, 0),
+	(62, '这款男士冲锋衣卖疯了，今日198限时秒杀！', 'http://baseromcdn.gionee.com/image/search/ad/news/20161230/third.jpg_640x300.jpg', 'http://svc.dsp.ad.levect.com/m/c?q=1482994433409&ns=__IP__&m1a=__ANDROIDID__&m2=__IMEI__&m6=__MAC1__&nn=__APP__', 0, 1, NULL, 0),
+	(95, '河北武邑：志愿者餐厅为环卫工人免费提供爱心早餐', 'http://res.levect.com/hkimages/58/89/148395753087992148958.jpg_640x300.jpg', 'http://levect.com/zh/detail/img/296333/simg/296333/?eid=102020&appid=10067', NULL, 1, '2017-01-11 16:00:02', 1),
+	(96, '布置花灯迎新春', 'http://res.levect.com/hkimages/18/42/148395752889196124218.jpg_640x300.jpg', 'http://levect.com/zh/detail/img/296775/simg/296775/?eid=102020&appid=10067', NULL, 1, '2017-01-11 16:00:02', 1),
+	(97, '中国驻俄使馆举办留学生春节联欢会', 'http://res.levect.com/hkimages/21/03/148395752727096440321.jpg_640x300.jpg', 'http://levect.com/zh/detail/img/296799/simg/296799/?eid=102020&appid=10067', NULL, 1, '2017-01-11 16:00:02', 1);
 /*!40000 ALTER TABLE `ad_news` ENABLE KEYS */;
 
 
@@ -1217,7 +1227,7 @@ CREATE TABLE IF NOT EXISTS `hot_keys` (
   `sort_id` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL COMMENT '0:表示自动采集;1:表示自主添加的保存在自定义热词模块；2:表示自定义热词，跟采集源热词功能一样',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=633355 DEFAULT CHARSET=utf8 COMMENT='热词表';
+) ENGINE=InnoDB AUTO_INCREMENT=636448 DEFAULT CHARSET=utf8 COMMENT='热词表';
 
 -- 正在导出表  search.hot_keys 的数据：~44 rows (大约)
 /*!40000 ALTER TABLE `hot_keys` DISABLE KEYS */;
@@ -1227,45 +1237,45 @@ INSERT INTO `hot_keys` (`id`, `url`, `hot_key`, `stats`, `sort_id`, `type`) VALU
 	(613462, 'http://www.163.com/special/0077450P/login_frame.html', '#宋喆出轨#', 1, 3, 1),
 	(615461, 'http://localhost:8080/search_local/login/login#menu_hotkey_manage', '双11狂欢抢先购', 1, 1, 2),
 	(615462, 'http://localhost:8080/search_local/login/login#menu_hotkey_manage', '#双11来啦#', 1, 4, 1),
-	(633316, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9C%8D%E5%8A%A1%E5%8C%BA%E6%94%B6%E4%BA%BA%E5%A4%B4%E8%B4%B9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '服务区收人头费', 0, NULL, 0),
-	(633317, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B0%91%E5%A5%B3%E9%81%AD%E6%9A%B4%E5%8A%9B%E6%AC%BA%E8%BE%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '少女遭暴力欺辱', 1, NULL, 0),
-	(633318, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9E%97%E5%BF%83%E5%A6%82%E6%99%92%E7%85%A7%E6%84%9F%E6%85%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '林心如晒照感慨', 0, NULL, 0),
-	(633319, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%81%B6%E6%84%8F%E5%8F%98%E9%81%93%E6%92%9Emini&pid=sogou-mobp-eeea8c180c5dff16&v=5', '恶意变道撞mini', 0, NULL, 0),
-	(633320, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%A6%99%E6%B8%AF%E6%9C%8D%E5%8A%A1%E5%8A%A0%E4%BB%B7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '香港服务加价', 0, NULL, 0),
-	(633321, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8E%8B%E6%80%9D%E8%81%AA%E5%8C%85%E5%B2%9B%E8%B7%A8%E5%B9%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '王思聪包岛跨年', 0, NULL, 0),
-	(633322, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%AA%E9%A2%86%E5%AF%BC%E5%90%83%E9%A5%AD%E8%BA%AB%E4%BA%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陪领导吃饭身亡', 0, NULL, 0),
-	(633323, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%81%AB%E8%BD%A6%E7%AB%99%E8%AD%A6%E7%8A%AC%E5%B7%A1%E9%80%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '火车站警犬巡逻', 1, NULL, 0),
-	(633324, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%AA%E4%BB%93%E5%89%AF%E5%B8%82%E9%95%BF%E5%9D%A0%E4%BA%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '太仓副市长坠亡', 0, NULL, 0),
-	(633325, 'https://wap.sogou.com/web/searchList.jsp?keyword=5%E6%97%AC%E5%A5%B3%E5%AD%90%E5%AE%B6%E4%B8%AD%E9%81%87%E5%AE%B3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '5旬女子家中遇害', 0, NULL, 0),
-	(633326, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8F%B8%E6%9C%BA%E8%BF%B7%E6%81%8B%E8%B5%8C%E5%8D%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '司机迷恋赌博', 0, NULL, 0),
-	(633327, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%88%E8%B5%AB%E6%99%92%E5%A5%B3%E5%84%BF%E7%85%A7%E7%89%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陈赫晒女儿照片', 0, NULL, 0),
-	(633328, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%94%B7%E7%94%9F%E7%A9%BF%E9%BE%99%E8%A2%8D%E4%B8%8A%E8%AF%BE&pid=sogou-mobp-eeea8c180c5dff16&v=5', '男生穿龙袍上课', 0, NULL, 0),
-	(633329, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B6%8967%E4%BA%BA%E6%B6%89%E9%BB%91%E5%AE%A3%E5%88%A4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '涉67人涉黑宣判', 1, NULL, 0),
-	(633330, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E6%96%B0%E5%B9%B4%E8%B4%BA%E8%AF%8D&pid=sogou-mobp-eeea8c180c5dff16&v=5', '习近平新年贺词', 0, NULL, 0),
-	(633331, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%AE%E4%BC%81%E6%99%92%E5%B9%B4%E8%96%AA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '央企晒年薪', 0, NULL, 0),
-	(633332, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%8E%E6%99%93%E9%9C%9E%E9%80%80%E5%BD%B9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '李晓霞退役', 0, NULL, 0),
-	(633333, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8E%8B%E5%AE%9D%E5%BC%BA%E7%8E%B0%E8%BA%AB%E8%A5%BF%E5%AE%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '王宝强现身西安', 0, NULL, 0),
-	(633334, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B7%B4%E8%A5%BF%E7%9B%91%E7%8B%B1%E6%9A%B4%E5%8A%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '巴西监狱暴动', 0, NULL, 0),
-	(633335, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E5%AD%90%E7%A6%BB%E5%A9%9A%E8%83%8C%E5%B7%A8%E5%80%BA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女子离婚背巨债', 1, NULL, 0),
-	(633336, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%8B%B9%E6%9E%9C%E6%88%96%E5%87%8F%E4%BA%A710%25&pid=sogou-mobp-eeea8c180c5dff16&v=5', '苹果或减产10%', 0, NULL, 0),
-	(633337, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AF%BC%E6%BC%94%E4%BD%95%E7%BE%A4%E5%8E%BB%E4%B8%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '导演何群去世', 0, NULL, 0),
-	(633338, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%95%E8%A5%BF%E5%85%AC%E5%8E%95%E7%88%86%E7%82%B8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陕西公厕爆炸', 0, NULL, 0),
-	(633339, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8F%B0%E6%B9%BE%E5%BA%B7%E5%B8%88%E5%82%85%E8%A7%A3%E6%95%A3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '台湾康师傅解散', 0, NULL, 0),
-	(633340, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%BC%A0%E7%BB%A7%E7%A7%91%E6%8A%B1%E8%B5%B5%E4%B8%BD%E9%A2%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '张继科抱赵丽颖', 0, NULL, 0),
-	(633341, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E5%AD%90%E5%81%B7%E4%B8%8A%E5%8D%83%E5%BF%AB%E4%BB%B6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女子偷上千快件', 1, NULL, 0),
-	(633342, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9D%A8%E9%87%87%E5%A6%AE%E6%80%80%E5%AD%955%E4%B8%AA%E6%9C%88&pid=sogou-mobp-eeea8c180c5dff16&v=5', '杨采妮怀孕5个月', 0, NULL, 0),
-	(633343, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%83%91%E5%B0%A4%E6%8B%89%E4%B8%B9%E9%BA%A6%E8%A2%AB%E6%8D%95&pid=sogou-mobp-eeea8c180c5dff16&v=5', '郑尤拉丹麦被捕', 0, NULL, 0),
-	(633344, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%94%B6%E8%B4%AD%E7%8E%89%E7%B1%B3%E8%A2%AB%E5%88%A4%E5%88%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '收购玉米被判刑', 0, NULL, 0),
-	(633345, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%82%A3%E8%8B%B1%E5%8A%9B%E6%8C%BA%E7%8E%8B%E8%8F%B2&pid=sogou-mobp-eeea8c180c5dff16&v=5', '那英力挺王菲', 0, NULL, 0),
-	(633346, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%B0%AD%E6%99%B6%E8%B7%A8%E5%B9%B4%E9%A6%96%E7%A7%80&pid=sogou-mobp-eeea8c180c5dff16&v=5', '谭晶跨年首秀', 0, NULL, 0),
-	(633347, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%80%8E%E6%A0%B7%E7%94%B3%E8%AF%B7%E4%BF%A1%E7%94%A8%E5%8D%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '怎样申请信用卡', 1, NULL, 0),
-	(633348, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%9C%9C%E6%9C%88%E5%A9%9A%E7%BA%B1%E6%91%84%E5%BD%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '蜜月婚纱摄影', 0, NULL, 0),
-	(633349, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%BE%B3%E9%97%A8%E9%93%B6%E6%B2%B3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '澳门银河', 0, NULL, 0),
-	(633350, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BE%BE%E5%86%85%E5%9F%B9%E8%AE%AD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '达内培训', 0, NULL, 0),
-	(633351, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%9B%B6%E8%B7%9D%E7%A6%BB%E7%9B%B4%E6%92%AD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '零距离直播', 0, NULL, 0),
-	(633352, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%89%E4%BA%9A%E5%A9%9A%E7%BA%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '三亚婚纱', 0, NULL, 0),
-	(633353, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%B4%A1%E8%8C%B6&pid=sogou-mobp-eeea8c180c5dff16&v=5', '贡茶', 1, NULL, 0),
-	(633354, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A9%9A%E7%BA%B1%E6%91%84%E5%BD%B1%E4%BB%B7%E6%A0%BC%E8%A1%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '婚纱摄影价格表', 0, NULL, 0);
+	(636409, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8F%91308%E4%B8%87%E5%B9%B4%E7%BB%88%E5%A5%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '发308万年终奖', 0, NULL, 0),
+	(636410, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%81%9C%E5%B0%B813%E5%A4%A9%E8%A6%813.4%E4%B8%87&pid=sogou-mobp-eeea8c180c5dff16&v=5', '停尸13天要3.4万', 0, NULL, 0),
+	(636411, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%AF%BA%E5%9F%BA%E4%BA%9A6%E4%B8%AD%E5%9B%BD%E9%A6%96%E5%8F%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '诺基亚6中国首发', 0, NULL, 0),
+	(636412, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%9E%97%E5%BF%83%E5%A6%82%E7%94%9F%E5%A5%B3&pid=sogou-mobp-eeea8c180c5dff16&v=5', '林心如生女', 0, NULL, 0),
+	(636413, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%88%98%E6%B6%9B%E6%99%92%E5%85%A8%E5%AE%B6%E7%A6%8F&pid=sogou-mobp-eeea8c180c5dff16&v=5', '刘涛晒全家福', 1, NULL, 0),
+	(636414, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AE%B6%E5%B1%9E%E5%86%99%E6%9D%80%E5%8C%BB%E5%A3%B0%E6%98%8E&pid=sogou-mobp-eeea8c180c5dff16&v=5', '家属写杀医声明', 0, NULL, 0),
+	(636415, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%BC%8A%E6%9C%97%E5%89%8D%E6%80%BB%E7%BB%9F%E5%8E%BB%E4%B8%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '伊朗前总统去世', 0, NULL, 0),
+	(636416, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B8%85%E5%8D%8E2%E5%90%8D%E5%AD%A6%E7%94%9F%E8%90%BD%E6%B0%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '清华2名学生落水', 0, NULL, 0),
+	(636417, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%99%88%E6%80%9D%E8%AF%9A%E7%96%91%E4%BC%BC%E5%87%BA%E8%BD%A8&pid=sogou-mobp-eeea8c180c5dff16&v=5', '陈思诚疑似出轨', 0, NULL, 0),
+	(636418, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B0%91%E5%A5%B3%E6%97%85%E9%A6%86%E5%86%85%E4%BA%A7%E5%AD%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '少女旅馆内产子', 0, NULL, 0),
+	(636419, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%A9%AC%E4%BA%91%E4%BC%9A%E8%A7%81%E7%89%B9%E6%9C%97%E6%99%AE&pid=sogou-mobp-eeea8c180c5dff16&v=5', '马云会见特朗普', 1, NULL, 0),
+	(636420, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E7%8E%8B%E7%A5%96%E8%93%9D%E6%99%92%E5%BA%86%E7%94%9F%E7%85%A7&pid=sogou-mobp-eeea8c180c5dff16&v=5', '王祖蓝晒庆生照', 0, NULL, 0),
+	(636421, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%95%99%E7%BB%83%E8%BD%A6%E7%9B%B8%E6%92%9E%E8%87%B43%E6%AD%BB&pid=sogou-mobp-eeea8c180c5dff16&v=5', '教练车相撞致3死', 0, NULL, 0),
+	(636422, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AD%99%E7%BA%A2%E9%9B%B7%E9%82%A3%E8%8B%B1%E8%81%9A%E4%BC%9A&pid=sogou-mobp-eeea8c180c5dff16&v=5', '孙红雷那英聚会', 0, NULL, 0),
+	(636423, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%BE%E6%8A%A5%E5%AD%A6%E6%A0%A1%E9%81%AD%E7%BA%A6%E8%B0%88&pid=sogou-mobp-eeea8c180c5dff16&v=5', '举报学校遭约谈', 0, NULL, 0),
+	(636424, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%8C%97%E6%B5%B7%E9%81%93%E6%92%9E%E8%BD%A6%E4%BA%8B%E6%95%85&pid=sogou-mobp-eeea8c180c5dff16&v=5', '北海道撞车事故', 0, NULL, 0),
+	(636425, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BF%9D%E6%B3%95%E8%BD%A6%E4%B8%BB%E6%92%9E%E8%AD%A6%E6%91%A9&pid=sogou-mobp-eeea8c180c5dff16&v=5', '违法车主撞警摩', 1, NULL, 0),
+	(636426, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B0%8F%E4%BC%99%E8%A2%AB%E6%8B%9013%E5%B9%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '小伙被拐13年', 0, NULL, 0),
+	(636427, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B3%B0%E5%9B%BD%E6%9C%BA%E5%9C%BA%E9%81%93%E6%AD%89&pid=sogou-mobp-eeea8c180c5dff16&v=5', '泰国机场道歉', 0, NULL, 0),
+	(636428, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E9%83%91%E5%B7%9E1500%E6%96%A4%E7%8C%AA%E7%8E%8B&pid=sogou-mobp-eeea8c180c5dff16&v=5', '郑州1500斤猪王', 0, NULL, 0),
+	(636429, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%8B%96%E6%AC%A030%E4%B8%87%E4%B9%B0%E5%A5%A5%E8%BF%AA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '拖欠30万买奥迪', 0, NULL, 0),
+	(636430, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%AC%A7%E6%B4%B2%E5%AF%92%E6%B5%81%E8%82%86%E8%99%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '欧洲寒流肆虐', 0, NULL, 0),
+	(636431, 'https://wap.sogou.com/web/searchList.jsp?keyword=7%E5%90%8D%E6%B8%B8%E5%AE%A2%E8%A2%AB%E5%9B%B0%E6%82%AC%E5%B4%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '7名游客被困悬崖', 1, NULL, 0),
+	(636432, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%8F%AD%E7%BA%B8%E5%B8%81%E8%97%8F%E5%93%81%E9%AA%97%E5%B1%80&pid=sogou-mobp-eeea8c180c5dff16&v=5', '揭纸币藏品骗局', 0, NULL, 0),
+	(636433, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E8%BA%AB%E4%BB%BD%E8%AF%81%E9%81%AD%E5%86%92%E7%94%A88%E5%B9%B4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '身份证遭冒用8年', 0, NULL, 0),
+	(636434, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A5%B3%E6%98%9F%E7%82%AE%E8%BD%B0%E7%89%B9%E6%9C%97%E6%99%AE&pid=sogou-mobp-eeea8c180c5dff16&v=5', '女星炮轰特朗普', 0, NULL, 0),
+	(636435, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%85%A8%E7%90%83%E6%97%A5%E6%9C%88%E9%A3%9F%E5%A5%87%E8%A7%82&pid=sogou-mobp-eeea8c180c5dff16&v=5', '全球日月食奇观', 0, NULL, 0),
+	(636436, 'https://wap.sogou.com/web/searchList.jsp?keyword=36%E5%B2%81%E6%9D%80%E4%BA%BA%E9%B2%B8%E5%8E%BB%E4%B8%96&pid=sogou-mobp-eeea8c180c5dff16&v=5', '36岁杀人鲸去世', 0, NULL, 0),
+	(636437, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%AE%B6%E9%95%BF%E6%9A%B4%E6%89%93%E5%A5%B3%E6%95%99%E5%B8%88&pid=sogou-mobp-eeea8c180c5dff16&v=5', '家长暴打女教师', 1, NULL, 0),
+	(636438, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%A7S%E5%A4%8D%E5%B7%A5%E5%BD%95%E8%8A%82%E7%9B%AE&pid=sogou-mobp-eeea8c180c5dff16&v=5', '大S复工录节目', 0, NULL, 0),
+	(636439, 'https://wap.sogou.com/web/searchList.jsp?keyword=C%E7%BD%97%E8%8D%A3%E8%86%BA%E8%B6%B3%E7%90%83%E5%85%88%E7%94%9F&pid=sogou-mobp-eeea8c180c5dff16&v=5', 'C罗荣膺足球先生', 0, NULL, 0),
+	(636440, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%BE%B3%E9%97%A8%E9%93%B6%E6%B2%B3%E5%A8%B1%E4%B9%90%E5%9C%BA&pid=sogou-mobp-eeea8c180c5dff16&v=5', '澳门银河娱乐场', 0, NULL, 0),
+	(636441, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%B8%9D%E4%B8%80%E5%A8%B1%E4%B9%90&pid=sogou-mobp-eeea8c180c5dff16&v=5', '帝一娱乐', 0, NULL, 0),
+	(636442, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%B1%87%E9%80%9A%E8%B4%A2%E7%BB%8F%E7%9B%B4%E6%92%AD%E5%AE%A4&pid=sogou-mobp-eeea8c180c5dff16&v=5', '汇通财经直播室', 0, NULL, 0),
+	(636443, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E4%B8%89%E4%BA%9A%E5%A9%9A%E7%BA%B1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '三亚婚纱', 1, NULL, 0),
+	(636444, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%80%8E%E4%B9%88%E7%94%B3%E8%AF%B7%E4%BF%A1%E7%94%A8%E5%8D%A1&pid=sogou-mobp-eeea8c180c5dff16&v=5', '怎么申请信用卡', 0, NULL, 0),
+	(636445, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%8A%95%E8%B5%84%E7%A7%BB%E6%B0%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '投资移民', 0, NULL, 0),
+	(636446, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E5%A4%A9%E9%80%9A%E9%87%91%E4%B8%8B%E8%BD%BD&pid=sogou-mobp-eeea8c180c5dff16&v=5', '天通金下载', 0, NULL, 0),
+	(636447, 'https://wap.sogou.com/web/searchList.jsp?keyword=%E6%BC%BE%E6%BC%BE%E5%A5%BD%E8%B4%A1%E8%8C%B6%E5%AE%98%E7%BD%91&pid=sogou-mobp-eeea8c180c5dff16&v=5', '漾漾好贡茶官网', 0, NULL, 0);
 /*!40000 ALTER TABLE `hot_keys` ENABLE KEYS */;
 
 
@@ -1281,112 +1291,134 @@ CREATE TABLE IF NOT EXISTS `images` (
   `is_ref` int(11) DEFAULT '0' COMMENT '0：没有被引用，1：被引用',
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8 COMMENT='图片表';
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='图片表';
 
--- 正在导出表  search.images 的数据：~101 rows (大约)
+-- 正在导出表  search.images 的数据：~155 rows (大约)
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` (`id`, `type`, `file_name`, `img_path`, `title`, `description`, `is_ref`, `upload_date`) VALUES
-	(1, 31, '0101-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0101-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:37'),
-	(2, 31, '0101-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0101-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:38'),
-	(3, 31, '0101-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0101-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:41'),
-	(4, 31, '0101-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0101-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:42'),
-	(5, 31, '0101-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0101-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:44'),
-	(6, 31, '0103-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0103-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:46'),
-	(7, 31, '0103-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0103-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:47'),
-	(8, 31, '0103-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0103-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:49'),
-	(9, 31, '0103-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0103-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:50'),
-	(10, 31, '0103-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0103-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:52'),
-	(11, 31, '640-330.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/640-330.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:53'),
-	(12, 31, '1044-240.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1044-240.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:53'),
-	(13, 31, '1216-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1216-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:55'),
-	(14, 31, '1216-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1216-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:57'),
-	(15, 31, '1216-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1216-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:01:58'),
-	(16, 31, '1216-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1216-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:00'),
-	(17, 31, '1216-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1216-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:02'),
-	(18, 31, '1218-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1218-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:03'),
-	(19, 31, '1218-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1218-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:05'),
-	(20, 31, '1218-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1218-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:08'),
-	(21, 31, '1218-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1218-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:10'),
-	(22, 31, '1218-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1218-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:12'),
-	(23, 31, '1220-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:13'),
-	(24, 31, '1220-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:15'),
-	(25, 31, '1220-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:17'),
-	(26, 31, '1220-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:18'),
-	(27, 31, '1220-5-back-up.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-5-back-up.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:19'),
-	(28, 31, '1220-5-back-up-first.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1220-5-back-up-first.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:22'),
-	(29, 31, '1222-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1222-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:23'),
-	(30, 31, '1222-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1222-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:25'),
-	(31, 31, '1222-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1222-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:27'),
-	(32, 31, '1222-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1222-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:28'),
-	(33, 31, '1222-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1222-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:30'),
-	(34, 31, '1224-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1224-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:30'),
-	(35, 31, '1224-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1224-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:32'),
-	(36, 31, '1224-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1224-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:34'),
-	(37, 31, '1224-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1224-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:35'),
-	(38, 31, '1224-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1224-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:37'),
-	(39, 31, '1226-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1226-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:39'),
-	(40, 31, '1226-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1226-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:40'),
-	(41, 31, '1226-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1226-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:41'),
-	(42, 31, '1226-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1226-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:43'),
-	(43, 31, '1226-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1226-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:44'),
-	(44, 31, '1228-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1228-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:46'),
-	(45, 31, '1228-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1228-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:47'),
-	(46, 31, '1228-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1228-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:50'),
-	(47, 31, '1228-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1228-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:51'),
-	(48, 31, '1228-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1228-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:53'),
-	(49, 31, '1230-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1230-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:54'),
-	(50, 31, '1230-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1230-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:55'),
-	(51, 31, '1230-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1230-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:56'),
-	(52, 31, '1230-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1230-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:02:58'),
-	(53, 31, '1230-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1230-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:00'),
-	(54, 31, 'banner_didi.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/banner_didi.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:01'),
-	(55, 31, 'banner_quare.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/banner_quare.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:03'),
-	(56, 31, 'banner_shengbei.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/banner_shengbei.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:04'),
-	(57, 31, 'fecond.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/fecond.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:05'),
-	(58, 31, 'first.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/first.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:06'),
-	(59, 31, 'liebao.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/liebao.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:07'),
-	(60, 31, 'pingan.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/pingan.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:07'),
-	(61, 31, 'rong360.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/rong360.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:08'),
-	(62, 31, 'shopping.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/shopping.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:09'),
-	(63, 31, 'third.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/third.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:11'),
-	(64, 31, 'youxin.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/youxin.png_640x300.jpg', NULL, NULL, NULL, '2017-01-03 17:03:12'),
-	(104, 32, '9kuai9.png', 'http://baseromcdn.gionee.com/image/search/icon/9kuai9.png', NULL, NULL, NULL, '2017-01-03 17:29:46'),
-	(105, 32, '58.png', 'http://baseromcdn.gionee.com/image/search/icon/58.png', NULL, NULL, NULL, '2017-01-03 17:29:46'),
-	(106, 32, '96.png', 'http://baseromcdn.gionee.com/image/search/icon/96.png', NULL, NULL, NULL, '2017-01-03 17:29:47'),
-	(107, 32, '360video.png', 'http://baseromcdn.gionee.com/image/search/icon/360video.png', NULL, NULL, NULL, '2017-01-03 17:29:47'),
-	(108, 32, '1212.png', 'http://baseromcdn.gionee.com/image/search/icon/1212.png', NULL, NULL, NULL, '2017-01-03 17:29:48'),
-	(109, 32, 'baidu_news.png', 'http://baseromcdn.gionee.com/image/search/icon/baidu_news.png', NULL, NULL, NULL, '2017-01-03 17:29:49'),
-	(110, 32, 'ciji.png', 'http://baseromcdn.gionee.com/image/search/icon/ciji.png', NULL, NULL, NULL, '2017-01-03 17:29:49'),
-	(111, 32, 'dangdang.png', 'http://baseromcdn.gionee.com/image/search/icon/dangdang.png', NULL, NULL, NULL, '2017-01-03 17:29:50'),
-	(112, 32, 'game.png', 'http://baseromcdn.gionee.com/image/search/icon/game.png', NULL, NULL, NULL, '2017-01-03 17:29:50'),
-	(113, 32, 'gongjiao.png', 'http://baseromcdn.gionee.com/image/search/icon/gongjiao.png', NULL, NULL, NULL, '2017-01-03 17:29:51'),
-	(114, 32, 'guahao.png', 'http://baseromcdn.gionee.com/image/search/icon/guahao.png', NULL, NULL, NULL, '2017-01-03 17:29:51'),
-	(115, 32, 'jiazheng.png', 'http://baseromcdn.gionee.com/image/search/icon/jiazheng.png', NULL, NULL, NULL, '2017-01-03 17:29:52'),
-	(116, 32, 'jingdong.png', 'http://baseromcdn.gionee.com/image/search/icon/jingdong.png', NULL, NULL, NULL, '2017-01-03 17:29:53'),
-	(117, 32, 'jiudianyuding.png', 'http://baseromcdn.gionee.com/image/search/icon/jiudianyuding.png', NULL, NULL, NULL, '2017-01-03 17:29:54'),
-	(118, 32, 'juhuasuan.png', 'http://baseromcdn.gionee.com/image/search/icon/juhuasuan.png', NULL, NULL, NULL, '2017-01-03 17:29:54'),
-	(119, 32, 'kuaidi.png', 'http://baseromcdn.gionee.com/image/search/icon/kuaidi.png', NULL, NULL, NULL, '2017-01-03 17:29:55'),
-	(120, 32, 'kxxxl.png', 'http://baseromcdn.gionee.com/image/search/icon/kxxxl.png', NULL, NULL, NULL, '2017-01-03 17:29:55'),
-	(121, 32, 'lirenguan.png', 'http://baseromcdn.gionee.com/image/search/icon/lirenguan.png', NULL, NULL, NULL, '2017-01-03 17:29:56'),
-	(122, 32, 'meilishuo.png', 'http://baseromcdn.gionee.com/image/search/icon/meilishuo.png', NULL, NULL, NULL, '2017-01-03 17:29:56'),
-	(123, 32, 'meituan.png', 'http://baseromcdn.gionee.com/image/search/icon/meituan.png', NULL, NULL, NULL, '2017-01-03 17:29:56'),
-	(124, 32, 'mogujie.png', 'http://baseromcdn.gionee.com/image/search/icon/mogujie.png', NULL, NULL, NULL, '2017-01-03 17:29:57'),
-	(125, 32, 'pinganpuhui.png', 'http://baseromcdn.gionee.com/image/search/icon/pinganpuhui.png', NULL, NULL, NULL, '2017-01-03 17:29:57'),
-	(126, 32, 'qingtingFM.png', 'http://baseromcdn.gionee.com/image/search/icon/qingtingFM.png', NULL, NULL, NULL, '2017-01-03 17:29:57'),
-	(127, 32, 'ruanjian.png', 'http://baseromcdn.gionee.com/image/search/icon/ruanjian.png', NULL, NULL, NULL, '2017-01-03 17:29:58'),
-	(128, 32, 'shouji360.png', 'http://baseromcdn.gionee.com/image/search/icon/shouji360.png', NULL, NULL, NULL, '2017-01-03 17:29:58'),
-	(129, 32, 'suning.jpg', 'http://baseromcdn.gionee.com/image/search/icon/suning.jpg', NULL, NULL, NULL, '2017-01-03 17:29:58'),
-	(130, 32, 'taobao.png', 'http://baseromcdn.gionee.com/image/search/icon/taobao.png', NULL, NULL, NULL, '2017-01-03 17:29:59'),
-	(131, 32, 'tmall.png', 'http://baseromcdn.gionee.com/image/search/icon/tmall.png', NULL, NULL, NULL, '2017-01-03 17:29:59'),
-	(132, 32, 'toutiao.png', 'http://baseromcdn.gionee.com/image/search/icon/toutiao.png', NULL, NULL, NULL, '2017-01-03 17:30:00'),
-	(133, 32, 'tuniu.png', 'http://baseromcdn.gionee.com/image/search/icon/tuniu.png', NULL, NULL, NULL, '2017-01-03 17:30:00'),
-	(134, 32, 'weipinghui.png', 'http://baseromcdn.gionee.com/image/search/icon/weipinghui.png', NULL, NULL, NULL, '2017-01-03 17:30:00'),
-	(135, 32, 'weipinhui.png', 'http://baseromcdn.gionee.com/image/search/icon/weipinhui.png', NULL, NULL, NULL, '2017-01-03 17:30:01'),
-	(136, 32, 'weizhang.png', 'http://baseromcdn.gionee.com/image/search/icon/weizhang.png', NULL, NULL, NULL, '2017-01-03 17:30:01'),
-	(137, 32, 'xinpinhui.png', 'http://baseromcdn.gionee.com/image/search/icon/xinpinhui.png', NULL, NULL, NULL, '2017-01-03 17:30:02'),
-	(138, 32, 'yamaxun.png', 'http://baseromcdn.gionee.com/image/search/icon/yamaxun.png', NULL, NULL, NULL, '2017-01-03 17:30:03'),
-	(139, 32, 'yihaodian.png', 'http://baseromcdn.gionee.com/image/search/icon/yihaodian.png', NULL, NULL, NULL, '2017-01-03 17:30:03'),
-	(140, 32, 'yule.png', 'http://baseromcdn.gionee.com/image/search/icon/yule.png', NULL, NULL, NULL, '2017-01-03 17:30:04');
+	(1, 31, 'ccf5b40f4b8b43eaa1e1e7324c2b80de@0101-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/ccf5b40f4b8b43eaa1e1e7324c2b80de@0101-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:10'),
+	(2, 31, '4d59d8d0b93545578c2c17c53eb90382@0101-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/4d59d8d0b93545578c2c17c53eb90382@0101-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:13'),
+	(3, 31, '08b640d1430744699565756179fe031b@0101-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/08b640d1430744699565756179fe031b@0101-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:15'),
+	(4, 31, '8e8878e82e82434b80f00661724128c4@0101-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8e8878e82e82434b80f00661724128c4@0101-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:18'),
+	(5, 31, '83150b02604247539a2d8dff8a4bfa90@0103-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/83150b02604247539a2d8dff8a4bfa90@0103-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:19'),
+	(6, 31, '3dae947d693e4c33a3b4170d66a18035@0103-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/3dae947d693e4c33a3b4170d66a18035@0103-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:21'),
+	(7, 31, '14a3847725b048d5b90cff9d4b1e876d@0103-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/14a3847725b048d5b90cff9d4b1e876d@0103-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:23'),
+	(8, 31, '6eaccca0f1304093857b3c2f1be1b0bc@0103-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/6eaccca0f1304093857b3c2f1be1b0bc@0103-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:26'),
+	(9, 31, '9ea433797d2b481e832b7aac7e6b59ae@0103-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/9ea433797d2b481e832b7aac7e6b59ae@0103-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:27'),
+	(10, 31, '300bc76883e946279019ad2dacc9e76a@0105-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/300bc76883e946279019ad2dacc9e76a@0105-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:30'),
+	(11, 31, '1701239ab8904ced97f685a2530313f9@0105-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1701239ab8904ced97f685a2530313f9@0105-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:33'),
+	(12, 31, '56792d2f9e2c4bfd9363870dfe9d8b77@0105-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/56792d2f9e2c4bfd9363870dfe9d8b77@0105-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:36'),
+	(13, 31, '71dc9864ca514e8c82f23d06ca9996e4@0105-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/71dc9864ca514e8c82f23d06ca9996e4@0105-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:38'),
+	(14, 31, '0fc4646d6d834ba4840e367c40b93cbc@0105-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0fc4646d6d834ba4840e367c40b93cbc@0105-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:42'),
+	(15, 31, 'b9d0f1b5092c40c1b6f493af608a05ca@0107-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/b9d0f1b5092c40c1b6f493af608a05ca@0107-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:45'),
+	(16, 31, '5dbb42e02b7a40e8ab12bed36c384d9e@0107-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/5dbb42e02b7a40e8ab12bed36c384d9e@0107-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:47'),
+	(17, 31, '0e45d7ef3fad42b490273240432ab5cb@0107-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0e45d7ef3fad42b490273240432ab5cb@0107-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:49'),
+	(18, 31, '3985279d27dd425d840cc7ec1c7b6015@0107-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/3985279d27dd425d840cc7ec1c7b6015@0107-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:53'),
+	(19, 31, 'c62d9e82332640ca8af49b9995e9eace@0107-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/c62d9e82332640ca8af49b9995e9eace@0107-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:55'),
+	(20, 31, '8473339a10374b2e8a0c817ff9848c34@0109-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8473339a10374b2e8a0c817ff9848c34@0109-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:57'),
+	(21, 31, 'b893f0e141a24c44b7de4b4277076929@0109-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/b893f0e141a24c44b7de4b4277076929@0109-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:56:59'),
+	(22, 31, 'ec868f93e47a41b4a080a328c2f12104@0109-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/ec868f93e47a41b4a080a328c2f12104@0109-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:02'),
+	(23, 31, 'ada8539555b941deb587663bb4c8c415@0109-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/ada8539555b941deb587663bb4c8c415@0109-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:05'),
+	(24, 31, 'c56ede6faa454bf2a6441f1a0efefa67@0109-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/c56ede6faa454bf2a6441f1a0efefa67@0109-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:07'),
+	(25, 31, 'c0831c67d42a42f18518955354abc928@0111-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/c0831c67d42a42f18518955354abc928@0111-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:09'),
+	(26, 31, '465c567932894e728b460e2dc5dbe0e6@0111-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/465c567932894e728b460e2dc5dbe0e6@0111-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:11'),
+	(27, 31, 'ff19b2ea2b0e4a209f74d7f8033a0e94@0111-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/ff19b2ea2b0e4a209f74d7f8033a0e94@0111-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:14'),
+	(28, 31, '67e20f0d24a64144945f962057043294@0111-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/67e20f0d24a64144945f962057043294@0111-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:16'),
+	(29, 31, '1a06df46d98b4e41970669c1e86850aa@0111-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1a06df46d98b4e41970669c1e86850aa@0111-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:19'),
+	(30, 31, '294fcac284434aa5af9486ac3a884b22@640-300.png_640x300.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/294fcac284434aa5af9486ac3a884b22@640-300.png_640x300.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:20'),
+	(31, 31, '7899e987d65f4e669989f49979c82a9f@640-330.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/7899e987d65f4e669989f49979c82a9f@640-330.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:22'),
+	(32, 31, '827cb19d95a14962b9172c4f6d0c8365@1044-240.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/827cb19d95a14962b9172c4f6d0c8365@1044-240.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:24'),
+	(33, 31, '87a46f8ab6f449b69dffc88bbf400264@1216-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/87a46f8ab6f449b69dffc88bbf400264@1216-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:26'),
+	(34, 31, '68b5658b38904185a161d56d14ea5641@1216-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/68b5658b38904185a161d56d14ea5641@1216-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:30'),
+	(35, 31, 'd3d53c5f78104ba5a7e4e0f50f5de798@1216-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/d3d53c5f78104ba5a7e4e0f50f5de798@1216-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:32'),
+	(36, 31, '044cde7e26954bd38799d49b4ab825ee@1216-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/044cde7e26954bd38799d49b4ab825ee@1216-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:34'),
+	(37, 31, '6caa7e4c937b48c8ba09080f1d1648ca@1218-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/6caa7e4c937b48c8ba09080f1d1648ca@1218-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:36'),
+	(38, 31, '38e514ed71974c24a8c2deea084cada1@1218-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/38e514ed71974c24a8c2deea084cada1@1218-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:37'),
+	(39, 31, 'b43bcfdbc56f4316819c7638d52a4a92@1218-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/b43bcfdbc56f4316819c7638d52a4a92@1218-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:41'),
+	(40, 31, '7941b84064054767974d83150b75f6ea@1218-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/7941b84064054767974d83150b75f6ea@1218-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:43'),
+	(41, 31, 'fd190f0bd9944b08826f43ba02fccbd3@1218-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/fd190f0bd9944b08826f43ba02fccbd3@1218-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:45'),
+	(42, 31, '7f7d3fc39c4949df85b9baedfa2791a5@1220-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/7f7d3fc39c4949df85b9baedfa2791a5@1220-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:47'),
+	(43, 31, '596b164a72424ec78b1287e852e468dc@1220-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/596b164a72424ec78b1287e852e468dc@1220-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:49'),
+	(44, 31, '1c6fd13cee6a446ab6f12cbfcf61bedf@1220-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1c6fd13cee6a446ab6f12cbfcf61bedf@1220-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:51'),
+	(45, 31, '21190b89c30f4f0a8b99897ea355e3c5@1220-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/21190b89c30f4f0a8b99897ea355e3c5@1220-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:52'),
+	(46, 31, 'd5f3a58dbcca4b6f9ca8609389ba7140@1220-5-back-up.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/d5f3a58dbcca4b6f9ca8609389ba7140@1220-5-back-up.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:54'),
+	(47, 31, 'af4a9c7a61224afb9ae31c6c5b2f0342@1220-5-back-up-first.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/af4a9c7a61224afb9ae31c6c5b2f0342@1220-5-back-up-first.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:57'),
+	(48, 31, '2bd479e13d3d40e4af7c99e45fde9a40@1222-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/2bd479e13d3d40e4af7c99e45fde9a40@1222-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:57:59'),
+	(49, 31, '0ca9ba3c4485408288fa1f482b51f837@1222-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0ca9ba3c4485408288fa1f482b51f837@1222-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:01'),
+	(50, 31, '282ac9ac9fc54027b8725d5d0423a39c@1222-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/282ac9ac9fc54027b8725d5d0423a39c@1222-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:03'),
+	(51, 31, '0bec0b15b4c04964be98df40d11a27c2@1222-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0bec0b15b4c04964be98df40d11a27c2@1222-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:05'),
+	(52, 31, '8f74f94a06eb47e585f8870747144d17@1222-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8f74f94a06eb47e585f8870747144d17@1222-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:07'),
+	(53, 31, '396ae0fd86144f5d8f4c6cbb144df032@1224-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/396ae0fd86144f5d8f4c6cbb144df032@1224-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:08'),
+	(54, 31, 'bad9a6f60c704f9f96534ecf0a203cf3@1224-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/bad9a6f60c704f9f96534ecf0a203cf3@1224-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:11'),
+	(55, 31, 'd29316a986ac4278a6e8bb851aba1d2c@1224-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/d29316a986ac4278a6e8bb851aba1d2c@1224-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:12'),
+	(56, 31, '2c249bb535f745b7a0c675c80c314db8@1224-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/2c249bb535f745b7a0c675c80c314db8@1224-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:14'),
+	(57, 31, '6daa88385cb74ff58fd265256c3ab528@1224-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/6daa88385cb74ff58fd265256c3ab528@1224-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:16'),
+	(58, 31, '039ababc4296463d90ef9a12b8714765@1226-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/039ababc4296463d90ef9a12b8714765@1226-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:18'),
+	(59, 31, '9781dda794244cf09292ca7de85097f2@1226-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/9781dda794244cf09292ca7de85097f2@1226-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:21'),
+	(60, 31, '53ccc78e5a1641e3b1f2e0c8a02aba25@1226-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/53ccc78e5a1641e3b1f2e0c8a02aba25@1226-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:23'),
+	(61, 31, '199f8354b71c4668a65242991e9fa568@1226-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/199f8354b71c4668a65242991e9fa568@1226-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:24'),
+	(62, 31, '1bbbc9c183644ff0af7a1c8ba702ff6f@1226-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1bbbc9c183644ff0af7a1c8ba702ff6f@1226-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:26'),
+	(63, 31, '8d3f224a14764de4bdaf24c2a321130e@1228-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8d3f224a14764de4bdaf24c2a321130e@1228-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:28'),
+	(64, 31, 'aa10db874e894e6c9a743b766edc44e5@1228-2.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/aa10db874e894e6c9a743b766edc44e5@1228-2.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:29'),
+	(65, 31, 'fb43c96da84247888785fbe75f2261aa@1228-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/fb43c96da84247888785fbe75f2261aa@1228-3.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:31'),
+	(66, 31, '8c04cfe4c9ca4e59ab83e570c416fc29@1228-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8c04cfe4c9ca4e59ab83e570c416fc29@1228-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:34'),
+	(67, 31, 'd5b8be8438e34fb889687053b01298ae@1228-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/d5b8be8438e34fb889687053b01298ae@1228-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:37'),
+	(68, 31, 'a572c5d05f774068ab78dc35005511a1@1230-3.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/a572c5d05f774068ab78dc35005511a1@1230-3.jpg_640x300.jpg', NULL, NULL, 1, '2017-01-09 15:45:07'),
+	(69, 31, '6f61fd496d8d4442b580b58c1df05b78@1230-4.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/6f61fd496d8d4442b580b58c1df05b78@1230-4.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:41'),
+	(70, 31, 'eb82001d7bb141708ea92fc00da78b6b@1230-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/eb82001d7bb141708ea92fc00da78b6b@1230-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:43'),
+	(71, 31, 'bb565a61d813451eb7bb53651b4fdae3@banner_58tongcheng.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/bb565a61d813451eb7bb53651b4fdae3@banner_58tongcheng.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:43'),
+	(72, 31, '2f180bbacac8470481abc03544124804@banner_daogoujuhe.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/2f180bbacac8470481abc03544124804@banner_daogoujuhe.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:45'),
+	(73, 31, '9bdf28150b974f8d8f77fcd42f6fafcb@banner_didi.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/9bdf28150b974f8d8f77fcd42f6fafcb@banner_didi.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:47'),
+	(74, 31, '0eb4a08a41154804884f763b752e0dbe@banner_ireading.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/0eb4a08a41154804884f763b752e0dbe@banner_ireading.png_640x300.jpg', NULL, NULL, 1, '2017-01-09 15:45:00'),
+	(75, 31, '3b2ef921a843415ea3b4639e74f2f020@banner_quare.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/3b2ef921a843415ea3b4639e74f2f020@banner_quare.png_640x300.jpg', NULL, NULL, 1, '2017-01-09 15:44:50'),
+	(76, 31, '82a4eabce7da4ab88b4369a2e8e54f3e@banner_shengbei.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/82a4eabce7da4ab88b4369a2e8e54f3e@banner_shengbei.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:52'),
+	(77, 31, '76ccb8a503af402297623620cb2cf816@fecond.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/76ccb8a503af402297623620cb2cf816@fecond.jpg_640x300.jpg', NULL, NULL, 1, '2017-01-09 15:44:34'),
+	(78, 31, '8d378e7e35b24016886d8a4e11942c49@first.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/8d378e7e35b24016886d8a4e11942c49@first.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:54'),
+	(79, 31, '4df588b0ea0840d6aea437c721cda385@liebao.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/4df588b0ea0840d6aea437c721cda385@liebao.png_640x300.jpg', NULL, NULL, 1, '2017-01-09 15:44:21'),
+	(80, 31, '1f8c8a329100431db16122f867e454fb@pingan.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/1f8c8a329100431db16122f867e454fb@pingan.jpg_640x300.jpg', NULL, NULL, 0, '2017-01-11 11:16:25'),
+	(81, 31, '6cfbe980fada48c8be7c084c5fe7d695@rong360.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/6cfbe980fada48c8be7c084c5fe7d695@rong360.png_640x300.jpg', NULL, NULL, 0, '2017-01-11 11:11:18'),
+	(82, 31, '94503c660b87409abbe6d25e4fce4a52@shopping.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/94503c660b87409abbe6d25e4fce4a52@shopping.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:57'),
+	(83, 31, 'fcdf7c5c993b4c4d9c9fd2f1bfb477e5@third.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/fcdf7c5c993b4c4d9c9fd2f1bfb477e5@third.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:58:59'),
+	(84, 31, '030d86bae73943e8a152d28623549149@youxin.png_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/030d86bae73943e8a152d28623549149@youxin.png_640x300.jpg', NULL, NULL, NULL, '2017-01-09 14:59:00'),
+	(85, 32, 'e3aba05519a04c459cfeb26430294b40@9kuai9.png', 'http://baseromcdn.gionee.com/image/search/icon/e3aba05519a04c459cfeb26430294b40@9kuai9.png', NULL, NULL, NULL, '2017-01-09 14:59:38'),
+	(86, 32, 'df9f71cadf4c4a378b66be48631275fe@58.png', 'http://baseromcdn.gionee.com/image/search/icon/df9f71cadf4c4a378b66be48631275fe@58.png', NULL, NULL, NULL, '2017-01-09 14:59:39'),
+	(87, 32, '8dc0f5c80e7a485b811c1d7931744a27@96.png', 'http://baseromcdn.gionee.com/image/search/icon/8dc0f5c80e7a485b811c1d7931744a27@96.png', NULL, NULL, NULL, '2017-01-09 14:59:39'),
+	(88, 32, '6bf32795e0ec4690bac6f2ffdbfdbcf6@360video.png', 'http://baseromcdn.gionee.com/image/search/icon/6bf32795e0ec4690bac6f2ffdbfdbcf6@360video.png', NULL, NULL, NULL, '2017-01-09 14:59:40'),
+	(89, 32, 'eae633cef6b64a5aba22330b22fe6dea@1212.png', 'http://baseromcdn.gionee.com/image/search/icon/eae633cef6b64a5aba22330b22fe6dea@1212.png', NULL, NULL, NULL, '2017-01-09 14:59:40'),
+	(90, 32, 'd842089e73af44c690f5214356572e7e@baidu_news.png', 'http://baseromcdn.gionee.com/image/search/icon/d842089e73af44c690f5214356572e7e@baidu_news.png', NULL, NULL, NULL, '2017-01-09 14:59:41'),
+	(91, 32, '7a312ca8c76d45109500d522078cc56f@ciji.png', 'http://baseromcdn.gionee.com/image/search/icon/7a312ca8c76d45109500d522078cc56f@ciji.png', NULL, NULL, NULL, '2017-01-09 14:59:41'),
+	(92, 32, '3195bf5bf9d74619a2b0906f7b883121@dangdang.png', 'http://baseromcdn.gionee.com/image/search/icon/3195bf5bf9d74619a2b0906f7b883121@dangdang.png', NULL, NULL, NULL, '2017-01-09 14:59:42'),
+	(93, 32, 'a1fdf575147e4bfc9fd2514da00b83fe@game.png', 'http://baseromcdn.gionee.com/image/search/icon/a1fdf575147e4bfc9fd2514da00b83fe@game.png', NULL, NULL, NULL, '2017-01-09 14:59:42'),
+	(94, 32, '43f087a878df464f82c5a80fdddacb09@gongjiao.png', 'http://baseromcdn.gionee.com/image/search/icon/43f087a878df464f82c5a80fdddacb09@gongjiao.png', NULL, NULL, NULL, '2017-01-09 14:59:42'),
+	(95, 32, '59beec81da354a23ab6df47ef53f1579@guahao.png', 'http://baseromcdn.gionee.com/image/search/icon/59beec81da354a23ab6df47ef53f1579@guahao.png', NULL, NULL, NULL, '2017-01-09 14:59:43'),
+	(96, 32, 'da902c8e82bb44b19b9544e56a168abc@jiazheng.png', 'http://baseromcdn.gionee.com/image/search/icon/da902c8e82bb44b19b9544e56a168abc@jiazheng.png', NULL, NULL, NULL, '2017-01-09 14:59:43'),
+	(97, 32, '28dfa1fbe1794f8b92c89c17c6a71ca2@jingdong.png', 'http://baseromcdn.gionee.com/image/search/icon/28dfa1fbe1794f8b92c89c17c6a71ca2@jingdong.png', NULL, NULL, 1, '2017-01-10 11:24:34'),
+	(98, 32, 'dd025f33066c4304926017a20fac343c@jiudianyuding.png', 'http://baseromcdn.gionee.com/image/search/icon/dd025f33066c4304926017a20fac343c@jiudianyuding.png', NULL, NULL, NULL, '2017-01-09 14:59:44'),
+	(99, 32, 'a212456b8c0a4a009e821316945b3310@juhuasuan.png', 'http://baseromcdn.gionee.com/image/search/icon/a212456b8c0a4a009e821316945b3310@juhuasuan.png', NULL, NULL, NULL, '2017-01-09 14:59:44'),
+	(100, 32, '20394705e56b4a34bcbb7706ba5695b1@kuaidi.png', 'http://baseromcdn.gionee.com/image/search/icon/20394705e56b4a34bcbb7706ba5695b1@kuaidi.png', NULL, NULL, 1, '2017-01-09 15:42:39'),
+	(101, 32, '398e91a802684c64af6b9697fc0f66b5@kxxxl.png', 'http://baseromcdn.gionee.com/image/search/icon/398e91a802684c64af6b9697fc0f66b5@kxxxl.png', NULL, NULL, NULL, '2017-01-09 14:59:45'),
+	(102, 32, 'f6a9faa852bf4c9186494b349795eb4d@lirenguan.png', 'http://baseromcdn.gionee.com/image/search/icon/f6a9faa852bf4c9186494b349795eb4d@lirenguan.png', NULL, NULL, NULL, '2017-01-09 14:59:45'),
+	(103, 32, '8749f7776c5448309f2470ac88c3e84d@meilishuo.png', 'http://baseromcdn.gionee.com/image/search/icon/8749f7776c5448309f2470ac88c3e84d@meilishuo.png', NULL, NULL, NULL, '2017-01-09 14:59:46'),
+	(104, 32, '6f0820394c944266983c2cdcbffba00c@meituan.png', 'http://baseromcdn.gionee.com/image/search/icon/6f0820394c944266983c2cdcbffba00c@meituan.png', NULL, NULL, NULL, '2017-01-09 14:59:47'),
+	(105, 32, '66f02f5504ac4925ba727ca31fc9521e@mogujie.png', 'http://baseromcdn.gionee.com/image/search/icon/66f02f5504ac4925ba727ca31fc9521e@mogujie.png', NULL, NULL, NULL, '2017-01-09 14:59:47'),
+	(106, 32, 'd8a7d5e5cb7b4722b753a977affb2843@pinganpuhui.png', 'http://baseromcdn.gionee.com/image/search/icon/d8a7d5e5cb7b4722b753a977affb2843@pinganpuhui.png', NULL, NULL, NULL, '2017-01-09 14:59:47'),
+	(107, 32, 'f29ce70c96e043cd84123a8d70d59575@qingtingFM.png', 'http://baseromcdn.gionee.com/image/search/icon/f29ce70c96e043cd84123a8d70d59575@qingtingFM.png', NULL, NULL, NULL, '2017-01-09 14:59:48'),
+	(108, 32, 'f15c5a29ea75431f86dc3f12c41a985a@ruanjian.png', 'http://baseromcdn.gionee.com/image/search/icon/f15c5a29ea75431f86dc3f12c41a985a@ruanjian.png', NULL, NULL, NULL, '2017-01-09 14:59:48'),
+	(109, 32, '74583bf158ea4877acbab50d778ef456@shouji360.png', 'http://baseromcdn.gionee.com/image/search/icon/74583bf158ea4877acbab50d778ef456@shouji360.png', NULL, NULL, NULL, '2017-01-09 14:59:48'),
+	(110, 32, '2bc0804bd1f340ef94c4d5c3e72ba3d2@suning.jpg', 'http://baseromcdn.gionee.com/image/search/icon/2bc0804bd1f340ef94c4d5c3e72ba3d2@suning.jpg', NULL, NULL, NULL, '2017-01-09 14:59:49'),
+	(111, 32, '698c3c7e873c4153b082baa60cb46c1f@taobao.png', 'http://baseromcdn.gionee.com/image/search/icon/698c3c7e873c4153b082baa60cb46c1f@taobao.png', NULL, NULL, 1, '2017-01-10 11:24:22'),
+	(112, 32, '7d3185c36599434fac638d4c26e129ca@tmall.png', 'http://baseromcdn.gionee.com/image/search/icon/7d3185c36599434fac638d4c26e129ca@tmall.png', NULL, NULL, NULL, '2017-01-09 14:59:49'),
+	(113, 32, '12c92e92c45d41fabef2f57fe3b5a20d@toutiao.png', 'http://baseromcdn.gionee.com/image/search/icon/12c92e92c45d41fabef2f57fe3b5a20d@toutiao.png', NULL, NULL, NULL, '2017-01-09 14:59:49'),
+	(114, 32, '273baa7246b3406f9644eceba28cb794@tuniu.png', 'http://baseromcdn.gionee.com/image/search/icon/273baa7246b3406f9644eceba28cb794@tuniu.png', NULL, NULL, NULL, '2017-01-09 14:59:50'),
+	(115, 32, '5f2646e44de146c3877c86887bb72f89@weipinghui.png', 'http://baseromcdn.gionee.com/image/search/icon/5f2646e44de146c3877c86887bb72f89@weipinghui.png', NULL, NULL, 0, '2017-01-09 15:43:45'),
+	(116, 32, 'c39d3582a59e4cf6bb738f5b0c86a622@weipinhui.png', 'http://baseromcdn.gionee.com/image/search/icon/c39d3582a59e4cf6bb738f5b0c86a622@weipinhui.png', NULL, NULL, NULL, '2017-01-09 14:59:50'),
+	(117, 32, 'c46ea61d74b64cd18f50847aeac7d5c5@weizhang.png', 'http://baseromcdn.gionee.com/image/search/icon/c46ea61d74b64cd18f50847aeac7d5c5@weizhang.png', NULL, NULL, NULL, '2017-01-09 14:59:51'),
+	(118, 32, '0dca35c9dde24299956889dcd2612034@xinpinhui.png', 'http://baseromcdn.gionee.com/image/search/icon/0dca35c9dde24299956889dcd2612034@xinpinhui.png', NULL, NULL, NULL, '2017-01-09 14:59:51'),
+	(119, 32, 'c97d19c2740c4356bfc21d9390805f77@yamaxun.png', 'http://baseromcdn.gionee.com/image/search/icon/c97d19c2740c4356bfc21d9390805f77@yamaxun.png', NULL, NULL, NULL, '2017-01-09 14:59:52'),
+	(120, 32, '1d8af1c49c56487d90938a2ae398a3e3@yihaodian.png', 'http://baseromcdn.gionee.com/image/search/icon/1d8af1c49c56487d90938a2ae398a3e3@yihaodian.png', NULL, NULL, NULL, '2017-01-09 14:59:52'),
+	(121, 32, NULL, 'http://baseromcdn.gionee.com/image/search/icon/f0dcbc69d0a043718a6366e91312d7f4@yule.png', '娱乐', '娱乐', NULL, '2017-01-10 10:35:50'),
+	(122, 31, 'e632040ecac54e7f8c45eabab929cd47@1218-1.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/e632040ecac54e7f8c45eabab929cd47@1218-1.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 18:15:15'),
+	(123, 31, 'e6687d5442f44f7ba53bd2ddc7064069@0107-5.jpg_640x300.jpg', 'http://baseromcdn.gionee.com/image/search/ad/e6687d5442f44f7ba53bd2ddc7064069@0107-5.jpg_640x300.jpg', NULL, NULL, NULL, '2017-01-09 18:18:07');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 
 
@@ -1406,7 +1438,7 @@ CREATE TABLE IF NOT EXISTS `life_service` (
 -- 正在导出表  search.life_service 的数据：~6 rows (大约)
 /*!40000 ALTER TABLE `life_service` DISABLE KEYS */;
 INSERT INTO `life_service` (`id`, `site_name`, `site_des`, `show_enable`, `sort_id`, `site_url`, `icon_url`) VALUES
-	(1, '查快递', '快捷查询，实时追踪', 1, 1, 'http://m.kuaidi100.com/', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/kuaidi.png'),
+	(1, '查快递', '快捷查询，实时追踪', 1, 1, 'http://m.kuaidi100.com/', 'http://baseromcdn.gionee.com/image/search/icon/20394705e56b4a34bcbb7706ba5695b1@kuaidi.png'),
 	(2, '家政服务', '干净无死角', 1, 2, 'http://m.nuomi.com/sz/927/0-0/0-0-0-0-0', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/jiazheng.png'),
 	(3, '预约挂号', '在线预约，无需排队', 1, 3, 'http://yi.baidu.com/wise/search/index?zt=wxpz', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/guahao.png'),
 	(4, '查公交', '给你最全的出行方案', 1, 4, 'http://zuoche.com/touch', 'http://baseromcdn.gionee.com/image/search/icon/20160301/life/gongjiao.png'),
@@ -1435,12 +1467,11 @@ CREATE TABLE IF NOT EXISTS `resources` (
   `warn` varchar(100) DEFAULT NULL COMMENT '未选择行的操作提示',
   `tittle` varchar(100) DEFAULT NULL COMMENT '删除时的操作提示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COMMENT='资源信息表';
 
 -- 正在导出表  search.resources 的数据：~52 rows (大约)
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
 INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `parent_id`, `parent_id_list`, `level`, `description`, `css_class`, `target`, `win_width`, `win_height`, `warn`, `tittle`) VALUES
-	(0, '根目录', 'root', '无', 'framework/zTreeV3/css/zTreeStyle/img/diy/1_close.png', NULL, -1, '*-1*', NULL, '树根', NULL, NULL, NULL, NULL, NULL, '0'),
 	(1, '全局搜索管理', 'model_search', '无', 'framework/images/model.png', 0, 0, '*-1*0*1*', NULL, '模块-全局搜索管理', '', '', NULL, NULL, '', '0'),
 	(2, '系统管理', 'model_system', '无', 'framework/images/model.png', 0, 0, '*-1*0*2*', NULL, '模块-系统管理', NULL, 'navTab', NULL, NULL, NULL, '0'),
 	(3, '账号管理', 'menu_account_manage', 'account/queryAccountPaper', 'framework/images/menu.png', 2, 2, '*-1*0*2*3*', NULL, '菜单项-账号管理', NULL, 'navTab', NULL, NULL, NULL, '0'),
@@ -1452,8 +1483,8 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(21, '参数管理', 'menu_config_manage', 'config/queryConfigPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*21*', NULL, '菜单项-擦数管理', NULL, 'navTab', NULL, NULL, NULL, '0'),
 	(22, '添加', 'button_account_add', 'account/addAccountView?editType=add', 'framework/images/button.png', 3, 3, '*-1*0*2*3*22*', NULL, '账号管理-添加按钮', 'add', 'dialog', NULL, NULL, NULL, '0'),
 	(23, '修改', 'button_account_update', 'account/editAccountView?editType=update&id={id_account}', 'framework/images/button.png', 3, 3, '*-1*0*2*3*23*', NULL, '账号管理-修改按钮', 'edit', 'dialog', NULL, NULL, '请选择一个记录!', ''),
-	(25, '添加', 'button_site_add', 'site/addSiteView?editType=add', 'framework/images/button.png', 3, 20, '*-1*0*1*20*25*', NULL, '网址导航-添加按钮', 'add', 'dialog', 510, 320, NULL, '0'),
-	(26, '修改', 'button_site_edit', 'site/editSiteView?editType=update&id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*26*', NULL, '网址导航-修改按钮', 'edit', 'dialog', 510, 320, '请选择一个记录!', ''),
+	(25, '添加', 'button_site_add', 'site/addSiteView?editType=add', 'framework/images/button.png', 3, 20, '*-1*0*1*20*25*', NULL, '网址导航-添加按钮', 'add', 'dialog', 510, 420, NULL, '0'),
+	(26, '修改', 'button_site_edit', 'site/editSiteView?editType=update&id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*26*', NULL, '网址导航-修改按钮', 'edit', 'dialog', 510, 420, '请选择一个记录!', ''),
 	(27, '删除', 'button_site_del', 'site/deleteSites?id={id_site}', 'framework/images/button.png', 3, 20, '*-1*0*1*20*27*', NULL, '网址导航-删除按钮', 'delete', 'selectedTodo', NULL, 320, '', '确实要删除所选记录吗?'),
 	(28, '添加', 'button_config_add', 'config/addConfigView?editType=add', 'framework/images/button.png', 3, 21, '*-1*0*1*21*28*', NULL, '参数管理-添加按钮', 'add', 'dialog', 750, 330, NULL, '0'),
 	(29, '修改', 'button_config_edit', 'config/editConfigView?editType=update&id={id_config}', 'framework/images/button.png', 3, 21, '*-1*0*1*21*29*', NULL, '参数管理-修改按钮', 'edit', 'dialog', 750, 330, '请选择一个记录!', ''),
@@ -1473,8 +1504,8 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(44, '修改', 'button_menu_edit', 'resources/editResourcesView?editType=update&id={id_res}', 'framework/images/button.png', 3, 5, '*-1*0*2*5*44*', NULL, '菜单管理-修改按钮', 'edit', 'dialog', 750, 490, '请选择一个记录!', ''),
 	(45, '删除', 'button_menu_del', 'resources/deleteResources?id={id_res}', 'framework/images/button.png', 3, 5, '*-1*0*2*5*45*', NULL, '菜单管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(46, '生活服务管理', 'menu_lifeservice_manage', 'life/queryLifeServicePaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*46*', NULL, '菜单项-生活服务管理', '', 'navTab', NULL, NULL, '', ''),
-	(47, '添加', 'button_lifeservice_add', 'life/addLifeServiceView?editType=add', 'framework/images/button.png', 3, 46, '*-1*0*1*46*47*', NULL, '生活服务管理-添加按钮', 'add', 'dialog', 750, 370, '', ''),
-	(48, '修改', 'button_lifeservice_edit', 'life/editLifeServiceView?editType=update&id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*46*48*', NULL, '生活服务管理-修改按钮', 'edit', 'dialog', 750, 370, '请选择一个记录!', ''),
+	(47, '添加', 'button_lifeservice_add', 'life/addLifeServiceView?editType=add', 'framework/images/button.png', 3, 46, '*-1*0*1*46*47*', NULL, '生活服务管理-添加按钮', 'add', 'dialog', 490, 370, '', ''),
+	(48, '修改', 'button_lifeservice_edit', 'life/editLifeServiceView?editType=update&id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*46*48*', NULL, '生活服务管理-修改按钮', 'edit', 'dialog', 750, 410, '请选择一个记录!', ''),
 	(49, '删除', 'button_lifeservice_del', 'life/deleteLifeServices?id={id_life}', 'framework/images/button.png', 3, 46, '*-1*0*1*46*49*', NULL, '生活服务管理-删除按钮', 'delete', 'selectedTodo', NULL, NULL, '', '确实要删除所选记录吗?'),
 	(50, '数据采集源', 'menu_data_from', 'search/changeSource', 'framework/images/menu.png', 2, 2, '*-1*0*2*50*', NULL, '切换数据采集源', '', 'navTab', NULL, NULL, '', ''),
 	(51, '联想词采集源', 'menu_associatewords_manage', 'search/assoSourceList', 'framework/images/menu.png', 2, 2, '*-1*0*2*51*', NULL, '联想词采集源', '', 'navTab', NULL, NULL, '', ''),
@@ -1491,7 +1522,8 @@ INSERT INTO `resources` (`id`, `name`, `res_key`, `res_url`, `icon`, `type`, `pa
 	(64, '新闻广告管理', 'menu_news_manage', 'adNews/queryAdNewsPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*64*', NULL, '新闻广告管理', '', 'navTab', NULL, NULL, '', ''),
 	(66, '应用版本管理', 'menu_appversion_manage', 'appVersion/queryAppVersionPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*66*', NULL, '应用版本管理', '', 'navTab', NULL, NULL, '', ''),
 	(67, '应用入口管理', 'menu_adentrance_manage', 'appEntrance/queryAppEntrancePaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*67*', NULL, '应用入口管理', '', 'navTab', NULL, NULL, '', ''),
-	(68, '图片素材管理', 'menu_images_manage', 'images/queryImagesPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*68*', NULL, '图片素材管理', '', 'navTab', NULL, NULL, '', '');
+	(68, '图片素材管理', 'menu_images_manage', 'images/queryImagesPaper', 'framework/images/menu.png', 2, 1, '*-1*0*1*68*', NULL, '图片素材管理', '', 'navTab', NULL, NULL, '', ''),
+	(69, '根目录', 'root', '无', 'framework/zTreeV3/css/zTreeStyle/img/diy/1_close.png', NULL, -1, '*-1*', NULL, '树根', NULL, NULL, NULL, NULL, NULL, '0');
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 
 
@@ -1676,26 +1708,21 @@ CREATE TABLE IF NOT EXISTS `site_navigation` (
   `icon` blob,
   `type` int(11) DEFAULT NULL COMMENT '-1:全部；0:常规网址；1:桌面widget网址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='网址导航表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='网址导航表';
 
--- 正在导出表  search.site_navigation 的数据：~15 rows (大约)
+-- 正在导出表  search.site_navigation 的数据：~10 rows (大约)
 /*!40000 ALTER TABLE `site_navigation` DISABLE KEYS */;
 INSERT INTO `site_navigation` (`id`, `dic_id`, `site_name`, `site_url`, `sort_id`, `show_enable`, `icon_url`, `icon`, `type`) VALUES
 	(1, -1, '软件', 'http://gou.gionee.com/index/redirect?url_id=2461', 1, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/ruanjian.png', NULL, 0),
-	(2, -1, '淘宝热卖', 'http://gou.gionee.com/index/redirect?url_id=2461', 2, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/taobao.png', NULL, 0),
+	(2, -1, '淘宝热卖', 'http://gou.gionee.com/index/redirect?url_id=2461', 2, 1, 'http://baseromcdn.gionee.com/image/search/icon/698c3c7e873c4153b082baa60cb46c1f@taobao.png', NULL, 0),
 	(3, -1, '蘑菇街', 'http://gou.gionee.com/index/redirect?url_id=2468', 3, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/meituan.png', NULL, 0),
-	(4, -1, '京东', 'http://gou.gionee.com/index/redirect?url_id=2465', 4, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/jingdong.png', NULL, 0),
-	(5, -1, '京东', 'http://gou.gionee.com/index/redirect?url_id=2467', 5, 0, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/meilishuo.png', NULL, 0),
+	(4, -1, '京东', 'http://gou.gionee.com/index/redirect?url_id=2465', 4, 1, 'http://baseromcdn.gionee.com/image/search/icon/28dfa1fbe1794f8b92c89c17c6a71ca2@jingdong.png', NULL, 0),
 	(6, -1, '蘑菇街', 'http://gou.gionee.com/index/redirect?url_id=2463', 6, 0, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/mogujie.png', NULL, 0),
 	(7, -1, '1号店', 'http://gou.gionee.com/index/redirect?url_id=2466', 7, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/yihaodian.png', NULL, 0),
-	(8, -1, '美团', 'http://gou.gionee.com/index/redirect?url_id=2469', 8, 0, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/yamaxun.png', NULL, 0),
 	(9, -1, '瓷肌', 'https://s.click.taobao.com/t?e=m%3D2%26s%3D0hPiY7lMJ2kcQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMWz1oUabqlT18sviUM61dt2H0mvjMaQR09t%2Bk1l0ozWibx7eyRGA3H82GaBwkk4XkY7LAa3DUrM2zt5vEinufIVAFEHVckI7b445SxkPgGIgiBqx4AoGTRxNtT0rMxO3Gvexx4nJGkU7e3jU0TKK5Ow9BS4QMf4b1LKB3FEXiAr8vB4K%2B06n9C6dzyyO9CIkVdQc6rs1qJwrxg5p7bh%2BFbQ%3D', 9, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160419/nav/ciji.png', NULL, 0),
 	(10, -1, '当当', 'http://gou.gionee.com/index/redirect?url_id=2470', 10, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160419/nav/dangdang.png', NULL, 0),
 	(11, -1, '聚划算', 'http://gou.gionee.com/index/redirect?url_id=2471', 11, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/juhuasuan.png', NULL, 1),
-	(12, -1, '9块9', 'http://gou.gionee.com/index/redirect?url_id=2472', 12, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160224/nav/9kuai9.png', NULL, 1),
-	(16, -1, '百度', 'https://www.baidu.com/', 13, 1, 'http://pic.chinasspp.com/quan/News/image/20131023/20131023084622_8281.jpg', NULL, 1),
-	(17, -1, '软件', 'http://gou.gionee.com/index/redirect?url_id=2461', 1, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/ruanjian.png', NULL, 0),
-	(18, 19, '淘宝热卖', 'http://gou.gionee.com/index/redirect?url_id=2461', 2, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/taobao.png', NULL, 0);
+	(17, -1, '软件', 'http://gou.gionee.com/index/redirect?url_id=2461', 1, 1, 'http://baseromcdn.gionee.com/image/search/icon/20160729/nav/ruanjian.png', NULL, 0);
 /*!40000 ALTER TABLE `site_navigation` ENABLE KEYS */;
 
 
@@ -1735,7 +1762,7 @@ INSERT INTO `sys_dictionary` (`id`, `cls_id`, `dic_value`) VALUES
 	(29, 12, '首页'),
 	(30, 12, '综合搜索页'),
 	(31, 13, '新闻'),
-	(32, 13, '导航'),
+	(32, 13, '图标'),
 	(33, 13, '广告');
 /*!40000 ALTER TABLE `sys_dictionary` ENABLE KEYS */;
 

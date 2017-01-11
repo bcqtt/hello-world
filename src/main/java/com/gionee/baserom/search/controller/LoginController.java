@@ -39,11 +39,12 @@ public class LoginController {
 	private AuthenticationManager gioneeAuthenticationManager;
 	
 	@RequestMapping(value = "/goToLogin", method = RequestMethod.GET)
-	 public ModelAndView goToLogin() {
-	 	 ModelAndView model = new ModelAndView();
-	     model.setViewName("login2");
-	     logger.info("Go to Login!");
-	     return model;
+	public ModelAndView goToLogin(HttpServletRequest request) {
+	 	ModelAndView model = new ModelAndView();
+	 	request.setAttribute("error","会话失效，重新登录！");
+	    model.setViewName("redirect");
+	    logger.info("Go to Login!");
+	    return model;
 	 }
 	  
    /** 
@@ -55,6 +56,12 @@ public class LoginController {
 		
 		String rand = (String) request.getSession().getAttribute("rand");
 		String randCode = request.getParameter("randCode");
+		String error = request.getParameter("error");
+		if(error!=null){
+			request.setAttribute("error",error);
+			model.setViewName("login2");
+			return model;
+		}
 		if(rand==null ||randCode==null){
 			request.setAttribute("error","请登录。");
 			model.setViewName("login2");
@@ -124,7 +131,7 @@ public class LoginController {
 			request.getSession().removeAttribute("SPRING_SECURITY_CONTEXT");
 		}
 		ModelAndView model = new ModelAndView();
-		model.setViewName("login");
+		model.setViewName("login2");
 		return model;
 	}
 

@@ -26,7 +26,7 @@ function saveAccountRole(){
 	<table class="table" width="100%" layoutH="55">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>角色名</th>
 				<th>角色描述</th>
 			</tr>

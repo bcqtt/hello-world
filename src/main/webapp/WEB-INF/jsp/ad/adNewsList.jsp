@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="js/authority.js" type="text/javascript"></script>
 <style type="text/css">
 .adImg{
@@ -52,11 +53,12 @@ function checkShowEnabled(obj){
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center">标题</th>
 				<th align="center" width="200">广告图</th>
-				<th width="750">URL</th>
+				<th width="630">URL</th>
 				<th width="50" align="center">显示</th>
+				<th width="120" align="center">发布时间</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -68,6 +70,9 @@ function checkShowEnabled(obj){
 				<td style="word-break: break-all;"><a href="${an.link}" target="_blank">${an.link}</a></td>
 				<td>
 					<input type="checkbox" value="${an.enable}" adNewsId="${an.id}" <c:if test="${an.enable == 1}">checked="checked"</c:if> onchange="checkShowEnabled(this);"/>
+				</td>
+				<td>
+					<fmt:formatDate value="${an.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				</td>
 			  </tr>
 			</c:forEach>

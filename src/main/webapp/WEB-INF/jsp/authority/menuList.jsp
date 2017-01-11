@@ -44,7 +44,7 @@ var pIdList_="${pIdList}";
 	<table class="table" width="100%" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>资源名</th>
 				<th>资源编码</th>
 				<th>URL</th>

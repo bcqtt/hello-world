@@ -10,6 +10,7 @@
 						
 	<!-- 工作的bean -->
 	<bean id="myJob" class="com.gionee.baserom.search.job.DailyTaskJob" />
+	<bean id="getHaokanData" class="com.gionee.baserom.search.job.GetHaokanData" />
 	
 	<!-- 新的定时任务都装配在此
 		Cron表达式时间字段
@@ -35,6 +36,7 @@
 	 -->
 	<task:scheduled-tasks>
 		<task:scheduled ref="myJob" method="execute" cron="0 */30 * * * ?"/>
+		<task:scheduled ref="getHaokanData" method="getNewsData" cron="0 0 0/1 * * ?"/>
 	</task:scheduled-tasks>
 
 </beans>

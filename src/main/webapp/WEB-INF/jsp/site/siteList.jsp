@@ -95,7 +95,7 @@ $("#dataStatusBtn").click(function(){
 	<table class="table" style="width:100%;" layoutH="110">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center" width="80" >名称</th>
 				<th align="center" width="80" >Logo</th>
 				<th align="center" width="50">排序号</th>

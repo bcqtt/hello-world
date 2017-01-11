@@ -34,7 +34,7 @@
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>账号名</th>
 				<th>姓名</th>
 				<th>电话号码</th>

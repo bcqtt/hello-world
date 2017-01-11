@@ -47,7 +47,7 @@ function checkShowEnabled(obj){
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>名称</th>
 				<th align="center">排序号</th>
 				<th align="center">显示于首页</th>

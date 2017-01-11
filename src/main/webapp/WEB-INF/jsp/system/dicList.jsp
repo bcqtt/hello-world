@@ -60,7 +60,7 @@ function selectByType(obj){
 	<table class="table" width="1200" layoutH="110">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>字典类型</th>
 				<th>字典值</th>
 				<th>字典引用键</th>

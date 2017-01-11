@@ -57,7 +57,7 @@
 	<table class="table" width="1200" layoutH="110">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th>Code</th>
 				<th align="center">名称</th>
 				<th>URL</th>

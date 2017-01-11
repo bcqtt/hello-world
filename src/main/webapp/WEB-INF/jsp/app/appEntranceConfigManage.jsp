@@ -52,7 +52,7 @@ function changeView(simpleDiv,detailDiv,obj){
 	<table class="table" width="1000" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th width="120">应用版本</th>
 				<th align="center">入口位置</th>
 				<th align="center">操作</th>

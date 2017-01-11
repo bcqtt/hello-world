@@ -1,5 +1,6 @@
 package com.gionee.baserom.search.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,8 @@ public class AdNewsServiceImpl implements IAdNewsService {
 		if(an.getPos()==null) an.setPos(0);
 		UpdateImagesRef.updateImgRef(editType,an,adNewsMapper,imagesMapper);
 		if(editType.equals("add")){
+			an.setCreateTime(new Date());
+			an.setType(0);//0：手动添加的。1：从第三方接口获取的
 			n = adNewsMapper.insert(an);
 			logger.info("保存广告新闻-->" + an.getName());
 		}else if(editType.equals("update")){
@@ -79,6 +82,12 @@ public class AdNewsServiceImpl implements IAdNewsService {
 		Criteria criteria = example.createCriteria();
 		if(an.getId() != null){
 			criteria.andIdEqualTo(an.getId());
+		}else if(an.getName() != null){
+			criteria.andNameEqualTo(an.getName());
+		}else if(an.getLink() != null ){
+			criteria.andLinkEqualTo(an.getLink());
+		}else if(an.getImg() != null){
+			criteria.andImgEqualTo(an.getImg());
 		}
 		List<AdNews> list = this.adNewsMapper.selectByExample(example);
 		return list.size()>0?list.get(0):null;
@@ -129,6 +138,16 @@ public class AdNewsServiceImpl implements IAdNewsService {
 		Criteria criteria = example.createCriteria();
 		criteria.andEnableEqualTo(1);
 		return this.adNewsMapper.selectByExample(example);
+	}
+
+	@Override
+	public int addAdNews(AdNews ad) {
+		return adNewsMapper.insert(ad);
+	}
+
+	@Override
+	public void deleteByType(int type) {
+		adNewsMapper.deleteByType(type);
 	}
 
 }

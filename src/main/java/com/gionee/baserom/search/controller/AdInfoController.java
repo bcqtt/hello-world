@@ -78,7 +78,7 @@ public class AdInfoController {
 		Account acc = (Account) request.getSession().getAttribute("accountSession");
 		if(acc==null){
 			request.setAttribute("error","会话失效，重新登录。");
-			model.setViewName("login2");
+			model.setViewName("redirect");
 			return model;
 		}
 		List<AdDisplayRule> adRuleList = adDisplayRuleService.queryAllAdRule();

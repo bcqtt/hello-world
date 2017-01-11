@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="shortcut icon" href="framework/images/favicon.ico" type="image/x-icon" />
 <link href="framework/dwz/themes/azure/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="framework/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="framework/cssext/dwz-btn-ext.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="framework/cssext/core-ext.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="framework/dwz/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 <link href="framework/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
 <!--[if IE]>

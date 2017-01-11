@@ -51,7 +51,7 @@ function checkShowEnabled(obj){
 	<table class="table" width="1200" layoutH="75">
 		<thead>
 			<tr>
-				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th align="center" width="40"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
 				<th align="center" >用户类型</th>
 				<th align="center" >版本号</th>
 			</tr>
